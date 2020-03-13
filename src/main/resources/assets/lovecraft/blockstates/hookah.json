@@ -1,0 +1,9 @@
+{
+    "variants": {
+        "facing=north": { "model": "lovecraft:hookah", "y": 180 },
+        "facing=south": { "model": "lovecraft:hookah" },
+        "facing=west":  { "model": "lovecraft:hookah", "y": 90 },
+        "facing=east":  { "model": "lovecraft:hookah", "y": 270 },
+        "inventory": { "model": "lovecraft:hookah" }
+    }
+}

@@ -1,0 +1,6 @@
+{
+    "variants": {
+        "normal": { "model": "lovecraft:desk" },
+        "inventory": { "model": "lovecraft:desk" }
+    }
+}

@@ -1,0 +1,21 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "BSB",
+        "BBB"
+    ],
+    "key": {
+        "B": {
+            "item": "minecraft:stone",
+            "data": 0
+        },
+        "S": {
+            "item": "minecraft:stick",
+            "data": 0
+        }
+    },
+    "result": {
+        "item": "lovecraft:mortar",
+        "count": 1
+    }
+}

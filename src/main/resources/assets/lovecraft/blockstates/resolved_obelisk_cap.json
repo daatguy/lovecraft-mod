@@ -1,0 +1,6 @@
+{
+    "variants": {
+        "normal": { "model": "lovecraft:resolved_obelisk_cap" },
+        "inventory": { "model": "lovecraft:resolved_obelisk_cap" }
+    }
+}

@@ -1,0 +1,6 @@
+{
+    "variants": {
+        "normal": { "model": "lovecraft:carved_obelisk" },
+        "inventory": { "model": "lovecraft:carved_obelisk" }
+    }
+}

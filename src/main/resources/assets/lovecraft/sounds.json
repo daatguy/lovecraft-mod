@@ -1,0 +1,26 @@
+{
+  "ambient.obelisk_hum": {
+    "category": "ambient",
+    "subtitle": "ambient.obelisk_hum",
+    "sounds": [ "lovecraft:ambient/obelisk_hum" ]
+  },
+  "spell_cap": {
+    "category": "neutral",
+    "subtitle": "spell_cap",
+    "sounds": [ "lovecraft:spell_cap" ]
+  },
+  "block.mortar": {
+    "category": "block",
+    "subtitle": "block.mortar",
+    "sounds": [ 
+        "lovecraft:block/mortar_1",
+        "lovecraft:block/mortar_2",
+        "lovecraft:block/mortar_3"
+     ]
+  },
+  "ambient.drugged": {
+    "category": "ambient",
+    "subtitle": "ambient.drugged",
+    "sounds": [ "lovecraft:ambient/drugged2" ]
+  }
+}

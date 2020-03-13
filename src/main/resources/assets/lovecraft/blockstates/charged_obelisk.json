@@ -1,0 +1,6 @@
+{
+    "variants": {
+        "normal": { "model": "lovecraft:charged_obelisk" },
+        "inventory": { "model": "lovecraft:charged_obelisk" }
+    }
+}

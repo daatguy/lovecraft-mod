@@ -1,0 +1,171 @@
+package daatguy.lovecraft.core;
+
+import net.minecraft.block.Block;
+import net.minecraft.client.renderer.block.model.ModelResourceLocation;
+import net.minecraft.item.Item;
+import net.minecraft.potion.Potion;
+import net.minecraftforge.client.event.ModelRegistryEvent;
+import net.minecraftforge.client.model.ModelLoader;
+import net.minecraftforge.event.RegistryEvent;
+import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
+import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import daatguy.lovecraft.item.ItemBook;
+import daatguy.lovecraft.item.ItemFossil;
+import daatguy.lovecraft.item.ItemTome;
+
+@EventBusSubscriber
+public class RegistryHandler {
+	
+	@SubscribeEvent
+    public static void onPotionRegister(RegistryEvent.Register<Potion> event) {
+		event.getRegistry().register(LovecraftMain.potionDread);
+		event.getRegistry().register(LovecraftMain.potionAwake);
+		event.getRegistry().register(LovecraftMain.potionDrugged);
+	}
+	
+	@SubscribeEvent
+	public static void onItemRegister(RegistryEvent.Register<Item> event) {
+		event.getRegistry().register(LovecraftMain.itemCoin);
+		event.getRegistry().register(LovecraftMain.itemWeirdDust);
+		event.getRegistry().register(LovecraftMain.itemFossilDust);
+		event.getRegistry().register(LovecraftMain.itemMummyDust);
+		event.getRegistry().register(LovecraftMain.itemFleshDust);
+		event.getRegistry().register(LovecraftMain.itemMummyChunk);
+		event.getRegistry().register(LovecraftMain.itemMagnifyingGlass);
+		event.getRegistry().register(LovecraftMain.itemTome);
+		event.getRegistry().register(LovecraftMain.itemBook);
+		event.getRegistry().register(LovecraftMain.itemFossil);
+		event.getRegistry().register(LovecraftMain.itemDriedFlower);
+
+		event.getRegistry().register(LovecraftMain.itemBlockFlowerDrug);
+		event.getRegistry().register(LovecraftMain.itemBlockFossil);
+		//event.getRegistry().register(LovecraftMain.itemBlockAetherOre);
+		event.getRegistry().register(LovecraftMain.itemBlockWeirdedBrick);
+		event.getRegistry().register(LovecraftMain.itemBlockBasRelief);
+		event.getRegistry().register(LovecraftMain.itemBlockHookah);
+		event.getRegistry().register(LovecraftMain.itemBlockAltar);
+		event.getRegistry().register(LovecraftMain.itemBlockMortar);
+		event.getRegistry().register(LovecraftMain.itemBlockDesk);
+		event.getRegistry().register(LovecraftMain.itemBlockObelisk);
+		event.getRegistry().register(LovecraftMain.itemBlockCarvedObelisk);
+		event.getRegistry().register(LovecraftMain.itemBlockChargedObelisk);
+		event.getRegistry().register(LovecraftMain.itemBlockObeliskCap);
+		event.getRegistry().register(LovecraftMain.itemBlockResolvedObeliskCap);
+	}
+	
+	@SubscribeEvent
+	public static void onBlockRegister(RegistryEvent.Register<Block> event) {
+
+		event.getRegistry().register(LovecraftMain.blockFlowerDrug);
+		event.getRegistry().register(LovecraftMain.blockFossil);
+		//event.getRegistry().register(LovecraftMain.blockAetherOre);
+		event.getRegistry().register(LovecraftMain.blockWeirdedBrick);
+		event.getRegistry().register(LovecraftMain.blockBasRelief);
+		event.getRegistry().register(LovecraftMain.blockHookah);
+		event.getRegistry().register(LovecraftMain.blockAltar);
+		event.getRegistry().register(LovecraftMain.blockMortar);
+		event.getRegistry().register(LovecraftMain.blockDesk);
+		event.getRegistry().register(LovecraftMain.blockObelisk);
+		event.getRegistry().register(LovecraftMain.blockCarvedObelisk);
+		event.getRegistry().register(LovecraftMain.blockChargedObelisk);
+		event.getRegistry().register(LovecraftMain.blockObeliskCap);
+		event.getRegistry().register(LovecraftMain.blockResolvedObeliskCap);
+	}
+
+
+	@SubscribeEvent
+	public static void onModelRegister(ModelRegistryEvent event) {
+		
+		ModelLoader.setCustomModelResourceLocation(
+				LovecraftMain.itemDriedFlower, 0, new ModelResourceLocation(
+						LovecraftMain.itemDriedFlower.getRegistryName(),
+						"inventory"));
+		ModelLoader.setCustomModelResourceLocation(
+				LovecraftMain.itemCoin, 0, new ModelResourceLocation(
+						LovecraftMain.itemCoin.getRegistryName(),
+						"inventory"));
+		ModelLoader.setCustomModelResourceLocation(
+				LovecraftMain.itemWeirdDust, 0, new ModelResourceLocation(
+						LovecraftMain.itemWeirdDust.getRegistryName(),
+						"inventory"));
+		ModelLoader.setCustomModelResourceLocation(
+				LovecraftMain.itemFossilDust, 0, new ModelResourceLocation(
+						LovecraftMain.itemFossilDust.getRegistryName(),
+						"inventory"));
+		ModelLoader.setCustomModelResourceLocation(
+				LovecraftMain.itemMummyDust, 0, new ModelResourceLocation(
+						LovecraftMain.itemMummyDust.getRegistryName(),
+						"inventory"));
+		ModelLoader.setCustomModelResourceLocation(
+				LovecraftMain.itemFleshDust, 0, new ModelResourceLocation(
+						LovecraftMain.itemFleshDust.getRegistryName(),
+						"inventory"));
+		ModelLoader.setCustomModelResourceLocation(
+				LovecraftMain.itemMummyChunk, 0, new ModelResourceLocation(
+						LovecraftMain.itemMummyChunk.getRegistryName(),
+						"inventory"));
+		ModelLoader.setCustomModelResourceLocation(
+				LovecraftMain.itemMagnifyingGlass, 0, new ModelResourceLocation(
+						LovecraftMain.itemMagnifyingGlass.getRegistryName(),
+						"inventory"));
+		((ItemTome)LovecraftMain.itemTome).initModel();
+		((ItemBook)LovecraftMain.itemBook).initModel();
+		((ItemFossil)LovecraftMain.itemFossil).initModel();
+		ModelLoader.setCustomModelResourceLocation(
+				LovecraftMain.itemBlockFlowerDrug, 0, new ModelResourceLocation(
+						LovecraftMain.itemBlockFlowerDrug.getRegistryName(),
+						"inventory"));
+		ModelLoader.setCustomModelResourceLocation(
+				LovecraftMain.itemBlockFossil, 0, new ModelResourceLocation(
+						LovecraftMain.itemBlockFossil.getRegistryName(),
+						"inventory"));
+		ModelLoader.setCustomModelResourceLocation(
+				LovecraftMain.itemBlockBasRelief, 0, new ModelResourceLocation(
+						LovecraftMain.itemBlockBasRelief.getRegistryName(),
+						"inventory"));
+		ModelLoader.setCustomModelResourceLocation(
+				LovecraftMain.itemBlockHookah, 0, new ModelResourceLocation(
+						LovecraftMain.itemBlockHookah.getRegistryName(),
+						"inventory"));
+		//ModelLoader.setCustomModelResourceLocation(
+		//		LovecraftMain.itemBlockAetherOre, 0, new ModelResourceLocation(
+		//				LovecraftMain.itemBlockAetherOre.getRegistryName(),
+		//				"inventory"));
+		ModelLoader.setCustomModelResourceLocation(
+				LovecraftMain.itemBlockWeirdedBrick, 0, new ModelResourceLocation(
+						LovecraftMain.itemBlockWeirdedBrick.getRegistryName(),
+						"inventory"));
+		ModelLoader.setCustomModelResourceLocation(
+				LovecraftMain.itemBlockAltar, 0, new ModelResourceLocation(
+						LovecraftMain.itemBlockAltar.getRegistryName(),
+						"inventory"));
+		ModelLoader.setCustomModelResourceLocation(
+				LovecraftMain.itemBlockMortar, 0, new ModelResourceLocation(
+						LovecraftMain.itemBlockMortar.getRegistryName(),
+						"inventory"));
+		ModelLoader.setCustomModelResourceLocation(
+				LovecraftMain.itemBlockDesk, 0, new ModelResourceLocation(
+						LovecraftMain.itemBlockDesk.getRegistryName(),
+						"inventory"));
+		ModelLoader.setCustomModelResourceLocation(
+				LovecraftMain.itemBlockObelisk, 0, new ModelResourceLocation(
+						LovecraftMain.itemBlockObelisk.getRegistryName(),
+						"inventory"));
+		ModelLoader.setCustomModelResourceLocation(
+				LovecraftMain.itemBlockCarvedObelisk, 0, new ModelResourceLocation(
+						LovecraftMain.itemBlockCarvedObelisk.getRegistryName(),
+						"inventory"));
+		ModelLoader.setCustomModelResourceLocation(
+				LovecraftMain.itemBlockChargedObelisk, 0, new ModelResourceLocation(
+						LovecraftMain.itemBlockChargedObelisk.getRegistryName(),
+						"inventory"));
+		ModelLoader.setCustomModelResourceLocation(
+				LovecraftMain.itemBlockObeliskCap, 0, new ModelResourceLocation(
+						LovecraftMain.itemBlockObeliskCap.getRegistryName(),
+						"inventory"));
+		ModelLoader.setCustomModelResourceLocation(
+				LovecraftMain.itemBlockResolvedObeliskCap, 0, new ModelResourceLocation(
+						LovecraftMain.itemBlockResolvedObeliskCap.getRegistryName(),
+						"inventory"));
+	}
+}
