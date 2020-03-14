@@ -10,14 +10,28 @@ buildscript {
 apply plugin: 'net.minecraftforge.gradle.forge'
 //Only edit below this line, the above code adds and enables the necessary things for Forge to be setup.
 
-// Gets the version name from the latest Git tag
 def getVersionName = { ->
-    def stdout = new ByteArrayOutputStream()
-    exec {
-        commandLine 'git', 'describe', '--tags'
-        standardOutput = stdout
+    try {
+        def branchout = new ByteArrayOutputStream()
+        exec {
+            commandLine 'git', 'rev-parse', '--abbrev-ref', 'HEAD'
+            standardOutput = branchout
+        }
+        def branch = branchout.toString().trim()
+        if (branch.equals("master")) {
+            def stdout = new ByteArrayOutputStream()
+            exec {
+                commandLine 'git', 'describe', '--tags'
+                standardOutput = stdout
+            }
+            return stdout.toString().trim()
+        } else {
+            return branch
+        }
     }
-    return stdout.toString().trim()
+    catch (ignored) {
+        return null
+    }
 }
 
 version = getVersionName()
@@ -63,9 +77,6 @@ dependencies {
     // for more info...
     // http://www.gradle.org/docs/current/userguide/artifact_dependencies_tutorial.html
     // http://www.gradle.org/docs/current/userguide/dependency_management.html
-
-    compile 'org.ajoberstar.grgit'
-
 }
 
 processResources {
