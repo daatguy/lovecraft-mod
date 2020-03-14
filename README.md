@@ -4,23 +4,29 @@ The most merciful thing in the world, I think, is the inability of the human min
 This just has Lovecraft stuff as a mod. Cool.
 
 ## Installing
+
 Check out the [(1.12.2) Forge MDK docs](https://mcforge.readthedocs.io/en/1.12.x/)
 to see how to setup a build environment.
 
 ## Copyright
+
 I hereby give all legal, extralegal, paralegal, meta-legal, sharia-law, and other permission,
-for any of y'all bad motherfuckers to
-use, modify, sodomize, and distribute this piece of work.
-However,
-fuck copyright, don't try to claim ownership of this bundle of 1s and 0s.
+for any of y'all bad motherfuckers to use, modify, sodomize, and distribute this piece of work.
+
+However, fuck copyright;
+don't try to claim ownership of this bundle of 1s and 0s.
 
 Amen.
 
-POST SCRIPT:
+### POST SCRIPT
+
 Nathaniel says I should include the GPL for legal purposes.
+
 Fuck the law and all, but he's probably right.
 
-Included below is the legal disclaimer, for bastards, traitors, tyrants, politicians, and, of course, lawyers:
+Included below is the legal disclaimer for bastards, traitors, tyrants, politicians, and, of course, lawyers:
+
+----------
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
