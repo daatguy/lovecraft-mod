@@ -74,6 +74,10 @@ public class RegistryHandler {
 	}
 
 
+	/**
+	 * ModelRegistryEvent
+	 * Here is where we register all the item models
+	 */
 	@SubscribeEvent
 	public static void onModelRegister(ModelRegistryEvent event) {
 		

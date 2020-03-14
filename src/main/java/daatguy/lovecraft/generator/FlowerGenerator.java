@@ -15,6 +15,8 @@ import daatguy.lovecraft.core.LovecraftMain;
 public class FlowerGenerator extends WorldGenerator
 {
     
+	//NOT REALLY A GENERATOR, CALLED BY DecorationGenerator
+	
     private BlockBush flower;
     private IBlockState state;
 

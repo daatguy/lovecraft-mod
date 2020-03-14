@@ -9,6 +9,9 @@ import net.minecraft.util.ResourceLocation;
 
 public class RenderSpell <T extends EntitySpell> extends Render<T>{
 
+	/**
+	 * Dummy class
+	 */
 	protected RenderSpell(RenderManager renderManager) {
 		super(renderManager);
 	}

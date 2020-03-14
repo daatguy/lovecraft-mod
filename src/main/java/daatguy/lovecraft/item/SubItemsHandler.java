@@ -64,6 +64,14 @@ public class SubItemsHandler {
 		books.put(book.name, book);
 	}
 
+	/**
+	 * COMMON: -1
+	 * LATIN: 0
+	 * SANSKRIT: 1
+	 * GREEK: 2
+	 * RUNIC: 3
+	 * OLDSPEAK: 4
+	 */
 	public static String getLanguageFromID(int id) {
 		switch (id) {
 		case LATIN:

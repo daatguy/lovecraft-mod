@@ -16,7 +16,10 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 public class MovingSoundDrugged extends MovingSound
 {
     private final EntityPlayerSP player;
-
+    
+    /**
+	 * A moving sound to keep the drug noises in your ears if you move
+	 */
     public MovingSoundDrugged(EntityPlayerSP playerIn)
     {
         super(SoundEventHandler.DRUGGED, SoundCategory.MASTER);

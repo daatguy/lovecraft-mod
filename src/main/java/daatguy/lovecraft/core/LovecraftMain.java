@@ -61,11 +61,14 @@ import daatguy.lovecraft.tileentity.TileEntityHookah;
 import daatguy.lovecraft.world.potion.PotionDrugged;
 import daatguy.lovecraft.world.potion.PotionSimple;
 
-@Mod(modid = "lovecraft", name = "Lovecraft Mod", version = "1.0.0")
+@Mod(modid = "lovecraft", name = "Lovecraft Mod", version = "Alpha-1.0")
 public class LovecraftMain {
 	
+	//Potion Id Addition
+	//Should probably be changable via config (todo)
 	public static int potionIdStart = 4000;
 
+	//Initializiation of tabs, handlers, other engine classes, etc.
 	public static CreativeTabs lovecraftTab = new LovecraftTab();
 
 	public static SubItemsHandler subItemsHandler = new SubItemsHandler();
@@ -78,12 +81,17 @@ public class LovecraftMain {
 	
 	public static AlchemyRecipes alchemyRecipes = new AlchemyRecipes(); 
 	
+	//For use for the potionDrugged
+	//Only changed client-side
+	//See PotionDruggedMessage.java for more info
 	public int motionBlurShader = 0;
 	
+	//Potion Refs
 	public static Potion potionDread;
 	public static Potion potionAwake;
 	public static Potion potionDrugged;
-
+	
+	//Item declarations
 	public static Item itemCoin;
 	public static Item itemWeirdShards;
 	public static Item itemWeirdDust;
@@ -97,6 +105,7 @@ public class LovecraftMain {
 	public static Item itemFossil;
 	public static Item itemDriedFlower;
 
+	//More 'item' declarations, ItemBlocks
 	public static Item itemBlockFlowerDrug;
 	public static Item itemBlockFossil;
 	public static Item itemBlockAetherOre;
@@ -112,6 +121,7 @@ public class LovecraftMain {
 	public static Item itemBlockObeliskCap;
 	public static Item itemBlockResolvedObeliskCap;
 
+	//Block declarations
 	public static BlockBush blockFlowerDrug;
 	public static Block blockFossil;
 	//public static Block blockAetherOre;
@@ -130,12 +140,14 @@ public class LovecraftMain {
 	@Instance
 	public static LovecraftMain instance = new LovecraftMain();
 
+	//Proxy creations
 	@SidedProxy(clientSide = "daatguy.lovecraft.core.ClientProxy", serverSide = "daatguy.lovecraft.core.ServerProxy")
 	public static CommonProxy proxy;
 
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event) {
 		
+		//Initialize items, set properties
 		itemFossilDust = new ItemFossilDust();
 		itemFossilDust.setUnlocalizedName("fossil_dust");
 		itemFossilDust.setRegistryName("fossil_dust");
@@ -207,6 +219,7 @@ public class LovecraftMain {
 		blockAetherOre.setHarvestLevel("pickaxe", 0);
 		blockAetherOre.setCreativeTab(lovecraftTab);*/
 		
+		//Initialize blocks, set properties
 		blockWeirdedBrick = new BlockWeirdedBrick(Material.ROCK);
 		blockWeirdedBrick.setHardness(60f);
 		blockWeirdedBrick.setResistance(18000000.0f);
@@ -289,6 +302,7 @@ public class LovecraftMain {
 		blockResolvedObeliskCap.setLightLevel(8.0f);
 		blockResolvedObeliskCap.setCreativeTab(lovecraftTab);
 		
+		//Initialize itemBlocks
 		itemBlockFlowerDrug = new ItemSimpleBlock(blockFlowerDrug).setRegistryName(blockFlowerDrug.getRegistryName());
 		itemBlockFossil = new ItemSimpleBlock(blockFossil).setRegistryName(blockFossil.getRegistryName());
 		itemBlockWeirdedBrick = new ItemSimpleBlock(blockWeirdedBrick).setRegistryName(blockWeirdedBrick.getRegistryName());
@@ -304,17 +318,21 @@ public class LovecraftMain {
 		itemBlockObeliskCap = new ItemSimpleBlock(blockObeliskCap).setRegistryName(blockObeliskCap.getRegistryName());
 		itemBlockResolvedObeliskCap = new ItemSimpleBlock(blockResolvedObeliskCap).setRegistryName(blockResolvedObeliskCap.getRegistryName());
 
+		//Initialize potions
 		potionDread = new PotionSimple(true, 14611199, 0, 0).setPotionName("effect.dread").setRegistryName("lovecraft:dread");
 		potionAwake = new PotionSimple(true, 16777113, 1, 0).setPotionName("effect.awake").setRegistryName("lovecraft:awake");
 		potionDrugged = new PotionDrugged(true, 13369497, 2, 0).setPotionName("effect.drugged").setRegistryName("lovecraft:drugged");
 		
+		//Add world generators
 		GameRegistry.registerWorldGenerator(new OreGenerator(), 30);
 		GameRegistry.registerWorldGenerator(new DecorationGenerator(), 300);
 		GameRegistry.registerWorldGenerator(new TombGenerator(), 20);
 		//GameRegistry.registerWorldGenerator(new ZigguratGenerator(), 4);
 		
+		//Add smelting recipes
 		GameRegistry.addSmelting(itemBlockFlowerDrug, itemDriedFlower.getDefaultInstance(), 0);
 
+		//Add tile entities
 		GameRegistry.registerTileEntity(TileEntityHookah.class, "lovecraft:hookah");
 		GameRegistry.registerTileEntity(TileEntityAltar.class, "lovecraft:altar");
 		GameRegistry.registerTileEntity(TileEntityChargedObelisk.class, "lovecraft:chargedObelisk");
@@ -324,25 +342,32 @@ public class LovecraftMain {
         //list.add(new StructureVillagePieces.PieceWeight(VillageOpiumDen.class, 12, 1));
         //net.minecraftforge.fml.common.registry.VillagerRegistry.addExtraVillageComponents(list, random, size);
 		
+		//Register entities
 		EntityRegistry.registerModEntity(new ResourceLocation("lovecraft:spell"), EntitySpell.class, "lovecraftSpell", 0, "lovecraft", 0, 1, false);
 		
+		//Proxy Pre-Init
 		proxy.preInit(event);
 	}
 
 	@EventHandler
 	public void init(FMLInitializationEvent event) {
 
+		//Init deskHandler and alchemyRecipes
+		//(Reliant on pre-init defining of items, etc.)
 		deskHandler.init();
 		alchemyRecipes.InitRecipes();
 		
+		//Proxy Init
 		proxy.init(event);
 	}
 
 	@EventHandler
 	public void postInit(FMLPostInitializationEvent event) {
 
+		//Add loot tables
 		LootTableList.register(new ResourceLocation("lovecraft","chests/tomb"));
 		
+		//Proxy Post-Init
 		proxy.postInit(event);
 	}
 

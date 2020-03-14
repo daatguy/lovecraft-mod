@@ -17,6 +17,9 @@ import daatguy.lovecraft.core.LovecraftMain;
 
 public class ZigguratGenerator implements IWorldGenerator {
 
+	//This class might get scrapped
+	//Should at the very least by heavily re-written
+	
 	@Override
 	public void generate(Random random, int chunkX, int chunkZ, World world,
 			IChunkGenerator chunkGenerator, IChunkProvider chunkProvider) {

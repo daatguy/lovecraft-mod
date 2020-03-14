@@ -40,12 +40,17 @@ public class DeskRecipe {
 		//System.out.println(recipe);
 	}
 
+	//This is where the "note" items are defined
+	//E.g. paper and string
 	private void InitNoteItems() {
 		this.noteItems[0] = Items.PAPER;
 		this.noteItems[1] = Items.WRITABLE_BOOK;
 		this.noteItems[2] = Items.STRING;
 	}
 	
+	/**
+	 * Returns the recipe in ArrayList<ItemStack> form
+	 */
 	protected ArrayList<ItemStack> getRecipeInList() {
 		ArrayList<ItemStack> rItems = new ArrayList<ItemStack>();
 		for (int i = 0; i < this.recipe.length; i++) {
@@ -54,6 +59,10 @@ public class DeskRecipe {
 		return rItems;
 	}
 
+	/**
+	 * Returns TRUE if this recipe involes 'taking notes'
+	 * (e.g. includes paper, string, etc.)
+	 */
 	public boolean isNotes() {
 		for (Item nItem : this.noteItems) {
 			if(isNotes(nItem)) return true;
@@ -61,6 +70,9 @@ public class DeskRecipe {
 		return false;
 	}
 	
+	/**
+	 * Returns TRUE if the item is a 'note taking' item
+	 */
 	public boolean isNoteItem(Item item) {
 		for(Item nItem : this.noteItems) {
 			if(nItem.equals(item)) return true;
@@ -68,6 +80,9 @@ public class DeskRecipe {
 		return false;
 	}
 	
+	/**
+	 * Returns TRUE if nItem is included in recipe
+	 */
 	public boolean isNotes(Item nItem) {
 		ArrayList<ItemStack> rItems = this.getRecipeInList();
 		for (ItemStack rItem : rItems) {
@@ -77,6 +92,9 @@ public class DeskRecipe {
 		return false;
 	}
 
+	/**
+	 * Returns a needed note item for a given inputItem of inputs
+	 */
 	public Item getNeededNoteItem(ArrayList<ItemStack> inputItems) {
 		if(canCraft(inputItems)) return null;
 		for(Item nItem : this.noteItems) {
@@ -97,12 +115,17 @@ public class DeskRecipe {
 		return null;
 	}
 
-
+	/**
+	 * Returns TRUE if inputItems matches the recipe in full
+	 */
 	public boolean canCraft(ArrayList<ItemStack> inputItems) {
 		ArrayList<ItemStack> rItems = this.getRecipeInList();
 		return canCraft(inputItems,rItems);
 	}
 	
+	/**
+	 * Returns TRUE if inputItems matches rItems
+	 */
 	public boolean canCraft(ArrayList<ItemStack> inputItems, ArrayList<ItemStack> rItems) {
 		ArrayList<ItemStack> cItems = (ArrayList<ItemStack>) inputItems.clone();
 
@@ -113,6 +136,9 @@ public class DeskRecipe {
 		return (cItems.size() == 0);
 	}
 
+	/**
+	 * Removes rItem from items if rItem is in items, returns whether sucessful or not
+	 */
 	private boolean removeIfContained(ArrayList<ItemStack> items,
 			ItemStack rItem) {
 		// ArrayList<ItemStack> items = (ArrayList<ItemStack>) iitems.clone();

@@ -31,7 +31,8 @@ public class Spell implements CanGetStack {
 		this.genWeight = 0;
 	}
 
-	/**Called when the spell timer starts.
+	/**
+	 * Called when the spell timer starts.
 	**/
 	public boolean startCast(World world, BlockPos pos) {
 		TileEntityAltar te = (TileEntityAltar) world.getTileEntity(pos);
@@ -48,13 +49,15 @@ public class Spell implements CanGetStack {
 		return false;
 	}
 	
-	/**Called every tick that the spell is being cast
+	/**
+	 * Called every tick that the spell is being cast
 	**/
 	public void tickSpell(World world, BlockPos pos, int tick) {
 		
 	}
 	
-	/**Returns whether or not the spell can start to be casted with the given parameters.
+	/**
+	 * Returns whether or not the spell can start to be casted with the given parameters.
 	**/
 	public boolean canStart(World world, BlockPos pos) {
 		TileEntityAltar te = (TileEntityAltar) world.getTileEntity(pos);
@@ -106,7 +109,8 @@ public class Spell implements CanGetStack {
 		return true;
 	}
 
-	/**Returns whether or not the spell can be cast with the given parameters.
+	/**
+	 * Returns whether or not the spell can be cast with the given parameters.
 	**/
 	public boolean canCast(World world, BlockPos pos) {
 		return true;
@@ -121,6 +125,9 @@ public class Spell implements CanGetStack {
 		return true;
 	}
 	
+	/**
+	 * Returns an itemStack of 'lovecraft:tome' with the associated spell
+	 */
 	@Override
 	public ItemStack getItemStack() {
 		ItemStack item = new ItemStack(LovecraftMain.itemTome, 1, this.color);

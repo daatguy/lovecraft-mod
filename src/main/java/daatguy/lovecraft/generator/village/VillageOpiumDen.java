@@ -9,6 +9,10 @@ import net.minecraft.world.gen.structure.StructureVillagePieces;
 
 public class VillageOpiumDen extends StructureVillagePieces.Village {
 
+	
+	/**
+	 * This doesn't work right now.
+	 */
 	@Override
 	public boolean addComponentParts(World worldIn, Random randomIn,
 			StructureBoundingBox structureBoundingBoxIn) {

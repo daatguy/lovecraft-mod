@@ -13,6 +13,9 @@ import daatguy.lovecraft.core.LovecraftMain;
 
 public class DecorationGenerator implements IWorldGenerator {
 
+	//FLOWERS
+	
+	
 	private FlowerGenerator drugFlowerGen = new FlowerGenerator(LovecraftMain.blockFlowerDrug);
 	
 	@Override

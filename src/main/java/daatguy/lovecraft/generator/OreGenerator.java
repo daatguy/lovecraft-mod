@@ -18,6 +18,8 @@ import net.minecraft.world.gen.feature.WorldGenMinable;
 
 public class OreGenerator implements IWorldGenerator {
 
+	//Generates ores
+	
 	@Override
 	public void generate(Random random, int chunkX, int chunkZ, World world,
 			IChunkGenerator chunkGenerator, IChunkProvider chunkProvider) {
