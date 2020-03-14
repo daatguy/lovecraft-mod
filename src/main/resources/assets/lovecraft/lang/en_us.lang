@@ -6,10 +6,13 @@ ambient.obelisk_hum=Obelisks hum
 spell_cap=Wails heard from the altar
 ambient.drugged=You hear every sound at once
 block.mortar=Mortar grinding
+block.sepulchral_break=Screams
 
 item.coin.name=Drachma
 item.weird_dust.name=Sepulchral Dust
-item.weird_dust.description=It smells of metal and mold. Cold to the touch.
+item.weird_dust.description=Coarse. The grains are strangely uniform in size.
+item.weird_shards.name=Sepulchral Shards
+item.weird_shards.description=It smells of metal and mold. Cold to the touch.
 item.dried_flower.name=Dried Flower
 item.dried_flower.description=Best be careful with these: dried petals crumble easily.
 item.fossil_dust.name=Fossil Grindings

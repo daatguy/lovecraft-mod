@@ -9,6 +9,11 @@
     "subtitle": "spell_cap",
     "sounds": [ "lovecraft:spell_cap" ]
   },
+  "block.sepulchral_break": {
+    "category": "block",
+    "subtitle": "block.sepulchral_break",
+    "sounds": [ "lovecraft:block/sepulchral_break" ]
+  },
   "block.mortar": {
     "category": "block",
     "subtitle": "block.mortar",

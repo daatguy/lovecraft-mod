@@ -85,6 +85,7 @@ public class LovecraftMain {
 	public static Potion potionDrugged;
 
 	public static Item itemCoin;
+	public static Item itemWeirdShards;
 	public static Item itemWeirdDust;
 	public static Item itemFossilDust;
 	public static Item itemMummyDust;
@@ -145,6 +146,11 @@ public class LovecraftMain {
 		itemCoin.setRegistryName("coin");
 		itemCoin.setCreativeTab(lovecraftTab);
 		
+		itemWeirdShards = new ItemSimple();
+		itemWeirdShards.setUnlocalizedName("weird_shards");
+		itemWeirdShards.setRegistryName("weird_shards");
+		itemWeirdShards.setCreativeTab(lovecraftTab);
+		
 		itemWeirdDust = new ItemSimple();
 		itemWeirdDust.setUnlocalizedName("weird_dust");
 		itemWeirdDust.setRegistryName("weird_dust");
@@ -203,7 +209,7 @@ public class LovecraftMain {
 		
 		blockWeirdedBrick = new BlockWeirdedBrick(Material.ROCK);
 		blockWeirdedBrick.setHardness(60f);
-		blockWeirdedBrick.setResistance(180000.0f);
+		blockWeirdedBrick.setResistance(18000000.0f);
 		blockWeirdedBrick.setUnlocalizedName("weirded_brick");
 		blockWeirdedBrick.setRegistryName("weirded_brick");
 		blockWeirdedBrick.setCreativeTab(lovecraftTab);

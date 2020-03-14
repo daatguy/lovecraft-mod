@@ -33,7 +33,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 @EventBusSubscriber
 public class RenderEventHandler {
 
-	@SideOnly(Side.CLIENT)
+	/*@SideOnly(Side.CLIENT)
     @SubscribeEvent
     public void onFogColorRender(EntityViewRenderEvent.FogColors event){
         event.setRed(255);
@@ -46,6 +46,6 @@ public class RenderEventHandler {
 	public void onFogDensity(EntityViewRenderEvent.FogDensity event) {
 		
 		
-	}
+	}*/
 
 }

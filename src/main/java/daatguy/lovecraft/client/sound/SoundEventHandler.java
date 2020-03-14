@@ -16,6 +16,9 @@ public class SoundEventHandler {
 	
 	@ObjectHolder("ambient.drugged")
 	public static final SoundEvent DRUGGED = createSoundEvent("ambient.drugged");
+
+	@ObjectHolder("block.sepulchral_break")
+	public static final SoundEvent SEPULCHRAL_BREAK = createSoundEvent("block.sepulchral_break");
 	
 	@ObjectHolder("block.mortar")
 	public static final SoundEvent MORTAR = createSoundEvent("block.mortar");
@@ -36,6 +39,7 @@ public class SoundEventHandler {
 					OBELISK_HUM,
 					DRUGGED,
 					MORTAR,
+					SEPULCHRAL_BREAK,
 					SPELL_CAP
 			);
 		}

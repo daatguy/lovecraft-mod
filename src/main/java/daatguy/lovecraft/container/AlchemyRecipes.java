@@ -46,6 +46,7 @@ public class AlchemyRecipes {
 	
 	public void InitRecipes() {
 		MORTAR_RECIPES.add(new Recipe(Items.BONE, new ItemStack(Items.DYE, 4, 15)));
+		MORTAR_RECIPES.add(new Recipe(LovecraftMain.itemWeirdShards, new ItemStack(LovecraftMain.itemWeirdDust, 2)));
 		MORTAR_RECIPES.add(new Recipe(LovecraftMain.itemFossil, new ItemStack(LovecraftMain.itemFossilDust, 2)));
 		MORTAR_RECIPES.add(new Recipe(LovecraftMain.itemMummyChunk, new ItemStack(LovecraftMain.itemMummyDust, 2)));
 		
