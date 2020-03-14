@@ -21,6 +21,9 @@ import net.minecraft.world.gen.structure.template.TemplateManager;
 
 public class ZigguratStructure extends MapGenStructure {
 
+	//This class might get scrapped
+	//Should at the very least by heavily re-written
+	
 	public static final int chance = 1500;
 	public static final int minY = -40;
 	public static final int maxY = 0;

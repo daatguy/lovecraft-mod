@@ -44,6 +44,7 @@ public class BlockChargedObelisk extends BlockObelisk implements ITileEntityProv
 	public void neighborChanged(IBlockState state, World worldIn, BlockPos pos,
 			Block blockIn, BlockPos fromPos) {
 		super.neighborChanged(state, worldIn, pos, blockIn, fromPos);
+		//Blow up if neighbor is changed
 		((TileEntityChargedObelisk)worldIn.getTileEntity(pos)).onBlockUpdate();
 	}
 
@@ -54,6 +55,7 @@ public class BlockChargedObelisk extends BlockObelisk implements ITileEntityProv
 	
 	@Override
 	public Item getItemDropped(IBlockState state, Random rand, int fortune) {
+		//Drop carved obelisk blocks instead of charged ones
 		return LovecraftMain.itemBlockCarvedObelisk;
 	}
 

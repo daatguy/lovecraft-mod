@@ -70,6 +70,7 @@ public class BlockAltar extends BlockSimple implements ITileEntityProvider {
 	@Override
 	public void breakBlock(World worldIn, BlockPos pos, IBlockState state) {
 		TileEntityAltar te = (TileEntityAltar) worldIn.getTileEntity(pos);
+		//Drops all the shit inside the tileEntity
 		if (te != null
 				&& te.hasCapability(
 						CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null)) {

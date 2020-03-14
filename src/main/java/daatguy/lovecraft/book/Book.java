@@ -19,13 +19,20 @@ public class Book implements CanGetStack {
 		this.color = 0;
 	}
 	
+	/**
+	 * Name: a string
+	 */
 	public Book(String name) {
 		this.name = name;
 		this.genWeight = 0;
 		this.language = SubItemsHandler.COMMON;
 		this.color = 0;
 	}
-	
+
+	/**
+	 * Name: a string
+	 * Color: 0-15, corresponds to tome sprites
+	 */
 	public Book(String name, int color) {
 		this.name = name;
 		this.genWeight = 0;
@@ -33,6 +40,11 @@ public class Book implements CanGetStack {
 		this.color = color;
 	}
 	
+	/**
+	 * Name: a string
+	 * Color: 0-15, corresponds to tome sprites
+	 * GenWeight: weight for generation (might be depreciated)
+	 */
 	public Book(String name, int color, int genWeight) {
 		this.name = name;
 		this.genWeight = genWeight;
@@ -40,6 +52,12 @@ public class Book implements CanGetStack {
 		this.color = color;
 	}
 	
+	/**
+	 * Name: a string
+	 * Color: 0-15, corresponds to tome sprites
+	 * GenWeight: weight for generation (might be depreciated)
+	 * Language: int id for language (see {@link SubItemsHandler#getLanguageFromID(int)}, etc.)
+	 */
 	public Book(String name, int color, int genWeight, int language) {
 		this.name = name;
 		this.genWeight = genWeight;
@@ -47,6 +65,9 @@ public class Book implements CanGetStack {
 		this.color = color;
 	}
 	
+	/**
+	 * Returns an item stack of size 1 of this book
+	 */
 	@Override
 	public ItemStack getItemStack() {
 		ItemStack item = new ItemStack(LovecraftMain.itemBook, 1, this.color);

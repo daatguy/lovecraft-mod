@@ -36,45 +36,12 @@ public class BlockDesk extends BlockSimple {
 		return true;
 	}
 
-/*
-	@Override
-	public void breakBlock(World worldIn, BlockPos pos, IBlockState state) {
-		TileEntityDesk te = (TileEntityDesk) worldIn.getTileEntity(pos);
-		if (te != null
-				&& te.hasCapability(
-						CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null)) {
-			IItemHandler inventory = te.getCapability(
-					CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null);
-			if (inventory != null) {
-				for (int i = 0; i < inventory.getSlots()-1; i++) {
-					if (inventory.getStackInSlot(i) != ItemStack.EMPTY && i < 10) {
-						EntityItem item = new EntityItem(worldIn,
-								pos.getX() + 0.5, pos.getY() + 0.5,
-								pos.getZ() + 0.5, inventory.getStackInSlot(i));
-						
-						float multiplier = 0.4f;
-						float motionX = worldIn.rand.nextFloat() - 0.5f;
-						float motionY = worldIn.rand.nextFloat() - 0.5f;
-						float motionZ = worldIn.rand.nextFloat() - 0.5f;
-						
-						item.motionX = motionX*multiplier;
-						item.motionY = motionY*multiplier;
-						item.motionZ = motionZ*multiplier;
-						
-						worldIn.spawnEntity(item);
-					}
-				}
-			}
-		}
-		super.breakBlock(worldIn, pos, state);
-
-	}*/
-
 	@Override
 	public boolean onBlockActivated(World worldIn, BlockPos pos,
 			IBlockState state, EntityPlayer playerIn, EnumHand hand,
 			EnumFacing facing, float hitX, float hitY, float hitZ) {
-
+		//Open gui when clicked
+		
 		//TileEntityDesk te = (TileEntityDesk) worldIn.getTileEntity(pos);
 
 		if (!worldIn.isRemote) {

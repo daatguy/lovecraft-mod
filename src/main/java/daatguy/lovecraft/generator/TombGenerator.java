@@ -15,6 +15,8 @@ import net.minecraftforge.fml.common.IWorldGenerator;
 
 public class TombGenerator implements IWorldGenerator {
 	
+	//Generates tombs
+	
 	@Override
 	public void generate(Random random, int chunkX, int chunkZ, World world,
 			IChunkGenerator chunkGenerator, IChunkProvider chunkProvider) {
@@ -24,6 +26,7 @@ public class TombGenerator implements IWorldGenerator {
 		case -1:
 			break;
 		case 0:
+			//Overworld, should have a chance to generate a tomb
 			/*
 			int x = chunkX * 16 + random.nextInt(16) + 1;
 			int y = 90;

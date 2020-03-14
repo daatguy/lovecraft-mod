@@ -17,6 +17,9 @@ public class EntitySpell extends Entity {
 	public Spell spell;
 	public TileEntityAltar tile;
 
+	/**
+	 * Entity placeholder for drawing spell-related effects, doing spell things
+	 */
 	public EntitySpell(World worldIn) {
 		super(worldIn);
 		this.spell = null;

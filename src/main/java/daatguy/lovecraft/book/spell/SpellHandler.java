@@ -27,6 +27,7 @@ public class SpellHandler {
 		spells.put(spell.name, spell);
 	}
 
+	
 	public static ItemStack getWeightedRandomSpell(Random random) {
 		// Add spell weights/rarity?
 		ArrayList<Object> wSpells = new ArrayList<Object>();

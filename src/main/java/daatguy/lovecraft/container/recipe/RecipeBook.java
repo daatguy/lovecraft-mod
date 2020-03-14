@@ -7,6 +7,10 @@ import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
 
+/**
+ * WE MIGHT NOT NEED THIS CLASS
+ * DELETE?
+ */
 public class RecipeBook implements IRecipe{
 
 	@Override
@@ -29,7 +33,6 @@ public class RecipeBook implements IRecipe{
 
 	@Override
 	public boolean matches(InventoryCrafting inv, World worldIn) {
-		System.out.println("gang gang");
 		return true;
 	}
 

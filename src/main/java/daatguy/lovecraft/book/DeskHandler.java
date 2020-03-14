@@ -18,6 +18,9 @@ public class DeskHandler {
 	public DeskHandler() {
 	}
 
+	/**
+	 * Returns string version (for nbt data) of language by given ID
+	 */
 	public static String getDictName(int language) {
 		switch(language) {
 		case SubItemsHandler.LATIN:
@@ -37,6 +40,7 @@ public class DeskHandler {
 			
 	}
 	
+	//Adds all the translation recipes to deskRecipes
 	private void addTranslationRecipes() {
 		for(String bookKey : LovecraftMain.subItemsHandler.books.keySet()) {
 			Book book = LovecraftMain.subItemsHandler.books.get(bookKey);
@@ -49,6 +53,9 @@ public class DeskHandler {
 		}
 	}
 	
+	/**
+	 * Initializes the writing desk crafting recipes
+	 */
 	public void init() {
 
 		

@@ -5,7 +5,15 @@ TODOS:
 
 - DOCUMENT THINGS (COMMENTS AND SHIT)
 
-- brick dust
+- Config files (?)
+
+- Adding suspensions 
+    - Water bottles + dust
+    - e.g.
+        2% Sepulchral dust
+        1% Fossil grinding
+
+- connected writing desk textures (for big epic thematic desks)
 
 - brick drill/brick melter
 
