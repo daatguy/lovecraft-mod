@@ -1,0 +1,19 @@
+# Perform LF normalization on these files.
+# I don't trust Git to determine what is and isn't text.
+
+# Plaintext
+*.txt text
+*.md text
+
+# Java
+*.java text
+
+# Metadata
+*.json text
+*.lang text
+*.mcmeta text
+
+# Gradle/other
+*.properties text
+*.gradle text
+gradlew* text
