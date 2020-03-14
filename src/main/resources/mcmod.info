@@ -1,11 +1,13 @@
 [
-{
-  "modid": "lovecraft",
-  "name": "Lovecraft Mythos Mod",
-  "description": "Esoteric.",
-  "version": "${version}",
-  "mcversion": "${mcversion}",
-  "authorList": ["daatguy"],
-  "logoFile": ""
-}
+    {
+        "modid": "lovecraft",
+        "name": "Lovecraft Mythos Mod",
+        "description": "Esoteric.",
+        "version": "${version}",
+        "mcversion": "${mcversion}",
+        "authorList": [
+            "daatguy"
+        ],
+        "logoFile": ""
+    }
 ]

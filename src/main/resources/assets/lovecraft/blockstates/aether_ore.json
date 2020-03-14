@@ -1,5 +1,7 @@
 {
     "variants": {
-        "normal": { "model": "lovecraft:aether_ore" }
+        "normal": {
+            "model": "lovecraft:aether_ore"
+        }
     }
 }

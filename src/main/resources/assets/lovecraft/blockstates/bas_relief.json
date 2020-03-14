@@ -1,9 +1,22 @@
 {
     "variants": {
-        "facing=north": { "model": "lovecraft:bas_relief" },
-        "facing=south": { "model": "lovecraft:bas_relief", "y": 180 },
-        "facing=west":  { "model": "lovecraft:bas_relief", "y": 270 },
-        "facing=east":  { "model": "lovecraft:bas_relief", "y": 90 },
-        "inventory": { "model": "lovecraft:bas_relief" }
+        "facing=north": {
+            "model": "lovecraft:bas_relief"
+        },
+        "facing=south": {
+            "model": "lovecraft:bas_relief",
+            "y": 180
+        },
+        "facing=west": {
+            "model": "lovecraft:bas_relief",
+            "y": 270
+        },
+        "facing=east": {
+            "model": "lovecraft:bas_relief",
+            "y": 90
+        },
+        "inventory": {
+            "model": "lovecraft:bas_relief"
+        }
     }
 }

@@ -1,5 +1,7 @@
 {
     "variants": {
-        "normal": { "model": "lovecraft:flower_drug" }
+        "normal": {
+            "model": "lovecraft:flower_drug"
+        }
     }
 }

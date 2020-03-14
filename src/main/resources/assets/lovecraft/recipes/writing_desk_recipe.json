@@ -1,22 +1,22 @@
 {
-  "type": "minecraft:crafting_shapeless",
-  "ingredients": [
-    {
-      "item": "minecraft:crafting_table"
-    },
-    {
-      "item": "minecraft:dye",
-      "data": 0
-    },
-    {
-      "item": "minecraft:feather"
-    },
-    {
-      "item": "lovecraft:magnifying_glass"
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "minecraft:crafting_table"
+        },
+        {
+            "item": "minecraft:dye",
+            "data": 0
+        },
+        {
+            "item": "minecraft:feather"
+        },
+        {
+            "item": "lovecraft:magnifying_glass"
+        }
+    ],
+    "result": {
+        "item": "lovecraft:desk",
+        "count": 1
     }
-  ],
-  "result": {
-    "item": "lovecraft:desk",
-    "count": 1
-  }
 }

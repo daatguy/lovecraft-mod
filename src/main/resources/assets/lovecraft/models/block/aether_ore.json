@@ -1,6 +1,6 @@
 {
-   "parent": "block/cube_all",
-   "textures": {
-       "all": "lovecraft:blocks/aether_ore"
-   }
+    "parent": "block/cube_all",
+    "textures": {
+        "all": "lovecraft:blocks/aether_ore"
+    }
 }

@@ -1,6 +1,10 @@
 {
     "variants": {
-        "normal": { "model": "lovecraft:mortar" },
-        "inventory": { "model": "lovecraft:mortar" }
+        "normal": {
+            "model": "lovecraft:mortar"
+        },
+        "inventory": {
+            "model": "lovecraft:mortar"
+        }
     }
 }

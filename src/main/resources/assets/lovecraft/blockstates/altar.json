@@ -1,6 +1,10 @@
 {
     "variants": {
-        "normal": { "model": "lovecraft:altar" },
-        "inventory": { "model": "lovecraft:altar" }
+        "normal": {
+            "model": "lovecraft:altar"
+        },
+        "inventory": {
+            "model": "lovecraft:altar"
+        }
     }
 }
