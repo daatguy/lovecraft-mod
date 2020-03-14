@@ -41,10 +41,10 @@ public class ItemFossilDust extends ItemFood {
 		this.setCreativeTab(LovecraftMain.lovecraftTab);
 	}
 	
-	@Override
-	public int getMaxItemUseDuration(ItemStack stack) {
-		return 60;
-	}
+	//@Override
+	//public int getMaxItemUseDuration(ItemStack stack) {
+	//	return 60;
+	//}
 	
 	
 }
