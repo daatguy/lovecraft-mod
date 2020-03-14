@@ -3,6 +3,8 @@ TODOS:
 - AT SOME POINT FIX THE FUCKING SIDE-REACHING BUG WHERE CLIENT THINGS AND SERVER THINGS MIX ON SPELL CAST 
 -???? does this still happen
 
+- DOCUMENT THINGS (COMMENTS AND SHIT)
+
 - brick dust
 
 - brick drill/brick melter
