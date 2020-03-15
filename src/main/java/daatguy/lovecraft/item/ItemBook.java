@@ -20,6 +20,8 @@ import net.minecraft.world.World;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import daatguy.lovecraft.book.DeskHandler;
+import daatguy.lovecraft.book.DictionaryBook;
 import daatguy.lovecraft.book.spell.SpellHandler;
 import daatguy.lovecraft.core.LovecraftMain;
 
@@ -82,8 +84,8 @@ public class ItemBook extends ItemSimple {
 		// super.addInformation(stack, worldIn, tooltip, flagIn);
 		String author = I18n.format("book."
 				+ stack.getTagCompound().getString("Book") + ".author");
-		if (!author.equals("book."
-						+ stack.getTagCompound().getString("Book") + ".author")) {
+		if (!author.equals("book." + stack.getTagCompound().getString("Book")
+				+ ".author")) {
 			tooltip.add("by " + author);
 			tooltip.add("");
 		} else {
@@ -110,8 +112,10 @@ public class ItemBook extends ItemSimple {
 				// Translation stuff
 				// IT IS TRANSLATED
 				tooltip.add("");
-				tooltip.add(TextFormatting.GREEN + "Translated from "
-						+ SubItemsHandler.getLanguageFromID(language) + ".");
+				tooltip.add(TextFormatting.GREEN + I18n.format("book.translated_tooltip").replace(
+						"*",
+						SubItemsHandler
+								.getLanguageFromID(language)));
 			} else {
 				String rawLore[] = I18n.format(
 						"book." + stack.getTagCompound().getString("Book")
@@ -130,8 +134,10 @@ public class ItemBook extends ItemSimple {
 				// Translation stuff
 				// IT ISNT
 				tooltip.add("");
-				tooltip.add(TextFormatting.RED + "Untranslated "
-						+ SubItemsHandler.getLanguageFromID(language) + ".");
+				tooltip.add(TextFormatting.RED + I18n.format("book.untranslated_tooltip").replace(
+						"*",
+						SubItemsHandler
+								.getLanguageFromID(language)));
 			}
 		} else {
 			String rawLore[] = I18n.format(
@@ -148,6 +154,18 @@ public class ItemBook extends ItemSimple {
 			if (curLine != "") {
 				tooltip.add(curLine.trim());
 			}
+		}
+		if (LovecraftMain.subItemsHandler.books.get(stack.getTagCompound()
+				.getString("Book")) instanceof DictionaryBook) {
+			tooltip.add("");
+			tooltip.add(TextFormatting.GOLD
+					+ I18n.format("book.dictionary_tooltip").replace(
+							"*",
+							SubItemsHandler
+									.getLanguageFromID(DeskHandler
+											.getIDFromDict(stack
+													.getTagCompound()
+													.getString("Book")))));
 		}
 	}
 

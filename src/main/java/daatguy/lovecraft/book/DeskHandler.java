@@ -19,7 +19,7 @@ public class DeskHandler {
 	}
 
 	/**
-	 * Returns string version (for nbt data) of language by given ID
+	 * Returns string version (for nbt data) of dictionary by given language ID
 	 */
 	public static String getDictName(int language) {
 		switch(language) {
@@ -36,6 +36,28 @@ public class DeskHandler {
 			return null;
 		default:
 			return null;
+		}
+			
+	}
+	
+	/**
+	 * Returns language ID by given string version (for nbt data) of dictionary
+	 */
+	public static int getIDFromDict(String language) {
+		switch(language) {
+		case "latin_dict":
+			return SubItemsHandler.LATIN;
+		case "greek_dict":
+			return SubItemsHandler.GREEK;
+		case "sanskrit_dict":
+			return SubItemsHandler.SANSKRIT;
+		case "runic_dict":
+			return SubItemsHandler.RUNIC;
+		//case SubItemsHandler.OLDSPEAK:
+			///TODO IMPLEMENT THIS 
+			//return null;
+		default:
+			return -1;
 		}
 			
 	}

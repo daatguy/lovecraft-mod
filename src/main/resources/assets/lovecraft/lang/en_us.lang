@@ -77,6 +77,18 @@ fossil.tendril.description=Neither clearly animal nor vegetable. About as string
 fossil.cavity.name=Hollow Fossil
 fossil.cavity.description=A large, bulbous mass. Has several openings that reveal the empty interior.
 
+
+book.lang.latin=Latin
+book.lang.greek=Greek
+book.lang.sanskrit=Sanskrit
+book.lang.runic=Runic
+book.lang.oldspeak=Oldspeak
+book.lang.translated=Translated
+
+book.dictionary_tooltip=This dictionary can translate *.
+book.translated_tooltip=Translated from *.
+book.untranslated_tooltip=Untranslated *.
+
 book.old_glyphs.name=Old Glyphs
 book.old_glyphs.description=This tattered volume contains various magic glyphs. It seems to contain further description as to their components, but the explanations are untranslated.
 book.old_glyphs.description.translated=From the few pages I can make out, it appears that certain shapes and ratios hold holy significance. If I could cross-reference this work with another of similar topic, I could maybe make out which symbols are worthy of study.
