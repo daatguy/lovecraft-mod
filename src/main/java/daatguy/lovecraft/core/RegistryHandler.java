@@ -25,6 +25,8 @@ public class RegistryHandler {
 	
 	@SubscribeEvent
 	public static void onItemRegister(RegistryEvent.Register<Item> event) {
+		event.getRegistry().register(LovecraftMain.itemEmptyBeaker);
+		event.getRegistry().register(LovecraftMain.itemBeaker);
 		event.getRegistry().register(LovecraftMain.itemCoin);
 		event.getRegistry().register(LovecraftMain.itemWeirdShards);
 		event.getRegistry().register(LovecraftMain.itemWeirdDust);
@@ -84,6 +86,14 @@ public class RegistryHandler {
 		ModelLoader.setCustomModelResourceLocation(
 				LovecraftMain.itemDriedFlower, 0, new ModelResourceLocation(
 						LovecraftMain.itemDriedFlower.getRegistryName(),
+						"inventory"));
+		ModelLoader.setCustomModelResourceLocation(
+				LovecraftMain.itemEmptyBeaker, 0, new ModelResourceLocation(
+						LovecraftMain.itemEmptyBeaker.getRegistryName(),
+						"inventory"));
+		ModelLoader.setCustomModelResourceLocation(
+				LovecraftMain.itemBeaker, 0, new ModelResourceLocation(
+						LovecraftMain.itemBeaker.getRegistryName(),
 						"inventory"));
 		ModelLoader.setCustomModelResourceLocation(
 				LovecraftMain.itemCoin, 0, new ModelResourceLocation(

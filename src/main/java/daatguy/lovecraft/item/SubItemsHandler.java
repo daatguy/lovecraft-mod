@@ -3,8 +3,9 @@ package daatguy.lovecraft.item;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import net.minecraft.client.resources.I18n;
 import daatguy.lovecraft.book.Book;
-import daatguy.lovecraft.book.spell.Spell;
+import daatguy.lovecraft.book.DictionaryBook;
 
 public class SubItemsHandler {
 
@@ -44,10 +45,10 @@ public class SubItemsHandler {
 		registerBook(new Book("bureau_files", 7));;
 		registerBook(new Book("visions", 5));
 		
-		registerBook(new Book("latin_dict", 5, 10));
-		registerBook(new Book("greek_dict", 0, 10));
-		registerBook(new Book("sanskrit_dict", 2, 7));
-		registerBook(new Book("runic_dict", 4, 7));
+		registerBook(new DictionaryBook("latin_dict", 5, 10));
+		registerBook(new DictionaryBook("greek_dict", 0, 10));
+		registerBook(new DictionaryBook("sanskrit_dict", 2, 7));
+		registerBook(new DictionaryBook("runic_dict", 4, 7));
 		registerBook(new Book("latin_history", 3, 3, LATIN));
 		registerBook(new Book("fossil_notes_plates", 8));
 		registerBook(new Book("fossil_notes_spines", 9));
@@ -75,17 +76,17 @@ public class SubItemsHandler {
 	public static String getLanguageFromID(int id) {
 		switch (id) {
 		case LATIN:
-			return "Latin";
+			return I18n.format("book.lang.latin");
 		case SANSKRIT:
-			return "Sanskrit";
+			return I18n.format("book.lang.sanskrit");
 		case GREEK:
-			return "Greek";
+			return I18n.format("book.lang.greek");
 		case RUNIC:
-			return "Runic";
+			return I18n.format("book.lang.runic");
 		case OLDSPEAK:
-			return "Oldspeak";
+			return I18n.format("book.lang.oldspeak");
 		default:
-			return "Translated";
+			return I18n.format("book.lang.translated");
 		}
 	}
 }

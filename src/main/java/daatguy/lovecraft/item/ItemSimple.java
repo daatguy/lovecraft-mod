@@ -10,7 +10,7 @@ import net.minecraft.world.World;
 
 public class ItemSimple extends Item {
 	
-	private static int loreLineThreshhold = 25;
+	protected static int loreLineThreshhold = 25;
 
 	@Override
 	public void addInformation(ItemStack stack, World worldIn,

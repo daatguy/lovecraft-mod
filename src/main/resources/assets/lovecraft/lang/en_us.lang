@@ -8,6 +8,13 @@ ambient.drugged=You hear every sound at once
 block.mortar=Mortar grinding
 block.sepulchral_break=Screams
 
+item.empty_beaker.name=Glass Beaker
+item.beaker.name=Beaker of Water
+item.beaker.suspension_filled=Solution of *i
+item.beaker.suspension_mixed=Heterogenous Solution
+item.beaker.description=A laboratory beaker full of water. I could dissolve things in this.
+item.beaker.suspension_tooltip_a=A Solution of:
+item.beaker.suspension_tooltip_b=*p%% *i
 item.coin.name=Drachma
 item.weird_dust.name=Sepulchral Dust
 item.weird_dust.description=Coarse. The grains are strangely uniform in size.
@@ -76,6 +83,18 @@ fossil.tendril.name=Filament Deposit
 fossil.tendril.description=Neither clearly animal nor vegetable. About as stringy as rock can get. Sheds small fibers.
 fossil.cavity.name=Hollow Fossil
 fossil.cavity.description=A large, bulbous mass. Has several openings that reveal the empty interior.
+
+
+book.lang.latin=Latin
+book.lang.greek=Greek
+book.lang.sanskrit=Sanskrit
+book.lang.runic=Runic
+book.lang.oldspeak=Oldspeak
+book.lang.translated=Translated
+
+book.dictionary_tooltip=This dictionary can translate *l.
+book.translated_tooltip=Translated from *l.
+book.untranslated_tooltip=Untranslated *l.
 
 book.old_glyphs.name=Old Glyphs
 book.old_glyphs.description=This tattered volume contains various magic glyphs. It seems to contain further description as to their components, but the explanations are untranslated.

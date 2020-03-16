@@ -1,19 +1,17 @@
 {
     "type": "minecraft:crafting_shaped",
     "pattern": [
-        "G ",
-        " S"
+        "G G",
+        "G G",
+        " G "
     ],
     "key": {
         "G": {
             "item": "minecraft:glass_pane"
-        },
-        "S": {
-            "item": "minecraft:stick"
         }
     },
     "result": {
-        "item": "lovecraft:magnifying_glass",
+        "item": "lovecraft:empty_beaker",
         "count": 1
     }
 }

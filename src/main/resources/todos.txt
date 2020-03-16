@@ -3,22 +3,6 @@ TODOS:
 - AT SOME POINT FIX THE FUCKING SIDE-REACHING BUG WHERE CLIENT THINGS AND SERVER THINGS MIX ON SPELL CAST 
 -???? does this still happen
 
-- DOCUMENT THINGS (COMMENTS AND SHIT)
-
-- Config files (?)
-
-- Adding suspensions 
-    - Water bottles + dust
-    - e.g.
-        2% Sepulchral dust
-        1% Fossil grinding
-
-- connected writing desk textures (for big epic thematic desks)
-
-- brick drill/brick melter
-
-- haunted houses
-
 - oath of sight
 
 - research leads you to south pole
@@ -83,10 +67,6 @@ TODOS:
 - POCKET DIMENSION WITH DOOR?
 
 - OTHER DIMENSIONS (PORTAL) (DIFFERENT PORTAL BLOCKS?)
-
-- DIFFERENT CURRENCY FOR BOOKS/OCCULT VILLAGERS
-
-- DICTIONARY TOOLTIP
 
 - SOUL CAPTURING? / SACRIFICE
     - ANIMAL SACRIFICE
