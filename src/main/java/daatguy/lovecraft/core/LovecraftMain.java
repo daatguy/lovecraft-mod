@@ -47,7 +47,9 @@ import daatguy.lovecraft.generator.DecorationGenerator;
 import daatguy.lovecraft.generator.OreGenerator;
 import daatguy.lovecraft.generator.TombGenerator;
 import daatguy.lovecraft.generator.village.VillageOpiumDen;
+import daatguy.lovecraft.item.ItemBeaker;
 import daatguy.lovecraft.item.ItemBook;
+import daatguy.lovecraft.item.ItemEmptyBeaker;
 import daatguy.lovecraft.item.ItemFossil;
 import daatguy.lovecraft.item.ItemFossilDust;
 import daatguy.lovecraft.item.ItemSimple;
@@ -92,6 +94,8 @@ public class LovecraftMain {
 	public static Potion potionDrugged;
 	
 	//Item declarations
+	public static Item itemEmptyBeaker;
+	public static Item itemBeaker;
 	public static Item itemCoin;
 	public static Item itemWeirdShards;
 	public static Item itemWeirdDust;
@@ -153,6 +157,16 @@ public class LovecraftMain {
 		itemFossilDust.setRegistryName("fossil_dust");
 		itemFossilDust.setCreativeTab(lovecraftTab);
 
+		itemEmptyBeaker = new ItemEmptyBeaker();
+		itemEmptyBeaker.setUnlocalizedName("empty_beaker");
+		itemEmptyBeaker.setRegistryName("empty_beaker");
+		itemEmptyBeaker.setCreativeTab(lovecraftTab);
+		
+		itemBeaker = new ItemBeaker();
+		itemBeaker.setUnlocalizedName("beaker");
+		itemBeaker.setRegistryName("beaker");
+		itemBeaker.setCreativeTab(lovecraftTab);
+		
 		itemCoin = new ItemSimple();
 		itemCoin.setUnlocalizedName("coin");
 		itemCoin.setRegistryName("coin");

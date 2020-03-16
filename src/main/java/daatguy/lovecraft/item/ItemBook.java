@@ -160,7 +160,7 @@ public class ItemBook extends ItemSimple {
 			tooltip.add("");
 			tooltip.add(TextFormatting.GOLD
 					+ I18n.format("book.dictionary_tooltip").replace(
-							"*",
+							"*l",
 							SubItemsHandler
 									.getLanguageFromID(DeskHandler
 											.getIDFromDict(stack
