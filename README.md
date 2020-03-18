@@ -7,6 +7,8 @@ This just has Lovecraft stuff as a mod. Cool.
 Check out the [(1.12.2) Forge MDK docs](https://mcforge.readthedocs.io/en/1.12.x/)
 to see how to setup a build environment.
 
+If you're using SDKMAN!, the JDK that hasn't given me problems is `8.0.242.j9-adpt`--new enough (or something) to not break the mod, but old enough to not break `build.gradle`.
+
 ## Copyright
 I hereby give all legal, extralegal, paralegal, meta-legal, sharia-law, and other permission,
 for any of y'all bad motherfuckers to
