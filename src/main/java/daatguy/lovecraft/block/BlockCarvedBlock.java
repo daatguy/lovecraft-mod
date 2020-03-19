@@ -8,6 +8,7 @@ import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.PropertyDirection;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
@@ -40,6 +41,16 @@ public class BlockCarvedBlock extends BlockSimple {
 	@Override
 	public int getMetaFromState(IBlockState state) {
 		return state.getValue(FACING).getIndex();
+	}
+	
+	@Override
+	public IBlockState getStateForPlacement(World worldIn,
+											BlockPos pos,
+											EnumFacing facing,
+											float hitX, float hitY, float hitZ,
+											int meta,
+											EntityLivingBase placer) {
+		return this.getDefaultState().withProperty(FACING, facing);
 	}
 	
 	@Override
