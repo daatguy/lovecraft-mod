@@ -59,6 +59,7 @@ import daatguy.lovecraft.item.ItemTome;
 import daatguy.lovecraft.item.SubItemsHandler;
 import daatguy.lovecraft.networking.PacketHandler;
 import daatguy.lovecraft.tileentity.TileEntityAltar;
+import daatguy.lovecraft.tileentity.TileEntityCarving;
 import daatguy.lovecraft.tileentity.TileEntityChargedObelisk;
 import daatguy.lovecraft.tileentity.TileEntityHookah;
 import daatguy.lovecraft.world.potion.PotionDrugged;
@@ -358,10 +359,11 @@ public class LovecraftMain {
 		//Add smelting recipes
 		GameRegistry.addSmelting(itemBlockFlowerDrug, itemDriedFlower.getDefaultInstance(), 0);
 
-		//Add tile entities
+		//Add tile entities //TODO: Registry events or whatever else this is deprecated in favor of
 		GameRegistry.registerTileEntity(TileEntityHookah.class, "lovecraft:hookah");
 		GameRegistry.registerTileEntity(TileEntityAltar.class, "lovecraft:altar");
 		GameRegistry.registerTileEntity(TileEntityChargedObelisk.class, "lovecraft:chargedObelisk");
+		GameRegistry.registerTileEntity(TileEntityCarving.class, "lovecraft:carvedBlock");
 		
 		// Add Village Components
 		//List<StructureVillagePieces.PieceWeight> list = Lists.<StructureVillagePieces.PieceWeight>newArrayList();

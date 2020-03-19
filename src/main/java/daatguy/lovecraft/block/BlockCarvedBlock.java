@@ -50,7 +50,7 @@ public class BlockCarvedBlock extends BlockSimple {
 											float hitX, float hitY, float hitZ,
 											int meta,
 											EntityLivingBase placer) {
-		return this.getDefaultState().withProperty(FACING, facing);
+		return this.getDefaultState().withProperty(FACING, facing); //TODO: face the player
 	}
 	
 	@Override
