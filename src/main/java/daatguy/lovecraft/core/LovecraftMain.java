@@ -47,7 +47,6 @@ import daatguy.lovecraft.generator.DecorationGenerator;
 import daatguy.lovecraft.generator.OreGenerator;
 import daatguy.lovecraft.generator.TombGenerator;
 import daatguy.lovecraft.generator.village.VillageOpiumDen;
-import daatguy.lovecraft.generator.ShittyPyramid;
 import daatguy.lovecraft.item.ItemBeaker;
 import daatguy.lovecraft.item.ItemBook;
 import daatguy.lovecraft.item.ItemEmptyBeaker;
@@ -342,7 +341,6 @@ public class LovecraftMain {
 		GameRegistry.registerWorldGenerator(new OreGenerator(), 30);
 		GameRegistry.registerWorldGenerator(new DecorationGenerator(), 300);
 		GameRegistry.registerWorldGenerator(new TombGenerator(), 20);
-		GameRegistry.registerWorldGenerator(new ShittyPyramid(), 21);
 		//GameRegistry.registerWorldGenerator(new ZigguratGenerator(), 4);
 		
 		//Add smelting recipes
