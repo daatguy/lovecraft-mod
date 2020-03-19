@@ -97,8 +97,8 @@ book.lang.oldspeak=Oldspeak
 book.lang.translated=Translated
 
 book.dictionary_tooltip=This dictionary can translate *l.
-book.translated_tooltip=Translated from *l.
-book.untranslated_tooltip=Untranslated *l.
+book.translated_tooltip=Translated from *.
+book.untranslated_tooltip=Untranslated *.
 
 book.old_glyphs.name=Old Glyphs
 book.old_glyphs.description=This tattered volume contains various magic glyphs. It seems to contain further description as to their components, but the explanations are untranslated.
