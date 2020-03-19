@@ -130,6 +130,10 @@ public class RegistryHandler {
 				LovecraftMain.itemMagnifyingGlass, 0, new ModelResourceLocation(
 						LovecraftMain.itemMagnifyingGlass.getRegistryName(),
 						"inventory"));
+		ModelLoader.setCustomModelResourceLocation(
+				LovecraftMain.itemRubbing, 0, new ModelResourceLocation(
+						LovecraftMain.itemRubbing.getRegistryName(),
+						"inventory")); //might want to do some subitemhandler stuff in future?
 		((ItemTome)LovecraftMain.itemTome).initModel();
 		((ItemBook)LovecraftMain.itemBook).initModel();
 		((ItemFossil)LovecraftMain.itemFossil).initModel();
@@ -188,6 +192,10 @@ public class RegistryHandler {
 		ModelLoader.setCustomModelResourceLocation(
 				LovecraftMain.itemBlockResolvedObeliskCap, 0, new ModelResourceLocation(
 						LovecraftMain.itemBlockResolvedObeliskCap.getRegistryName(),
+						"inventory"));
+		ModelLoader.setCustomModelResourceLocation(
+				LovecraftMain.itemBlockCarvedStone, 0, new ModelResourceLocation(
+						LovecraftMain.itemBlockCarvedStone.getRegistryName(),
 						"inventory"));
 	}
 }
