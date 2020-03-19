@@ -26,6 +26,7 @@ import net.minecraftforge.fml.common.registry.EntityRegistry;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import daatguy.lovecraft.block.BlockAltar;
 import daatguy.lovecraft.block.BlockBasRelief;
+import daatguy.lovecraft.block.BlockCarvedBlock;
 import daatguy.lovecraft.block.BlockChargedObelisk;
 import daatguy.lovecraft.block.BlockDesk;
 import daatguy.lovecraft.block.BlockFlowerDrug;
@@ -140,6 +141,7 @@ public class LovecraftMain {
 	public static Block blockChargedObelisk;
 	public static Block blockObeliskCap;
 	public static Block blockResolvedObeliskCap;
+	public static Block blockCarvedBlock;
 
 	@Instance
 	public static LovecraftMain instance = new LovecraftMain();
@@ -315,6 +317,13 @@ public class LovecraftMain {
 		blockResolvedObeliskCap.setRegistryName("resolved_obelisk_cap");
 		blockResolvedObeliskCap.setLightLevel(8.0f);
 		blockResolvedObeliskCap.setCreativeTab(lovecraftTab);
+		
+		blockCarvedBlock = new BlockCarvedBlock(Material.ROCK);
+		blockCarvedBlock.setHardness(1.5f); //hmm, what to do for carved sepulchral?
+		blockCarvedBlock.setHarvestLevel("pickaxe", 0);
+		blockCarvedBlock.setUnlocalizedName("carved_block");
+		blockCarvedBlock.setRegistryName("carved_block");
+		blockCarvedBlock.setCreativeTab(lovecraftTab);
 		
 		//Initialize itemBlocks
 		itemBlockFlowerDrug = new ItemSimpleBlock(blockFlowerDrug).setRegistryName(blockFlowerDrug.getRegistryName());
