@@ -223,12 +223,12 @@ public class LovecraftMain {
 		itemRubbing.setUnlocalizedName("rubbing");
 		itemRubbing.setRegistryName("rubbing");
 		itemRubbing.setCreativeTab(lovecraftTab);
+		itemRubbing.setMaxStackSize(1);
 		
 		itemDriedFlower = new ItemSimple();
 		itemDriedFlower.setUnlocalizedName("dried_flower");
 		itemDriedFlower.setRegistryName("dried_flower");
 		itemDriedFlower.setCreativeTab(lovecraftTab);
-		itemDriedFlower.setMaxStackSize(1);
 		
 		blockFlowerDrug = new BlockFlowerDrug(Material.PLANTS);
 		blockFlowerDrug.setHardness(0.0f);
