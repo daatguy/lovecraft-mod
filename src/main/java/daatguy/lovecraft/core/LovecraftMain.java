@@ -68,10 +68,10 @@ import daatguy.lovecraft.world.potion.PotionSimple;
 public class LovecraftMain {
 	
 	//Potion Id Addition
-	//Should probably be changable via config (todo)
+	//Should probably be changeable via config (todo)
 	public static int potionIdStart = 4000;
 
-	//Initializiation of tabs, handlers, other engine classes, etc.
+	//Initialization of tabs, handlers, other engine classes, etc.
 	public static CreativeTabs lovecraftTab = new LovecraftTab();
 
 	public static SubItemsHandler subItemsHandler = new SubItemsHandler();
@@ -141,7 +141,7 @@ public class LovecraftMain {
 	public static Block blockChargedObelisk;
 	public static Block blockObeliskCap;
 	public static Block blockResolvedObeliskCap;
-	public static Block blockCarvedBlock;
+	public static Block blockCarvedStone;
 
 	@Instance
 	public static LovecraftMain instance = new LovecraftMain();
@@ -318,12 +318,12 @@ public class LovecraftMain {
 		blockResolvedObeliskCap.setLightLevel(8.0f);
 		blockResolvedObeliskCap.setCreativeTab(lovecraftTab);
 		
-		blockCarvedBlock = new BlockCarvedBlock(Material.ROCK);
-		blockCarvedBlock.setHardness(1.5f); //hmm, what to do for carved sepulchral?
-		blockCarvedBlock.setHarvestLevel("pickaxe", 0);
-		blockCarvedBlock.setUnlocalizedName("carved_block");
-		blockCarvedBlock.setRegistryName("carved_block");
-		blockCarvedBlock.setCreativeTab(lovecraftTab);
+		blockCarvedStone = new BlockCarvedBlock(Material.ROCK); //probably add another parameter later
+		blockCarvedStone.setHardness(1.5f);
+		blockCarvedStone.setHarvestLevel("pickaxe", 0);
+		blockCarvedStone.setUnlocalizedName("carved_stone");
+		blockCarvedStone.setRegistryName("carved_stone");
+		blockCarvedStone.setCreativeTab(lovecraftTab);
 		
 		//Initialize itemBlocks
 		itemBlockFlowerDrug = new ItemSimpleBlock(blockFlowerDrug).setRegistryName(blockFlowerDrug.getRegistryName());

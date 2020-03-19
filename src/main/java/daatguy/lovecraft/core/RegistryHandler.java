@@ -73,7 +73,7 @@ public class RegistryHandler {
 		event.getRegistry().register(LovecraftMain.blockChargedObelisk);
 		event.getRegistry().register(LovecraftMain.blockObeliskCap);
 		event.getRegistry().register(LovecraftMain.blockResolvedObeliskCap);
-		event.getRegistry().register(LovecraftMain.blockCarvedBlock);
+		event.getRegistry().register(LovecraftMain.blockCarvedStone);
 	}
 
 
