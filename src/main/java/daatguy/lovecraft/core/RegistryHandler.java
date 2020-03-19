@@ -54,6 +54,7 @@ public class RegistryHandler {
 		event.getRegistry().register(LovecraftMain.itemBlockChargedObelisk);
 		event.getRegistry().register(LovecraftMain.itemBlockObeliskCap);
 		event.getRegistry().register(LovecraftMain.itemBlockResolvedObeliskCap);
+		event.getRegistry().register(LovecraftMain.itemBlockCarvedStone);
 	}
 	
 	@SubscribeEvent
