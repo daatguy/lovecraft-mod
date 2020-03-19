@@ -24,7 +24,7 @@ public class BlockCarvedBlock extends BlockSimple {
 
 	public BlockCarvedBlock(Material material) {
 		super(material);
-		setDefaultState(this.blockState.getBaseState().withProperty(FACING, EnumFacing.UP));
+		setDefaultState(this.blockState.getBaseState().withProperty(FACING, EnumFacing.NORTH));
 	}
 	
 	@Override
