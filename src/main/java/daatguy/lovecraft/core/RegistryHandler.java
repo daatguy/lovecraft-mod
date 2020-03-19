@@ -39,6 +39,7 @@ public class RegistryHandler {
 		event.getRegistry().register(LovecraftMain.itemBook);
 		event.getRegistry().register(LovecraftMain.itemFossil);
 		event.getRegistry().register(LovecraftMain.itemDriedFlower);
+		event.getRegistry().register(LovecraftMain.itemRubbing);
 
 		event.getRegistry().register(LovecraftMain.itemBlockFlowerDrug);
 		event.getRegistry().register(LovecraftMain.itemBlockFossil);

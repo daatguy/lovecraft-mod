@@ -29,6 +29,8 @@ item.mummy_chunk.name=Mummified Remains
 item.flesh_dust.name=Ground Flesh
 item.magnifying_glass.name=Magnifying Glass
 item.magnifying_glass.description=There are details in this world much finer than what the unaided human eye can make out.
+item.rubbing.name=Charcoal Rubbing
+item.rubbing.description=I can translate the carved inscription from the comfort of a writing desk... once the logic for this item is implemented, of course
 
 tile.mortar.name=Mortar and Pestle
 tile.flower_drug.name=Odorous Flower

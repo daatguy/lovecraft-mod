@@ -110,6 +110,7 @@ public class LovecraftMain {
 	public static Item itemBook;
 	public static Item itemFossil;
 	public static Item itemDriedFlower;
+	public static Item itemRubbing;
 
 	//More 'item' declarations, ItemBlocks
 	public static Item itemBlockFlowerDrug;
@@ -217,6 +218,11 @@ public class LovecraftMain {
 		itemBook = new ItemBook();
 		itemBook.setRegistryName("book");
 		itemBook.setCreativeTab(lovecraftTab);
+		
+		itemRubbing = new ItemSimple(); //subclass comes later
+		itemRubbing.setUnlocalizedName("rubbing");
+		itemRubbing.setRegistryName("rubbing");
+		itemRubbing.setCreativeTab(lovecraftTab);
 		
 		itemDriedFlower = new ItemSimple();
 		itemDriedFlower.setUnlocalizedName("dried_flower");
