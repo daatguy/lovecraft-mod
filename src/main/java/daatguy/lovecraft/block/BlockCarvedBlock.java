@@ -5,6 +5,8 @@ import javax.annotation.Nullable;
 import daatguy.lovecraft.tileentity.TileEntityCarving;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
+import net.minecraft.block.properties.PropertyDirection;
+import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
@@ -17,9 +19,27 @@ import net.minecraft.world.World;
 import net.minecraft.block.SoundType;
 
 public class BlockCarvedBlock extends BlockSimple {
+	
+	static final PropertyDirection FACING = PropertyDirection.create("facing");
 
 	public BlockCarvedBlock(Material material) {
 		super(material);
+		setDefaultState(this.blockState.getBaseState().withProperty(FACING, EnumFacing.UP));
+	}
+	
+	@Override
+	public BlockStateContainer createBlockState() {
+		return new BlockStateContainer(this, FACING);
+	}
+	
+	@Override
+	public IBlockState getStateFromMeta(int meta) {
+		 return this.getDefaultState().withProperty(FACING, EnumFacing.getFront(meta));
+	}
+	
+	@Override
+	public int getMetaFromState(IBlockState state) {
+		return state.getValue(FACING).getIndex();
 	}
 	
 	@Override
