@@ -125,6 +125,7 @@ public class LovecraftMain {
 	public static Item itemBlockChargedObelisk;
 	public static Item itemBlockObeliskCap;
 	public static Item itemBlockResolvedObeliskCap;
+	public static Item itemBlockCarvedStone; //remove when I bother to add a chisel, probably
 
 	//Block declarations
 	public static BlockBush blockFlowerDrug;
@@ -340,6 +341,8 @@ public class LovecraftMain {
 		itemBlockChargedObelisk = new ItemSimpleBlock(blockChargedObelisk).setRegistryName(blockChargedObelisk.getRegistryName());
 		itemBlockObeliskCap = new ItemSimpleBlock(blockObeliskCap).setRegistryName(blockObeliskCap.getRegistryName());
 		itemBlockResolvedObeliskCap = new ItemSimpleBlock(blockResolvedObeliskCap).setRegistryName(blockResolvedObeliskCap.getRegistryName());
+		itemBlockCarvedStone = new ItemSimpleBlock(blockCarvedStone).setRegistryName(blockCarvedStone.getRegistryName());
+
 
 		//Initialize potions
 		potionDread = new PotionSimple(true, 14611199, 0, 0).setPotionName("effect.dread").setRegistryName("lovecraft:dread");
