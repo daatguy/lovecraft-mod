@@ -2,6 +2,7 @@ package daatguy.lovecraft.block;
 
 import javax.annotation.Nullable;
 
+import daatguy.lovecraft.core.LovecraftMain;
 import daatguy.lovecraft.tileentity.TileEntityCarving;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
@@ -65,17 +66,25 @@ public class BlockCarvedBlock extends BlockSimple {
 	
 	@Override
 	public boolean onBlockActivated(World world, BlockPos pos,
-			IBlockState state, EntityPlayer playerIn, EnumHand hand,
-			EnumFacing facing, float hitX, float hitY, float hitZ) {
+			IBlockState state, EntityPlayer player, EnumHand hand,
+			EnumFacing side, float hitX, float hitY, float hitZ) {
 		if (world.isRemote) {
 			return true;
 		}
-		ItemStack heldItem = playerIn.getHeldItem(hand);
-		TileEntityCarving carving = (TileEntityCarving) world.getTileEntity(pos);
-		if (heldItem.getItem() == Items.PAPER) {
-			//TODO: create untranslated rubbing
+		if (side != world.getBlockState(pos).getValue(FACING)) {
 			return false;
-		}// else if (heldItem.getItem() == )
+		}
+		ItemStack heldItem = player.getHeldItem(hand);
+		//Maybe just check entire inventory for charcoal? Probably not
+		ItemStack offhand = player.inventory.offHandInventory.get(0); //seems a bit dangerous?
+		TileEntityCarving carving = (TileEntityCarving) world.getTileEntity(pos);
+		if (heldItem.getItem() == Items.PAPER
+			&& offhand.getItem() == Items.COAL
+			&& offhand.getMetadata() == 1) {
+			heldItem.shrink(1);
+			player.inventory.addItemStackToInventory(new ItemStack(LovecraftMain.itemRubbing));
+			return true;
+		}// else if (heldItem.getItem() == ) //dictionary?
 		return false;
 	}
 }
