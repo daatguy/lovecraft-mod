@@ -7,8 +7,10 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.potion.Potion;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.world.DimensionType;
 import net.minecraft.world.gen.structure.MapGenStructureIO;
 import net.minecraft.world.storage.loot.LootTableList;
+import net.minecraftforge.common.DimensionManager;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.Mod.Instance;
@@ -19,6 +21,9 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.registry.EntityRegistry;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.common.registry.VillagerRegistry;
+
+import javax.annotation.Nullable;
+
 import daatguy.lovecraft.block.BlockAltar;
 import daatguy.lovecraft.block.BlockBasRelief;
 import daatguy.lovecraft.block.BlockCarvedBlock;
@@ -59,6 +64,7 @@ import daatguy.lovecraft.tileentity.TileEntityChargedObelisk;
 import daatguy.lovecraft.tileentity.TileEntityHookah;
 import daatguy.lovecraft.world.potion.PotionDrugged;
 import daatguy.lovecraft.world.potion.PotionSimple;
+import daatguy.lovecraft.worlds.WorldProviderRoom;
 
 @Mod(modid = "lovecraft", name = "Lovecraft Mod", version = "Alpha-1.0")
 public class LovecraftMain {
@@ -143,6 +149,11 @@ public class LovecraftMain {
 	public static Block blockObeliskCap;
 	public static Block blockResolvedObeliskCap;
 	public static Block blockCarvedStone;
+	
+	//Room dimension
+	public static final String ROOM_NAME = "room";
+	public static final int ROOM_DIM_ID = nextDimID();
+	public static final DimensionType ROOM_DIM_TYPE = DimensionType.register(ROOM_NAME, "_"+ROOM_NAME, ROOM_DIM_ID, WorldProviderRoom.class, true);
 
 	@Instance
 	public static LovecraftMain instance = new LovecraftMain();
@@ -367,6 +378,8 @@ public class LovecraftMain {
 		//GameRegistry.registerWorldGenerator(lengGenerator, 0);
 		//GameRegistry.registerWorldGenerator(new ZigguratGenerator(), 4);
 		
+		DimensionManager.registerDimension(ROOM_DIM_ID, ROOM_DIM_TYPE);
+		
 		//Add smelting recipes
 		GameRegistry.addSmelting(itemBlockFlowerDrug, itemDriedFlower.getDefaultInstance(), 0);
 
@@ -411,4 +424,13 @@ public class LovecraftMain {
 		proxy.postInit(event);
 	}
 
+	private static int nextDimID() {
+		for (int i = 0; i != -1; i++) {
+			if (!DimensionManager.isDimensionRegistered(i)) {
+				return i;
+			}
+		}
+		throw new RuntimeException("No free dimension IDs!");
+	}
+	
 }
