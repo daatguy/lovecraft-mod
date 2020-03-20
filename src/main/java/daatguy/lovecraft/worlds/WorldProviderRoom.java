@@ -3,7 +3,7 @@ package daatguy.lovecraft.worlds;
 import net.minecraft.world.DimensionType;
 import net.minecraft.world.WorldProvider;
 import net.minecraft.world.chunk.Chunk;
-
+import net.minecraft.world.gen.IChunkGenerator;
 import daatguy.lovecraft.core.LovecraftMain;
 
 public class WorldProviderRoom extends WorldProvider {
@@ -16,6 +16,11 @@ public class WorldProviderRoom extends WorldProvider {
 	
 	@Override
     public boolean canDoRainSnowIce(Chunk chunk) {
-        return false;
+        return false; //so why can it still rain...?
     }
+	
+	@Override
+	public IChunkGenerator createChunkGenerator() {
+		return new ChunkGeneratorRoom(this.world);
+	}
 }
