@@ -15,9 +15,19 @@ public class WorldProviderRoom extends WorldProvider {
 	}
 	
 	@Override
+	public boolean isSurfaceWorld() {
+		return false;
+	}
+	
+	@Override
     public boolean canDoRainSnowIce(Chunk chunk) {
         return false; //so why can it still rain...?
     }
+	
+	@Override
+	public boolean canDoLightning(Chunk chunk) {
+		return false;
+	}
 	
 	@Override
 	public IChunkGenerator createChunkGenerator() {
