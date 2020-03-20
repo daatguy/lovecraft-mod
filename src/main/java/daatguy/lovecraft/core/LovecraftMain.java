@@ -38,7 +38,7 @@ import daatguy.lovecraft.container.AlchemyRecipes;
 import daatguy.lovecraft.container.LovecraftTab;
 import daatguy.lovecraft.entity.EntitySpell;
 import daatguy.lovecraft.generator.DecorationGenerator;
-import daatguy.lovecraft.generator.LengGenerator;
+//import daatguy.lovecraft.generator.LengGenerator;
 import daatguy.lovecraft.generator.OreGenerator;
 import daatguy.lovecraft.generator.TombGenerator;
 import daatguy.lovecraft.generator.village.VillageCreationHandler;

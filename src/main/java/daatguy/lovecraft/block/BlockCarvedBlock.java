@@ -81,7 +81,7 @@ public class BlockCarvedBlock extends BlockSimple {
 		if (heldItem.getItem() == Items.PAPER
 			&& offhand.getItem() == Items.COAL
 			&& offhand.getMetadata() == 1) {
-			heldItem.shrink(1);
+			heldItem.shrink(1); //TODO: don't consume paper if no space in inventory for rubbing
 			player.inventory.addItemStackToInventory(new ItemStack(LovecraftMain.itemRubbing));
 			return true;
 		}// else if (heldItem.getItem() == ) //dictionary?
