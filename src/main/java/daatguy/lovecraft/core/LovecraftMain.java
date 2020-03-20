@@ -78,7 +78,7 @@ public class LovecraftMain {
 	
 	public static AlchemyRecipes alchemyRecipes = new AlchemyRecipes(); 
 	
-	public static LengGenerator lengGenerator = new LengGenerator();
+	//public static LengGenerator lengGenerator = new LengGenerator();
 	
 	//For use for the potionDrugged
 	//Only changed client-side
