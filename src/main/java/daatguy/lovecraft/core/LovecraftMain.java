@@ -1,9 +1,5 @@
 package daatguy.lovecraft.core;
 
-import java.util.List;
-
-import com.google.common.collect.Lists;
-
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockBush;
 import net.minecraft.block.material.Material;
@@ -11,9 +7,7 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.potion.Potion;
 import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.math.MathHelper;
-import net.minecraft.village.VillageCollection;
-import net.minecraft.world.gen.structure.StructureVillagePieces;
+import net.minecraft.world.gen.structure.MapGenStructureIO;
 import net.minecraft.world.storage.loot.LootTableList;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
@@ -24,6 +18,7 @@ import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.registry.EntityRegistry;
 import net.minecraftforge.fml.common.registry.GameRegistry;
+import net.minecraftforge.fml.common.registry.VillagerRegistry;
 import daatguy.lovecraft.block.BlockAltar;
 import daatguy.lovecraft.block.BlockBasRelief;
 import daatguy.lovecraft.block.BlockCarvedBlock;
@@ -36,17 +31,17 @@ import daatguy.lovecraft.block.BlockMortar;
 import daatguy.lovecraft.block.BlockObelisk;
 import daatguy.lovecraft.block.BlockObeliskCap;
 import daatguy.lovecraft.block.BlockResolvedObeliskCap;
-import daatguy.lovecraft.block.BlockSimpleDrop;
 import daatguy.lovecraft.block.BlockWeirdedBrick;
 import daatguy.lovecraft.book.DeskHandler;
 import daatguy.lovecraft.book.spell.SpellHandler;
 import daatguy.lovecraft.container.AlchemyRecipes;
 import daatguy.lovecraft.container.LovecraftTab;
 import daatguy.lovecraft.entity.EntitySpell;
-import daatguy.lovecraft.event.PotionEventHandler;
 import daatguy.lovecraft.generator.DecorationGenerator;
+import daatguy.lovecraft.generator.LengGenerator;
 import daatguy.lovecraft.generator.OreGenerator;
 import daatguy.lovecraft.generator.TombGenerator;
+import daatguy.lovecraft.generator.village.VillageCreationHandler;
 import daatguy.lovecraft.generator.village.VillageOpiumDen;
 import daatguy.lovecraft.item.ItemBeaker;
 import daatguy.lovecraft.item.ItemBook;
@@ -84,6 +79,8 @@ public class LovecraftMain {
 	public static PacketHandler packetHandler = new PacketHandler();
 	
 	public static AlchemyRecipes alchemyRecipes = new AlchemyRecipes(); 
+	
+	//public static LengGenerator lengGenerator = new LengGenerator();
 	
 	//For use for the potionDrugged
 	//Only changed client-side
@@ -130,6 +127,7 @@ public class LovecraftMain {
 	public static Item itemBlockCarvedStone; //remove when I bother to add a chisel, probably
 
 	//Block declarations
+	//public static Block blockUnderstructure;
 	public static BlockBush blockFlowerDrug;
 	public static Block blockFossil;
 	//public static Block blockAetherOre;
@@ -245,6 +243,11 @@ public class LovecraftMain {
 		blockAetherOre.setCreativeTab(lovecraftTab);*/
 		
 		//Initialize blocks, set properties
+
+		//blockUnderstructure = new BlockUnderstructure(Material.ROCK);
+		//blockUnderstructure.setUnlocalizedName("understructure");
+		//blockUnderstructure.setRegistryName("understructure");
+		
 		blockWeirdedBrick = new BlockWeirdedBrick(Material.ROCK);
 		blockWeirdedBrick.setHardness(60f);
 		blockWeirdedBrick.setResistance(18000000.0f);
@@ -361,6 +364,7 @@ public class LovecraftMain {
 		GameRegistry.registerWorldGenerator(new OreGenerator(), 30);
 		GameRegistry.registerWorldGenerator(new DecorationGenerator(), 300);
 		GameRegistry.registerWorldGenerator(new TombGenerator(), 20);
+		//GameRegistry.registerWorldGenerator(lengGenerator, 0);
 		//GameRegistry.registerWorldGenerator(new ZigguratGenerator(), 4);
 		
 		//Add smelting recipes
@@ -371,11 +375,6 @@ public class LovecraftMain {
 		GameRegistry.registerTileEntity(TileEntityAltar.class, "lovecraft:altar");
 		GameRegistry.registerTileEntity(TileEntityChargedObelisk.class, "lovecraft:chargedObelisk");
 		GameRegistry.registerTileEntity(TileEntityCarving.class, "lovecraft:carvedBlock");
-		
-		// Add Village Components
-		//List<StructureVillagePieces.PieceWeight> list = Lists.<StructureVillagePieces.PieceWeight>newArrayList();
-        //list.add(new StructureVillagePieces.PieceWeight(VillageOpiumDen.class, 12, 1));
-        //net.minecraftforge.fml.common.registry.VillagerRegistry.addExtraVillageComponents(list, random, size);
 		
 		//Register entities
 		EntityRegistry.registerModEntity(new ResourceLocation("lovecraft:spell"), EntitySpell.class, "lovecraftSpell", 0, "lovecraft", 0, 1, false);
@@ -392,8 +391,14 @@ public class LovecraftMain {
 		deskHandler.init();
 		alchemyRecipes.InitRecipes();
 		
+		//Register village pieces
+		//
+		MapGenStructureIO.registerStructureComponent(VillageOpiumDen.class, "opiumden");
+		VillagerRegistry.instance().registerVillageCreationHandler(new VillageCreationHandler(VillageOpiumDen.class, 120, 1));
+		
 		//Proxy Init
 		proxy.init(event);
+		
 	}
 
 	@EventHandler
