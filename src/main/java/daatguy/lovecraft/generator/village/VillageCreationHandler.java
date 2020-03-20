@@ -17,6 +17,12 @@ public class VillageCreationHandler implements IVillageCreationHandler {
 	public int weight;
 	public int limitPerVillage;
 
+	/**
+	 * Handles registering village pieces
+	 * @param villageClass
+	 * @param weight
+	 * @param limitPerVillage
+	 */
 	public VillageCreationHandler(Class<? extends Village> villageClass,
 			int weight, int limitPerVillage) {
 		this.villageClass = villageClass;

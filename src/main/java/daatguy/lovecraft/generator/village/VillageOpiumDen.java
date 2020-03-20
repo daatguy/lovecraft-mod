@@ -16,13 +16,13 @@ import net.minecraftforge.fml.common.registry.VillagerRegistry;
 public class VillageOpiumDen extends StructureVillagePieces.Village {
 
 	/**
-	 * Instantiates a new village house cloud.
+	 * Instantiates a new village opium den.
 	 */
 	public VillageOpiumDen() {
 	}
 
 	/**
-	 * Instantiates a new village house cloud.
+	 * Instantiates a new village opium den.
 	 *
 	 * @param parStart
 	 *            the par start

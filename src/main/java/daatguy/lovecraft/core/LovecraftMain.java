@@ -371,6 +371,7 @@ public class LovecraftMain {
 		alchemyRecipes.InitRecipes();
 		
 		//Register village pieces
+		//
 		MapGenStructureIO.registerStructureComponent(VillageOpiumDen.class, "opiumden");
 		VillagerRegistry.instance().registerVillageCreationHandler(new VillageCreationHandler(VillageOpiumDen.class, 120, 1));
 		
