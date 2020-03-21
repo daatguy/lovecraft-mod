@@ -2,11 +2,14 @@ package daatguy.lovecraft.book.spell;
 
 import daatguy.lovecraft.core.LovecraftMain;
 import daatguy.lovecraft.tileentity.TileEntityAltar;
+import daatguy.lovecraft.worlds.RoomTeleporter;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.SoundCategory;
+import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
@@ -37,6 +40,15 @@ public class SpellEnterRoom extends Spell {
 		world.playSound(pos.getX(), pos.getY(), pos.getZ(),
 				SoundEvents.ENTITY_GUARDIAN_AMBIENT, SoundCategory.NEUTRAL,
 				1.0F, 1.2F, false);
+		for (EntityLivingBase e : world.getEntitiesWithinAABB(EntityLivingBase.class,
+				                                              new AxisAlignedBB(pos.getX() - 2,
+				                                            		            pos.getY() - 2,
+				                                            		            pos.getZ() - 2,
+				                                            		            pos.getX() + 2,
+				                                            		            pos.getY() + 2,
+				                                            		            pos.getZ() + 2))) {
+			e.changeDimension(LovecraftMain.ROOM_DIM_ID, new RoomTeleporter());
+		}
 		return true;
 	}
 	
