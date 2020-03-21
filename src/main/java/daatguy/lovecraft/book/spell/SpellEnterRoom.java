@@ -47,7 +47,9 @@ public class SpellEnterRoom extends Spell {
 				                                            		            pos.getX() + 2,
 				                                            		            pos.getY() + 2,
 				                                            		            pos.getZ() + 2))) {
-			e.changeDimension(LovecraftMain.ROOM_DIM_ID, new RoomTeleporter());
+			if (!world.isRemote && !e.isRiding() && !e.isBeingRidden() && e.isNonBoss()) {
+				e.changeDimension(LovecraftMain.ROOM_DIM_ID, new RoomTeleporter());
+			}
 		}
 		return true;
 	}
