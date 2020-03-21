@@ -62,7 +62,7 @@ public class VillageOpiumDen extends StructureVillagePieces.Village {
 			int p_175850_4_, int p_175850_5_, EnumFacing facing, int p_175850_7_) {
 		StructureBoundingBox structureboundingbox = StructureBoundingBox
 				.getComponentToAddBoundingBox(p_175850_3_, p_175850_4_,
-						p_175850_5_, 0, 0, 0, 9, 9, 6, facing);
+						p_175850_5_, 0, 0, 0, 9, 8, 6, facing);
 		return canVillageGoDeeper(structureboundingbox)
 				&& StructureComponent.findIntersecting(p_175850_1_,
 						structureboundingbox) == null ? new VillageOpiumDen(
@@ -329,25 +329,5 @@ public class VillageOpiumDen extends StructureVillagePieces.Village {
         }
 	}
 	
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see net.minecraft.world.gen.structure.StructureVillagePieces.Village#
-	 * getBiomeSpecificBlockState(net.minecraft.block.state.IBlockState)
-	 */
-	@Override
-	protected IBlockState getBiomeSpecificBlockState(IBlockState blockstateIn) {
-		net.minecraftforge.event.terraingen.BiomeEvent.GetVillageBlockID event = new net.minecraftforge.event.terraingen.BiomeEvent.GetVillageBlockID(
-				startPiece == null ? null : startPiece.biome, blockstateIn);
-		net.minecraftforge.common.MinecraftForge.TERRAIN_GEN_BUS.post(event);
-		if (event.getResult() == net.minecraftforge.fml.common.eventhandler.Event.Result.DENY)
-			return event.getReplacement();
-
-		/*
-		 * You can check the biome here using startPiece.biome and modify your
-		 * structure accordingly.
-		 */
-		return blockstateIn;
-	}
 
 }
