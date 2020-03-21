@@ -1,5 +1,7 @@
 package daatguy.lovecraft.book.spell;
 
+import java.util.List;
+
 import daatguy.lovecraft.core.LovecraftMain;
 import daatguy.lovecraft.tileentity.TileEntityAltar;
 import daatguy.lovecraft.worlds.RoomTeleporter;
@@ -43,14 +45,15 @@ public class SpellEnterRoom extends Spell {
 		world.playSound(pos.getX(), pos.getY(), pos.getZ(),
 				SoundEvents.ENTITY_GUARDIAN_AMBIENT, SoundCategory.NEUTRAL,
 				1.0F, 1.2F, false);
-		for (EntityLivingBase e : world.getEntitiesWithinAABB(EntityLivingBase.class,
-				                                              new AxisAlignedBB(pos.getX() - 2,
-				                                            		            pos.getY() - 2,
-				                                            		            pos.getZ() - 2,
-				                                            		            pos.getX() + 2,
-				                                            		            pos.getY() + 2,
-				                                            		            pos.getZ() + 2))) {
-			//I fucking swear if the problem is that I'm using a range-for
+		List<EntityLivingBase> entitiesInRange = world.getEntitiesWithinAABB(EntityLivingBase.class,
+                															 new AxisAlignedBB(pos.getX() - 2,
+                														                       pos.getY() - 2,
+                														                       pos.getZ() - 2,
+                														                       pos.getX() + 2,
+                														                       pos.getY() + 2,
+                														                       pos.getZ() + 2));
+		for (EntityLivingBase e : entitiesInRange) {
+			//I fucking swear if the problem is somefuckinghow that I'm using a range-for
 			if (!world.isRemote && !e.isDead && !e.isRiding() && !e.isBeingRidden() && e.isNonBoss()) {
 				e.changeDimension(LovecraftMain.ROOM_DIM_ID, teleporter);
 			}
