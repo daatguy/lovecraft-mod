@@ -15,9 +15,12 @@ public class RoomTeleporter implements ITeleporter {
 	
 	public void placeEntity(World world, Entity entity, float yaw) {
 		if (entity instanceof EntityPlayerMP) {
-			((EntityPlayerMP)entity).connection.setPlayerLocation(X, Y, Z, 0, 0);
+			((EntityPlayerMP)entity).connection.setPlayerLocation(X+.5, Y, Z+.5, 0, 0);
 		} else {
-			entity.setLocationAndAngles(X, Y, Z, 0, 0);
+			entity.setLocationAndAngles(X+.5, Y, Z+.5, 0, 0);
+			entity.motionX = 0.0D;
+            entity.motionY = 0.0D;
+            entity.motionZ = 0.0D;
 		}
 	}
 
