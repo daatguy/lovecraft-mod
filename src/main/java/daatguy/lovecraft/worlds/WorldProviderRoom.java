@@ -52,6 +52,10 @@ public class WorldProviderRoom extends WorldProvider {
 		}
 	}
 	
+	public boolean canRespawnHere() {
+        return false;
+    }
+	
 	@Override
 	public IChunkGenerator createChunkGenerator() {
 		return new ChunkGeneratorRoom(this.world);
