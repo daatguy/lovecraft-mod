@@ -189,4 +189,7 @@ spell.cap.name=The Nihilist's Thesis
 spell.cap.description=Keeps obelisks from learning too much. Will resolve any existential tensions they may have.
 spell.disassemble.name=The Arkham Swap
 spell.disassemble.description=Cults in Arkham often found themselves subject to police raids. After much trial and error, they perfected a procedure for the hasty disassembly of a ritual circle.
+spell.enter_room.name=enter The Room
+spell.enter_room.description=I did not hit her. I did not
+
 subtitle.obelisk_hum=Obelisk Humming
