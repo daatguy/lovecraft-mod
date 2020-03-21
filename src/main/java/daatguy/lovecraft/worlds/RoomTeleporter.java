@@ -14,13 +14,10 @@ public class RoomTeleporter implements ITeleporter {
 	public static final int Z = 4;
 	
 	public void placeEntity(World world, Entity entity, float yaw) {
-		if (entity instanceof EntityPlayerMP) {
+		if (entity instanceof EntityPlayerMP) { //commented this out, still crashes, but the crash is only players...
 			((EntityPlayerMP)entity).connection.setPlayerLocation(X+.5, Y, Z+.5, 0, 0); //facing straight south
 		} else {
 			entity.setLocationAndAngles(X+.5, Y, Z+.5, 0, 0);
-			entity.motionX = 0.0D;
-            entity.motionY = 0.0D;
-            entity.motionZ = 0.0D;
 		}
 	}
 

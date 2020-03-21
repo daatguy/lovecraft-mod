@@ -50,7 +50,8 @@ public class SpellEnterRoom extends Spell {
 				                                            		            pos.getX() + 2,
 				                                            		            pos.getY() + 2,
 				                                            		            pos.getZ() + 2))) {
-			if (!world.isRemote && !e.isRiding() && !e.isBeingRidden() && e.isNonBoss()) {
+			//I fucking swear if the problem is that I'm using a range-for
+			if (!world.isRemote && !e.isDead && !e.isRiding() && !e.isBeingRidden() && e.isNonBoss()) {
 				e.changeDimension(LovecraftMain.ROOM_DIM_ID, teleporter);
 			}
 		}
