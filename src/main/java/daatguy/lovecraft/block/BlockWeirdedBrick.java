@@ -1,9 +1,11 @@
 package daatguy.lovecraft.block;
 
+import java.util.List;
 import java.util.Random;
 
 import daatguy.lovecraft.client.sound.SoundEventHandler;
 import daatguy.lovecraft.core.LovecraftMain;
+import daatguy.lovecraft.worlds.RoomTeleporter;
 import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.EnumPushReaction;
@@ -11,12 +13,16 @@ import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
+import net.minecraft.util.EnumFacing;
+import net.minecraft.util.EnumHand;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.SoundCategory;
+import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextComponentString;
@@ -98,6 +104,29 @@ public class BlockWeirdedBrick extends Block {
 						0.0D, 0.0D, 0.0D);
 			}
 		}
+	}
+	
+	//remember to remove this after crash testing is done
+	@Override
+	public boolean onBlockActivated(World world, BlockPos pos,
+			IBlockState state, EntityPlayer player, EnumHand hand,
+			EnumFacing side, float hitX, float hitY, float hitZ) {
+		if (world.isRemote) {
+			return true;
+		}
+		List<EntityLivingBase> entitiesInRange = world.getEntitiesWithinAABB(EntityLivingBase.class,
+				 new AxisAlignedBB(pos.getX() - 2,
+			                       pos.getY() - 2,
+			                       pos.getZ() - 2,
+			                       pos.getX() + 2,
+			                       pos.getY() + 2,
+			                       pos.getZ() + 2));
+		for (EntityLivingBase e : entitiesInRange) {
+			if (!e.isDead && !e.isRiding() && !e.isBeingRidden() && e.isNonBoss()) {
+				e.changeDimension(LovecraftMain.ROOM_DIM_ID, new RoomTeleporter());
+			}
+		}
+		return true;
 	}
 
 }

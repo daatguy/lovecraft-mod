@@ -42,6 +42,10 @@ public class SpellEnterRoom extends Spell {
 	
 	@Override
 	public boolean castSpell(World world, BlockPos pos) {
+		startCast(world, pos);
+		if (world.isRemote) { //doesn't fix crash but smart anyways
+			return false;
+		}
 		world.playSound(pos.getX(), pos.getY(), pos.getZ(),
 				SoundEvents.ENTITY_GUARDIAN_AMBIENT, SoundCategory.NEUTRAL,
 				1.0F, 1.2F, false);
@@ -53,8 +57,7 @@ public class SpellEnterRoom extends Spell {
                 														                       pos.getY() + 2,
                 														                       pos.getZ() + 2));
 		for (EntityLivingBase e : entitiesInRange) {
-			//I fucking swear if the problem is somefuckinghow that I'm using a range-for
-			if (!world.isRemote && !e.isDead && !e.isRiding() && !e.isBeingRidden() && e.isNonBoss()) {
+			if (!e.isDead && !e.isRiding() && !e.isBeingRidden() && e.isNonBoss()) {
 				e.changeDimension(LovecraftMain.ROOM_DIM_ID, teleporter);
 			}
 		}
