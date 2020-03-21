@@ -1,5 +1,6 @@
 package daatguy.lovecraft.worlds;
 
+import net.minecraft.entity.Entity;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.DimensionType;
 import net.minecraft.world.WorldProvider;
@@ -34,8 +35,13 @@ public class WorldProviderRoom extends WorldProvider {
 	
 	@SideOnly(Side.CLIENT)
 	public Vec3d getFogColor(float foo, float bar) { //the parameters are probably x and z coordinates, for biomes
-        return new Vec3d(1D, 1D, .91D);
+        return new Vec3d(1D, 1D, 1D);
     }
+	
+	@SideOnly(Side.CLIENT)
+	public Vec3d getSkyColor(Entity entity, float partialTicks) {
+		return new Vec3d(1D, 1D, 1D);
+	}
 	
 	protected void generateLightBrightnessTable() {
 		for (int i = 0; i < 8; i++) {
