@@ -23,7 +23,13 @@ public class ChunkGeneratorRoom implements IChunkGenerator {
 
 	@Override
 	public Chunk generateChunk(int x, int z) {
-		return new Chunk(world, primer, x, z); //just generate it empty lol
+		Chunk c = new Chunk(world, primer, x, z); //just generate it empty lol
+		/* if we want to actually change the biome
+		byte[] bbytes = c.getBiomeArray();
+		for (int i = 0; i < bbytes.length; i++) {
+			bbytes[i] = 9; //end
+		} */
+		return c;
 	}
 
 	@Override
