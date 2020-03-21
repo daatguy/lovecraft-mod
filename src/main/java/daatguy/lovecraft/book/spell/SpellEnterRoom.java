@@ -5,15 +5,17 @@ import daatguy.lovecraft.tileentity.TileEntityAltar;
 import daatguy.lovecraft.worlds.RoomTeleporter;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.init.Blocks;
-import net.minecraft.init.Items;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+import net.minecraftforge.common.util.ITeleporter;
 
 public class SpellEnterRoom extends Spell {
+	
+	private ITeleporter teleporter = new RoomTeleporter();
 	
 	public SpellEnterRoom() {
 		this.obeliskLevel = TileEntityAltar.CHARGED_OBELISK;
@@ -23,6 +25,7 @@ public class SpellEnterRoom extends Spell {
 		}
 		this.name = "enter_room";
 		this.color = 6;
+		this.timer = 2;
 	}
 	
 	@Override
@@ -48,7 +51,7 @@ public class SpellEnterRoom extends Spell {
 				                                            		            pos.getY() + 2,
 				                                            		            pos.getZ() + 2))) {
 			if (!world.isRemote && !e.isRiding() && !e.isBeingRidden() && e.isNonBoss()) {
-				e.changeDimension(LovecraftMain.ROOM_DIM_ID, new RoomTeleporter());
+				e.changeDimension(LovecraftMain.ROOM_DIM_ID, teleporter);
 			}
 		}
 		return true;
