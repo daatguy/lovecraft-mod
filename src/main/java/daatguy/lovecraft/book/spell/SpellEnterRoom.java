@@ -28,6 +28,7 @@ public class SpellEnterRoom extends Spell {
 		this.name = "enter_room";
 		this.color = 6;
 		this.timer = 2;
+		this.closesAltar = true;
 	}
 	
 	@Override

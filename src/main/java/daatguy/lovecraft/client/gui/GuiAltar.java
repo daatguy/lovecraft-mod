@@ -86,13 +86,13 @@ public class GuiAltar extends GuiContainer {
 				if (spell.canStart(tile.getWorld(), tile.getPos())) {
 					// new SpellMessage(inventory
 					// .getStackInSlot(0).getTagCompound().getString("Spell"))
+					if (spell.closesAltar) {
+						mc.player.closeScreen();
+					}
 					LovecraftMain.packetHandler.INSTANCE
 							.sendToServer(new SpellMessage(inventory
 									.getStackInSlot(0).getTagCompound()
 									.getString("Spell"), tile));
-					if (spell.closesAltar) {
-						mc.player.closeScreen();
-					}
 				}
 			}
 		}

@@ -106,27 +106,5 @@ public class BlockWeirdedBrick extends Block {
 		}
 	}
 	
-	//remember to remove this after crash testing is done
-	@Override
-	public boolean onBlockActivated(World world, BlockPos pos,
-			IBlockState state, EntityPlayer player, EnumHand hand,
-			EnumFacing side, float hitX, float hitY, float hitZ) {
-		if (world.isRemote) {
-			return true;
-		}
-		List<EntityLivingBase> entitiesInRange = world.getEntitiesWithinAABB(EntityLivingBase.class,
-				 new AxisAlignedBB(pos.getX() - 2,
-			                       pos.getY() - 2,
-			                       pos.getZ() - 2,
-			                       pos.getX() + 2,
-			                       pos.getY() + 2,
-			                       pos.getZ() + 2));
-		for (EntityLivingBase e : entitiesInRange) {
-			if (!e.isDead && !e.isRiding() && !e.isBeingRidden() && e.isNonBoss()) {
-				e.changeDimension(LovecraftMain.ROOM_DIM_ID, new RoomTeleporter());
-			}
-		}
-		return true;
-	}
 
 }

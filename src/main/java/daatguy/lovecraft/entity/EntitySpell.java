@@ -32,7 +32,7 @@ public class EntitySpell extends Entity {
 		this.spell = spell;
 		this.setPositionAndUpdate(tile.getPos().getX(), tile.getPos().getY(),
 				tile.getPos().getZ());
-		this.spell.startCast(this.getEntityWorld(), this.getPosition());
+		if (!worldIn.isRemote) this.spell.startCast(worldIn, this.getPosition());
 		this.setInvisible(true);
 		this.setNoGravity(true);
 	}
@@ -61,8 +61,9 @@ public class EntitySpell extends Entity {
 	public void onUpdate() {
 		super.onEntityUpdate();
 		// System.out.println(this.ticksExisted);
-		if (this.ticksExisted >= this.spell.timer) {
+		if (this.ticksExisted == this.spell.timer) {
 			this.spell.castSpell(this.getEntityWorld(), this.getPosition());
+		} else if (this.ticksExisted > this.spell.timer) {
 			this.setDead();
 		} else {
 			this.spell.tickSpell(this.getEntityWorld(), this.getPosition(),
