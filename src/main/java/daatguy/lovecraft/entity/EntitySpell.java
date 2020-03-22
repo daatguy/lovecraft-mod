@@ -32,7 +32,7 @@ public class EntitySpell extends Entity {
 		this.spell = spell;
 		this.setPositionAndUpdate(tile.getPos().getX(), tile.getPos().getY(),
 				tile.getPos().getZ());
-		if (!worldIn.isRemote) this.spell.startCast(worldIn, this.getPosition());
+		this.spell.startCast(this.getEntityWorld(), this.getPosition());
 		this.setInvisible(true);
 		this.setNoGravity(true);
 	}

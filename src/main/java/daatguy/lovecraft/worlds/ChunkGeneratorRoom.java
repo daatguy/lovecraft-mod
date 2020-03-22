@@ -2,6 +2,7 @@ package daatguy.lovecraft.worlds;
 
 import java.util.List;
 
+import daatguy.lovecraft.core.LovecraftMain;
 import net.minecraft.entity.EnumCreatureType;
 import net.minecraft.init.Blocks;
 import net.minecraft.util.math.BlockPos;
@@ -40,7 +41,7 @@ public class ChunkGeneratorRoom implements IChunkGenerator {
 		
 		final int SIDE_LENGTH = 9;
 		final int ELEVATION = 100;
-		final IBlockState BEDROCK = Blocks.BEDROCK.getDefaultState();
+		final IBlockState BEDROCK = LovecraftMain.blockUnderstructure.getDefaultState();
 		
 		
 		for (int x = 0; x < SIDE_LENGTH; x++) {
