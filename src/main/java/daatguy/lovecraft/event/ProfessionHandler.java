@@ -21,7 +21,7 @@ import net.minecraftforge.registries.IForgeRegistry;
 
 @ObjectHolder("lovecraft")
 public class ProfessionHandler {
-	
+
 	public static VillagerProfession professionOpium;
 	public static VillagerCareer careerOpium;
 
@@ -35,17 +35,12 @@ public class ProfessionHandler {
 		 */
 		@SubscribeEvent
 		public static void onEvent(
-				final RegistryEvent.Register<VillagerProfession> event) {
-			final IForgeRegistry<VillagerProfession> registry = event
-					.getRegistry();
-			
-			// DEBUG
-			System.out.println("Registering villager professions");
+				RegistryEvent.Register<VillagerProfession> event) {
 			professionOpium = new VillagerProfession(
 					"lovecraft:opium_profession",
 					"lovecraft:textures/entities/opium_professiong.png",
 					"lovecraft:textures/entities/opium_professiong.png");
-			registry.register(professionOpium);
+			event.getRegistry().register(professionOpium);
 		}
 	}
 
@@ -53,20 +48,18 @@ public class ProfessionHandler {
 	 * Associate careers and trades.
 	 */
 	public static void associateCareersAndTrades() {
-		// DEBUG
-		System.out
-				.println("Associating careers and trades to villager professions");
-
-		careerOpium = (new VillagerCareer(professionOpium,
-				"opium_career")).addTrade(1,
-				new TradeDrugFlower());
+		careerOpium = new VillagerCareer(professionOpium, "opium_career");
+		careerOpium.addTrade(1, new Trade(new ItemStack(
+				LovecraftMain.itemDriedFlower), new PriceInfo(4, 7)));
+		careerOpium.addTrade(1, new Trade(new ItemStack(
+				LovecraftMain.itemEmptyBeaker), new PriceInfo(1, 2)));
 	}
 
-	public static class TradeDrugFlower implements ITradeList {
-		
+	public static class Trade implements ITradeList {
+
 		/** The item stack to buy */
 		public ItemStack stack;
-		
+
 		/**
 		 * The price info determining the amount of emeralds to trade in for the
 		 * enchanted item
@@ -76,18 +69,17 @@ public class ProfessionHandler {
 		/**
 		 * Instantiates a new trade emeralds for enchanted boots.
 		 */
-		public TradeDrugFlower() {
-			stack = new ItemStack(LovecraftMain.itemBlockFlowerDrug);
-			priceInfo = new PriceInfo(17, 64);
+		public Trade(ItemStack stack, PriceInfo priceInfo) {
+			this.stack = stack;
+			this.priceInfo = priceInfo;
 		}
 
 		/**
 		 * (non-Javadoc)
 		 * 
-		 * @see
-		 * net.minecraft.entity.passive.EntityVillager.ITradeList#addMerchantRecipe
-		 * (net.minecraft.entity.IMerchant,
-		 * net.minecraft.village.MerchantRecipeList, java.util.Random)
+		 * @see net.minecraft.entity.passive.EntityVillager.ITradeList#addMerchantRecipe
+		 *      (net.minecraft.entity.IMerchant,
+		 *      net.minecraft.village.MerchantRecipeList, java.util.Random)
 		 */
 		@Override
 		public void addMerchantRecipe(IMerchant merchant,

@@ -43,6 +43,7 @@ import daatguy.lovecraft.book.spell.SpellHandler;
 import daatguy.lovecraft.container.AlchemyRecipes;
 import daatguy.lovecraft.container.LovecraftTab;
 import daatguy.lovecraft.entity.EntitySpell;
+import daatguy.lovecraft.event.ProfessionHandler;
 import daatguy.lovecraft.generator.DecorationGenerator;
 //import daatguy.lovecraft.generator.LengGenerator;
 import daatguy.lovecraft.generator.OreGenerator;
@@ -404,6 +405,9 @@ public class LovecraftMain {
 		//(Reliant on pre-init defining of items, etc.)
 		deskHandler.init();
 		alchemyRecipes.InitRecipes();
+		
+		//Register village careers & associate professions
+		ProfessionHandler.associateCareersAndTrades();
 		
 		//Register village pieces
 		//

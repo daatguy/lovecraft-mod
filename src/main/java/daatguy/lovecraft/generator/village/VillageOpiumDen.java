@@ -5,12 +5,16 @@ import java.util.Random;
 
 import daatguy.lovecraft.block.BlockHookah;
 import daatguy.lovecraft.core.LovecraftMain;
+import daatguy.lovecraft.event.ProfessionHandler;
 import net.minecraft.block.BlockBanner;
 import net.minecraft.block.BlockDoor;
 import net.minecraft.block.BlockSkull;
 import net.minecraft.block.BlockStairs;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.entity.IEntityLivingData;
+import net.minecraft.entity.monster.EntityZombieVillager;
+import net.minecraft.entity.passive.EntityVillager;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.EnumDyeColor;
@@ -27,7 +31,7 @@ import net.minecraft.world.gen.structure.StructureVillagePieces;
 import net.minecraftforge.fml.common.registry.VillagerRegistry;
 
 public class VillageOpiumDen extends StructureVillagePieces.Village {
-
+	
 	/**
 	 * Instantiates a new village opium den.
 	 */
@@ -310,9 +314,9 @@ public class VillageOpiumDen extends StructureVillagePieces.Village {
 
 		for (int l = 0; l < 6; ++l) {
 			for (int k = 0; k < 9; ++k) {
-				this.clearCurrentPositionBlocksUpwards(worldIn, k, 9, l,
+				this.clearCurrentPositionBlocksUpwards(worldIn, k, 8, l,
 						structureBoundingBoxIn);
-				this.replaceAirAndLiquidDownwards(worldIn, blockCobble, k, -1,
+				this.replaceAirAndLiquidDownwards(worldIn, blockCobble, k, -2,
 						l, structureBoundingBoxIn);
 			}
 		}
@@ -329,5 +333,10 @@ public class VillageOpiumDen extends StructureVillagePieces.Village {
         }
 	}
 	
+	@Override
+	protected net.minecraftforge.fml.common.registry.VillagerRegistry.VillagerProfession chooseForgeProfession(int count, net.minecraftforge.fml.common.registry.VillagerRegistry.VillagerProfession prof)
+    {
+        return ProfessionHandler.professionOpium;
+    }
 
 }
