@@ -16,6 +16,7 @@ public class EntitySpell extends Entity {
 
 	public Spell spell;
 	public TileEntityAltar tile;
+	private boolean finishedCasting = false;
 
 	/**
 	 * Entity placeholder for drawing spell-related effects, doing spell things
@@ -61,10 +62,11 @@ public class EntitySpell extends Entity {
 	public void onUpdate() {
 		super.onEntityUpdate();
 		// System.out.println(this.ticksExisted);
-		if (this.ticksExisted == this.spell.timer) {
+		if (finishedCasting) {
+			setDead();
+		} else if (this.ticksExisted >= this.spell.timer) {
 			this.spell.castSpell(this.getEntityWorld(), this.getPosition());
-		} else if (this.ticksExisted > this.spell.timer) {
-			this.setDead();
+			finishedCasting = true;
 		} else {
 			this.spell.tickSpell(this.getEntityWorld(), this.getPosition(),
 					this.ticksExisted);

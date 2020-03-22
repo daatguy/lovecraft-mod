@@ -60,13 +60,16 @@ public class WorldProviderRoom extends WorldProvider {
     }
 	
 	protected void generateLightBrightnessTable() {
-		for (int i = 0; i < 8; i++) {
-			this.lightBrightnessTable[i] = .5f;
-		}
-		for (int i = 8; i < 16; i++) {
+		for (int i = 0; i < 16; i++) {
 			this.lightBrightnessTable[i] = 1f;
 		}
 	}
+	
+	@SideOnly(Side.CLIENT)
+    public float getCloudHeight()
+    {
+        return 0F;
+    }
 	
 	public boolean canRespawnHere() {
         return false;
