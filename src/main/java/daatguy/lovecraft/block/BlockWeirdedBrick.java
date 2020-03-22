@@ -5,7 +5,7 @@ import java.util.Random;
 
 import daatguy.lovecraft.client.sound.SoundEventHandler;
 import daatguy.lovecraft.core.LovecraftMain;
-import daatguy.lovecraft.worlds.RoomTeleporter;
+import daatguy.lovecraft.world.RoomTeleporter;
 import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.EnumPushReaction;

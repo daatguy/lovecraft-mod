@@ -1,4 +1,4 @@
-package daatguy.lovecraft.worlds;
+package daatguy.lovecraft.generator;
 
 import java.util.List;
 

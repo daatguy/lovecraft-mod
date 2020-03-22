@@ -63,9 +63,9 @@ import daatguy.lovecraft.tileentity.TileEntityAltar;
 import daatguy.lovecraft.tileentity.TileEntityCarving;
 import daatguy.lovecraft.tileentity.TileEntityChargedObelisk;
 import daatguy.lovecraft.tileentity.TileEntityHookah;
+import daatguy.lovecraft.world.WorldProviderRoom;
 import daatguy.lovecraft.world.potion.PotionDrugged;
 import daatguy.lovecraft.world.potion.PotionSimple;
-import daatguy.lovecraft.worlds.WorldProviderRoom;
 
 @Mod(modid = "lovecraft", name = "Lovecraft Mod", version = "Alpha-1.0")
 public class LovecraftMain {

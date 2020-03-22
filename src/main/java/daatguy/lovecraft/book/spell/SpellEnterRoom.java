@@ -4,7 +4,7 @@ import java.util.List;
 
 import daatguy.lovecraft.core.LovecraftMain;
 import daatguy.lovecraft.tileentity.TileEntityAltar;
-import daatguy.lovecraft.worlds.RoomTeleporter;
+import daatguy.lovecraft.world.RoomTeleporter;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.SoundEvents;
