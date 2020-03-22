@@ -65,6 +65,12 @@ public class WorldProviderRoom extends WorldProvider {
 		}
 	}
 	
+	@SideOnly(Side.CLIENT)
+    public float getCloudHeight()
+    {
+        return 0F;
+    }
+	
 	public boolean canRespawnHere() {
         return false;
     }
