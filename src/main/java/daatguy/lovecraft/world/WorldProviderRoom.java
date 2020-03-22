@@ -1,4 +1,4 @@
-package daatguy.lovecraft.worlds;
+package daatguy.lovecraft.world;
 
 import net.minecraft.entity.Entity;
 import net.minecraft.util.math.Vec3d;
@@ -12,6 +12,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import javax.annotation.Nullable;
 
 import daatguy.lovecraft.core.LovecraftMain;
+import daatguy.lovecraft.generator.ChunkGeneratorRoom;
 
 public class WorldProviderRoom extends WorldProvider {
 

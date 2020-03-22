@@ -1,4 +1,4 @@
-package daatguy.lovecraft.worlds;
+package daatguy.lovecraft.world;
 
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayerMP;
