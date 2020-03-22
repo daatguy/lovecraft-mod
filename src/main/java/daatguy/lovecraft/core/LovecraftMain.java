@@ -7,8 +7,10 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.potion.Potion;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.world.DimensionType;
 import net.minecraft.world.gen.structure.MapGenStructureIO;
 import net.minecraft.world.storage.loot.LootTableList;
+import net.minecraftforge.common.DimensionManager;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.Mod.Instance;
@@ -19,8 +21,12 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.registry.EntityRegistry;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.common.registry.VillagerRegistry;
+
+import javax.annotation.Nullable;
+
 import daatguy.lovecraft.block.BlockAltar;
 import daatguy.lovecraft.block.BlockBasRelief;
+import daatguy.lovecraft.block.BlockCarvedBlock;
 import daatguy.lovecraft.block.BlockChargedObelisk;
 import daatguy.lovecraft.block.BlockDesk;
 import daatguy.lovecraft.block.BlockFlowerDrug;
@@ -38,7 +44,7 @@ import daatguy.lovecraft.container.AlchemyRecipes;
 import daatguy.lovecraft.container.LovecraftTab;
 import daatguy.lovecraft.entity.EntitySpell;
 import daatguy.lovecraft.generator.DecorationGenerator;
-import daatguy.lovecraft.generator.LengGenerator;
+//import daatguy.lovecraft.generator.LengGenerator;
 import daatguy.lovecraft.generator.OreGenerator;
 import daatguy.lovecraft.generator.TombGenerator;
 import daatguy.lovecraft.generator.village.VillageCreationHandler;
@@ -54,19 +60,21 @@ import daatguy.lovecraft.item.ItemTome;
 import daatguy.lovecraft.item.SubItemsHandler;
 import daatguy.lovecraft.networking.PacketHandler;
 import daatguy.lovecraft.tileentity.TileEntityAltar;
+import daatguy.lovecraft.tileentity.TileEntityCarving;
 import daatguy.lovecraft.tileentity.TileEntityChargedObelisk;
 import daatguy.lovecraft.tileentity.TileEntityHookah;
 import daatguy.lovecraft.world.potion.PotionDrugged;
 import daatguy.lovecraft.world.potion.PotionSimple;
+import daatguy.lovecraft.worlds.WorldProviderRoom;
 
 @Mod(modid = "lovecraft", name = "Lovecraft Mod", version = "Alpha-1.0")
 public class LovecraftMain {
 	
 	//Potion Id Addition
-	//Should probably be changable via config (todo)
+	//Should probably be changeable via config (todo)
 	public static int potionIdStart = 4000;
 
-	//Initializiation of tabs, handlers, other engine classes, etc.
+	//Initialization of tabs, handlers, other engine classes, etc.
 	public static CreativeTabs lovecraftTab = new LovecraftTab();
 
 	public static SubItemsHandler subItemsHandler = new SubItemsHandler();
@@ -106,6 +114,7 @@ public class LovecraftMain {
 	public static Item itemBook;
 	public static Item itemFossil;
 	public static Item itemDriedFlower;
+	public static Item itemRubbing;
 
 	//More 'item' declarations, ItemBlocks
 	public static Item itemBlockFlowerDrug;
@@ -122,6 +131,7 @@ public class LovecraftMain {
 	public static Item itemBlockChargedObelisk;
 	public static Item itemBlockObeliskCap;
 	public static Item itemBlockResolvedObeliskCap;
+	public static Item itemBlockCarvedStone; //remove when I bother to add a chisel, probably
 
 	//Block declarations
 	public static Block blockUnderstructure;
@@ -139,6 +149,12 @@ public class LovecraftMain {
 	public static Block blockChargedObelisk;
 	public static Block blockObeliskCap;
 	public static Block blockResolvedObeliskCap;
+	public static Block blockCarvedStone;
+	
+	//Room dimension
+	public static final String ROOM_NAME = "room";
+	public static final int ROOM_DIM_ID = nextDimID();
+	public static final DimensionType ROOM_DIM_TYPE = DimensionType.register(ROOM_NAME, "_"+ROOM_NAME, ROOM_DIM_ID, WorldProviderRoom.class, true);
 
 	@Instance
 	public static LovecraftMain instance = new LovecraftMain();
@@ -212,6 +228,12 @@ public class LovecraftMain {
 		itemBook = new ItemBook();
 		itemBook.setRegistryName("book");
 		itemBook.setCreativeTab(lovecraftTab);
+		
+		itemRubbing = new ItemSimple(); //subclass comes later
+		itemRubbing.setUnlocalizedName("rubbing");
+		itemRubbing.setRegistryName("rubbing");
+		itemRubbing.setCreativeTab(lovecraftTab);
+		itemRubbing.setMaxStackSize(1);
 		
 		itemDriedFlower = new ItemSimple();
 		itemDriedFlower.setUnlocalizedName("dried_flower");
@@ -320,6 +342,13 @@ public class LovecraftMain {
 		blockResolvedObeliskCap.setLightLevel(8.0f);
 		blockResolvedObeliskCap.setCreativeTab(lovecraftTab);
 		
+		blockCarvedStone = new BlockCarvedBlock(Material.ROCK); //probably add another parameter later
+		blockCarvedStone.setHardness(1.5f);
+		blockCarvedStone.setHarvestLevel("pickaxe", 0);
+		blockCarvedStone.setUnlocalizedName("carved_stone");
+		blockCarvedStone.setRegistryName("carved_stone");
+		blockCarvedStone.setCreativeTab(lovecraftTab);
+		
 		//Initialize itemBlocks
 		itemBlockFlowerDrug = new ItemSimpleBlock(blockFlowerDrug).setRegistryName(blockFlowerDrug.getRegistryName());
 		itemBlockFossil = new ItemSimpleBlock(blockFossil).setRegistryName(blockFossil.getRegistryName());
@@ -335,6 +364,8 @@ public class LovecraftMain {
 		itemBlockChargedObelisk = new ItemSimpleBlock(blockChargedObelisk).setRegistryName(blockChargedObelisk.getRegistryName());
 		itemBlockObeliskCap = new ItemSimpleBlock(blockObeliskCap).setRegistryName(blockObeliskCap.getRegistryName());
 		itemBlockResolvedObeliskCap = new ItemSimpleBlock(blockResolvedObeliskCap).setRegistryName(blockResolvedObeliskCap.getRegistryName());
+		itemBlockCarvedStone = new ItemSimpleBlock(blockCarvedStone).setRegistryName(blockCarvedStone.getRegistryName());
+
 
 		//Initialize potions
 		potionDread = new PotionSimple(true, 14611199, 0, 0).setPotionName("effect.dread").setRegistryName("lovecraft:dread");
@@ -348,13 +379,16 @@ public class LovecraftMain {
 		//GameRegistry.registerWorldGenerator(lengGenerator, 0);
 		//GameRegistry.registerWorldGenerator(new ZigguratGenerator(), 4);
 		
+		DimensionManager.registerDimension(ROOM_DIM_ID, ROOM_DIM_TYPE);
+		
 		//Add smelting recipes
 		GameRegistry.addSmelting(itemBlockFlowerDrug, itemDriedFlower.getDefaultInstance(), 0);
 
-		//Add tile entities
+		//Add tile entities //TODO: Registry events or whatever else this is deprecated in favor of
 		GameRegistry.registerTileEntity(TileEntityHookah.class, "lovecraft:hookah");
 		GameRegistry.registerTileEntity(TileEntityAltar.class, "lovecraft:altar");
 		GameRegistry.registerTileEntity(TileEntityChargedObelisk.class, "lovecraft:chargedObelisk");
+		GameRegistry.registerTileEntity(TileEntityCarving.class, "lovecraft:carvedBlock");
 		
 		//Register entities
 		EntityRegistry.registerModEntity(new ResourceLocation("lovecraft:spell"), EntitySpell.class, "lovecraftSpell", 0, "lovecraft", 0, 1, false);
@@ -391,4 +425,13 @@ public class LovecraftMain {
 		proxy.postInit(event);
 	}
 
+	private static int nextDimID() {
+		for (int i = 0; i != -1; i++) {
+			if (!DimensionManager.isDimensionRegistered(i)) {
+				return i;
+			}
+		}
+		throw new RuntimeException("No free dimension IDs!");
+	}
+	
 }

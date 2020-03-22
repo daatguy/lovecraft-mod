@@ -29,6 +29,8 @@ item.mummy_chunk.name=Mummified Remains
 item.flesh_dust.name=Ground Flesh
 item.magnifying_glass.name=Magnifying Glass
 item.magnifying_glass.description=There are details in this world much finer than what the unaided human eye can make out.
+item.rubbing.name=Charcoal Rubbing
+item.rubbing.description=I can translate the carved inscription from the comfort of a writing desk... once the logic for this item is implemented, of course
 
 tile.mortar.name=Mortar and Pestle
 tile.flower_drug.name=Odorous Flower
@@ -53,6 +55,8 @@ tile.carved_obelisk.description=A more intricately hewn obelisk column. If I am 
 tile.charged_obelisk.name=Charged Obelisk Block
 tile.obelisk_cap.name=Obelisk Cap
 tile.resolved_obelisk_cap.name=Resolved Obelisk Cap
+tile.carved_stone.name=Carved Stone Bricks
+tile.carved_stone.description=This item should *probably* not exist later on.
 
 itemGroup.tabLovecraft=Lovecraft Mythos
 
@@ -93,8 +97,8 @@ book.lang.oldspeak=Oldspeak
 book.lang.translated=Translated
 
 book.dictionary_tooltip=This dictionary can translate *l.
-book.translated_tooltip=Translated from *l.
-book.untranslated_tooltip=Untranslated *l.
+book.translated_tooltip=Translated from *.
+book.untranslated_tooltip=Untranslated *.
 
 book.old_glyphs.name=Old Glyphs
 book.old_glyphs.description=This tattered volume contains various magic glyphs. It seems to contain further description as to their components, but the explanations are untranslated.
@@ -185,4 +189,7 @@ spell.cap.name=The Nihilist's Thesis
 spell.cap.description=Keeps obelisks from learning too much. Will resolve any existential tensions they may have.
 spell.disassemble.name=The Arkham Swap
 spell.disassemble.description=Cults in Arkham often found themselves subject to police raids. After much trial and error, they perfected a procedure for the hasty disassembly of a ritual circle.
+spell.enter_room.name=enter The Room
+spell.enter_room.description=I did not hit her. I did not
+
 subtitle.obelisk_hum=Obelisk Humming

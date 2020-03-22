@@ -18,6 +18,7 @@ public class SubItemsHandler {
 	public static final int GREEK = 2;
 	public static final int RUNIC = 3;
 	public static final int OLDSPEAK = 4;
+	public static final int ARAMAIC = 5;
 
 	public SubItemsHandler() {
 		fossils.add("plates");
