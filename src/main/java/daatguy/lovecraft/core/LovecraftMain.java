@@ -30,6 +30,7 @@ import daatguy.lovecraft.block.BlockMortar;
 import daatguy.lovecraft.block.BlockObelisk;
 import daatguy.lovecraft.block.BlockObeliskCap;
 import daatguy.lovecraft.block.BlockResolvedObeliskCap;
+import daatguy.lovecraft.block.BlockUnderstructure;
 import daatguy.lovecraft.block.BlockWeirdedBrick;
 import daatguy.lovecraft.book.DeskHandler;
 import daatguy.lovecraft.book.spell.SpellHandler;
@@ -123,7 +124,7 @@ public class LovecraftMain {
 	public static Item itemBlockResolvedObeliskCap;
 
 	//Block declarations
-	//public static Block blockUnderstructure;
+	public static Block blockUnderstructure;
 	public static BlockBush blockFlowerDrug;
 	public static Block blockFossil;
 	//public static Block blockAetherOre;
@@ -233,9 +234,9 @@ public class LovecraftMain {
 		
 		//Initialize blocks, set properties
 
-		//blockUnderstructure = new BlockUnderstructure(Material.ROCK);
-		//blockUnderstructure.setUnlocalizedName("understructure");
-		//blockUnderstructure.setRegistryName("understructure");
+		blockUnderstructure = new BlockUnderstructure(Material.ROCK);
+		blockUnderstructure.setUnlocalizedName("understructure");
+		blockUnderstructure.setRegistryName("understructure");
 		
 		blockWeirdedBrick = new BlockWeirdedBrick(Material.ROCK);
 		blockWeirdedBrick.setHardness(60f);

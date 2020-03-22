@@ -59,6 +59,7 @@ public class RegistryHandler {
 	@SubscribeEvent
 	public static void onBlockRegister(RegistryEvent.Register<Block> event) {
 
+		event.getRegistry().register(LovecraftMain.blockUnderstructure);
 		event.getRegistry().register(LovecraftMain.blockFlowerDrug);
 		event.getRegistry().register(LovecraftMain.blockFossil);
 		//event.getRegistry().register(LovecraftMain.blockAetherOre);
