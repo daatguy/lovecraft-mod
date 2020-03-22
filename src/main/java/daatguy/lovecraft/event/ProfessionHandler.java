@@ -17,16 +17,16 @@ import net.minecraftforge.event.entity.living.BabyEntitySpawnEvent;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry.ObjectHolder;
+import net.minecraftforge.fml.common.registry.VillagerRegistry;
 import net.minecraftforge.fml.common.registry.VillagerRegistry.VillagerCareer;
 import net.minecraftforge.fml.common.registry.VillagerRegistry.VillagerProfession;
 import net.minecraftforge.registries.IForgeRegistry;
 
-@ObjectHolder("lovecraft")
+//@ObjectHolder("lovecraft")
 public class ProfessionHandler {
 
 	public static VillagerProfession professionOpiumPeddler;
 	public static VillagerCareer careerOpiumPeddler;
-	public final static String VILLAGE_CORRECT_TAG = "lovecraft_village_correct";
 
 	@EventBusSubscriber(modid = "lovecraft")
 	public static class RegistrationHandler {
@@ -47,25 +47,6 @@ public class ProfessionHandler {
 		}
 	}
 	
-	@SubscribeEvent
-	public static void onVillagerBirth(BabyEntitySpawnEvent event) {
-		if(event.getChild() instanceof EntityVillager) {
-			event.getChild().addTag(VILLAGE_CORRECT_TAG);
-		}
-	}
-	
-	@SubscribeEvent
-	public static void onEntityJoin(EntityJoinWorldEvent event) {
-		if(event.getEntity() instanceof EntityVillager) {
-			if(((EntityVillager)event.getEntity()).getProfessionForge()==professionOpiumPeddler) {
-				if(((EntityVillager)event.getEntity()).getTags().contains(VILLAGE_CORRECT_TAG)) {
-					((EntityVillager)event.getEntity()).setProfession(null);
-					((EntityVillager)event.getEntity()).removeTag(VILLAGE_CORRECT_TAG);
-				}
-			}
-		}
-	}
-
 	/**
 	 * Associate careers and trades.
 	 */
