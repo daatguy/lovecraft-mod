@@ -336,7 +336,7 @@ public class VillageOpiumDen extends StructureVillagePieces.Village {
 	@Override
 	protected net.minecraftforge.fml.common.registry.VillagerRegistry.VillagerProfession chooseForgeProfession(int count, net.minecraftforge.fml.common.registry.VillagerRegistry.VillagerProfession prof)
     {
-        return ProfessionHandler.professionOpium;
+        return ProfessionHandler.professionOpiumPeddler;
     }
 
 }

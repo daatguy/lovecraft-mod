@@ -12,18 +12,21 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.village.MerchantRecipe;
 import net.minecraft.village.MerchantRecipeList;
 import net.minecraftforge.event.RegistryEvent;
+import net.minecraftforge.event.entity.EntityJoinWorldEvent;
+import net.minecraftforge.event.entity.living.BabyEntitySpawnEvent;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry.ObjectHolder;
+import net.minecraftforge.fml.common.registry.VillagerRegistry;
 import net.minecraftforge.fml.common.registry.VillagerRegistry.VillagerCareer;
 import net.minecraftforge.fml.common.registry.VillagerRegistry.VillagerProfession;
 import net.minecraftforge.registries.IForgeRegistry;
 
-@ObjectHolder("lovecraft")
+//@ObjectHolder("lovecraft")
 public class ProfessionHandler {
 
-	public static VillagerProfession professionOpium;
-	public static VillagerCareer careerOpium;
+	public static VillagerProfession professionOpiumPeddler;
+	public static VillagerCareer careerOpiumPeddler;
 
 	@EventBusSubscriber(modid = "lovecraft")
 	public static class RegistrationHandler {
@@ -36,22 +39,22 @@ public class ProfessionHandler {
 		@SubscribeEvent
 		public static void onEvent(
 				RegistryEvent.Register<VillagerProfession> event) {
-			professionOpium = new VillagerProfession(
+			professionOpiumPeddler = new VillagerProfession(
 					"lovecraft:opium_profession",
-					"lovecraft:textures/entities/opium_professiong.png",
-					"lovecraft:textures/entities/opium_professiong.png");
-			event.getRegistry().register(professionOpium);
+					"lovecraft:textures/entity/villager/opium_peddler.png",
+					"lovecraft:textures/entity/villager/zombie_opium_peddler.png");
+			event.getRegistry().register(professionOpiumPeddler);
 		}
 	}
-
+	
 	/**
 	 * Associate careers and trades.
 	 */
 	public static void associateCareersAndTrades() {
-		careerOpium = new VillagerCareer(professionOpium, "opium_career");
-		careerOpium.addTrade(1, new Trade(new ItemStack(
+		careerOpiumPeddler = new VillagerCareer(professionOpiumPeddler, "opium_career");
+		careerOpiumPeddler.addTrade(1, new Trade(new ItemStack(
 				LovecraftMain.itemDriedFlower), new PriceInfo(4, 7)));
-		careerOpium.addTrade(1, new Trade(new ItemStack(
+		careerOpiumPeddler.addTrade(1, new Trade(new ItemStack(
 				LovecraftMain.itemEmptyBeaker), new PriceInfo(1, 2)));
 	}
 

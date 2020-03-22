@@ -8,6 +8,8 @@ ambient.drugged=You hear every sound at once
 block.mortar=Mortar grinding
 block.sepulchral_break=Screams
 
+entity.Villager.opium_career=Opium Peddler
+
 item.empty_beaker.name=Glass Beaker
 item.beaker.name=Beaker of Water
 item.beaker.suspension_filled=Solution of *i
