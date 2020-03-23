@@ -118,6 +118,7 @@ public class LovecraftMain {
 	public static Item itemRubbing;
 
 	//More 'item' declarations, ItemBlocks
+	public static Item itemBlockUnderstructure;
 	public static Item itemBlockFlowerDrug;
 	public static Item itemBlockFossil;
 	public static Item itemBlockAetherOre;
@@ -258,6 +259,7 @@ public class LovecraftMain {
 		//Initialize blocks, set properties
 
 		blockUnderstructure = new BlockUnderstructure(Material.ROCK);
+		blockUnderstructure.setLightLevel(16f);
 		blockUnderstructure.setUnlocalizedName("understructure");
 		blockUnderstructure.setRegistryName("understructure");
 		
@@ -351,6 +353,7 @@ public class LovecraftMain {
 		blockCarvedStone.setCreativeTab(lovecraftTab);
 		
 		//Initialize itemBlocks
+		itemBlockUnderstructure = new ItemSimpleBlock(blockUnderstructure).setRegistryName(blockUnderstructure.getRegistryName());
 		itemBlockFlowerDrug = new ItemSimpleBlock(blockFlowerDrug).setRegistryName(blockFlowerDrug.getRegistryName());
 		itemBlockFossil = new ItemSimpleBlock(blockFossil).setRegistryName(blockFossil.getRegistryName());
 		itemBlockWeirdedBrick = new ItemSimpleBlock(blockWeirdedBrick).setRegistryName(blockWeirdedBrick.getRegistryName());

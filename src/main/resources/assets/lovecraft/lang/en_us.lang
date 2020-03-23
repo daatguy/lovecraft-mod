@@ -19,7 +19,7 @@ item.beaker.suspension_tooltip_a=A Solution of:
 item.beaker.suspension_tooltip_b=*p%% *i
 item.coin.name=Drachma
 item.weird_dust.name=Sepulchral Dust
-item.weird_dust.description=Coarse. The grains are strangely uniform in size.
+item.weird_dust.description=Coarse. The grains are all the same size and pyramidal.
 item.weird_shards.name=Sepulchral Shards
 item.weird_shards.description=It smells of metal and mold. Cold to the touch.
 item.dried_flower.name=Dried Flower
@@ -34,6 +34,7 @@ item.magnifying_glass.description=There are details in this world much finer tha
 item.rubbing.name=Charcoal Rubbing
 item.rubbing.description=I can translate the carved inscription from the comfort of a writing desk... once the logic for this item is implemented, of course
 
+tile.understructure.name=Nnn'drnog
 tile.mortar.name=Mortar and Pestle
 tile.flower_drug.name=Odorous Flower
 tile.flower_drug.description=It smells sickly sweet, like something died in a jar of molasses.
