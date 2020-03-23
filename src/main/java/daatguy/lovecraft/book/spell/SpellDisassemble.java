@@ -30,7 +30,7 @@ public class SpellDisassemble extends Spell {
 		if (te == null || te.checkForObeliskHeight(world, pos) > 64) {
 			return false;
 		} else {
-			return super.canCast(world, pos);
+			return super.canCast(world, pos) && super.canStart(world,  pos);
 		}
 	}
 
