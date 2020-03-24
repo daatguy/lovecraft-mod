@@ -189,8 +189,11 @@ book.fossil_notes_limb.description=This creature must have had several of these 
 book.anthology_fossil.name=Anthology: A 6th Kingdom
 book.anthology_fossil.description=My work has borne fruits! A new taxonomy, ancient and strange.
 
+
 spell.altar_ready=This rite is capable of being reenacted.
 spell.empty.name=Empty Tome
+spell.drug.name=A Midnight Terror
+spell.drug.description=Hastily scrawled above the procedure is the phrase: "best performed under a full moon."
 spell.charge.name=The Antipode Postulate
 spell.charge.description=Draws vital consciousness from the abate, charging carved obelisks with a greater, more mindful involution capacity. Leaves obelisks rather unsettled. Follow-up intervention is advised.
 spell.cap.name=The Nihilist's Thesis
