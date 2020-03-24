@@ -118,6 +118,7 @@ public class LovecraftMain {
 	public static Item itemRubbing;
 
 	//More 'item' declarations, ItemBlocks
+	public static Item itemBlockUnderstructure;
 	public static Item itemBlockFlowerDrug;
 	public static Item itemBlockFossil;
 	public static Item itemBlockAetherOre;
@@ -132,7 +133,7 @@ public class LovecraftMain {
 	public static Item itemBlockChargedObelisk;
 	public static Item itemBlockObeliskCap;
 	public static Item itemBlockResolvedObeliskCap;
-	public static Item itemBlockCarvedStone; //remove when I bother to add a chisel, probably
+	public static Item itemBlockCarved; //remove when I bother to add a chisel, probably
 
 	//Block declarations
 	public static Block blockUnderstructure;
@@ -150,7 +151,7 @@ public class LovecraftMain {
 	public static Block blockChargedObelisk;
 	public static Block blockObeliskCap;
 	public static Block blockResolvedObeliskCap;
-	public static Block blockCarvedStone;
+	public static Block blockCarved;
 	
 	//Room dimension
 	public static final String ROOM_NAME = "room";
@@ -258,6 +259,7 @@ public class LovecraftMain {
 		//Initialize blocks, set properties
 
 		blockUnderstructure = new BlockUnderstructure(Material.ROCK);
+		blockUnderstructure.setLightLevel(16f);
 		blockUnderstructure.setUnlocalizedName("understructure");
 		blockUnderstructure.setRegistryName("understructure");
 		
@@ -343,14 +345,15 @@ public class LovecraftMain {
 		blockResolvedObeliskCap.setLightLevel(8.0f);
 		blockResolvedObeliskCap.setCreativeTab(lovecraftTab);
 		
-		blockCarvedStone = new BlockCarvedBlock(Material.ROCK); //probably add another parameter later
-		blockCarvedStone.setHardness(1.5f);
-		blockCarvedStone.setHarvestLevel("pickaxe", 0);
-		blockCarvedStone.setUnlocalizedName("carved_stone");
-		blockCarvedStone.setRegistryName("carved_stone");
-		blockCarvedStone.setCreativeTab(lovecraftTab);
+		blockCarved = new BlockCarvedBlock(Material.ROCK); //probably add another parameter later
+		blockCarved.setHardness(1.5f);
+		blockCarved.setHarvestLevel("pickaxe", 0);
+		blockCarved.setUnlocalizedName("carved_block");
+		blockCarved.setRegistryName("carved_block");
+		blockCarved.setCreativeTab(lovecraftTab);
 		
 		//Initialize itemBlocks
+		itemBlockUnderstructure = new ItemSimpleBlock(blockUnderstructure).setRegistryName(blockUnderstructure.getRegistryName());
 		itemBlockFlowerDrug = new ItemSimpleBlock(blockFlowerDrug).setRegistryName(blockFlowerDrug.getRegistryName());
 		itemBlockFossil = new ItemSimpleBlock(blockFossil).setRegistryName(blockFossil.getRegistryName());
 		itemBlockWeirdedBrick = new ItemSimpleBlock(blockWeirdedBrick).setRegistryName(blockWeirdedBrick.getRegistryName());
@@ -365,7 +368,7 @@ public class LovecraftMain {
 		itemBlockChargedObelisk = new ItemSimpleBlock(blockChargedObelisk).setRegistryName(blockChargedObelisk.getRegistryName());
 		itemBlockObeliskCap = new ItemSimpleBlock(blockObeliskCap).setRegistryName(blockObeliskCap.getRegistryName());
 		itemBlockResolvedObeliskCap = new ItemSimpleBlock(blockResolvedObeliskCap).setRegistryName(blockResolvedObeliskCap.getRegistryName());
-		itemBlockCarvedStone = new ItemSimpleBlock(blockCarvedStone).setRegistryName(blockCarvedStone.getRegistryName());
+		itemBlockCarved = new ItemSimpleBlock(blockCarved).setRegistryName(blockCarved.getRegistryName());
 
 
 		//Initialize potions

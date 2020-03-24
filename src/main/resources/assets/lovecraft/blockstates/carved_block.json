@@ -1,0 +1,11 @@
+{
+    "variants": {
+        "facing=north": { "model": "lovecraft:carved_block" },
+        "facing=south": { "model": "lovecraft:carved_block", "y": 180, "uvlock": true },
+        "facing=west":  { "model": "lovecraft:carved_block", "y": 270, "uvlock": true },
+        "facing=east":  { "model": "lovecraft:carved_block", "y": 90, "uvlock": true },
+        "facing=up":    { "model": "lovecraft:carved_block", "x": 270, "uvlock": true },
+        "facing=down":  { "model": "lovecraft:carved_block", "x": 90, "uvlock": true },
+        "inventory": { "model": "lovecraft:carved_block" }
+    }
+}

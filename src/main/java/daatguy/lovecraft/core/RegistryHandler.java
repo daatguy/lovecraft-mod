@@ -41,6 +41,7 @@ public class RegistryHandler {
 		event.getRegistry().register(LovecraftMain.itemDriedFlower);
 		event.getRegistry().register(LovecraftMain.itemRubbing);
 
+		event.getRegistry().register(LovecraftMain.itemBlockUnderstructure);
 		event.getRegistry().register(LovecraftMain.itemBlockFlowerDrug);
 		event.getRegistry().register(LovecraftMain.itemBlockFossil);
 		//event.getRegistry().register(LovecraftMain.itemBlockAetherOre);
@@ -55,7 +56,7 @@ public class RegistryHandler {
 		event.getRegistry().register(LovecraftMain.itemBlockChargedObelisk);
 		event.getRegistry().register(LovecraftMain.itemBlockObeliskCap);
 		event.getRegistry().register(LovecraftMain.itemBlockResolvedObeliskCap);
-		event.getRegistry().register(LovecraftMain.itemBlockCarvedStone);
+		event.getRegistry().register(LovecraftMain.itemBlockCarved);
 	}
 	
 	@SubscribeEvent
@@ -76,7 +77,7 @@ public class RegistryHandler {
 		event.getRegistry().register(LovecraftMain.blockChargedObelisk);
 		event.getRegistry().register(LovecraftMain.blockObeliskCap);
 		event.getRegistry().register(LovecraftMain.blockResolvedObeliskCap);
-		event.getRegistry().register(LovecraftMain.blockCarvedStone);
+		event.getRegistry().register(LovecraftMain.blockCarved);
 	}
 
 
@@ -139,6 +140,10 @@ public class RegistryHandler {
 		((ItemBook)LovecraftMain.itemBook).initModel();
 		((ItemFossil)LovecraftMain.itemFossil).initModel();
 		ModelLoader.setCustomModelResourceLocation(
+				LovecraftMain.itemBlockUnderstructure, 0, new ModelResourceLocation(
+						LovecraftMain.itemBlockUnderstructure.getRegistryName(),
+						"inventory"));
+		ModelLoader.setCustomModelResourceLocation(
 				LovecraftMain.itemBlockFlowerDrug, 0, new ModelResourceLocation(
 						LovecraftMain.itemBlockFlowerDrug.getRegistryName(),
 						"inventory"));
@@ -195,8 +200,8 @@ public class RegistryHandler {
 						LovecraftMain.itemBlockResolvedObeliskCap.getRegistryName(),
 						"inventory"));
 		ModelLoader.setCustomModelResourceLocation(
-				LovecraftMain.itemBlockCarvedStone, 0, new ModelResourceLocation(
-						LovecraftMain.itemBlockCarvedStone.getRegistryName(),
+				LovecraftMain.itemBlockCarved, 0, new ModelResourceLocation(
+						LovecraftMain.itemBlockCarved.getRegistryName(),
 						"inventory"));
 	}
 }
