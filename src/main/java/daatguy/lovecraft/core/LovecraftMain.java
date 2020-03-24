@@ -78,7 +78,7 @@ public class LovecraftMain {
 
 	public static SubItemsHandler subItemsHandler = new SubItemsHandler();
 	
-	public static SpellHandler spellHandler = new SpellHandler();
+	public static SpellHandler spellHandler; //initialize items first
 
 	public static DeskHandler deskHandler = new DeskHandler();
 	
@@ -398,6 +398,8 @@ public class LovecraftMain {
 		
 		//Register entities
 		EntityRegistry.registerModEntity(new ResourceLocation("lovecraft:spell"), EntitySpell.class, "lovecraftSpell", 0, "lovecraft", 0, 1, false);
+		
+		spellHandler = new SpellHandler();
 		
 		//Proxy Pre-Init
 		proxy.preInit(event);
