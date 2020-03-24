@@ -21,9 +21,6 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.registry.EntityRegistry;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.common.registry.VillagerRegistry;
-
-import javax.annotation.Nullable;
-
 import daatguy.lovecraft.block.BlockAltar;
 import daatguy.lovecraft.block.BlockBasRelief;
 import daatguy.lovecraft.block.BlockCarvedBlock;
@@ -55,6 +52,7 @@ import daatguy.lovecraft.item.ItemBook;
 import daatguy.lovecraft.item.ItemEmptyBeaker;
 import daatguy.lovecraft.item.ItemFossil;
 import daatguy.lovecraft.item.ItemFossilDust;
+import daatguy.lovecraft.item.ItemRubbing;
 import daatguy.lovecraft.item.ItemSimple;
 import daatguy.lovecraft.item.ItemSimpleBlock;
 import daatguy.lovecraft.item.ItemTome;
@@ -101,6 +99,7 @@ public class LovecraftMain {
 	public static Potion potionDrugged;
 	
 	//Item declarations
+	public static Item itemRubbingKit;
 	public static Item itemEmptyBeaker;
 	public static Item itemBeaker;
 	public static Item itemCoin;
@@ -174,6 +173,11 @@ public class LovecraftMain {
 		itemFossilDust.setRegistryName("fossil_dust");
 		itemFossilDust.setCreativeTab(lovecraftTab);
 
+		itemRubbingKit = new ItemSimple();
+		itemRubbingKit.setUnlocalizedName("rubbing_kit");
+		itemRubbingKit.setRegistryName("rubbing_kit");
+		itemRubbingKit.setCreativeTab(lovecraftTab);
+		
 		itemEmptyBeaker = new ItemEmptyBeaker();
 		itemEmptyBeaker.setUnlocalizedName("empty_beaker");
 		itemEmptyBeaker.setRegistryName("empty_beaker");
@@ -231,11 +235,9 @@ public class LovecraftMain {
 		itemBook.setRegistryName("book");
 		itemBook.setCreativeTab(lovecraftTab);
 		
-		itemRubbing = new ItemSimple(); //subclass comes later
+		itemRubbing = new ItemRubbing();
 		itemRubbing.setUnlocalizedName("rubbing");
 		itemRubbing.setRegistryName("rubbing");
-		itemRubbing.setCreativeTab(lovecraftTab);
-		itemRubbing.setMaxStackSize(1);
 		
 		itemDriedFlower = new ItemSimple();
 		itemDriedFlower.setUnlocalizedName("dried_flower");
