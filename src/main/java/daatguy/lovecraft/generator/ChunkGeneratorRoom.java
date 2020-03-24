@@ -5,12 +5,15 @@ import java.util.List;
 import daatguy.lovecraft.core.LovecraftMain;
 import net.minecraft.entity.EnumCreatureType;
 import net.minecraft.init.Blocks;
+import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.Biome.SpawnListEntry;
 import net.minecraft.world.chunk.Chunk;
 import net.minecraft.world.chunk.ChunkPrimer;
 import net.minecraft.world.gen.IChunkGenerator;
+import net.minecraft.block.Block;
+import net.minecraft.block.BlockDoor;
 import net.minecraft.block.state.IBlockState;
 
 public class ChunkGeneratorRoom implements IChunkGenerator {
@@ -27,7 +30,7 @@ public class ChunkGeneratorRoom implements IChunkGenerator {
 		Chunk c = new Chunk(world, primer, x, z); //just generate it empty lol
 		byte[] bbytes = c.getBiomeArray();
 		for (int i = 0; i < bbytes.length; i++) {
-			bbytes[i] = 9; //end
+			bbytes[i] = 9; //end, change to custom later?
 		}
 		return c;
 	}
@@ -65,6 +68,13 @@ public class ChunkGeneratorRoom implements IChunkGenerator {
 				world.setBlockState(new BlockPos(x, ELEVATION + SIDE_LENGTH - 1, z), BEDROCK);
 			}
 		}
+		
+		final IBlockState DOOR = Blocks.OAK_DOOR.getDefaultState()
+												.withProperty(BlockDoor.FACING, EnumFacing.SOUTH);
+		world.setBlockState(new BlockPos(SIDE_LENGTH / 2, ELEVATION + 1, SIDE_LENGTH - 1), DOOR);
+		world.setBlockState(new BlockPos(SIDE_LENGTH / 2, ELEVATION + 2, SIDE_LENGTH - 1),
+				            DOOR.withProperty(BlockDoor.HALF, BlockDoor.EnumDoorHalf.UPPER));
+		
 	}
 
 	@Override

@@ -51,12 +51,12 @@ public class SpellEnterRoom extends Spell {
 				SoundEvents.ENTITY_GUARDIAN_AMBIENT, SoundCategory.NEUTRAL,
 				1.0F, 1.2F, false);
 		List<EntityLivingBase> entitiesInRange = world.getEntitiesWithinAABB(EntityLivingBase.class,
-                															 new AxisAlignedBB(pos.getX() - 2,
-                														                       pos.getY() - 2,
-                														                       pos.getZ() - 2,
-                														                       pos.getX() + 2,
+                															 new AxisAlignedBB(pos.getX() - 2.5,
+                														                       pos.getY(),
+                														                       pos.getZ() - 2.5,
+                														                       pos.getX() + 3.5,
                 														                       pos.getY() + 2,
-                														                       pos.getZ() + 2));
+                														                       pos.getZ() + 3.5));
 		for (EntityLivingBase e : entitiesInRange) {
 			if (!e.isDead && !e.isRiding() && !e.isBeingRidden() && e.isNonBoss()) {
 				e.changeDimension(LovecraftMain.ROOM_DIM_ID, teleporter);
