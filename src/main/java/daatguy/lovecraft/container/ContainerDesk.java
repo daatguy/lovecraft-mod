@@ -96,10 +96,10 @@ public class ContainerDesk extends Container {
 					this.recipe = recipe;
 					if (invCraftResult.getStackInSlot(0).isEmpty()) {
 						invCraftResult.setInventorySlotContents(0,
-								recipe.output.copy());
+								recipe.getOutput(stacks).copy());
 						entityplayermp.connection
 								.sendPacket(new SPacketSetSlot(this.windowId,
-										0, recipe.output.copy()));
+										0, recipe.getOutput(stacks).copy()));
 					}
 					
 					break;
@@ -124,7 +124,7 @@ public class ContainerDesk extends Container {
 			ItemStack cItem = this.craftMatrix.getStackInSlot(i);
 			if (!cItem.isEmpty()) {
 				boolean cont = false;
-				for (ItemStack rItem : this.recipe.remains) {
+				for (ItemStack rItem : this.recipe.getRemains()) {
 					if (ItemStack.areItemsEqual(rItem, cItem)
 							&& (ItemStack.areItemStackTagsEqual(rItem,
 									cItem) || !rItem.getItem()

@@ -95,7 +95,7 @@ public class DeskRecipe {
 	/**
 	 * Returns a needed note item for a given inputItem of inputs
 	 */
-	public Item getNeededNoteItem(ArrayList<ItemStack> inputItems) {
+	public ItemStack getNeededNoteItem(ArrayList<ItemStack> inputItems) {
 		if(canCraft(inputItems)) return null;
 		for(Item nItem : this.noteItems) {
 			ArrayList<ItemStack> cItems = (ArrayList<ItemStack>) inputItems.clone();
@@ -110,7 +110,7 @@ public class DeskRecipe {
 				}
 			}
 			//System.out.println(rItems);
-			if(canCraft(cItems, rItems)) return nItem;
+			if(canCraft(cItems, rItems)) return new ItemStack(nItem);
 		}
 		return null;
 	}
@@ -136,10 +136,18 @@ public class DeskRecipe {
 		return (cItems.size() == 0);
 	}
 
+	public ItemStack getOutput(ArrayList<ItemStack> stacks) {
+		return this.output;
+	}
+	
+	public ArrayList<ItemStack> getRemains() {
+		return this.remains;
+	}
+	
 	/**
 	 * Removes rItem from items if rItem is in items, returns whether sucessful or not
 	 */
-	private boolean removeIfContained(ArrayList<ItemStack> items,
+	protected boolean removeIfContained(ArrayList<ItemStack> items,
 			ItemStack rItem) {
 		// ArrayList<ItemStack> items = (ArrayList<ItemStack>) iitems.clone();
 		int size = items.size();

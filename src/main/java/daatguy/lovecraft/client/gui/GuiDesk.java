@@ -8,6 +8,9 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.client.renderer.GlStateManager;
+import net.minecraft.client.renderer.block.model.IBakedModel;
+import net.minecraft.client.renderer.block.model.ItemCameraTransforms;
+import net.minecraft.client.renderer.texture.TextureMap;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.init.Items;
@@ -68,7 +71,7 @@ public class GuiDesk extends GuiContainer {
 
 		for (DeskRecipe recipe : LovecraftMain.deskHandler.deskRecipes) {
 
-			Item neededItem = recipe.getNeededNoteItem(stacks);
+			ItemStack neededItem = recipe.getNeededNoteItem(stacks);
 
 			// System.out.println(neededItem);
 
@@ -86,11 +89,11 @@ public class GuiDesk extends GuiContainer {
 		}
 	}
 
-	public void drawGhostItem(Item item, int mouseX, int mouseY, int x, int y) {
+	public void drawGhostItem(ItemStack item, int mouseX, int mouseY, int x, int y) {
 
 		GlStateManager.pushMatrix();
 		GlStateManager.translate(guiLeft, guiTop, -150.0f);
-		mc.getRenderItem().renderItemAndEffectIntoGUI(new ItemStack(item),
+		mc.getRenderItem().renderItemAndEffectIntoGUI(item,
 				x, y);
 		GlStateManager.enableAlpha();
 		GlStateManager.enableBlend();
@@ -106,12 +109,12 @@ public class GuiDesk extends GuiContainer {
 		GlStateManager.popMatrix();
 	}
 
-	public void drawGhostItemTooltip(Item item, int mouseX, int mouseY, int x,
+	public void drawGhostItemTooltip(ItemStack item, int mouseX, int mouseY, int x,
 			int y, boolean isBinding) {
 
 		List<String> text = new ArrayList<String>();
 
-		text.add(new ItemStack(item).getDisplayName());
+		text.add(item.getDisplayName());
 		text.add("");
 		if (isBinding) {
 			text.add(TextFormatting.RED
@@ -158,8 +161,9 @@ public class GuiDesk extends GuiContainer {
 		}
 
 		for (DeskRecipe recipe : LovecraftMain.deskHandler.deskRecipes) {
-
-			Item neededItem = recipe.getNeededNoteItem(stacks);
+			
+			//Fix this to work with itemstacks
+			ItemStack neededItem = recipe.getNeededNoteItem(stacks);
 
 			// System.out.println(neededItem);
 

@@ -64,6 +64,12 @@ public class DeskHandler {
 	
 	//Adds all the translation recipes to deskRecipes
 	private void addTranslationRecipes() {
+		//For rubbing translation
+		deskRecipes.add(new DeskRubbingTranslationRecipe(SubItemsHandler.LATIN));
+		deskRecipes.add(new DeskRubbingTranslationRecipe(SubItemsHandler.GREEK));
+		deskRecipes.add(new DeskRubbingTranslationRecipe(SubItemsHandler.RUNIC));
+		deskRecipes.add(new DeskRubbingTranslationRecipe(SubItemsHandler.SANSKRIT));
+		//For book translation
 		for(String bookKey : LovecraftMain.subItemsHandler.books.keySet()) {
 			Book book = LovecraftMain.subItemsHandler.books.get(bookKey);
 			if(book.language!=SubItemsHandler.COMMON) {
