@@ -1,4 +1,4 @@
-package daatguy.lovecraft.networking;
+package io.github.daatguy.mods.minecraft.lovecraft.networking;
 
 import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.fml.common.network.simpleimpl.SimpleNetworkWrapper;

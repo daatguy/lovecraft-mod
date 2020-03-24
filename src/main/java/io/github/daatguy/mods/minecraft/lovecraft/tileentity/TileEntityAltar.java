@@ -1,5 +1,6 @@
 package io.github.daatguy.mods.minecraft.lovecraft.tileentity;
 
+import io.github.daatguy.mods.minecraft.lovecraft.client.sound.SoundEventHandler;
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 import net.minecraft.nbt.NBTTagCompound;
@@ -12,7 +13,6 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
-import io.github.daatguy.mods.minecraft.lovecraft.client.sound.SoundEventHandler;
 import io.github.daatguy.mods.minecraft.lovecraft.core.LovecraftMain;
 
 public class TileEntityAltar extends TileEntity implements ITickable {

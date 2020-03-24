@@ -1,9 +1,6 @@
 package io.github.daatguy.mods.minecraft.lovecraft.item;
 
-import java.util.ArrayList;
 import java.util.List;
-
-import javax.swing.Icon;
 
 import io.github.daatguy.mods.minecraft.lovecraft.core.LovecraftMain;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;

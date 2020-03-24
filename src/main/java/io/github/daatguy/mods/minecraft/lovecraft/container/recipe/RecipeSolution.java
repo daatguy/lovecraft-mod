@@ -1,9 +1,7 @@
 package io.github.daatguy.mods.minecraft.lovecraft.container.recipe;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Comparator;
-import java.util.List;
 
 import io.github.daatguy.mods.minecraft.lovecraft.core.LovecraftMain;
 import io.github.daatguy.mods.minecraft.lovecraft.item.ItemBeaker;

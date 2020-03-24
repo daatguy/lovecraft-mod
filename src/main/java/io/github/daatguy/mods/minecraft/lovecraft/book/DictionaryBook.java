@@ -1,8 +1,8 @@
 package io.github.daatguy.mods.minecraft.lovecraft.book;
 
+import io.github.daatguy.mods.minecraft.lovecraft.item.SubItemsHandler;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import io.github.daatguy.mods.minecraft.lovecraft.item.SubItemsHandler;
 
 public class DictionaryBook extends Book {
 

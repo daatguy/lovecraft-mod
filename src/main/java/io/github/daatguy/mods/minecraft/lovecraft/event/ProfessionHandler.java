@@ -1,10 +1,10 @@
-package daatguy.lovecraft.event;
+package io.github.daatguy.mods.minecraft.lovecraft.event;
 
 import java.util.Random;
 
-import daatguy.lovecraft.book.spell.SpellHandler;
-import daatguy.lovecraft.core.LovecraftMain;
-import daatguy.lovecraft.item.ItemBook;
+import io.github.daatguy.mods.minecraft.lovecraft.book.spell.SpellHandler;
+import io.github.daatguy.mods.minecraft.lovecraft.core.LovecraftMain;
+import io.github.daatguy.mods.minecraft.lovecraft.item.ItemBook;
 import net.minecraft.entity.IMerchant;
 import net.minecraft.entity.passive.EntityVillager;
 import net.minecraft.entity.passive.EntityVillager.ITradeList;

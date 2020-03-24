@@ -1,4 +1,4 @@
-package daatguy.lovecraft.tileentity;
+package io.github.daatguy.mods.minecraft.lovecraft.tileentity;
 
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;

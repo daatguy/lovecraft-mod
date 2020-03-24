@@ -1,6 +1,5 @@
 package io.github.daatguy.mods.minecraft.lovecraft.generator;
 
-import java.util.Iterator;
 import java.util.Random;
 
 import io.github.daatguy.mods.minecraft.lovecraft.book.spell.SpellHandler;

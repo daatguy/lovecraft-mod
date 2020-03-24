@@ -1,5 +1,7 @@
 package io.github.daatguy.mods.minecraft.lovecraft.networking;
 
+import io.github.daatguy.mods.minecraft.lovecraft.entity.EntitySpell;
+import io.github.daatguy.mods.minecraft.lovecraft.tileentity.TileEntityAltar;
 import io.netty.buffer.ByteBuf;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.EntityPlayerMP;
@@ -10,8 +12,6 @@ import net.minecraftforge.fml.common.network.simpleimpl.IMessageHandler;
 import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
 import net.minecraftforge.fml.relauncher.Side;
 import io.github.daatguy.mods.minecraft.lovecraft.core.LovecraftMain;
-import io.github.daatguy.mods.minecraft.lovecraft.entity.EntitySpell;
-import io.github.daatguy.mods.minecraft.lovecraft.tileentity.TileEntityAltar;
 
 public class SpellMessage implements IMessage {
 

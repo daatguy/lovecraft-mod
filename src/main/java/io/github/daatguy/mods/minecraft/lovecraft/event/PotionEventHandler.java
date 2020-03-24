@@ -1,10 +1,10 @@
 package io.github.daatguy.mods.minecraft.lovecraft.event;
 
 import io.github.daatguy.mods.minecraft.lovecraft.client.sound.MovingSoundDrugged;
-import io.github.daatguy.mods.minecraft.lovecraft.core.LovecraftMain;
-import io.github.daatguy.mods.minecraft.lovecraft.networking.PotionDruggedMessage;
 import io.github.daatguy.mods.minecraft.lovecraft.world.potion.PotionDrugged;
 import io.github.daatguy.mods.minecraft.lovecraft.world.potion.PotionSimple;
+import io.github.daatguy.mods.minecraft.lovecraft.core.LovecraftMain;
+import io.github.daatguy.mods.minecraft.lovecraft.networking.PotionDruggedMessage;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.entity.EntityLivingBase;

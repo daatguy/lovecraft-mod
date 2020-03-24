@@ -1,7 +1,5 @@
 package io.github.daatguy.mods.minecraft.lovecraft.item;
 
-import java.util.List;
-
 import javax.annotation.Nullable;
 
 import io.github.daatguy.mods.minecraft.lovecraft.core.LovecraftMain;

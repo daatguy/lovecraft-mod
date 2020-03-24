@@ -1,8 +1,9 @@
 package io.github.daatguy.mods.minecraft.lovecraft.block;
 
 import java.util.List;
-import java.util.Random;
 
+import io.github.daatguy.mods.minecraft.lovecraft.client.sound.SoundEventHandler;
+import io.github.daatguy.mods.minecraft.lovecraft.container.AlchemyRecipes;
 import io.github.daatguy.mods.minecraft.lovecraft.core.LovecraftMain;
 import net.minecraft.block.BlockHorizontal;
 import net.minecraft.block.ITileEntityProvider;
@@ -34,8 +35,6 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import io.github.daatguy.mods.minecraft.lovecraft.client.sound.SoundEventHandler;
-import io.github.daatguy.mods.minecraft.lovecraft.container.AlchemyRecipes;
 
 public class BlockMortar extends BlockSimple {
 

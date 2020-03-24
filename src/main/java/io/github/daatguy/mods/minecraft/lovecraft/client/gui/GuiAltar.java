@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.util.ArrayList;
 import java.util.List;
 
+import io.github.daatguy.mods.minecraft.lovecraft.container.ContainerAltar;
 import io.github.daatguy.mods.minecraft.lovecraft.book.spell.Spell;
 import io.github.daatguy.mods.minecraft.lovecraft.core.LovecraftMain;
 import io.github.daatguy.mods.minecraft.lovecraft.networking.SpellMessage;
@@ -24,7 +25,6 @@ import net.minecraft.util.text.TextFormatting;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
 import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.IItemHandler;
-import io.github.daatguy.mods.minecraft.lovecraft.container.ContainerAltar;
 
 public class GuiAltar extends GuiContainer {
 

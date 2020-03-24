@@ -1,6 +1,5 @@
 package io.github.daatguy.mods.minecraft.lovecraft.tileentity;
 
-import daatguy.lovecraft.item.SubItemsHandler;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 

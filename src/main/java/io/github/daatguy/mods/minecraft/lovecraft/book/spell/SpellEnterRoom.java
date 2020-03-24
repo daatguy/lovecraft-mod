@@ -2,9 +2,9 @@ package io.github.daatguy.mods.minecraft.lovecraft.book.spell;
 
 import java.util.List;
 
+import io.github.daatguy.mods.minecraft.lovecraft.world.RoomTeleporter;
 import io.github.daatguy.mods.minecraft.lovecraft.core.LovecraftMain;
 import io.github.daatguy.mods.minecraft.lovecraft.tileentity.TileEntityAltar;
-import io.github.daatguy.mods.minecraft.lovecraft.world.RoomTeleporter;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.SoundEvents;

@@ -1,12 +1,11 @@
-package daatguy.lovecraft.book;
+package io.github.daatguy.mods.minecraft.lovecraft.book;
 
 import java.util.ArrayList;
 
-import daatguy.lovecraft.book.spell.SpellHandler;
-import daatguy.lovecraft.core.LovecraftMain;
-import daatguy.lovecraft.item.ItemBook;
-import daatguy.lovecraft.item.ItemFossil;
-import daatguy.lovecraft.item.SubItemsHandler;
+import io.github.daatguy.mods.minecraft.lovecraft.core.LovecraftMain;
+import io.github.daatguy.mods.minecraft.lovecraft.item.ItemBook;
+import io.github.daatguy.mods.minecraft.lovecraft.item.ItemFossil;
+import io.github.daatguy.mods.minecraft.lovecraft.item.SubItemsHandler;
 import net.minecraft.block.Block;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;

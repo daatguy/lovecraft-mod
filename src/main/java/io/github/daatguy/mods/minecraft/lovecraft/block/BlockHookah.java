@@ -1,4 +1,4 @@
-package daatguy.lovecraft.block;
+package io.github.daatguy.mods.minecraft.lovecraft.block;
 
 import java.util.List;
 
@@ -30,8 +30,8 @@ import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
-import daatguy.lovecraft.core.LovecraftMain;
-import daatguy.lovecraft.tileentity.TileEntityHookah;
+import io.github.daatguy.mods.minecraft.lovecraft.core.LovecraftMain;
+import io.github.daatguy.mods.minecraft.lovecraft.tileentity.TileEntityHookah;
 
 public class BlockHookah extends BlockSimple implements ITileEntityProvider {
 

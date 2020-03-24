@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.util.ArrayList;
 import java.util.List;
 
+import io.github.daatguy.mods.minecraft.lovecraft.container.ContainerDesk;
 import io.github.daatguy.mods.minecraft.lovecraft.book.DeskRecipe;
 import io.github.daatguy.mods.minecraft.lovecraft.core.LovecraftMain;
 import net.minecraft.client.Minecraft;
@@ -20,7 +21,6 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.util.text.TextFormatting;
-import io.github.daatguy.mods.minecraft.lovecraft.container.ContainerDesk;
 
 public class GuiDesk extends GuiContainer {
 

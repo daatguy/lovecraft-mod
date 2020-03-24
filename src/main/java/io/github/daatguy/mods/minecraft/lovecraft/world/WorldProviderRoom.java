@@ -1,7 +1,7 @@
 package io.github.daatguy.mods.minecraft.lovecraft.world;
 
-import io.github.daatguy.mods.minecraft.lovecraft.core.LovecraftMain;
 import io.github.daatguy.mods.minecraft.lovecraft.generator.ChunkGeneratorRoom;
+import io.github.daatguy.mods.minecraft.lovecraft.core.LovecraftMain;
 import net.minecraft.entity.Entity;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.DimensionType;

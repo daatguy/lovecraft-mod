@@ -1,8 +1,5 @@
 package io.github.daatguy.mods.minecraft.lovecraft.block;
 
-import java.util.List;
-import java.util.Random;
-
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockBush;
 import net.minecraft.block.BlockHorizontal;

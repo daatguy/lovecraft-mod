@@ -1,5 +1,7 @@
 package io.github.daatguy.mods.minecraft.lovecraft.client.gui;
 
+import io.github.daatguy.mods.minecraft.lovecraft.container.ContainerAltar;
+import io.github.daatguy.mods.minecraft.lovecraft.container.ContainerDesk;
 import io.github.daatguy.mods.minecraft.lovecraft.tileentity.TileEntityAltar;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.tileentity.TileEntity;
@@ -8,8 +10,6 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.common.network.IGuiHandler;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import io.github.daatguy.mods.minecraft.lovecraft.container.ContainerAltar;
-import io.github.daatguy.mods.minecraft.lovecraft.container.ContainerDesk;
 
 @SideOnly(Side.CLIENT)
 public class GuiHandler implements IGuiHandler {

@@ -1,6 +1,5 @@
 package io.github.daatguy.mods.minecraft.lovecraft.block;
 
-import java.util.List;
 import java.util.Random;
 
 import io.github.daatguy.mods.minecraft.lovecraft.core.LovecraftMain;

@@ -1,5 +1,6 @@
 package io.github.daatguy.mods.minecraft.lovecraft.book.spell;
 
+import io.github.daatguy.mods.minecraft.lovecraft.client.sound.SoundEventHandler;
 import net.minecraft.block.Block;
 import net.minecraft.init.Items;
 import net.minecraft.init.SoundEvents;
@@ -8,7 +9,6 @@ import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-import io.github.daatguy.mods.minecraft.lovecraft.client.sound.SoundEventHandler;
 import io.github.daatguy.mods.minecraft.lovecraft.core.LovecraftMain;
 import io.github.daatguy.mods.minecraft.lovecraft.tileentity.TileEntityAltar;
 

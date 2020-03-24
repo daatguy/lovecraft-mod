@@ -1,5 +1,6 @@
-package daatguy.lovecraft.book.spell;
+package io.github.daatguy.mods.minecraft.lovecraft.book.spell;
 
+import io.github.daatguy.mods.minecraft.lovecraft.core.LovecraftMain;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.init.SoundEvents;
@@ -9,8 +10,7 @@ import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.items.CapabilityItemHandler;
-import daatguy.lovecraft.core.LovecraftMain;
-import daatguy.lovecraft.tileentity.TileEntityAltar;
+import io.github.daatguy.mods.minecraft.lovecraft.tileentity.TileEntityAltar;
 
 public class SpellDisassemble extends Spell {
 

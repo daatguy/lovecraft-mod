@@ -1,11 +1,11 @@
-package daatguy.lovecraft.block;
+package io.github.daatguy.mods.minecraft.lovecraft.block;
 
 import javax.annotation.Nullable;
 
-import daatguy.lovecraft.book.DeskHandler;
-import daatguy.lovecraft.core.LovecraftMain;
-import daatguy.lovecraft.item.SubItemsHandler;
-import daatguy.lovecraft.tileentity.TileEntityCarving;
+import io.github.daatguy.mods.minecraft.lovecraft.book.DeskHandler;
+import io.github.daatguy.mods.minecraft.lovecraft.core.LovecraftMain;
+import io.github.daatguy.mods.minecraft.lovecraft.item.SubItemsHandler;
+import io.github.daatguy.mods.minecraft.lovecraft.tileentity.TileEntityCarving;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockDirectional;
 import net.minecraft.block.material.Material;

@@ -1,7 +1,5 @@
 package io.github.daatguy.mods.minecraft.lovecraft.block;
 
-import java.util.List;
-
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.ITileEntityProvider;

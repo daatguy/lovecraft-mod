@@ -1,7 +1,6 @@
 package io.github.daatguy.mods.minecraft.lovecraft.block;
 
-import java.util.List;
-
+import io.github.daatguy.mods.minecraft.lovecraft.client.gui.GuiHandler;
 import io.github.daatguy.mods.minecraft.lovecraft.core.LovecraftMain;
 import net.minecraft.block.Block;
 import net.minecraft.block.ITileEntityProvider;
@@ -21,7 +20,6 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.IItemHandler;
-import io.github.daatguy.mods.minecraft.lovecraft.client.gui.GuiHandler;
 
 public class BlockDesk extends BlockSimple {
 

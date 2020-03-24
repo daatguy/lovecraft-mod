@@ -1,5 +1,6 @@
-package daatguy.lovecraft.book.spell;
+package io.github.daatguy.mods.minecraft.lovecraft.book.spell;
 
+import io.github.daatguy.mods.minecraft.lovecraft.core.LovecraftMain;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.init.SoundEvents;
@@ -8,9 +9,7 @@ import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-import daatguy.lovecraft.core.LovecraftMain;
-import daatguy.lovecraft.item.ItemBeaker;
-import daatguy.lovecraft.tileentity.TileEntityAltar;
+import io.github.daatguy.mods.minecraft.lovecraft.tileentity.TileEntityAltar;
 
 public class SpellDrug extends Spell {
 

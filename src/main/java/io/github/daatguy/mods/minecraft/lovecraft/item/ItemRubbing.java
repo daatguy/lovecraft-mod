@@ -1,9 +1,6 @@
-package daatguy.lovecraft.item;
+package io.github.daatguy.mods.minecraft.lovecraft.item;
 
-import java.util.ArrayList;
 import java.util.List;
-
-import javax.swing.Icon;
 
 import org.apache.logging.log4j.core.pattern.TextRenderer;
 
@@ -20,10 +17,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import daatguy.lovecraft.book.DeskHandler;
-import daatguy.lovecraft.book.DictionaryBook;
-import daatguy.lovecraft.book.spell.SpellHandler;
-import daatguy.lovecraft.core.LovecraftMain;
+import io.github.daatguy.mods.minecraft.lovecraft.core.LovecraftMain;
 
 public class ItemRubbing extends ItemSimple {
 
