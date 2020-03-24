@@ -10,6 +10,8 @@ block.sepulchral_break=Screams
 
 entity.Villager.opium_career=Opium Peddler
 
+item.rubbing_kit.name=Rubbing Kit
+item.rubbing_kit.description=With this, I can copy down any inscriptions I find and translate them later.
 item.empty_beaker.name=Glass Beaker
 item.beaker.name=Beaker of Water
 item.beaker.suspension_filled=Solution of *i
@@ -31,7 +33,7 @@ item.mummy_chunk.name=Mummified Remains
 item.flesh_dust.name=Ground Flesh
 item.magnifying_glass.name=Magnifying Glass
 item.magnifying_glass.description=There are details in this world much finer than what the unaided human eye can make out.
-item.rubbing.name=Charcoal Rubbing
+item.rubbing.name=Rubbing
 item.rubbing.description=I can translate the carved inscription from the comfort of a writing desk... once the logic for this item is implemented, of course
 
 tile.understructure.name=Nnn'drnog
@@ -58,8 +60,7 @@ tile.carved_obelisk.description=A more intricately hewn obelisk column. If I am 
 tile.charged_obelisk.name=Charged Obelisk Block
 tile.obelisk_cap.name=Obelisk Cap
 tile.resolved_obelisk_cap.name=Resolved Obelisk Cap
-tile.carved_block.name=Carved Block
-tile.carved_block.description=Well, it's only stone bricks for now, but...
+tile.carved_block.name=Carved Stone Bricks
 
 itemGroup.tabLovecraft=Lovecraft Mythos
 
@@ -71,6 +72,10 @@ potion.dread.message0=A grotesque feeling creeps into the back of your mind...
 potion.dread.message1=Something is terribly, terribly wrong...
 potion.dread.message2=Your feet grow heavier with every step...
 potion.dread.message3=A deep cold runs down your spine...
+
+carving.untranslated=The carving is in *C. Perhaps a *C dictionary?
+carving.null=Nothing of note is carved on the panel.
+carving.leng="Leng"
 
 tooltip.altar_cast=Incant Verse
 tooltip.empty_obelisks.missing=No obelisks required.

@@ -1,7 +1,6 @@
 package daatguy.lovecraft.block;
 
 import java.util.List;
-import java.util.Random;
 
 import net.minecraft.block.BlockHorizontal;
 import net.minecraft.block.ITileEntityProvider;
@@ -11,15 +10,9 @@ import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.properties.PropertyDirection;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.audio.ElytraSound;
-import net.minecraft.client.audio.MovingSoundMinecart;
-import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.item.EntityMinecart;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.init.Items;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.ItemStack;
@@ -37,14 +30,7 @@ import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
-import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
-import daatguy.lovecraft.client.sound.MovingSoundDrugged;
-import daatguy.lovecraft.client.sound.SoundEventHandler;
 import daatguy.lovecraft.core.LovecraftMain;
-import daatguy.lovecraft.networking.HookahMessage;
-import daatguy.lovecraft.networking.PotionDruggedMessage;
 import daatguy.lovecraft.tileentity.TileEntityHookah;
 
 public class BlockHookah extends BlockSimple implements ITileEntityProvider {

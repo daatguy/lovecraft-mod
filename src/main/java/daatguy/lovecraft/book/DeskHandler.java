@@ -57,7 +57,7 @@ public class DeskHandler {
 			///TODO IMPLEMENT THIS 
 			//return null;
 		default:
-			return -1;
+			return SubItemsHandler.COMMON;
 		}
 			
 	}

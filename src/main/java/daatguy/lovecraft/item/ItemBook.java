@@ -72,6 +72,30 @@ public class ItemBook extends ItemSimple {
 		}
 	}
 
+	public void addTooltipWithLineThreshhold(ItemStack stack, List<String> tooltip, boolean translated) {
+		String rawLore[];
+		if(translated) {
+			rawLore = I18n.format(
+				"book." + stack.getTagCompound().getString("Book")
+						+ ".description.translated").split("\\s+");
+		} else {
+			rawLore = I18n.format(
+					"book." + stack.getTagCompound().getString("Book")
+							+ ".description").split("\\s+");
+		}
+		String curLine = "";
+		for (String word : rawLore) {
+			curLine = curLine + word + " ";
+			if (curLine.length() > loreLineThreshhold) {
+				tooltip.add(curLine.trim());
+				curLine = "";
+			}
+		}
+		if (curLine != "") {
+			tooltip.add(curLine.trim());
+		}
+	}
+	
 	@Override
 	public void addInformation(ItemStack stack, World worldIn,
 			List<String> tooltip, ITooltipFlag flagIn) {
@@ -95,20 +119,7 @@ public class ItemBook extends ItemSimple {
 				.getTagCompound().getString("Book")).language;
 		if (language != SubItemsHandler.COMMON) {
 			if (stack.getTagCompound().getBoolean("Translated")) {
-				String rawLore[] = I18n.format(
-						"book." + stack.getTagCompound().getString("Book")
-								+ ".description.translated").split("\\s+");
-				String curLine = "";
-				for (String word : rawLore) {
-					curLine = curLine + word + " ";
-					if (curLine.length() > loreLineThreshhold) {
-						tooltip.add(curLine.trim());
-						curLine = "";
-					}
-				}
-				if (curLine != "") {
-					tooltip.add(curLine.trim());
-				}
+				addTooltipWithLineThreshhold(stack, tooltip, true);
 				// Translation stuff
 				// IT IS TRANSLATED
 				tooltip.add("");
@@ -117,20 +128,7 @@ public class ItemBook extends ItemSimple {
 						SubItemsHandler
 								.getLanguageFromID(language)));
 			} else {
-				String rawLore[] = I18n.format(
-						"book." + stack.getTagCompound().getString("Book")
-								+ ".description").split("\\s+");
-				String curLine = "";
-				for (String word : rawLore) {
-					curLine = curLine + word + " ";
-					if (curLine.length() > loreLineThreshhold) {
-						tooltip.add(curLine.trim());
-						curLine = "";
-					}
-				}
-				if (curLine != "") {
-					tooltip.add(curLine.trim());
-				}
+				addTooltipWithLineThreshhold(stack, tooltip, false);
 				// Translation stuff
 				// IT ISNT
 				tooltip.add("");
@@ -140,20 +138,7 @@ public class ItemBook extends ItemSimple {
 								.getLanguageFromID(language)));
 			}
 		} else {
-			String rawLore[] = I18n.format(
-					"book." + stack.getTagCompound().getString("Book")
-							+ ".description").split("\\s+");
-			String curLine = "";
-			for (String word : rawLore) {
-				curLine = curLine + word + " ";
-				if (curLine.length() > loreLineThreshhold) {
-					tooltip.add(curLine.trim());
-					curLine = "";
-				}
-			}
-			if (curLine != "") {
-				tooltip.add(curLine.trim());
-			}
+			addTooltipWithLineThreshhold(stack, tooltip, false);
 		}
 		if (LovecraftMain.subItemsHandler.books.get(stack.getTagCompound()
 				.getString("Book")) instanceof DictionaryBook) {
