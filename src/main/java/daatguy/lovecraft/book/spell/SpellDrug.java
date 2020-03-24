@@ -35,7 +35,7 @@ public class SpellDrug extends Spell {
 				|| te.getObeliskType() != TileEntityAltar.SIMPLE_OBELISK
 				|| !(world.canSeeSky(pos)
 						&& world.getCurrentMoonPhaseFactor() == 1.0f
-						&& world.getWorldTime() > 14000 && world.getWorldTime() < 18000)) {
+						&& world.getWorldTime() > 16000 && world.getWorldTime() < 20000)) {
 			return false;
 		} else {
 			return super.canCast(world, pos);
@@ -50,7 +50,7 @@ public class SpellDrug extends Spell {
 		for(EntityPlayer player : world.playerEntities) {
 			if(player.getDistance(pos.getX(), pos.getY(), pos.getZ())<10f) {
 				player.addPotionEffect(new PotionEffect(LovecraftMain.potionDread, 6000, 1));
-				player.addPotionEffect(new PotionEffect(LovecraftMain.potionDrugged, 6000));
+				player.addPotionEffect(new PotionEffect(LovecraftMain.potionDrugged, 600));
 			}
 		}
 		return true;
