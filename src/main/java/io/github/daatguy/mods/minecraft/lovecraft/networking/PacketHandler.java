@@ -1,4 +1,4 @@
-package io.github.daatguy.mods.minecraft.lovecraft.networking;
+package daatguy.lovecraft.networking;
 
 import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.fml.common.network.simpleimpl.SimpleNetworkWrapper;
@@ -13,8 +13,6 @@ public class PacketHandler {
 		INSTANCE.registerMessage(SpellMessage.Handler.class, SpellMessage.class, id++, Side.SERVER);
 		INSTANCE.registerMessage(SpellMessage.Handler.class, SpellMessage.class, id++, Side.CLIENT);
 		INSTANCE.registerMessage(PotionDruggedMessage.Handler.class, PotionDruggedMessage.class, id++, Side.CLIENT);
-		INSTANCE.registerMessage(HookahMessage.Handler.class, HookahMessage.class, id++, Side.CLIENT);
-		INSTANCE.registerMessage(HookahRequestMessage.Handler.class, HookahRequestMessage.class, id++, Side.SERVER);
 	}
 
 }

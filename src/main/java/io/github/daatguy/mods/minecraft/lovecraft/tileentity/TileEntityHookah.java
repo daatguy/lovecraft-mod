@@ -1,13 +1,9 @@
-package io.github.daatguy.mods.minecraft.lovecraft.tileentity;
+package daatguy.lovecraft.tileentity;
 
-import io.github.daatguy.mods.minecraft.lovecraft.core.LovecraftMain;
-import io.github.daatguy.mods.minecraft.lovecraft.networking.HookahRequestMessage;
-import net.minecraft.client.Minecraft;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.ITickable;
-import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
 
 public class TileEntityHookah extends TileEntity implements ITickable{
 	
@@ -32,11 +28,8 @@ public class TileEntityHookah extends TileEntity implements ITickable{
 	}
 	
 	@Override
-	public void onLoad() {
-		if(this.getWorld().isRemote) {
-			LovecraftMain.packetHandler.INSTANCE.sendToServer((IMessage) new HookahRequestMessage(this, 0));
-		}
-		super.onLoad();
+	public NBTTagCompound getUpdateTag() {
+		return writeToNBT(new NBTTagCompound());
 	}
 	
 	public boolean isSmoking() {

@@ -1,12 +1,12 @@
-package io.github.daatguy.mods.minecraft.lovecraft.book.spell;
+package daatguy.lovecraft.book.spell;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Random;
 
-import io.github.daatguy.mods.minecraft.lovecraft.book.Book;
-import io.github.daatguy.mods.minecraft.lovecraft.book.CanGetStack;
-import io.github.daatguy.mods.minecraft.lovecraft.core.LovecraftMain;
+import daatguy.lovecraft.book.Book;
+import daatguy.lovecraft.book.CanGetStack;
+import daatguy.lovecraft.core.LovecraftMain;
 import net.minecraft.item.ItemStack;
 
 public class SpellHandler {
@@ -22,6 +22,7 @@ public class SpellHandler {
 		registerSpell(new SpellCap());
 		registerSpell(new SpellDisassemble());
 		registerSpell(new SpellEnterRoom());
+		registerSpell(new SpellDrug());
 	}
 
 	public void registerSpell(Spell spell) {

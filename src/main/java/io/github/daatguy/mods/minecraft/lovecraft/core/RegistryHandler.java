@@ -1,4 +1,4 @@
-package io.github.daatguy.mods.minecraft.lovecraft.core;
+package daatguy.lovecraft.core;
 
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
@@ -9,9 +9,9 @@ import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-import io.github.daatguy.mods.minecraft.lovecraft.item.ItemBook;
-import io.github.daatguy.mods.minecraft.lovecraft.item.ItemFossil;
-import io.github.daatguy.mods.minecraft.lovecraft.item.ItemTome;
+import daatguy.lovecraft.item.ItemBook;
+import daatguy.lovecraft.item.ItemFossil;
+import daatguy.lovecraft.item.ItemTome;
 
 @EventBusSubscriber
 public class RegistryHandler {
@@ -25,6 +25,7 @@ public class RegistryHandler {
 	
 	@SubscribeEvent
 	public static void onItemRegister(RegistryEvent.Register<Item> event) {
+		event.getRegistry().register(LovecraftMain.itemRubbingKit);
 		event.getRegistry().register(LovecraftMain.itemEmptyBeaker);
 		event.getRegistry().register(LovecraftMain.itemBeaker);
 		event.getRegistry().register(LovecraftMain.itemCoin);
@@ -41,6 +42,7 @@ public class RegistryHandler {
 		event.getRegistry().register(LovecraftMain.itemDriedFlower);
 		event.getRegistry().register(LovecraftMain.itemRubbing);
 
+		event.getRegistry().register(LovecraftMain.itemBlockUnderstructure);
 		event.getRegistry().register(LovecraftMain.itemBlockFlowerDrug);
 		event.getRegistry().register(LovecraftMain.itemBlockFossil);
 		//event.getRegistry().register(LovecraftMain.itemBlockAetherOre);
@@ -55,7 +57,7 @@ public class RegistryHandler {
 		event.getRegistry().register(LovecraftMain.itemBlockChargedObelisk);
 		event.getRegistry().register(LovecraftMain.itemBlockObeliskCap);
 		event.getRegistry().register(LovecraftMain.itemBlockResolvedObeliskCap);
-		event.getRegistry().register(LovecraftMain.itemBlockCarvedStone);
+		event.getRegistry().register(LovecraftMain.itemBlockCarved);
 	}
 	
 	@SubscribeEvent
@@ -76,7 +78,7 @@ public class RegistryHandler {
 		event.getRegistry().register(LovecraftMain.blockChargedObelisk);
 		event.getRegistry().register(LovecraftMain.blockObeliskCap);
 		event.getRegistry().register(LovecraftMain.blockResolvedObeliskCap);
-		event.getRegistry().register(LovecraftMain.blockCarvedStone);
+		event.getRegistry().register(LovecraftMain.blockCarved);
 	}
 
 
@@ -90,6 +92,10 @@ public class RegistryHandler {
 		ModelLoader.setCustomModelResourceLocation(
 				LovecraftMain.itemDriedFlower, 0, new ModelResourceLocation(
 						LovecraftMain.itemDriedFlower.getRegistryName(),
+						"inventory"));
+		ModelLoader.setCustomModelResourceLocation(
+				LovecraftMain.itemRubbingKit, 0, new ModelResourceLocation(
+						LovecraftMain.itemRubbingKit.getRegistryName(),
 						"inventory"));
 		ModelLoader.setCustomModelResourceLocation(
 				LovecraftMain.itemEmptyBeaker, 0, new ModelResourceLocation(
@@ -138,6 +144,10 @@ public class RegistryHandler {
 		((ItemTome)LovecraftMain.itemTome).initModel();
 		((ItemBook)LovecraftMain.itemBook).initModel();
 		((ItemFossil)LovecraftMain.itemFossil).initModel();
+		ModelLoader.setCustomModelResourceLocation(
+				LovecraftMain.itemBlockUnderstructure, 0, new ModelResourceLocation(
+						LovecraftMain.itemBlockUnderstructure.getRegistryName(),
+						"inventory"));
 		ModelLoader.setCustomModelResourceLocation(
 				LovecraftMain.itemBlockFlowerDrug, 0, new ModelResourceLocation(
 						LovecraftMain.itemBlockFlowerDrug.getRegistryName(),
@@ -195,8 +205,8 @@ public class RegistryHandler {
 						LovecraftMain.itemBlockResolvedObeliskCap.getRegistryName(),
 						"inventory"));
 		ModelLoader.setCustomModelResourceLocation(
-				LovecraftMain.itemBlockCarvedStone, 0, new ModelResourceLocation(
-						LovecraftMain.itemBlockCarvedStone.getRegistryName(),
+				LovecraftMain.itemBlockCarved, 0, new ModelResourceLocation(
+						LovecraftMain.itemBlockCarved.getRegistryName(),
 						"inventory"));
 	}
 }

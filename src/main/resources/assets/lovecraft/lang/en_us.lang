@@ -10,6 +10,8 @@ block.sepulchral_break=Screams
 
 entity.Villager.opium_career=Opium Peddler
 
+item.rubbing_kit.name=Rubbing Kit
+item.rubbing_kit.description=With this, I can copy down any inscriptions I find and translate them later.
 item.empty_beaker.name=Glass Beaker
 item.beaker.name=Beaker of Water
 item.beaker.suspension_filled=Solution of *i
@@ -19,7 +21,7 @@ item.beaker.suspension_tooltip_a=A Solution of:
 item.beaker.suspension_tooltip_b=*p%% *i
 item.coin.name=Drachma
 item.weird_dust.name=Sepulchral Dust
-item.weird_dust.description=Coarse. The grains are strangely uniform in size.
+item.weird_dust.description=Coarse. The grains are all the same size and pyramidal.
 item.weird_shards.name=Sepulchral Shards
 item.weird_shards.description=It smells of metal and mold. Cold to the touch.
 item.dried_flower.name=Dried Flower
@@ -31,9 +33,10 @@ item.mummy_chunk.name=Mummified Remains
 item.flesh_dust.name=Ground Flesh
 item.magnifying_glass.name=Magnifying Glass
 item.magnifying_glass.description=There are details in this world much finer than what the unaided human eye can make out.
-item.rubbing.name=Charcoal Rubbing
+item.rubbing.name=Rubbing
 item.rubbing.description=I can translate the carved inscription from the comfort of a writing desk... once the logic for this item is implemented, of course
 
+tile.understructure.name=Nnn'drnog
 tile.mortar.name=Mortar and Pestle
 tile.flower_drug.name=Odorous Flower
 tile.flower_drug.description=It smells sickly sweet, like something died in a jar of molasses.
@@ -57,8 +60,7 @@ tile.carved_obelisk.description=A more intricately hewn obelisk column. If I am 
 tile.charged_obelisk.name=Charged Obelisk Block
 tile.obelisk_cap.name=Obelisk Cap
 tile.resolved_obelisk_cap.name=Resolved Obelisk Cap
-tile.carved_stone.name=Carved Stone Bricks
-tile.carved_stone.description=This item should *probably* not exist later on.
+tile.carved_block.name=Carved Stone Bricks
 
 itemGroup.tabLovecraft=Lovecraft Mythos
 
@@ -70,6 +72,10 @@ potion.dread.message0=A grotesque feeling creeps into the back of your mind...
 potion.dread.message1=Something is terribly, terribly wrong...
 potion.dread.message2=Your feet grow heavier with every step...
 potion.dread.message3=A deep cold runs down your spine...
+
+carving.untranslated=The carving is in *C. Perhaps a *C dictionary?
+carving.null=Nothing of note is carved on the panel.
+carving.leng="Leng"
 
 tooltip.altar_cast=Incant Verse
 tooltip.empty_obelisks.missing=No obelisks required.
@@ -183,8 +189,11 @@ book.fossil_notes_limb.description=This creature must have had several of these 
 book.anthology_fossil.name=Anthology: A 6th Kingdom
 book.anthology_fossil.description=My work has borne fruits! A new taxonomy, ancient and strange.
 
+
 spell.altar_ready=This rite is capable of being reenacted.
 spell.empty.name=Empty Tome
+spell.drug.name=A Midnight Terror
+spell.drug.description=Hastily scrawled above the procedure is the phrase: "best performed under a full moon."
 spell.charge.name=The Antipode Postulate
 spell.charge.description=Draws vital consciousness from the abate, charging carved obelisks with a greater, more mindful involution capacity. Leaves obelisks rather unsettled. Follow-up intervention is advised.
 spell.cap.name=The Nihilist's Thesis

@@ -1,17 +1,5 @@
-package io.github.daatguy.mods.minecraft.lovecraft.core;
+package daatguy.lovecraft.core;
 
-import io.github.daatguy.mods.minecraft.lovecraft.book.DeskHandler;
-import io.github.daatguy.mods.minecraft.lovecraft.book.spell.SpellHandler;
-import io.github.daatguy.mods.minecraft.lovecraft.generator.DecorationGenerator;
-import io.github.daatguy.mods.minecraft.lovecraft.generator.OreGenerator;
-import io.github.daatguy.mods.minecraft.lovecraft.generator.TombGenerator;
-import io.github.daatguy.mods.minecraft.lovecraft.generator.village.VillageCreationHandler;
-import io.github.daatguy.mods.minecraft.lovecraft.generator.village.VillageOpiumDen;
-import io.github.daatguy.mods.minecraft.lovecraft.networking.PacketHandler;
-import io.github.daatguy.mods.minecraft.lovecraft.tileentity.TileEntityAltar;
-import io.github.daatguy.mods.minecraft.lovecraft.tileentity.TileEntityCarving;
-import io.github.daatguy.mods.minecraft.lovecraft.tileentity.TileEntityChargedObelisk;
-import io.github.daatguy.mods.minecraft.lovecraft.tileentity.TileEntityHookah;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockBush;
 import net.minecraft.block.material.Material;
@@ -33,40 +21,50 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.registry.EntityRegistry;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.common.registry.VillagerRegistry;
-
-import javax.annotation.Nullable;
-
-import io.github.daatguy.mods.minecraft.lovecraft.block.BlockAltar;
-import io.github.daatguy.mods.minecraft.lovecraft.block.BlockBasRelief;
-import io.github.daatguy.mods.minecraft.lovecraft.block.BlockCarvedBlock;
-import io.github.daatguy.mods.minecraft.lovecraft.block.BlockChargedObelisk;
-import io.github.daatguy.mods.minecraft.lovecraft.block.BlockDesk;
-import io.github.daatguy.mods.minecraft.lovecraft.block.BlockFlowerDrug;
-import io.github.daatguy.mods.minecraft.lovecraft.block.BlockFossil;
-import io.github.daatguy.mods.minecraft.lovecraft.block.BlockHookah;
-import io.github.daatguy.mods.minecraft.lovecraft.block.BlockMortar;
-import io.github.daatguy.mods.minecraft.lovecraft.block.BlockObelisk;
-import io.github.daatguy.mods.minecraft.lovecraft.block.BlockObeliskCap;
-import io.github.daatguy.mods.minecraft.lovecraft.block.BlockResolvedObeliskCap;
-import io.github.daatguy.mods.minecraft.lovecraft.block.BlockUnderstructure;
-import io.github.daatguy.mods.minecraft.lovecraft.block.BlockWeirdedBrick;
-import io.github.daatguy.mods.minecraft.lovecraft.container.AlchemyRecipes;
-import io.github.daatguy.mods.minecraft.lovecraft.container.LovecraftTab;
-import io.github.daatguy.mods.minecraft.lovecraft.entity.EntitySpell;
-import io.github.daatguy.mods.minecraft.lovecraft.event.ProfessionHandler;
+import daatguy.lovecraft.block.BlockAltar;
+import daatguy.lovecraft.block.BlockBasRelief;
+import daatguy.lovecraft.block.BlockCarvedBlock;
+import daatguy.lovecraft.block.BlockChargedObelisk;
+import daatguy.lovecraft.block.BlockDesk;
+import daatguy.lovecraft.block.BlockFlowerDrug;
+import daatguy.lovecraft.block.BlockFossil;
+import daatguy.lovecraft.block.BlockHookah;
+import daatguy.lovecraft.block.BlockMortar;
+import daatguy.lovecraft.block.BlockObelisk;
+import daatguy.lovecraft.block.BlockObeliskCap;
+import daatguy.lovecraft.block.BlockResolvedObeliskCap;
+import daatguy.lovecraft.block.BlockUnderstructure;
+import daatguy.lovecraft.block.BlockWeirdedBrick;
+import daatguy.lovecraft.book.DeskHandler;
+import daatguy.lovecraft.book.spell.SpellHandler;
+import daatguy.lovecraft.container.AlchemyRecipes;
+import daatguy.lovecraft.container.LovecraftTab;
+import daatguy.lovecraft.entity.EntitySpell;
+import daatguy.lovecraft.event.ProfessionHandler;
+import daatguy.lovecraft.generator.DecorationGenerator;
 //import daatguy.lovecraft.generator.LengGenerator;
-import io.github.daatguy.mods.minecraft.lovecraft.item.ItemBeaker;
-import io.github.daatguy.mods.minecraft.lovecraft.item.ItemBook;
-import io.github.daatguy.mods.minecraft.lovecraft.item.ItemEmptyBeaker;
-import io.github.daatguy.mods.minecraft.lovecraft.item.ItemFossil;
-import io.github.daatguy.mods.minecraft.lovecraft.item.ItemFossilDust;
-import io.github.daatguy.mods.minecraft.lovecraft.item.ItemSimple;
-import io.github.daatguy.mods.minecraft.lovecraft.item.ItemSimpleBlock;
-import io.github.daatguy.mods.minecraft.lovecraft.item.ItemTome;
-import io.github.daatguy.mods.minecraft.lovecraft.item.SubItemsHandler;
-import io.github.daatguy.mods.minecraft.lovecraft.world.WorldProviderRoom;
-import io.github.daatguy.mods.minecraft.lovecraft.world.potion.PotionDrugged;
-import io.github.daatguy.mods.minecraft.lovecraft.world.potion.PotionSimple;
+import daatguy.lovecraft.generator.OreGenerator;
+import daatguy.lovecraft.generator.TombGenerator;
+import daatguy.lovecraft.generator.village.VillageCreationHandler;
+import daatguy.lovecraft.generator.village.VillageOpiumDen;
+import daatguy.lovecraft.item.ItemBeaker;
+import daatguy.lovecraft.item.ItemBook;
+import daatguy.lovecraft.item.ItemEmptyBeaker;
+import daatguy.lovecraft.item.ItemFossil;
+import daatguy.lovecraft.item.ItemFossilDust;
+import daatguy.lovecraft.item.ItemRubbing;
+import daatguy.lovecraft.item.ItemSimple;
+import daatguy.lovecraft.item.ItemSimpleBlock;
+import daatguy.lovecraft.item.ItemTome;
+import daatguy.lovecraft.item.SubItemsHandler;
+import daatguy.lovecraft.networking.PacketHandler;
+import daatguy.lovecraft.tileentity.TileEntityAltar;
+import daatguy.lovecraft.tileentity.TileEntityCarving;
+import daatguy.lovecraft.tileentity.TileEntityChargedObelisk;
+import daatguy.lovecraft.tileentity.TileEntityHookah;
+import daatguy.lovecraft.world.WorldProviderRoom;
+import daatguy.lovecraft.world.potion.PotionDrugged;
+import daatguy.lovecraft.world.potion.PotionSimple;
 
 @Mod(modid = "lovecraft", name = "Lovecraft Mod", version = "Alpha-1.0")
 public class LovecraftMain {
@@ -80,7 +78,7 @@ public class LovecraftMain {
 
 	public static SubItemsHandler subItemsHandler = new SubItemsHandler();
 	
-	public static SpellHandler spellHandler = new SpellHandler();
+	public static SpellHandler spellHandler; //initialize items first
 
 	public static DeskHandler deskHandler = new DeskHandler();
 	
@@ -101,6 +99,7 @@ public class LovecraftMain {
 	public static Potion potionDrugged;
 	
 	//Item declarations
+	public static Item itemRubbingKit;
 	public static Item itemEmptyBeaker;
 	public static Item itemBeaker;
 	public static Item itemCoin;
@@ -118,6 +117,7 @@ public class LovecraftMain {
 	public static Item itemRubbing;
 
 	//More 'item' declarations, ItemBlocks
+	public static Item itemBlockUnderstructure;
 	public static Item itemBlockFlowerDrug;
 	public static Item itemBlockFossil;
 	public static Item itemBlockAetherOre;
@@ -132,7 +132,7 @@ public class LovecraftMain {
 	public static Item itemBlockChargedObelisk;
 	public static Item itemBlockObeliskCap;
 	public static Item itemBlockResolvedObeliskCap;
-	public static Item itemBlockCarvedStone; //remove when I bother to add a chisel, probably
+	public static Item itemBlockCarved; //remove when I bother to add a chisel, probably
 
 	//Block declarations
 	public static Block blockUnderstructure;
@@ -150,7 +150,7 @@ public class LovecraftMain {
 	public static Block blockChargedObelisk;
 	public static Block blockObeliskCap;
 	public static Block blockResolvedObeliskCap;
-	public static Block blockCarvedStone;
+	public static Block blockCarved;
 	
 	//Room dimension
 	public static final String ROOM_NAME = "room";
@@ -161,7 +161,7 @@ public class LovecraftMain {
 	public static LovecraftMain instance = new LovecraftMain();
 
 	//Proxy creations
-	@SidedProxy(clientSide = "ClientProxy", serverSide = "ServerProxy")
+	@SidedProxy(clientSide = "daatguy.lovecraft.core.ClientProxy", serverSide = "daatguy.lovecraft.core.ServerProxy")
 	public static CommonProxy proxy;
 
 	@EventHandler
@@ -173,6 +173,11 @@ public class LovecraftMain {
 		itemFossilDust.setRegistryName("fossil_dust");
 		itemFossilDust.setCreativeTab(lovecraftTab);
 
+		itemRubbingKit = new ItemSimple();
+		itemRubbingKit.setUnlocalizedName("rubbing_kit");
+		itemRubbingKit.setRegistryName("rubbing_kit");
+		itemRubbingKit.setCreativeTab(lovecraftTab);
+		
 		itemEmptyBeaker = new ItemEmptyBeaker();
 		itemEmptyBeaker.setUnlocalizedName("empty_beaker");
 		itemEmptyBeaker.setRegistryName("empty_beaker");
@@ -230,11 +235,9 @@ public class LovecraftMain {
 		itemBook.setRegistryName("book");
 		itemBook.setCreativeTab(lovecraftTab);
 		
-		itemRubbing = new ItemSimple(); //subclass comes later
+		itemRubbing = new ItemRubbing();
 		itemRubbing.setUnlocalizedName("rubbing");
 		itemRubbing.setRegistryName("rubbing");
-		itemRubbing.setCreativeTab(lovecraftTab);
-		itemRubbing.setMaxStackSize(1);
 		
 		itemDriedFlower = new ItemSimple();
 		itemDriedFlower.setUnlocalizedName("dried_flower");
@@ -258,6 +261,7 @@ public class LovecraftMain {
 		//Initialize blocks, set properties
 
 		blockUnderstructure = new BlockUnderstructure(Material.ROCK);
+		blockUnderstructure.setLightLevel(16f);
 		blockUnderstructure.setUnlocalizedName("understructure");
 		blockUnderstructure.setRegistryName("understructure");
 		
@@ -343,14 +347,15 @@ public class LovecraftMain {
 		blockResolvedObeliskCap.setLightLevel(8.0f);
 		blockResolvedObeliskCap.setCreativeTab(lovecraftTab);
 		
-		blockCarvedStone = new BlockCarvedBlock(Material.ROCK); //probably add another parameter later
-		blockCarvedStone.setHardness(1.5f);
-		blockCarvedStone.setHarvestLevel("pickaxe", 0);
-		blockCarvedStone.setUnlocalizedName("carved_stone");
-		blockCarvedStone.setRegistryName("carved_stone");
-		blockCarvedStone.setCreativeTab(lovecraftTab);
+		blockCarved = new BlockCarvedBlock(Material.ROCK); //probably add another parameter later
+		blockCarved.setHardness(1.5f);
+		blockCarved.setHarvestLevel("pickaxe", 0);
+		blockCarved.setUnlocalizedName("carved_block");
+		blockCarved.setRegistryName("carved_block");
+		blockCarved.setCreativeTab(lovecraftTab);
 		
 		//Initialize itemBlocks
+		itemBlockUnderstructure = new ItemSimpleBlock(blockUnderstructure).setRegistryName(blockUnderstructure.getRegistryName());
 		itemBlockFlowerDrug = new ItemSimpleBlock(blockFlowerDrug).setRegistryName(blockFlowerDrug.getRegistryName());
 		itemBlockFossil = new ItemSimpleBlock(blockFossil).setRegistryName(blockFossil.getRegistryName());
 		itemBlockWeirdedBrick = new ItemSimpleBlock(blockWeirdedBrick).setRegistryName(blockWeirdedBrick.getRegistryName());
@@ -365,7 +370,7 @@ public class LovecraftMain {
 		itemBlockChargedObelisk = new ItemSimpleBlock(blockChargedObelisk).setRegistryName(blockChargedObelisk.getRegistryName());
 		itemBlockObeliskCap = new ItemSimpleBlock(blockObeliskCap).setRegistryName(blockObeliskCap.getRegistryName());
 		itemBlockResolvedObeliskCap = new ItemSimpleBlock(blockResolvedObeliskCap).setRegistryName(blockResolvedObeliskCap.getRegistryName());
-		itemBlockCarvedStone = new ItemSimpleBlock(blockCarvedStone).setRegistryName(blockCarvedStone.getRegistryName());
+		itemBlockCarved = new ItemSimpleBlock(blockCarved).setRegistryName(blockCarved.getRegistryName());
 
 
 		//Initialize potions
@@ -393,6 +398,8 @@ public class LovecraftMain {
 		
 		//Register entities
 		EntityRegistry.registerModEntity(new ResourceLocation("lovecraft:spell"), EntitySpell.class, "lovecraftSpell", 0, "lovecraft", 0, 1, false);
+		
+		spellHandler = new SpellHandler();
 		
 		//Proxy Pre-Init
 		proxy.preInit(event);

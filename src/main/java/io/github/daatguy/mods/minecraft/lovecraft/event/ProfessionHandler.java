@@ -1,8 +1,10 @@
-package io.github.daatguy.mods.minecraft.lovecraft.event;
+package daatguy.lovecraft.event;
 
 import java.util.Random;
 
-import io.github.daatguy.mods.minecraft.lovecraft.core.LovecraftMain;
+import daatguy.lovecraft.book.spell.SpellHandler;
+import daatguy.lovecraft.core.LovecraftMain;
+import daatguy.lovecraft.item.ItemBook;
 import net.minecraft.entity.IMerchant;
 import net.minecraft.entity.passive.EntityVillager;
 import net.minecraft.entity.passive.EntityVillager.ITradeList;
@@ -46,44 +48,72 @@ public class ProfessionHandler {
 			event.getRegistry().register(professionOpiumPeddler);
 		}
 	}
-	
+
 	/**
 	 * Associate careers and trades.
 	 */
 	public static void associateCareersAndTrades() {
-		careerOpiumPeddler = new VillagerCareer(professionOpiumPeddler, "opium_career");
-		careerOpiumPeddler.addTrade(1, new Trade(new ItemStack(
+		careerOpiumPeddler = new VillagerCareer(professionOpiumPeddler,
+				"opium_career");
+		careerOpiumPeddler.addTrade(1, new TradeSell(new ItemStack(
+				LovecraftMain.itemEmptyBeaker), new PriceInfo(16, 32)));
+		careerOpiumPeddler.addTrade(1, new TradeBuy(new ItemStack(
 				LovecraftMain.itemDriedFlower), new PriceInfo(4, 7)));
-		careerOpiumPeddler.addTrade(1, new Trade(new ItemStack(
-				LovecraftMain.itemEmptyBeaker), new PriceInfo(1, 2)));
+		careerOpiumPeddler.addTrade(2,
+				new Trade(new ItemStack(LovecraftMain.itemCoin), new PriceInfo(
+						1, 3), ItemBook.getItemStack("alchemy_dict"),
+						new PriceInfo(1, 1)));
+		careerOpiumPeddler.addTrade(3,
+				new Trade(new ItemStack(LovecraftMain.itemCoin), new PriceInfo(
+						4, 8), SpellHandler.spells.get("drug").getItemStack(),
+						new PriceInfo(1, 1)));
 	}
 
 	public static class Trade implements ITradeList {
 
-		/** The item stack to buy */
 		public ItemStack stack;
+		public ItemStack sellStack;
+		public EntityVillager.PriceInfo priceInfo;
+		public EntityVillager.PriceInfo sellPriceInfo;
 
-		/**
-		 * The price info determining the amount of emeralds to trade in for the
-		 * enchanted item
-		 */
+		public Trade(ItemStack stack, PriceInfo priceInfo, ItemStack sellStack,
+				PriceInfo sellPriceInfo) {
+			this.stack = stack;
+			this.priceInfo = priceInfo;
+			this.sellStack = sellStack;
+			this.sellPriceInfo = sellPriceInfo;
+		}
+
+		@Override
+		public void addMerchantRecipe(IMerchant merchant,
+				MerchantRecipeList recipeList, Random random) {
+			int actualPrice = 1;
+			if (priceInfo != null) {
+				actualPrice = priceInfo.getPrice(random);
+			}
+			int actualSellPrice = 1;
+			if (sellPriceInfo != null) {
+				actualSellPrice = sellPriceInfo.getPrice(random);
+			}
+			ItemStack stackToPay = stack.copy();
+			stackToPay.setCount(actualPrice);
+			ItemStack stackToReceive = sellStack.copy();
+			stackToReceive.setCount(actualSellPrice);
+			recipeList.add(new MerchantRecipe(stackToPay, stackToReceive));
+		}
+
+	}
+
+	public static class TradeBuy implements ITradeList {
+
+		public ItemStack stack;
 		public EntityVillager.PriceInfo priceInfo;
 
-		/**
-		 * Instantiates a new trade emeralds for enchanted boots.
-		 */
-		public Trade(ItemStack stack, PriceInfo priceInfo) {
+		public TradeBuy(ItemStack stack, PriceInfo priceInfo) {
 			this.stack = stack;
 			this.priceInfo = priceInfo;
 		}
 
-		/**
-		 * (non-Javadoc)
-		 * 
-		 * @see net.minecraft.entity.passive.EntityVillager.ITradeList#addMerchantRecipe
-		 *      (net.minecraft.entity.IMerchant,
-		 *      net.minecraft.village.MerchantRecipeList, java.util.Random)
-		 */
 		@Override
 		public void addMerchantRecipe(IMerchant merchant,
 				MerchantRecipeList recipeList, Random random) {
@@ -93,6 +123,31 @@ public class ProfessionHandler {
 			}
 			ItemStack stackToPay = new ItemStack(Items.EMERALD, actualPrice, 0);
 			recipeList.add(new MerchantRecipe(stackToPay, stack));
+		}
+
+	}
+
+	public static class TradeSell implements ITradeList {
+
+		public ItemStack stack;
+		public EntityVillager.PriceInfo priceInfo;
+
+		public TradeSell(ItemStack stack, PriceInfo priceInfo) {
+			this.stack = stack;
+			this.priceInfo = priceInfo;
+		}
+
+		@Override
+		public void addMerchantRecipe(IMerchant merchant,
+				MerchantRecipeList recipeList, Random random) {
+			int actualPrice = 1;
+			if (priceInfo != null) {
+				actualPrice = priceInfo.getPrice(random);
+			}
+			ItemStack stackToPay = stack.copy();
+			stackToPay.setCount(actualPrice);
+			ItemStack stackToReceive = new ItemStack(Items.EMERALD, 1, 0);
+			recipeList.add(new MerchantRecipe(stackToPay, stackToReceive));
 		}
 
 	}

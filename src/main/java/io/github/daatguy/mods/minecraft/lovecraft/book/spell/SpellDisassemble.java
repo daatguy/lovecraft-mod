@@ -1,4 +1,4 @@
-package io.github.daatguy.mods.minecraft.lovecraft.book.spell;
+package daatguy.lovecraft.book.spell;
 
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
@@ -9,8 +9,8 @@ import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.items.CapabilityItemHandler;
-import io.github.daatguy.mods.minecraft.lovecraft.core.LovecraftMain;
-import io.github.daatguy.mods.minecraft.lovecraft.tileentity.TileEntityAltar;
+import daatguy.lovecraft.core.LovecraftMain;
+import daatguy.lovecraft.tileentity.TileEntityAltar;
 
 public class SpellDisassemble extends Spell {
 
@@ -30,7 +30,7 @@ public class SpellDisassemble extends Spell {
 		if (te == null || te.checkForObeliskHeight(world, pos) > 64) {
 			return false;
 		} else {
-			return super.canCast(world, pos);
+			return super.canCast(world, pos) && super.canStart(world,  pos);
 		}
 	}
 

@@ -1,11 +1,12 @@
-package io.github.daatguy.mods.minecraft.lovecraft.book;
+package daatguy.lovecraft.book;
 
 import java.util.ArrayList;
 
-import io.github.daatguy.mods.minecraft.lovecraft.core.LovecraftMain;
-import io.github.daatguy.mods.minecraft.lovecraft.item.ItemBook;
-import io.github.daatguy.mods.minecraft.lovecraft.item.ItemFossil;
-import io.github.daatguy.mods.minecraft.lovecraft.item.SubItemsHandler;
+import daatguy.lovecraft.book.spell.SpellHandler;
+import daatguy.lovecraft.core.LovecraftMain;
+import daatguy.lovecraft.item.ItemBook;
+import daatguy.lovecraft.item.ItemFossil;
+import daatguy.lovecraft.item.SubItemsHandler;
 import net.minecraft.block.Block;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
@@ -56,7 +57,7 @@ public class DeskHandler {
 			///TODO IMPLEMENT THIS 
 			//return null;
 		default:
-			return -1;
+			return SubItemsHandler.COMMON;
 		}
 			
 	}
