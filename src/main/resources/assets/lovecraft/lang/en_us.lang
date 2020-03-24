@@ -58,8 +58,8 @@ tile.carved_obelisk.description=A more intricately hewn obelisk column. If I am 
 tile.charged_obelisk.name=Charged Obelisk Block
 tile.obelisk_cap.name=Obelisk Cap
 tile.resolved_obelisk_cap.name=Resolved Obelisk Cap
-tile.carved_stone.name=Carved Stone Bricks
-tile.carved_stone.description=This item should *probably* not exist later on.
+tile.carved_block.name=Carved Block
+tile.carved_block.description=Well, it's only stone bricks for now, but...
 
 itemGroup.tabLovecraft=Lovecraft Mythos
 
