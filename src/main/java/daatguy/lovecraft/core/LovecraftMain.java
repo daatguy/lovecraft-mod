@@ -398,6 +398,9 @@ public class LovecraftMain {
 		
 		//Register entities
 		EntityRegistry.registerModEntity(new ResourceLocation("lovecraft:spell"), EntitySpell.class, "lovecraftSpell", 0, "lovecraft", 0, 1, false);
+
+		//MAKE SURE TO INIT THIS BEFORE DESKHANDLER
+		spellHandler.init();
 		
 		//Proxy Pre-Init
 		proxy.preInit(event);
@@ -410,7 +413,6 @@ public class LovecraftMain {
 		//(Reliant on pre-init defining of items, etc.)
 		deskHandler.init();
 		alchemyRecipes.InitRecipes();
-		spellHandler.init();
 		
 		//Register village careers & associate professions
 		ProfessionHandler.associateCareersAndTrades();
