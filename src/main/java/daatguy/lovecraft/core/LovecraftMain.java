@@ -398,9 +398,6 @@ public class LovecraftMain {
 		
 		//Register entities
 		EntityRegistry.registerModEntity(new ResourceLocation("lovecraft:spell"), EntitySpell.class, "lovecraftSpell", 0, "lovecraft", 0, 1, false);
-
-		//MAKE SURE TO INIT THIS BEFORE DESKHANDLER
-		spellHandler.init();
 		
 		//Proxy Pre-Init
 		proxy.preInit(event);
@@ -408,6 +405,10 @@ public class LovecraftMain {
 
 	@EventHandler
 	public void init(FMLInitializationEvent event) {
+
+
+		//MAKE SURE TO INIT THIS BEFORE DESKHANDLER
+		spellHandler.init();
 
 		//Init deskHandler and alchemyRecipes
 		//(Reliant on pre-init defining of items, etc.)
