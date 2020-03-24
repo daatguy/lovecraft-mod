@@ -22,6 +22,7 @@ public class SpellHandler {
 		registerSpell(new SpellCap());
 		registerSpell(new SpellDisassemble());
 		registerSpell(new SpellEnterRoom());
+		registerSpell(new SpellDrug());
 	}
 
 	public void registerSpell(Spell spell) {
