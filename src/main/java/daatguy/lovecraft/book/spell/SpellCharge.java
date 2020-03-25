@@ -14,13 +14,12 @@ public class SpellCharge extends Spell {
 	public SpellCharge() {
 		this.obeliskLevel = TileEntityAltar.CARVED_OBELISK;
 		this.recipe = new ItemStack[9];
-		this.recipe[0] = new ItemStack(Items.ARROW);
-		this.recipe[1] = new ItemStack(Items.BEEF);
-		this.recipe[2] = new ItemStack(Items.ARROW);
-		this.recipe[4] = new ItemStack(Items.ARROW);
-		this.recipe[5] = new ItemStack(Items.BEEF);
-		this.recipe[6] = new ItemStack(Items.ARROW);
-		this.recipe[8] = new ItemStack(Items.APPLE);
+		this.recipe[0] = new ItemStack(Items.EMERALD);
+		this.recipe[1] = new ItemStack(Items.EMERALD);
+		this.recipe[2] = new ItemStack(Items.EMERALD);
+		this.recipe[4] = new ItemStack(Items.EMERALD);
+		this.recipe[5] = new ItemStack(Items.EMERALD);
+		this.recipe[6] = new ItemStack(Items.EMERALD);
 		this.name = "charge";
 		this.color = 3;
 	}
