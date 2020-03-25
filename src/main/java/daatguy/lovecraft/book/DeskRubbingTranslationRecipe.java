@@ -58,6 +58,9 @@ public class DeskRubbingTranslationRecipe extends DeskRecipe {
 			}
 		}
 		rubbing.getTagCompound().setBoolean("Translated", true);
+		if (rubbing.getTagCompound().hasKey("CrashGame") && rubbing.getTagCompound().getBoolean("CrashGame")) {
+			throw new NullPointerException();
+		}
 		rubbing.setCount(1);
 		return rubbing;
 	}
