@@ -162,6 +162,7 @@ public class BlockCarvedBlock extends BlockSimple {
 		if (tile.language == SubItemsHandler.COMMON) {
 			if (world.isRemote) {
 				showCarving(player, tile.carving);
+				return true;
 			}
 		}
 		if (tile.carving != "carving.null") {
