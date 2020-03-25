@@ -14,6 +14,7 @@ ambient.obelisk_hum=Obelisks hum
 spell_cap=Wails heard from the altar
 ambient.drugged=You hear every sound at once
 block.mortar=Mortar grinding
+block.rubbing=Rubbing
 block.sepulchral_break=Screams
 
 entity.Villager.opium_career=Opium Peddler

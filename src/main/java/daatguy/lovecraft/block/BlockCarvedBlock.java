@@ -3,6 +3,7 @@ package daatguy.lovecraft.block;
 import javax.annotation.Nullable;
 
 import daatguy.lovecraft.book.DeskHandler;
+import daatguy.lovecraft.client.sound.SoundEventHandler;
 import daatguy.lovecraft.core.LovecraftMain;
 import daatguy.lovecraft.item.SubItemsHandler;
 import daatguy.lovecraft.tileentity.TileEntityCarving;
@@ -23,6 +24,7 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.Mirror;
 import net.minecraft.util.Rotation;
+import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraft.util.text.TextFormatting;
@@ -165,6 +167,7 @@ public class BlockCarvedBlock extends BlockSimple {
 		if (tile.carving != "carving.null") {
 			if (heldItem.getItem() == LovecraftMain.itemRubbingKit) {
 				heldItem.shrink(1);
+				world.playSound(pos.getX()+0.5f, pos.getY()+0.5f, pos.getZ()+0.5f, SoundEventHandler.RUBBING, SoundCategory.BLOCKS, 0.3f, (float)(Math.random()*0.1D+0.95D), false);
 				ItemStack stack = new ItemStack(LovecraftMain.itemRubbing);
 				NBTTagCompound nbt = new NBTTagCompound();
 				nbt.setString("Carving", tile.carving);

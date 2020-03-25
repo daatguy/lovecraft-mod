@@ -5,7 +5,8 @@
       "item": "minecraft:paper"
     },
     {
-      "item": "minecraft:coal"
+      "item": "minecraft:coal",
+      "data": 1
     }
   ],
   "result": {

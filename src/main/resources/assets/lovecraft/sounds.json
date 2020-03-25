@@ -14,6 +14,15 @@
     "subtitle": "block.sepulchral_break",
     "sounds": [ "lovecraft:block/sepulchral_break" ]
   },
+  "block.rubbing": {
+    "category": "block",
+    "subtitle": "block.rubbing",
+    "sounds": [ 
+        "lovecraft:block/rubbing_1",
+        "lovecraft:block/rubbing_2",
+        "lovecraft:block/rubbing_3"
+     ]
+  },
   "block.mortar": {
     "category": "block",
     "subtitle": "block.mortar",
