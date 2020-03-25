@@ -2,9 +2,12 @@ package daatguy.lovecraft.book.spell;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
+import net.minecraft.init.PotionTypes;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.ItemStack;
+import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
+import net.minecraft.potion.PotionType;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
@@ -35,7 +38,7 @@ public class SpellDrug extends Spell {
 				|| te.getObeliskType() != TileEntityAltar.SIMPLE_OBELISK
 				|| !(world.canSeeSky(pos)
 						&& world.getCurrentMoonPhaseFactor() == 1.0f
-						&& world.getWorldTime() > 16000 && world.getWorldTime() < 20000)) {
+						&& world.getWorldTime() > 13000 && world.getWorldTime() < 23000)) {
 			return false;
 		} else {
 			return super.canCast(world, pos);
@@ -45,12 +48,12 @@ public class SpellDrug extends Spell {
 	@Override
 	public boolean castSpell(World world, BlockPos pos) {
 		world.playSound(pos.getX(), pos.getY(), pos.getZ(),
-				SoundEvents.BLOCK_END_PORTAL_SPAWN, SoundCategory.NEUTRAL,
-				1.0F, 1.2F, false);
+				SoundEvents.ENTITY_ENDERMEN_STARE, SoundCategory.NEUTRAL,
+				1.0F, 0.2F, false);
 		for(EntityPlayer player : world.playerEntities) {
 			if(player.getDistance(pos.getX(), pos.getY(), pos.getZ())<10f) {
-				player.addPotionEffect(new PotionEffect(LovecraftMain.potionDread, 6000, 1));
-				player.addPotionEffect(new PotionEffect(LovecraftMain.potionDrugged, 600));
+				player.addPotionEffect(new PotionEffect(LovecraftMain.potionDread, 6000, 1, false, false));
+				player.addPotionEffect(new PotionEffect(Potion.getPotionById(15), 1));
 			}
 		}
 		return true;
