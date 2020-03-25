@@ -20,12 +20,12 @@ public class SpellDrug extends Spell {
 	public SpellDrug() {
 		this.obeliskLevel = TileEntityAltar.CARVED_OBELISK;
 		this.recipe = new ItemStack[9];
-		this.recipe[0] = new ItemStack(LovecraftMain.itemBlockFlowerDrug);
+		this.recipe[0] = new ItemStack(LovecraftMain.itemDriedFlower);
 		this.recipe[1] = new ItemStack(LovecraftMain.itemMummyDust);
-		this.recipe[2] = new ItemStack(LovecraftMain.itemBlockFlowerDrug);
-		this.recipe[4] = new ItemStack(LovecraftMain.itemBlockFlowerDrug);
+		this.recipe[2] = new ItemStack(LovecraftMain.itemDriedFlower);
+		this.recipe[4] = new ItemStack(LovecraftMain.itemDriedFlower);
 		this.recipe[5] = new ItemStack(LovecraftMain.itemMummyDust);
-		this.recipe[6] = new ItemStack(LovecraftMain.itemBlockFlowerDrug);
+		this.recipe[6] = new ItemStack(LovecraftMain.itemDriedFlower);
 		this.recipe[8] = new ItemStack(Items.BOWL);
 		this.name = "drug";
 		this.color = 10;

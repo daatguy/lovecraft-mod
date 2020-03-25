@@ -56,9 +56,6 @@ public class RecipeSolution extends
 				}
 			}
 		}
-
-		System.out.println(dItems.size());
-		System.out.println(bItems.size());
 		return ((dItems.size() + bItems.size()) == items.size()
 				&& bItems.size() > 0 && items.size() > 1 && totalPercent <= 100.0f);
 	}
