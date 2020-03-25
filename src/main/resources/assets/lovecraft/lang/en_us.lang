@@ -1,5 +1,13 @@
-effect.dread=Existential Dread
-effect.awake=Odd Awareness
+effect.dread0=Dim Foreboding
+effect.dread1=Paranoia
+effect.dread2=Palpable Fear
+effect.dread3=Existential Dread
+effect.dread4=Ah'lloigshogg
+effect.awake0=Wild Notions
+effect.awake1=Odd Awareness
+effect.awake2=Thoughts Race
+effect.awake3=Partial Lucidity
+effect.awake4=Lloig nafl'fhtagn
 effect.drugged=Drugged
 
 ambient.obelisk_hum=Obelisks hum

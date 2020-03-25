@@ -74,7 +74,8 @@ public class PotionEventHandler {
 					.getMinecraft()
 					.getSoundHandler()
 					.playSound(
-							new MovingSoundDrugged((EntityPlayerSP) event.getEntity()));
+							new MovingSoundDrugged((EntityPlayerSP) event
+									.getEntity()));
 		}
 	}
 
@@ -100,7 +101,8 @@ public class PotionEventHandler {
 				&& event.getEntity() instanceof EntityPlayerMP) {
 			((EntityPlayer) event.getEntity())
 					.addPotionEffect(new PotionEffect(
-							LovecraftMain.potionAwake, 20 * 60 * 8, 0, false,
+							LovecraftMain.potionAwake, 20 * 60 * 8, event
+									.getPotionEffect().getAmplifier(), false,
 							false));
 			LovecraftMain.packetHandler.INSTANCE.sendTo(
 					(IMessage) new PotionDruggedMessage(false),

@@ -14,10 +14,9 @@ public class SpellHandler {
 	public static HashMap<String, Spell> spells = new HashMap<String, Spell>();
 
 	public SpellHandler() {
-		// spells.put("default", new Spell());
-		// spells.put("default2", new Spell());
-		// spells.get("default2").obeliskLevel = 3;
-		// spells.put("test", new SpellTest());
+	}
+	
+	public void init() {
 		registerSpell(new SpellCharge());
 		registerSpell(new SpellCap());
 		registerSpell(new SpellDisassemble());

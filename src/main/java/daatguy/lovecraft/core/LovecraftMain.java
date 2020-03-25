@@ -64,7 +64,7 @@ import daatguy.lovecraft.tileentity.TileEntityChargedObelisk;
 import daatguy.lovecraft.tileentity.TileEntityHookah;
 import daatguy.lovecraft.world.WorldProviderRoom;
 import daatguy.lovecraft.world.potion.PotionDrugged;
-import daatguy.lovecraft.world.potion.PotionSimple;
+import daatguy.lovecraft.world.potion.PotionStatus;
 
 @Mod(modid = "lovecraft", name = "Lovecraft Mod", version = "Alpha-1.0")
 public class LovecraftMain {
@@ -78,7 +78,7 @@ public class LovecraftMain {
 
 	public static SubItemsHandler subItemsHandler = new SubItemsHandler();
 	
-	public static SpellHandler spellHandler; //initialize items first
+	public static SpellHandler spellHandler = new SpellHandler();
 
 	public static DeskHandler deskHandler = new DeskHandler();
 	
@@ -374,8 +374,8 @@ public class LovecraftMain {
 
 
 		//Initialize potions
-		potionDread = new PotionSimple(true, 14611199, 0, 0).setPotionName("effect.dread").setRegistryName("lovecraft:dread");
-		potionAwake = new PotionSimple(true, 16777113, 1, 0).setPotionName("effect.awake").setRegistryName("lovecraft:awake");
+		potionDread = new PotionStatus(true, 14611199, 0, 0).setPotionName("effect.dread").setRegistryName("lovecraft:dread");
+		potionAwake = new PotionStatus(true, 16777113, 1, 0).setPotionName("effect.awake").setRegistryName("lovecraft:awake");
 		potionDrugged = new PotionDrugged(true, 13369497, 2, 0).setPotionName("effect.drugged").setRegistryName("lovecraft:drugged");
 		
 		//Add world generators
@@ -399,14 +399,16 @@ public class LovecraftMain {
 		//Register entities
 		EntityRegistry.registerModEntity(new ResourceLocation("lovecraft:spell"), EntitySpell.class, "lovecraftSpell", 0, "lovecraft", 0, 1, false);
 		
-		spellHandler = new SpellHandler();
-		
 		//Proxy Pre-Init
 		proxy.preInit(event);
 	}
 
 	@EventHandler
 	public void init(FMLInitializationEvent event) {
+
+
+		//MAKE SURE TO INIT THIS BEFORE DESKHANDLER
+		spellHandler.init();
 
 		//Init deskHandler and alchemyRecipes
 		//(Reliant on pre-init defining of items, etc.)
