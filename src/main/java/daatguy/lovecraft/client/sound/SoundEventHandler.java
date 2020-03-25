@@ -19,6 +19,9 @@ public class SoundEventHandler {
 
 	@ObjectHolder("block.sepulchral_break")
 	public static final SoundEvent SEPULCHRAL_BREAK = createSoundEvent("block.sepulchral_break");
+
+	@ObjectHolder("block.rubbing")
+	public static final SoundEvent RUBBING = createSoundEvent("block.rubbing");
 	
 	@ObjectHolder("block.mortar")
 	public static final SoundEvent MORTAR = createSoundEvent("block.mortar");
@@ -38,6 +41,7 @@ public class SoundEventHandler {
 			event.getRegistry().registerAll(
 					OBELISK_HUM,
 					DRUGGED,
+					RUBBING,
 					MORTAR,
 					SEPULCHRAL_BREAK,
 					SPELL_CAP

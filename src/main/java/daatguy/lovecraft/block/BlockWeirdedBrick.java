@@ -49,19 +49,24 @@ public class BlockWeirdedBrick extends Block {
 		if(player.capabilities.isCreativeMode) {
 			return super.removedByPlayer(state, world, pos, player, willHarvest);
 		} else {
-			spawnAsEntity(world, pos, new ItemStack(LovecraftMain.itemWeirdShards));
-			world.playSound(pos.getX(), pos.getY(), pos.getZ(),
-					SoundEventHandler.SEPULCHRAL_BREAK, SoundCategory.BLOCKS,
-					1.0F, 1.3f+world.rand.nextFloat()*0.5f, false);
-			for(int i = 0; i < 60; i++) {
-				world.spawnParticle(EnumParticleTypes.SMOKE_NORMAL, pos.getX()+world.rand.nextDouble(), pos.getY()+world.rand.nextDouble(), pos.getZ()+world.rand.nextDouble(),
-						world.rand.nextDouble()*0.2D-0.1D, 0D, world.rand.nextDouble()*0.2D-0.1D);
-			}
-			for(int i = 0; i < 30; i++) {
-				world.spawnParticle(EnumParticleTypes.SMOKE_LARGE, pos.getX()+world.rand.nextDouble(), pos.getY()+world.rand.nextDouble(), pos.getZ()+world.rand.nextDouble(),
-						world.rand.nextDouble()*0.2D-0.1D, 0D, world.rand.nextDouble()*0.2D-0.1D);
-			}
+			this.shatter(state, world, pos, player);
 			return false;
+		}
+	}
+	
+	public static void shatter(IBlockState state, World world,
+			BlockPos pos, EntityPlayer player) {
+		spawnAsEntity(world, pos, new ItemStack(LovecraftMain.itemWeirdShards));
+		world.playSound(pos.getX(), pos.getY(), pos.getZ(),
+				SoundEventHandler.SEPULCHRAL_BREAK, SoundCategory.BLOCKS,
+				1.0F, 1.3f+world.rand.nextFloat()*0.5f, false);
+		for(int i = 0; i < 60; i++) {
+			world.spawnParticle(EnumParticleTypes.SMOKE_NORMAL, pos.getX()+world.rand.nextDouble(), pos.getY()+world.rand.nextDouble(), pos.getZ()+world.rand.nextDouble(),
+					world.rand.nextDouble()*0.2D-0.1D, 0D, world.rand.nextDouble()*0.2D-0.1D);
+		}
+		for(int i = 0; i < 30; i++) {
+			world.spawnParticle(EnumParticleTypes.SMOKE_LARGE, pos.getX()+world.rand.nextDouble(), pos.getY()+world.rand.nextDouble(), pos.getZ()+world.rand.nextDouble(),
+					world.rand.nextDouble()*0.2D-0.1D, 0D, world.rand.nextDouble()*0.2D-0.1D);
 		}
 	}
 	
@@ -80,6 +85,10 @@ public class BlockWeirdedBrick extends Block {
 	@Override
 	public void onEntityWalk(World worldIn, BlockPos pos, Entity entityIn) {
 		super.onEntityWalk(worldIn, pos, entityIn);
+		this.fearWalk(worldIn, pos, entityIn);
+	}
+
+	public static void fearWalk(World worldIn, BlockPos pos, Entity entityIn) {
 		if (!worldIn.isRemote && entityIn instanceof EntityPlayer) {
 			if (worldIn.rand.nextFloat() > 0.999) {
 				((EntityPlayer) entityIn).addPotionEffect(new PotionEffect(
@@ -88,12 +97,17 @@ public class BlockWeirdedBrick extends Block {
 			}
 		}
 	}
-
+	
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void randomDisplayTick(IBlockState stateIn, World worldIn,
 			BlockPos pos, Random rand) {
 		super.randomDisplayTick(stateIn, worldIn, pos, rand);
+		this.smoke(worldIn, pos, rand);
+	}
+	
+	public static void smoke(World worldIn,
+			BlockPos pos, Random rand) {
 		if (rand.nextFloat() > 0.4) {
 			double x = (double) pos.getX() + rand.nextFloat();
 			double y = (double) pos.getY() + 0.5D;
