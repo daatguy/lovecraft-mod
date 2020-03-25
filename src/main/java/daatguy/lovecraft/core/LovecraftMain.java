@@ -24,6 +24,7 @@ import net.minecraftforge.fml.common.registry.VillagerRegistry;
 import daatguy.lovecraft.block.BlockAltar;
 import daatguy.lovecraft.block.BlockBasRelief;
 import daatguy.lovecraft.block.BlockCarvedBlock;
+import daatguy.lovecraft.block.BlockCarvedWeirdedBrick;
 import daatguy.lovecraft.block.BlockChargedObelisk;
 import daatguy.lovecraft.block.BlockDesk;
 import daatguy.lovecraft.block.BlockFlowerDrug;
@@ -132,7 +133,9 @@ public class LovecraftMain {
 	public static Item itemBlockChargedObelisk;
 	public static Item itemBlockObeliskCap;
 	public static Item itemBlockResolvedObeliskCap;
-	public static Item itemBlockCarved; //remove when I bother to add a chisel, probably
+	public static Item itemBlockCarvedStonebrick;
+	public static Item itemBlockCarvedSandstone;
+	public static Item itemBlockCarvedWeirdedBrick;
 
 	//Block declarations
 	public static Block blockUnderstructure;
@@ -150,7 +153,9 @@ public class LovecraftMain {
 	public static Block blockChargedObelisk;
 	public static Block blockObeliskCap;
 	public static Block blockResolvedObeliskCap;
-	public static Block blockCarved;
+	public static Block blockCarvedStonebrick;
+	public static Block blockCarvedSandstone;
+	public static Block blockCarvedWeirdedBrick;
 	
 	//Room dimension
 	public static final String ROOM_NAME = "room";
@@ -268,6 +273,7 @@ public class LovecraftMain {
 		blockWeirdedBrick = new BlockWeirdedBrick(Material.ROCK);
 		blockWeirdedBrick.setHardness(60f);
 		blockWeirdedBrick.setResistance(18000000.0f);
+		blockWeirdedBrick.setHarvestLevel("pickaxe", 0);
 		blockWeirdedBrick.setUnlocalizedName("weirded_brick");
 		blockWeirdedBrick.setRegistryName("weirded_brick");
 		blockWeirdedBrick.setCreativeTab(lovecraftTab);
@@ -346,13 +352,30 @@ public class LovecraftMain {
 		blockResolvedObeliskCap.setRegistryName("resolved_obelisk_cap");
 		blockResolvedObeliskCap.setLightLevel(8.0f);
 		blockResolvedObeliskCap.setCreativeTab(lovecraftTab);
+
+		blockCarvedStonebrick = new BlockCarvedBlock(Material.ROCK); //probably add another parameter later
+		blockCarvedStonebrick.setHardness(1.5f);
+		blockCarvedStonebrick.setResistance(6f);
+		blockCarvedStonebrick.setHarvestLevel("pickaxe", 0);
+		blockCarvedStonebrick.setUnlocalizedName("carved_stonebrick");
+		blockCarvedStonebrick.setRegistryName("carved_stonebrick");
+		blockCarvedStonebrick.setCreativeTab(lovecraftTab);
+
+		blockCarvedSandstone = new BlockCarvedBlock(Material.ROCK); //probably add another parameter later
+		blockCarvedSandstone.setHardness(0.8f);
+		blockCarvedStonebrick.setResistance(0.8f);
+		blockCarvedSandstone.setHarvestLevel("pickaxe", 0);
+		blockCarvedSandstone.setUnlocalizedName("carved_sandstone");
+		blockCarvedSandstone.setRegistryName("carved_sandstone");
+		blockCarvedSandstone.setCreativeTab(lovecraftTab);
 		
-		blockCarved = new BlockCarvedBlock(Material.ROCK); //probably add another parameter later
-		blockCarved.setHardness(1.5f);
-		blockCarved.setHarvestLevel("pickaxe", 0);
-		blockCarved.setUnlocalizedName("carved_block");
-		blockCarved.setRegistryName("carved_block");
-		blockCarved.setCreativeTab(lovecraftTab);
+		blockCarvedWeirdedBrick = new BlockCarvedWeirdedBrick(Material.ROCK); //probably add another parameter later
+		blockCarvedWeirdedBrick.setHardness(60f);
+		blockCarvedWeirdedBrick.setResistance(18000000.0f);
+		blockCarvedWeirdedBrick.setHarvestLevel("pickaxe", 0);
+		blockCarvedWeirdedBrick.setUnlocalizedName("carved_weirded_brick");
+		blockCarvedWeirdedBrick.setRegistryName("carved_weirded_brick");
+		blockCarvedWeirdedBrick.setCreativeTab(lovecraftTab);
 		
 		//Initialize itemBlocks
 		itemBlockUnderstructure = new ItemSimpleBlock(blockUnderstructure).setRegistryName(blockUnderstructure.getRegistryName());
@@ -370,7 +393,9 @@ public class LovecraftMain {
 		itemBlockChargedObelisk = new ItemSimpleBlock(blockChargedObelisk).setRegistryName(blockChargedObelisk.getRegistryName());
 		itemBlockObeliskCap = new ItemSimpleBlock(blockObeliskCap).setRegistryName(blockObeliskCap.getRegistryName());
 		itemBlockResolvedObeliskCap = new ItemSimpleBlock(blockResolvedObeliskCap).setRegistryName(blockResolvedObeliskCap.getRegistryName());
-		itemBlockCarved = new ItemSimpleBlock(blockCarved).setRegistryName(blockCarved.getRegistryName());
+		itemBlockCarvedStonebrick = new ItemSimpleBlock(blockCarvedStonebrick).setRegistryName(blockCarvedStonebrick.getRegistryName());
+		itemBlockCarvedSandstone = new ItemSimpleBlock(blockCarvedSandstone).setRegistryName(blockCarvedSandstone.getRegistryName());
+		itemBlockCarvedWeirdedBrick = new ItemSimpleBlock(blockCarvedWeirdedBrick).setRegistryName(blockCarvedWeirdedBrick.getRegistryName());
 
 
 		//Initialize potions

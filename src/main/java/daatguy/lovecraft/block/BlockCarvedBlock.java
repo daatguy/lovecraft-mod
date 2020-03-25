@@ -146,8 +146,8 @@ public class BlockCarvedBlock extends BlockSimple {
 	@Override
 	public TileEntity createTileEntity(World world, IBlockState state) {
 		TileEntityCarving tile = new TileEntityCarving();
-		tile.language = SubItemsHandler.SANSKRIT;
-		tile.carving = "carving.leng";
+		tile.language = SubItemsHandler.COMMON;
+		tile.carving = "carving.null";
 		return tile;
 	}
 

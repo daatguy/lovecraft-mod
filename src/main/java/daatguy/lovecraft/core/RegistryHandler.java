@@ -57,7 +57,9 @@ public class RegistryHandler {
 		event.getRegistry().register(LovecraftMain.itemBlockChargedObelisk);
 		event.getRegistry().register(LovecraftMain.itemBlockObeliskCap);
 		event.getRegistry().register(LovecraftMain.itemBlockResolvedObeliskCap);
-		event.getRegistry().register(LovecraftMain.itemBlockCarved);
+		event.getRegistry().register(LovecraftMain.itemBlockCarvedStonebrick);
+		event.getRegistry().register(LovecraftMain.itemBlockCarvedSandstone);
+		event.getRegistry().register(LovecraftMain.itemBlockCarvedWeirdedBrick);
 	}
 	
 	@SubscribeEvent
@@ -78,7 +80,9 @@ public class RegistryHandler {
 		event.getRegistry().register(LovecraftMain.blockChargedObelisk);
 		event.getRegistry().register(LovecraftMain.blockObeliskCap);
 		event.getRegistry().register(LovecraftMain.blockResolvedObeliskCap);
-		event.getRegistry().register(LovecraftMain.blockCarved);
+		event.getRegistry().register(LovecraftMain.blockCarvedStonebrick);
+		event.getRegistry().register(LovecraftMain.blockCarvedSandstone);
+		event.getRegistry().register(LovecraftMain.blockCarvedWeirdedBrick);
 	}
 
 
@@ -205,8 +209,16 @@ public class RegistryHandler {
 						LovecraftMain.itemBlockResolvedObeliskCap.getRegistryName(),
 						"inventory"));
 		ModelLoader.setCustomModelResourceLocation(
-				LovecraftMain.itemBlockCarved, 0, new ModelResourceLocation(
-						LovecraftMain.itemBlockCarved.getRegistryName(),
+				LovecraftMain.itemBlockCarvedStonebrick, 0, new ModelResourceLocation(
+						LovecraftMain.itemBlockCarvedStonebrick.getRegistryName(),
+						"inventory"));
+		ModelLoader.setCustomModelResourceLocation(
+				LovecraftMain.itemBlockCarvedSandstone, 0, new ModelResourceLocation(
+						LovecraftMain.itemBlockCarvedSandstone.getRegistryName(),
+						"inventory"));
+		ModelLoader.setCustomModelResourceLocation(
+				LovecraftMain.itemBlockCarvedWeirdedBrick, 0, new ModelResourceLocation(
+						LovecraftMain.itemBlockCarvedWeirdedBrick.getRegistryName(),
 						"inventory"));
 	}
 }
