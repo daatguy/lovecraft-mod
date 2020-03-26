@@ -372,7 +372,7 @@ public class GuiAltar extends GuiContainer {
 				if (inventory.getStackInSlot(i + 1).isEmpty()
 						&& spell.recipe[i] != null) {
 					GlStateManager.pushMatrix();
-					GlStateManager.translate(guiLeft, guiTop, -150.0f);
+					GlStateManager.translate(guiLeft, guiTop, -100.0f); //old value of -150 intersected background
 					mc.getRenderItem().renderItemAndEffectIntoGUI(
 							spell.recipe[i], xPositions[i] + 1,
 							yPositions[i] + 1);
@@ -381,7 +381,7 @@ public class GuiAltar extends GuiContainer {
 					GlStateManager.popMatrix();
 
 					GlStateManager.pushMatrix();
-					GlStateManager.translate(guiLeft, guiTop, 55.0f);
+					GlStateManager.translate(guiLeft, guiTop, 155.0f); //old value of 55 intersected blocks at -150
 					GlStateManager.enableAlpha();
 					GlStateManager.enableBlend();
 					GlStateManager.color(1.0f, 1.0f, 1.0f, 0.7f);
