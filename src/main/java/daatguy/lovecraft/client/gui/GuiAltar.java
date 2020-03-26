@@ -359,6 +359,14 @@ public class GuiAltar extends GuiContainer {
 		if (!inventory.getStackInSlot(0).isEmpty()) {
 			Spell spell = LovecraftMain.spellHandler.spells.get(inventory
 					.getStackInSlot(0).getTagCompound().getString("Spell"));
+			
+			//render blank background behind spell book
+			GlStateManager.pushMatrix();
+			GlStateManager.translate(guiLeft, guiTop, 0);
+			GlStateManager.color(1.0f, 1.0f, 1.0f, 0.7f);
+			Minecraft.getMinecraft().getTextureManager().bindTexture(texture);
+			drawTexturedModalRect(15, 124, 177, 55, 18, 18);
+			GlStateManager.popMatrix();
 
 			for (int i = 0; i < 9; i++) {
 				if (inventory.getStackInSlot(i + 1).isEmpty()
