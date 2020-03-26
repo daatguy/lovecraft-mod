@@ -408,6 +408,9 @@ public class GuiAltar extends GuiContainer {
 		this.zLevel = 0.0f;
 		Minecraft.getMinecraft().getTextureManager().bindTexture(texture);
 		drawTexturedModalRect(guiLeft, guiTop, 0, 0, xSize, ySize);
+		if(container.getSlot(0).getHasStack()) {
+			drawTexturedModalRect(guiLeft+15, guiTop+124, xPositions[1], yPositions[1], 18, 18);
+		}
 		GlStateManager.popMatrix();
 
 		IItemHandler inventory = this.tile.getCapability(
