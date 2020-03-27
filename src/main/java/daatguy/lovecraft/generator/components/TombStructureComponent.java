@@ -129,10 +129,13 @@ public class TombStructureComponent extends StructureComponent {
 	}
 
 	public void placeCarving(World worldIn, int x, int y, int z,
-			EnumFacing facing, String carving, int language, StructureBoundingBox structBB) {
-		BlockPos pos = new BlockPos(x, y, z);
-		this.setBlockState(worldIn, LovecraftMain.blockCarvedStonebrick.getDefaultState()
-						.withProperty(BlockCarvedBlock.FACING, facing), x, y, z, structBB);
+			EnumFacing facing, String carving, int language) {
+		BlockPos pos = new BlockPos(this.getXWithOffset(x, z),
+									this.getYWithOffset(y),
+									this.getZWithOffset(x, z));
+		worldIn.setBlockState(pos,
+				LovecraftMain.blockCarvedStonebrick.getDefaultState()
+						.withProperty(BlockCarvedBlock.FACING, facing), 2);
 		TileEntityCarving tile = (TileEntityCarving) worldIn.getTileEntity(pos);
 		if(tile!=null) {
 			tile.carving = carving;
