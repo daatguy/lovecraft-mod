@@ -2,6 +2,7 @@ package daatguy.lovecraft.generator;
 
 import java.util.Random;
 
+import daatguy.lovecraft.generator.components.TombStructureComponent;
 import net.minecraft.init.Blocks;
 import net.minecraft.tileentity.TileEntityChest;
 import net.minecraft.util.ResourceLocation;
@@ -26,20 +27,13 @@ public class TombGenerator implements IWorldGenerator {
 		case -1:
 			break;
 		case 0:
-			//Overworld, should have a chance to generate a tomb
-			/*
-			int x = chunkX * 16 + random.nextInt(16) + 1;
-			int y = 90;
-			int z = chunkZ * 16 + random.nextInt(16) + 1;
-			world.setBlockState(new BlockPos(x, y, z),
-					Blocks.CHEST.getDefaultState());
-			TileEntityChest chest = (TileEntityChest) world
-					.getTileEntity(new BlockPos(x, y, z));
-			if (chest != null) {
-				chest.setLootTable(new ResourceLocation(
-						"lovecraft:chests/tomb"), random.nextLong());
-			
-			}*/
+			if(random.nextInt(64)==0) {
+				int x = chunkX*16+random.nextInt(16);
+				int y = 100+random.nextInt(8);
+				int z = chunkZ*16+random.nextInt(16);
+				TombStructureComponent tomb = new TombStructureComponent(random, x, y, z, 5, 9, 9);
+				tomb.addComponentParts(world, random, tomb.getBoundingBox());
+			}
 			
 			break;
 		case 1:

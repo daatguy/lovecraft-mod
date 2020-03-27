@@ -86,7 +86,12 @@ potion.dread.message3=A deep cold runs down your spine...
 
 carving.untranslated=The carving is in *C. Perhaps a *C dictionary?
 carving.null=Nothing of note is carved on the panel.
-carving.leng="Leng"
+carving.leng=Leng
+carving.tomb0=Cursed be those who disturb the rest of those inside.
+carving.tomb1=As for all men who shall enter this my tomb: there will be judgment.
+carving.tomb2=Inshallah, men who enter this tomb shall have six weeks to live.
+carving.tomb3=Disturb this burial and a plague shall strike your body.
+carving.tomb4=Those who reap the treasures of the dead shall go mad.
 
 tooltip.altar_cast=Incant Verse
 tooltip.empty_obelisks.missing=No obelisks required.
