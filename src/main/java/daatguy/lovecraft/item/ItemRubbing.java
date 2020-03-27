@@ -51,6 +51,12 @@ public class ItemRubbing extends ItemSimple {
 			carving = stack.getTagCompound().getString("Carving");
 		}
 		
+		if(stack.hasTagCompound()
+		   && stack.getTagCompound().hasKey("CrashGame")
+		   && stack.getTagCompound().getBoolean("CrashGame")) {
+			addTooltipWithLineThreshhold(stack, tooltip);
+		}
+		
 		String rawLore[] = I18n.format(carving).split("\\s+");
 		String curLine = "";
 		for (String word : rawLore) {
