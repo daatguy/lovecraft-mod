@@ -123,8 +123,7 @@ public class TombStructureComponent extends StructureComponent {
 				z), this.getYWithOffset(y), this.getZWithOffset(x, z),
 				new ResourceLocation("lovecraft:chests/tomb"));
 		this.placeCarving(worldIn, 3, 0, 5, EnumFacing.UP, "carving.tomb"
-				+ String.valueOf((int) (Math.random() * 5)), (int) (Math.random() * 4),
-				structBB);
+				+ String.valueOf((int) (Math.random() * 5)), (int) (Math.random() * 4));
 		return true;
 	}
 
