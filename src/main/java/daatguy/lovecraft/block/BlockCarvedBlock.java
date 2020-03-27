@@ -34,7 +34,7 @@ import net.minecraft.client.resources.I18n;
 
 public class BlockCarvedBlock extends BlockSimple {
 
-	static final PropertyDirection FACING = BlockDirectional.FACING;
+	public static final PropertyDirection FACING = BlockDirectional.FACING;
 
 	public BlockCarvedBlock(Material material) {
 		super(material);

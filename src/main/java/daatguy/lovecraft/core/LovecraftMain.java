@@ -8,6 +8,7 @@ import net.minecraft.item.Item;
 import net.minecraft.potion.Potion;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.DimensionType;
+import net.minecraft.world.gen.structure.ComponentScatteredFeaturePieces;
 import net.minecraft.world.gen.structure.MapGenStructureIO;
 import net.minecraft.world.storage.loot.LootTableList;
 import net.minecraftforge.common.DimensionManager;
@@ -46,6 +47,7 @@ import daatguy.lovecraft.generator.DecorationGenerator;
 //import daatguy.lovecraft.generator.LengGenerator;
 import daatguy.lovecraft.generator.OreGenerator;
 import daatguy.lovecraft.generator.TombGenerator;
+import daatguy.lovecraft.generator.components.TombStructureComponent;
 import daatguy.lovecraft.generator.village.VillageCreationHandler;
 import daatguy.lovecraft.generator.village.VillageOpiumDen;
 import daatguy.lovecraft.item.ItemBeaker;
@@ -407,6 +409,8 @@ public class LovecraftMain {
 		GameRegistry.registerWorldGenerator(new OreGenerator(), 30);
 		GameRegistry.registerWorldGenerator(new DecorationGenerator(), 300);
 		GameRegistry.registerWorldGenerator(new TombGenerator(), 20);
+		
+		MapGenStructureIO.registerStructureComponent(TombStructureComponent.class, "LovecraftTomb");
 		//GameRegistry.registerWorldGenerator(lengGenerator, 0);
 		//GameRegistry.registerWorldGenerator(new ZigguratGenerator(), 4);
 		
