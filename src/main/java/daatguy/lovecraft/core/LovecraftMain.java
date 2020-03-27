@@ -159,7 +159,7 @@ public class LovecraftMain {
 	
 	//Room dimension
 	public static final String ROOM_NAME = "room";
-	public static final int ROOM_DIM_ID = nextDimID();
+	public static final int ROOM_DIM_ID = 4000;
 	public static final DimensionType ROOM_DIM_TYPE = DimensionType.register(ROOM_NAME, "_"+ROOM_NAME, ROOM_DIM_ID, WorldProviderRoom.class, true);
 
 	@Instance
@@ -410,7 +410,12 @@ public class LovecraftMain {
 		//GameRegistry.registerWorldGenerator(lengGenerator, 0);
 		//GameRegistry.registerWorldGenerator(new ZigguratGenerator(), 4);
 		
-		DimensionManager.registerDimension(ROOM_DIM_ID, ROOM_DIM_TYPE);
+		//Throw error if dimension id is already registered
+		if(DimensionManager.isDimensionRegistered(ROOM_DIM_ID)) {
+			throw new RuntimeException("Lovecraft Mod Error: Dimension ID "+String.valueOf(ROOM_DIM_ID)+" is already registered! Please change in config files.");
+		} else {
+			DimensionManager.registerDimension(ROOM_DIM_ID, ROOM_DIM_TYPE);
+		}
 		
 		//Add smelting recipes
 		GameRegistry.addSmelting(itemBlockFlowerDrug, itemDriedFlower.getDefaultInstance(), 0);
@@ -459,17 +464,10 @@ public class LovecraftMain {
 		//Add loot tables
 		LootTableList.register(new ResourceLocation("lovecraft","chests/tomb"));
 		
+		
+		
 		//Proxy Post-Init
 		proxy.postInit(event);
-	}
-
-	private static int nextDimID() {
-		for (int i = 0; i != -1; i++) {
-			if (!DimensionManager.isDimensionRegistered(i)) {
-				return i;
-			}
-		}
-		throw new RuntimeException("No free dimension IDs!");
 	}
 	
 }
