@@ -3,6 +3,8 @@ package daatguy.lovecraft.block;
 import java.util.List;
 import java.util.Random;
 
+import javax.annotation.Nullable;
+
 import daatguy.lovecraft.client.sound.SoundEventHandler;
 import daatguy.lovecraft.core.LovecraftMain;
 import daatguy.lovecraft.world.RoomTeleporter;
@@ -13,10 +15,12 @@ import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.ItemStack;
+import net.minecraft.pathfinding.PathNodeType;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
@@ -27,6 +31,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraft.util.text.TextFormatting;
+import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -118,6 +123,14 @@ public class BlockWeirdedBrick extends Block {
 						0.0D, 0.0D, 0.0D);
 			}
 		}
+	}
+	
+	@Override
+	public PathNodeType getAiPathNodeType(IBlockState state,
+										  IBlockAccess world,
+										  BlockPos pos,
+										  @Nullable EntityLiving entity) {
+		return PathNodeType.DAMAGE_OTHER;
 	}
 	
 

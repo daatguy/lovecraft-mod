@@ -359,12 +359,20 @@ public class GuiAltar extends GuiContainer {
 		if (!inventory.getStackInSlot(0).isEmpty()) {
 			Spell spell = LovecraftMain.spellHandler.spells.get(inventory
 					.getStackInSlot(0).getTagCompound().getString("Spell"));
+			
+			//render blank background behind spell book
+			GlStateManager.pushMatrix();
+			GlStateManager.translate(guiLeft, guiTop, 0);
+			GlStateManager.color(1.0f, 1.0f, 1.0f, 0.7f);
+			Minecraft.getMinecraft().getTextureManager().bindTexture(texture);
+			drawTexturedModalRect(15, 124, 177, 55, 18, 18);
+			GlStateManager.popMatrix();
 
 			for (int i = 0; i < 9; i++) {
 				if (inventory.getStackInSlot(i + 1).isEmpty()
 						&& spell.recipe[i] != null) {
 					GlStateManager.pushMatrix();
-					GlStateManager.translate(guiLeft, guiTop, -150.0f);
+					GlStateManager.translate(guiLeft, guiTop, -100.0f); //old value of -150 intersected background
 					mc.getRenderItem().renderItemAndEffectIntoGUI(
 							spell.recipe[i], xPositions[i] + 1,
 							yPositions[i] + 1);
@@ -373,7 +381,7 @@ public class GuiAltar extends GuiContainer {
 					GlStateManager.popMatrix();
 
 					GlStateManager.pushMatrix();
-					GlStateManager.translate(guiLeft, guiTop, 55.0f);
+					GlStateManager.translate(guiLeft, guiTop, 155.0f); //old value of 55 intersected blocks at -150
 					GlStateManager.enableAlpha();
 					GlStateManager.enableBlend();
 					GlStateManager.color(1.0f, 1.0f, 1.0f, 0.7f);
@@ -408,9 +416,6 @@ public class GuiAltar extends GuiContainer {
 		this.zLevel = 0.0f;
 		Minecraft.getMinecraft().getTextureManager().bindTexture(texture);
 		drawTexturedModalRect(guiLeft, guiTop, 0, 0, xSize, ySize);
-		if(container.getSlot(0).getHasStack()) {
-			drawTexturedModalRect(guiLeft+15, guiTop+124, xPositions[1], yPositions[1], 18, 18);
-		}
 		GlStateManager.popMatrix();
 
 		IItemHandler inventory = this.tile.getCapability(
