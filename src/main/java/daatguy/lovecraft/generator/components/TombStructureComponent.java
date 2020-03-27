@@ -116,24 +116,23 @@ public class TombStructureComponent extends StructureComponent {
 		int x = 3;
 		int y = 1;
 		int z = 8;
-		this.generateChest(worldIn, structBB, randomIn, this.getXWithOffset(x,
-				z), this.getYWithOffset(y), this.getZWithOffset(x, z),
+		this.generateChest(worldIn, structBB, randomIn, x, y, z,
 				new ResourceLocation("lovecraft:chests/tomb"));
 		z = 7;
 		this.generateChest(worldIn, structBB, randomIn, this.getXWithOffset(x,
 				z), this.getYWithOffset(y), this.getZWithOffset(x, z),
 				new ResourceLocation("lovecraft:chests/tomb"));
 		this.placeCarving(worldIn, 3, 0, 5, EnumFacing.UP, "carving.tomb"
-				+ String.valueOf((int) (Math.random() * 5)), (int) (Math.random() * 4));
+				+ String.valueOf((int) (Math.random() * 5)), (int) (Math.random() * 4),
+				structBB);
 		return true;
 	}
 
 	public void placeCarving(World worldIn, int x, int y, int z,
-			EnumFacing facing, String carving, int language) {
+			EnumFacing facing, String carving, int language, StructureBoundingBox structBB) {
 		BlockPos pos = new BlockPos(x, y, z);
-		worldIn.setBlockState(pos,
-				LovecraftMain.blockCarvedStonebrick.getDefaultState()
-						.withProperty(BlockCarvedBlock.FACING, facing), 2);
+		this.setBlockState(worldIn, LovecraftMain.blockCarvedStonebrick.getDefaultState()
+						.withProperty(BlockCarvedBlock.FACING, facing), x, y, z, structBB);
 		TileEntityCarving tile = (TileEntityCarving) worldIn.getTileEntity(pos);
 		if(tile!=null) {
 			tile.carving = carving;
