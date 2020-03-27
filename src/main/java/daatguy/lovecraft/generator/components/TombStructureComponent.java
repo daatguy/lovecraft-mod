@@ -24,7 +24,6 @@ public class TombStructureComponent extends StructureComponent {
 	/** The size of the bounding box for this feature in the Z axis */
 	protected int depth;
 	protected int horizontalPos = -1;
-	protected StructureBoundingBox boundingBox;
 
 	public TombStructureComponent(Random rand, int x, int y, int z, int sizeX,
 			int sizeY, int sizeZ) {
@@ -105,6 +104,13 @@ public class TombStructureComponent extends StructureComponent {
 	public boolean addComponentParts(World worldIn, Random randomIn,
 			StructureBoundingBox structBB) {
 		IBlockState blockStonebrick = Blocks.STONEBRICK.getDefaultState();
+		/*
+		 * if (structBB == null) {
+		 * System.out.print("why the fuck is the structBB null at ");
+		 * System.out.println(this.boundingBox.toString()); return false; } else {
+		 * System.out.println("got a non-null structBB:");
+		 * System.out.println(structBB.toString()); }
+		 */
 		this.fillWithBlocks(worldIn, structBB, 0, 0, 0, 5, 9, 9,
 				Blocks.AIR.getDefaultState(), blockStonebrick, false);
 		int x = 3;
@@ -134,4 +140,5 @@ public class TombStructureComponent extends StructureComponent {
 			tile.language = language;
 		}
 	}
+	
 }
