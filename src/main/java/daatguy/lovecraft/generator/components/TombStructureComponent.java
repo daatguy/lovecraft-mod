@@ -68,24 +68,21 @@ public class TombStructureComponent extends StructureComponent {
 	 */
 	protected boolean offsetToAverageGroundLevel(World worldIn,
 			StructureBoundingBox structurebb, int yOffset) {
+		System.out.println(this.horizontalPos);
 		if (this.horizontalPos >= 0) {
 			return true;
 		} else {
 			int i = 0;
 			int j = 0;
 			BlockPos.MutableBlockPos blockpos$mutableblockpos = new BlockPos.MutableBlockPos();
-
 			for (int k = this.boundingBox.minZ; k <= this.boundingBox.maxZ; ++k) {
 				for (int l = this.boundingBox.minX; l <= this.boundingBox.maxX; ++l) {
 					blockpos$mutableblockpos.setPos(l, 64, k);
-
-					if (structurebb.isVecInside(blockpos$mutableblockpos)) {
-						i += Math.max(
-								worldIn.getTopSolidOrLiquidBlock(
+					i += Math.max(
+					worldIn.getTopSolidOrLiquidBlock(
 										blockpos$mutableblockpos).getY(),
-								worldIn.provider.getAverageGroundLevel());
-						++j;
-					}
+					worldIn.provider.getAverageGroundLevel());
+					++j;
 				}
 			}
 
@@ -99,47 +96,86 @@ public class TombStructureComponent extends StructureComponent {
 			}
 		}
 	}
+	
+	public class TombBlockSelector extends StructureComponent.BlockSelector {
+
+		@Override
+		public void selectBlocks(Random rand, int x, int y, int z, boolean wall) {
+			if (y > 6 && rand.nextInt(10) == 0) {
+				this.blockstate = Blocks.WEB.getDefaultState();
+				return;
+			} else if (!wall) {
+				this.blockstate = Blocks.AIR.getDefaultState();
+				return;
+			} else {
+				if (rand.nextBoolean()) {
+					this.blockstate = Blocks.STONEBRICK.getStateFromMeta(0);
+					return;
+				} else {
+					if (rand.nextBoolean()) {
+						this.blockstate = Blocks.STONEBRICK.getStateFromMeta(1);
+						return;
+					} else {
+						this.blockstate = Blocks.STONEBRICK.getStateFromMeta(2);
+						return;
+					}
+				}
+			}
+		}
+
+	}
 
 	@Override
 	public boolean addComponentParts(World worldIn, Random randomIn,
 			StructureBoundingBox structBB) {
+		this.offsetToAverageGroundLevel(worldIn, this.boundingBox, -12);
 		IBlockState blockStonebrick = Blocks.STONEBRICK.getDefaultState();
-		/*
-		 * if (structBB == null) {
-		 * System.out.print("why the fuck is the structBB null at ");
-		 * System.out.println(this.boundingBox.toString()); return false; } else {
-		 * System.out.println("got a non-null structBB:");
-		 * System.out.println(structBB.toString()); }
-		 */
-		this.fillWithBlocks(worldIn, structBB, 0, 0, 0, 5, 9, 9,
-				Blocks.AIR.getDefaultState(), blockStonebrick, false);
-		int x = 3;
-		int y = 1;
-		int z = 8;
-		this.generateChest(worldIn, structBB, randomIn, x, y, z,
+		IBlockState blockPillar = Blocks.COBBLESTONE_WALL.getDefaultState();
+		if(this.boundingBox.minY<10) return false;
+		System.out.println(String.valueOf(this.getXWithOffset(0, 0)) + " "
+				+ String.valueOf(this.getYWithOffset(0)) + " "
+				+ String.valueOf(this.getZWithOffset(0, 0)));
+		this.fillWithRandomizedBlocks(worldIn, this.boundingBox, 0, 0, 0, 4, 8, 8,
+				false, randomIn, new TombBlockSelector());
+		this.fillWithBlocks(worldIn, this.boundingBox, 1, 1, 3, 1, 7, 3, blockPillar, blockPillar, false);
+		this.fillWithBlocks(worldIn, this.boundingBox, 3, 1, 3, 3, 7, 3, blockPillar, blockPillar, false);
+		this.fillWithBlocks(worldIn, this.boundingBox, 1, 1, 6, 1, 7, 6, blockPillar, blockPillar, false);
+		this.fillWithBlocks(worldIn, this.boundingBox, 3, 1, 6, 3, 7, 6, blockPillar, blockPillar, false);
+		this.generateChest(worldIn, this.boundingBox, randomIn, 2, 1, 6,
 				new ResourceLocation("lovecraft:chests/tomb"));
-		z = 7;
-		this.generateChest(worldIn, structBB, randomIn, this.getXWithOffset(x,
-				z), this.getYWithOffset(y), this.getZWithOffset(x, z),
+		this.generateChest(worldIn, this.boundingBox, randomIn, 2, 1, 7,
 				new ResourceLocation("lovecraft:chests/tomb"));
-		this.placeCarving(worldIn, 3, 0, 5, EnumFacing.UP, "carving.tomb"
-				+ String.valueOf(randomIn.nextInt(5)), randomIn.nextInt(4));
+		// Using "Allah" in a runic sentence is a bit weird -- add logic?
+		this.placeCarving(worldIn, 2, 0, 4, EnumFacing.UP, "carving.tomb"
+				+ String.valueOf(randomIn.nextInt(4)), randomIn.nextInt(3));
+		//Roof
+		for(int x = 0; x < 5; x++) {
+			for(int z = 0; z < 9; z++) {
+				IBlockState bs = this.getBlockStateFromPos(worldIn, x, 9, z, this.boundingBox);
+				if(randomIn.nextInt(5)==0 && bs.getBlock()!=Blocks.LOG && bs.getBlock()!=Blocks.LOG2) {
+					this.setBlockState(worldIn, blockStonebrick, x, 9, z, this.boundingBox);
+				}
+				bs = this.getBlockStateFromPos(worldIn, x, 10, z, this.boundingBox);
+				if(randomIn.nextInt(10)==0 && bs.getBlock()!=Blocks.LOG && bs.getBlock()!=Blocks.LOG2) {
+					this.setBlockState(worldIn, blockStonebrick, x, 10, z, this.boundingBox);
+				}
+			}
+		}
 		return true;
 	}
 
 	public void placeCarving(World worldIn, int x, int y, int z,
 			EnumFacing facing, String carving, int language) {
 		BlockPos pos = new BlockPos(this.getXWithOffset(x, z),
-									this.getYWithOffset(y),
-									this.getZWithOffset(x, z));
-		worldIn.setBlockState(pos,
-				LovecraftMain.blockCarvedStonebrick.getDefaultState()
-						.withProperty(BlockCarvedBlock.FACING, facing), 2);
+				this.getYWithOffset(y), this.getZWithOffset(x, z));
+		worldIn.setBlockState(pos, LovecraftMain.blockCarvedStonebrick
+				.getDefaultState()
+				.withProperty(BlockCarvedBlock.FACING, facing), 2);
 		TileEntityCarving tile = (TileEntityCarving) worldIn.getTileEntity(pos);
-		if(tile!=null) {
+		if (tile != null) {
 			tile.carving = carving;
 			tile.language = language;
 		}
 	}
-	
+
 }
