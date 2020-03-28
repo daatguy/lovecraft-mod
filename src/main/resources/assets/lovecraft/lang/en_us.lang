@@ -89,9 +89,9 @@ carving.null=Nothing of note is carved on the panel.
 carving.leng=Leng
 carving.tomb0=Cursed be those who disturb the rest of those inside.
 carving.tomb1=As for all men who shall enter this my tomb: there will be judgment.
-carving.tomb2=Inshallah, men who enter this tomb shall have six weeks to live.
-carving.tomb3=Disturb this burial and a plague shall strike your body.
-carving.tomb4=Those who reap the treasures of the dead shall go mad.
+carving.tomb3=Those who reap the treasures of the dead shall go mad.
+carving.tomb4=Disturb this burial and a plague shall strike your body.
+carving.tomb5=Inshallah, men who enter this tomb shall have six weeks to live.
 
 tooltip.altar_cast=Incant Verse
 tooltip.empty_obelisks.missing=No obelisks required.
