@@ -17,12 +17,12 @@
                     "name": "lovecraft:book",
                     "functions": [
                         {
-                            "function": "set_nbt",
-                            "tag": "{Book:\"alchemy_aide\"}"
+                            "function": "set_lovecraft_book",
+                            "book": "alchemy_aide"
                         },
                         {
-                            "function": "set_nbt",
-                            "tag": "{Book:\"account_indus\"}",
+                            "function": "set_lovecraft_book",
+                            "book": "account_indus",
                             "conditions": [
                                 {
                                     "condition": "random_chance",
@@ -31,8 +31,8 @@
                             ]
                         },
                         {
-                            "function": "set_nbt",
-                            "tag": "{Book:\"construction_size\"}",
+                            "function": "set_lovecraft_book",
+                            "book": "construction_size",
                             "conditions": [
                                 {
                                     "condition": "random_chance",
@@ -41,8 +41,8 @@
                             ]
                         },
                         {
-                            "function": "set_nbt",
-                            "tag": "{Book:\"patrician_letters\"}",
+                            "function": "set_lovecraft_book",
+                            "book": "patrician_letters",
                             "conditions": [
                                 {
                                     "condition": "random_chance",
@@ -51,8 +51,8 @@
                             ]
                         },
                         {
-                            "function": "set_nbt",
-                            "tag": "{Book:\"alchemy_dict\"}",
+                            "function": "set_lovecraft_book",
+                            "book": "alchemy_dict",
                             "conditions": [
                                 {
                                     "condition": "random_chance",

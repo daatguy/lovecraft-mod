@@ -11,6 +11,7 @@ import net.minecraft.world.DimensionType;
 import net.minecraft.world.gen.structure.ComponentScatteredFeaturePieces;
 import net.minecraft.world.gen.structure.MapGenStructureIO;
 import net.minecraft.world.storage.loot.LootTableList;
+import net.minecraft.world.storage.loot.functions.LootFunctionManager;
 import net.minecraftforge.common.DimensionManager;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
@@ -68,6 +69,7 @@ import daatguy.lovecraft.tileentity.TileEntityHookah;
 import daatguy.lovecraft.world.WorldProviderRoom;
 import daatguy.lovecraft.world.potion.PotionDrugged;
 import daatguy.lovecraft.world.potion.PotionStatus;
+import daatguy.lovecraft.world.storage.loot.functions.SetLovecraftBook;
 
 @Mod(modid = "lovecraft", name = "Lovecraft Mod", version = "Alpha-1.0")
 public class LovecraftMain {
@@ -398,8 +400,7 @@ public class LovecraftMain {
 		itemBlockCarvedStonebrick = new ItemSimpleBlock(blockCarvedStonebrick).setRegistryName(blockCarvedStonebrick.getRegistryName());
 		itemBlockCarvedSandstone = new ItemSimpleBlock(blockCarvedSandstone).setRegistryName(blockCarvedSandstone.getRegistryName());
 		itemBlockCarvedWeirdedBrick = new ItemSimpleBlock(blockCarvedWeirdedBrick).setRegistryName(blockCarvedWeirdedBrick.getRegistryName());
-
-
+		
 		//Initialize potions
 		potionDread = new PotionStatus(true, 14611199, 0, 0).setPotionName("effect.dread").setRegistryName("lovecraft:dread");
 		potionAwake = new PotionStatus(true, 16777113, 1, 0).setPotionName("effect.awake").setRegistryName("lovecraft:awake");
@@ -465,9 +466,11 @@ public class LovecraftMain {
 	@EventHandler
 	public void postInit(FMLPostInitializationEvent event) {
 
+		//Add loot table functions
+		LootFunctionManager.registerFunction(new SetLovecraftBook.Serializer());
+		
 		//Add loot tables
 		LootTableList.register(new ResourceLocation("lovecraft","chests/tomb"));
-		
 		
 		
 		//Proxy Post-Init
