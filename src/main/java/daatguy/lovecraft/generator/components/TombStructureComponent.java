@@ -79,9 +79,9 @@ public class TombStructureComponent extends StructureComponent {
 				for (int l = this.boundingBox.minX; l <= this.boundingBox.maxX; ++l) {
 					blockpos$mutableblockpos.setPos(l, 64, k);
 					i += Math.max(
-					worldIn.getTopSolidOrLiquidBlock(
-										blockpos$mutableblockpos).getY(),
-					worldIn.provider.getAverageGroundLevel());
+							worldIn.getTopSolidOrLiquidBlock(
+									blockpos$mutableblockpos).getY(),
+							worldIn.provider.getAverageGroundLevel());
 					++j;
 				}
 			}
@@ -96,7 +96,7 @@ public class TombStructureComponent extends StructureComponent {
 			}
 		}
 	}
-	
+
 	public class TombBlockSelector extends StructureComponent.BlockSelector {
 
 		@Override
@@ -128,19 +128,24 @@ public class TombStructureComponent extends StructureComponent {
 	@Override
 	public boolean addComponentParts(World worldIn, Random randomIn,
 			StructureBoundingBox structBB) {
-		this.offsetToAverageGroundLevel(worldIn, this.boundingBox, -12);
+		this.offsetToAverageGroundLevel(worldIn, this.boundingBox, -11);
 		IBlockState blockStonebrick = Blocks.STONEBRICK.getDefaultState();
 		IBlockState blockPillar = Blocks.COBBLESTONE_WALL.getDefaultState();
-		if(this.boundingBox.minY<10) return false;
+		if (this.boundingBox.minY < 10)
+			return false;
 		System.out.println(String.valueOf(this.getXWithOffset(0, 0)) + " "
 				+ String.valueOf(this.getYWithOffset(0)) + " "
 				+ String.valueOf(this.getZWithOffset(0, 0)));
-		this.fillWithRandomizedBlocks(worldIn, this.boundingBox, 0, 0, 0, 4, 8, 8,
-				false, randomIn, new TombBlockSelector());
-		this.fillWithBlocks(worldIn, this.boundingBox, 1, 1, 3, 1, 7, 3, blockPillar, blockPillar, false);
-		this.fillWithBlocks(worldIn, this.boundingBox, 3, 1, 3, 3, 7, 3, blockPillar, blockPillar, false);
-		this.fillWithBlocks(worldIn, this.boundingBox, 1, 1, 6, 1, 7, 6, blockPillar, blockPillar, false);
-		this.fillWithBlocks(worldIn, this.boundingBox, 3, 1, 6, 3, 7, 6, blockPillar, blockPillar, false);
+		this.fillWithRandomizedBlocks(worldIn, this.boundingBox, 0, 0, 0, 4, 8,
+				8, false, randomIn, new TombBlockSelector());
+		this.fillWithBlocks(worldIn, this.boundingBox, 1, 1, 3, 1, 7, 3,
+				blockPillar, blockPillar, false);
+		this.fillWithBlocks(worldIn, this.boundingBox, 3, 1, 3, 3, 7, 3,
+				blockPillar, blockPillar, false);
+		this.fillWithBlocks(worldIn, this.boundingBox, 1, 1, 6, 1, 7, 6,
+				blockPillar, blockPillar, false);
+		this.fillWithBlocks(worldIn, this.boundingBox, 3, 1, 6, 3, 7, 6,
+				blockPillar, blockPillar, false);
 		this.generateChest(worldIn, this.boundingBox, randomIn, 2, 1, 6,
 				new ResourceLocation("lovecraft:chests/tomb"));
 		this.generateChest(worldIn, this.boundingBox, randomIn, 2, 1, 7,
@@ -148,16 +153,25 @@ public class TombStructureComponent extends StructureComponent {
 		// Using "Allah" in a runic sentence is a bit weird -- add logic?
 		this.placeCarving(worldIn, 2, 0, 4, EnumFacing.UP, "carving.tomb"
 				+ String.valueOf(randomIn.nextInt(4)), randomIn.nextInt(3));
-		//Roof
-		for(int x = 0; x < 5; x++) {
-			for(int z = 0; z < 9; z++) {
-				IBlockState bs = this.getBlockStateFromPos(worldIn, x, 9, z, this.boundingBox);
-				if(randomIn.nextInt(5)==0 && bs.getBlock()!=Blocks.LOG && bs.getBlock()!=Blocks.LOG2) {
-					this.setBlockState(worldIn, blockStonebrick, x, 9, z, this.boundingBox);
+		// Roof
+		for (int x = 0; x < 5; x++) {
+			for (int z = 0; z < 9; z++) {
+				IBlockState bs = this.getBlockStateFromPos(worldIn, x, 9, z,
+						this.boundingBox);
+				if (randomIn.nextInt(5) == 0 && bs.getBlock() != Blocks.LOG
+						&& bs.getBlock() != Blocks.LOG2
+						&& bs.getBlock() != Blocks.AIR) {
+					this.setBlockState(worldIn, blockStonebrick, x, 9, z,
+							this.boundingBox);
 				}
-				bs = this.getBlockStateFromPos(worldIn, x, 10, z, this.boundingBox);
-				if(randomIn.nextInt(10)==0 && bs.getBlock()!=Blocks.LOG && bs.getBlock()!=Blocks.LOG2) {
-					this.setBlockState(worldIn, blockStonebrick, x, 10, z, this.boundingBox);
+				bs = this.getBlockStateFromPos(worldIn, x, 10, z,
+						this.boundingBox);
+				if (randomIn.nextInt(10) == 0 && bs.getBlock() != Blocks.LOG
+						&& bs.getBlock() != Blocks.LOG2
+						&& this.getBlockStateFromPos(worldIn, x, 9, z,
+								this.boundingBox).getBlock() != Blocks.AIR) {
+					this.setBlockState(worldIn, blockStonebrick, x, 10, z,
+							this.boundingBox);
 				}
 			}
 		}
