@@ -12,6 +12,7 @@ import net.minecraft.block.BlockDirectional;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.properties.PropertyDirection;
+import net.minecraft.block.state.BlockFaceShape;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
@@ -29,6 +30,7 @@ import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraft.util.text.TextFormatting;
+import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraft.block.SoundType;
 import net.minecraft.client.resources.I18n;
@@ -97,6 +99,11 @@ public class BlockCarvedBlock extends BlockSimple {
 	@Override
 	public boolean isTopSolid(IBlockState state) { //Is this just ignored!?
 		return !state.getValue(FACING).equals(EnumFacing.UP);
+	}
+	
+	@Override
+	public BlockFaceShape getBlockFaceShape(IBlockAccess worldIn, IBlockState state, BlockPos pos, EnumFacing face) {
+		return face == state.getValue(FACING) ? BlockFaceShape.BOWL : BlockFaceShape.SOLID;
 	}
 
 	@Override
