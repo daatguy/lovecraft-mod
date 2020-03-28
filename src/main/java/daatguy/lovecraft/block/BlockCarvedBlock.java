@@ -94,8 +94,8 @@ public class BlockCarvedBlock extends BlockSimple {
 	}
 
 	@Override
-	public boolean isTopSolid(IBlockState state) {
-		return true;
+	public boolean isTopSolid(IBlockState state) { //Is this just ignored!?
+		return !state.getValue(FACING).equals(EnumFacing.UP);
 	}
 
 	@Override
