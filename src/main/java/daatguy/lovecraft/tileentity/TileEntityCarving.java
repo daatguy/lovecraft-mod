@@ -16,9 +16,8 @@ public class TileEntityCarving extends TileEntity {
 	
 	@Override
 	public NBTTagCompound writeToNBT(NBTTagCompound compound) {
-		compound = super.writeToNBT(compound);
-		compound.setString("Carving", this.carving);
-		compound.setInteger("Language", this.language);
+		super.writeToNBT(compound);
+		this.saveToNbt(compound);
 		return compound;
 	}
 	
@@ -27,6 +26,12 @@ public class TileEntityCarving extends TileEntity {
 		this.carving = compound.getString("Carving");
 		this.language = compound.getInteger("Language");
 		super.readFromNBT(compound);
+	}
+
+	public NBTTagCompound saveToNbt(NBTTagCompound compound) {
+		compound.setString("Carving", this.carving);
+		compound.setInteger("Language", this.language);
+		return compound;
 	}
 
 	

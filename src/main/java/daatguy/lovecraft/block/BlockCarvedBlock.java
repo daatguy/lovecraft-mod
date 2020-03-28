@@ -20,6 +20,7 @@ import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.tileentity.TileEntityShulkerBox;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.Mirror;
@@ -212,4 +213,17 @@ public class BlockCarvedBlock extends BlockSimple {
 		player.sendMessage(new TextComponentString(TextFormatting.WHITE
 				+ I18n.format(carving)));
 	}
+	
+	@Override
+	public ItemStack getItem(World worldIn, BlockPos pos, IBlockState state) {
+        ItemStack itemstack = super.getItem(worldIn, pos, state);
+        TileEntityCarving carving = (TileEntityCarving) worldIn.getTileEntity(pos);
+        NBTTagCompound compound = carving.saveToNbt(new NBTTagCompound());
+
+        if (!compound.hasNoTags()) {
+            itemstack.setTagInfo("BlockEntityTag", compound);
+        }
+
+        return itemstack;
+    }
 }
