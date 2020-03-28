@@ -168,7 +168,8 @@ public class TombStructureComponent extends StructureComponent {
 						this.boundingBox);
 				if (randomIn.nextInt(10) == 0 && bs.getBlock() != Blocks.LOG
 						&& bs.getBlock() != Blocks.LOG2
-						&& bs.getBlock() != Blocks.AIR) {
+						&& this.getBlockStateFromPos(worldIn, x, 9, z,
+								this.boundingBox).getBlock() != Blocks.AIR) {
 					this.setBlockState(worldIn, blockStonebrick, x, 10, z,
 							this.boundingBox);
 				}
