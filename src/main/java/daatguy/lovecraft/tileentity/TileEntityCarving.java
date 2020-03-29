@@ -6,8 +6,8 @@ import net.minecraft.tileentity.TileEntity;
 
 public class TileEntityCarving extends TileEntity {
 
-	public String carving;
-	public int language;
+	public String carving = "carving.null";
+	public int language = -1;
 	public boolean destroyedByCreativePlayer = false;
 	
 	@Override
