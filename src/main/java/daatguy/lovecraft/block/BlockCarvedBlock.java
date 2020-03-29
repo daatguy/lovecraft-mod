@@ -248,4 +248,7 @@ public class BlockCarvedBlock extends BlockSimple {
 		}
 	}
 	
+	@Override
+	public void dropBlockAsItemWithChance(World worldIn, BlockPos pos, IBlockState state, float chance, int fortune) {}
+	
 }
