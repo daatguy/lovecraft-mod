@@ -234,7 +234,7 @@ public class BlockCarvedBlock extends BlockSimple {
 	public void onBlockHarvested(World world, BlockPos pos, IBlockState state, EntityPlayer player) {
 		TileEntity tileentity = world.getTileEntity(pos);
 		if (tileentity instanceof TileEntityCarving) {
-			((TileEntityCarving)tileentity).destroyedByCreativePlayer = true;
+			((TileEntityCarving)tileentity).destroyedByCreativePlayer = player.capabilities.isCreativeMode;
 		}
 	}
 	
