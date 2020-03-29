@@ -8,6 +8,7 @@ public class TileEntityCarving extends TileEntity {
 
 	public String carving;
 	public int language;
+	public boolean destroyedByCreativePlayer = false;
 	
 	@Override
 	public NBTTagCompound getUpdateTag() {

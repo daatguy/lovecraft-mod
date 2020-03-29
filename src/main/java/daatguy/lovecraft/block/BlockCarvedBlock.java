@@ -236,6 +236,14 @@ public class BlockCarvedBlock extends BlockSimple {
     }
 	
 	@Override
+	public void onBlockHarvested(World world, BlockPos pos, IBlockState state, EntityPlayer player) {
+		TileEntity tileentity = world.getTileEntity(pos);
+		if (tileentity instanceof TileEntityCarving) {
+			((TileEntityCarving)tileentity).destroyedByCreativePlayer = true;
+		}
+	}
+	
+	@Override
 	public void breakBlock(World world, BlockPos pos, IBlockState state) {
 		TileEntity tileentity = world.getTileEntity(pos);
 		if (tileentity instanceof TileEntityCarving) {
@@ -244,7 +252,9 @@ public class BlockCarvedBlock extends BlockSimple {
 			itemtags.setTag("BlockEntityTag", carving.saveToNbt(new NBTTagCompound()));
 			ItemStack itemstack = new ItemStack(Item.getItemFromBlock(this));
 			itemstack.setTagCompound(itemtags);
-			spawnAsEntity(world, pos, itemstack);
+			if (!carving.destroyedByCreativePlayer) {
+				spawnAsEntity(world, pos, itemstack);
+			}
 		}
 		super.breakBlock(world, pos, state);
 	}
