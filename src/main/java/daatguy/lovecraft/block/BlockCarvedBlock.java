@@ -246,6 +246,7 @@ public class BlockCarvedBlock extends BlockSimple {
 			itemstack.setTagCompound(itemtags);
 			spawnAsEntity(world, pos, itemstack);
 		}
+		super.breakBlock(world, pos, state);
 	}
 	
 	@Override
