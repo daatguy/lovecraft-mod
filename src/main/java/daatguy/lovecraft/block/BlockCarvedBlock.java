@@ -18,6 +18,7 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
@@ -233,4 +234,18 @@ public class BlockCarvedBlock extends BlockSimple {
 
         return itemstack;
     }
+	
+	@Override
+	public void breakBlock(World world, BlockPos pos, IBlockState state) {
+		TileEntity tileentity = world.getTileEntity(pos);
+		if (tileentity instanceof TileEntityCarving) {
+			TileEntityCarving carving = (TileEntityCarving) tileentity;
+			NBTTagCompound itemtags = new NBTTagCompound();
+			itemtags.setTag("BlockEntityTag", carving.saveToNbt(new NBTTagCompound()));
+			ItemStack itemstack = new ItemStack(Item.getItemFromBlock(this));
+			itemstack.setTagCompound(itemtags);
+			spawnAsEntity(world, pos, itemstack);
+		}
+	}
+	
 }
