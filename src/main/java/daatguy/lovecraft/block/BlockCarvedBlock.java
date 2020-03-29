@@ -12,14 +12,17 @@ import net.minecraft.block.BlockDirectional;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.properties.PropertyDirection;
+import net.minecraft.block.state.BlockFaceShape;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.tileentity.TileEntityShulkerBox;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.Mirror;
@@ -28,6 +31,7 @@ import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraft.util.text.TextFormatting;
+import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraft.block.SoundType;
 import net.minecraft.client.resources.I18n;
@@ -94,8 +98,13 @@ public class BlockCarvedBlock extends BlockSimple {
 	}
 
 	@Override
-	public boolean isTopSolid(IBlockState state) {
-		return true;
+	public boolean isTopSolid(IBlockState state) { //Is this just ignored!?
+		return !state.getValue(FACING).equals(EnumFacing.UP);
+	}
+	
+	@Override
+	public BlockFaceShape getBlockFaceShape(IBlockAccess worldIn, IBlockState state, BlockPos pos, EnumFacing face) {
+		return face == state.getValue(FACING) ? BlockFaceShape.BOWL : BlockFaceShape.SOLID;
 	}
 
 	@Override
@@ -212,4 +221,45 @@ public class BlockCarvedBlock extends BlockSimple {
 		player.sendMessage(new TextComponentString(TextFormatting.WHITE
 				+ I18n.format(carving)));
 	}
+	
+	@Override
+	public ItemStack getItem(World worldIn, BlockPos pos, IBlockState state) {
+        ItemStack itemstack = super.getItem(worldIn, pos, state);
+        TileEntityCarving carving = (TileEntityCarving) worldIn.getTileEntity(pos);
+        NBTTagCompound compound = carving.saveToNbt(new NBTTagCompound());
+
+        if (!compound.hasNoTags()) {
+            itemstack.setTagInfo("BlockEntityTag", compound);
+        }
+
+        return itemstack;
+    }
+	
+	@Override
+	public void onBlockHarvested(World world, BlockPos pos, IBlockState state, EntityPlayer player) {
+		TileEntity tileentity = world.getTileEntity(pos);
+		if (tileentity instanceof TileEntityCarving) {
+			((TileEntityCarving)tileentity).destroyedByCreativePlayer = true;
+		}
+	}
+	
+	@Override
+	public void breakBlock(World world, BlockPos pos, IBlockState state) {
+		TileEntity tileentity = world.getTileEntity(pos);
+		if (tileentity instanceof TileEntityCarving) {
+			TileEntityCarving carving = (TileEntityCarving) tileentity;
+			NBTTagCompound itemtags = new NBTTagCompound();
+			itemtags.setTag("BlockEntityTag", carving.saveToNbt(new NBTTagCompound()));
+			ItemStack itemstack = new ItemStack(Item.getItemFromBlock(this));
+			itemstack.setTagCompound(itemtags);
+			if (!carving.destroyedByCreativePlayer) {
+				spawnAsEntity(world, pos, itemstack);
+			}
+		}
+		super.breakBlock(world, pos, state);
+	}
+	
+	@Override
+	public void dropBlockAsItemWithChance(World worldIn, BlockPos pos, IBlockState state, float chance, int fortune) {}
+	
 }
