@@ -164,14 +164,13 @@ public class BlockCarvedBlock extends BlockSimple {
 			EnumFacing side, float hitX, float hitY, float hitZ) {
 		if (side != world.getBlockState(pos).getValue(FACING))
 			return false;
-		if (world.isRemote) {
-			return true;
-		}
 		ItemStack heldItem = player.getHeldItem(hand);
 		TileEntityCarving tile = (TileEntityCarving) world.getTileEntity(pos);
 		if (tile.language == SubItemsHandler.COMMON) {
-			showCarving(player, tile.carving);
-			return true;
+			if (world.isRemote) {
+				showCarving(player, tile.carving);
+				return true;
+			}
 		}
 		if (tile.carving != "carving.null") {
 			if (heldItem.getItem() == LovecraftMain.itemRubbingKit) {
@@ -193,10 +192,14 @@ public class BlockCarvedBlock extends BlockSimple {
 					&& heldItem.getTagCompound().hasKey("Book")
 					&& tile.language == DeskHandler.getIDFromDict(heldItem
 							.getTagCompound().getString("Book"))) {
-				showCarving(player, tile.carving);
+				if (world.isRemote) {
+					showCarving(player, tile.carving);
+				}
 				return true;
 			} else if (tile.language != SubItemsHandler.COMMON) {
-				showCarvingFail(player, tile.language);
+				if (world.isRemote) {
+					showCarvingFail(player, tile.language);
+				}
 				return true;
 			}
 		}
