@@ -10,6 +10,11 @@ public class TileEntityCarving extends TileEntity {
 	public int language = -1;
 	public boolean destroyedByCreativePlayer = false;
 	
+	public TileEntityCarving() {
+		this.carving = "carving.null";
+		this.language = SubItemsHandler.COMMON;
+	}
+	
 	@Override
 	public NBTTagCompound getUpdateTag() {
 		return writeToNBT(new NBTTagCompound());
