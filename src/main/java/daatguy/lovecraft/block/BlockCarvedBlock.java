@@ -9,6 +9,7 @@ import daatguy.lovecraft.item.SubItemsHandler;
 import daatguy.lovecraft.tileentity.TileEntityCarving;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockDirectional;
+import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.properties.PropertyDirection;
@@ -36,17 +37,12 @@ import net.minecraft.world.World;
 import net.minecraft.block.SoundType;
 import net.minecraft.client.resources.I18n;
 
-public class BlockCarvedBlock extends BlockSimple {
+public class BlockCarvedBlock extends BlockSimple implements ITileEntityProvider {
 
 	public static final PropertyDirection FACING = BlockDirectional.FACING;
 
 	public BlockCarvedBlock(Material material) {
 		super(material);
-	}
-
-	public void onBlockAdded(World worldIn, BlockPos pos, IBlockState state) {
-		super.onBlockAdded(worldIn, pos, state);
-		this.setDefaultDirection(worldIn, pos, state);
 	}
 
 	private void setDefaultDirection(World worldIn, BlockPos pos,
@@ -76,6 +72,11 @@ public class BlockCarvedBlock extends BlockSimple {
 		}
 	}
 
+	public void onBlockAdded(World worldIn, BlockPos pos, IBlockState state) {
+		super.onBlockAdded(worldIn, pos, state);
+		this.setDefaultDirection(worldIn, pos, state);
+	}
+
 	public IBlockState getStateForPlacement(World worldIn, BlockPos pos,
 			EnumFacing facing, float hitX, float hitY, float hitZ, int meta,
 			EntityLivingBase placer) {
@@ -90,6 +91,17 @@ public class BlockCarvedBlock extends BlockSimple {
 				state.withProperty(FACING,
 						EnumFacing.getDirectionFromEntityLiving(pos, placer)),
 				2);
+		// Carving placed set carving data from stack data
+		TileEntityCarving tile = (TileEntityCarving) worldIn.getTileEntity(pos);
+		if (tile == null) {
+			return;
+		}
+		try {
+			NBTTagCompound nbt = ((NBTTagCompound) stack.getTagCompound()
+					.getTag("BlockEntityTag"));
+			tile.carving = nbt.getString("Carving");
+			tile.language = nbt.getInteger("Language");
+		} catch (Exception e) {}
 	}
 
 	@Override
@@ -98,13 +110,15 @@ public class BlockCarvedBlock extends BlockSimple {
 	}
 
 	@Override
-	public boolean isTopSolid(IBlockState state) { //Is this just ignored!?
+	public boolean isTopSolid(IBlockState state) { // Is this just ignored!?
 		return !state.getValue(FACING).equals(EnumFacing.UP);
 	}
-	
+
 	@Override
-	public BlockFaceShape getBlockFaceShape(IBlockAccess worldIn, IBlockState state, BlockPos pos, EnumFacing face) {
-		return face == state.getValue(FACING) ? BlockFaceShape.BOWL : BlockFaceShape.SOLID;
+	public BlockFaceShape getBlockFaceShape(IBlockAccess worldIn,
+			IBlockState state, BlockPos pos, EnumFacing face) {
+		return face == state.getValue(FACING) ? BlockFaceShape.BOWL
+				: BlockFaceShape.SOLID;
 	}
 
 	@Override
@@ -148,19 +162,6 @@ public class BlockCarvedBlock extends BlockSimple {
 	}
 
 	@Override
-	public boolean hasTileEntity(IBlockState state) {
-		return true;
-	}
-
-	@Override
-	public TileEntity createTileEntity(World world, IBlockState state) {
-		TileEntityCarving tile = new TileEntityCarving();
-		tile.language = SubItemsHandler.COMMON;
-		tile.carving = "carving.null";
-		return tile;
-	}
-
-	@Override
 	public boolean onBlockActivated(World world, BlockPos pos,
 			IBlockState state, EntityPlayer player, EnumHand hand,
 			EnumFacing side, float hitX, float hitY, float hitZ) {
@@ -171,13 +172,16 @@ public class BlockCarvedBlock extends BlockSimple {
 		if (tile.language == SubItemsHandler.COMMON) {
 			if (world.isRemote) {
 				showCarving(player, tile.carving);
-				return true;
 			}
+			return true;
 		}
 		if (tile.carving != "carving.null") {
 			if (heldItem.getItem() == LovecraftMain.itemRubbingKit) {
 				heldItem.shrink(1);
-				world.playSound(pos.getX()+0.5f, pos.getY()+0.5f, pos.getZ()+0.5f, SoundEventHandler.RUBBING, SoundCategory.BLOCKS, 0.3f, (float)(Math.random()*0.1D+0.95D), false);
+				world.playSound(pos.getX() + 0.5f, pos.getY() + 0.5f,
+						pos.getZ() + 0.5f, SoundEventHandler.RUBBING,
+						SoundCategory.BLOCKS, 0.3f,
+						(float) (Math.random() * 0.1D + 0.95D), false);
 				ItemStack stack = new ItemStack(LovecraftMain.itemRubbing);
 				NBTTagCompound nbt = new NBTTagCompound();
 				nbt.setString("Carving", tile.carving);
@@ -221,45 +225,52 @@ public class BlockCarvedBlock extends BlockSimple {
 		player.sendMessage(new TextComponentString(TextFormatting.WHITE
 				+ I18n.format(carving)));
 	}
-	
+
 	@Override
 	public ItemStack getItem(World worldIn, BlockPos pos, IBlockState state) {
-        ItemStack itemstack = super.getItem(worldIn, pos, state);
-        TileEntityCarving carving = (TileEntityCarving) worldIn.getTileEntity(pos);
-        NBTTagCompound compound = carving.saveToNbt(new NBTTagCompound());
-
-        if (!compound.hasNoTags()) {
-            itemstack.setTagInfo("BlockEntityTag", compound);
-        }
-
-        return itemstack;
-    }
-	
-	@Override
-	public void onBlockHarvested(World world, BlockPos pos, IBlockState state, EntityPlayer player) {
-		TileEntity tileentity = world.getTileEntity(pos);
-		if (tileentity instanceof TileEntityCarving) {
-			((TileEntityCarving)tileentity).destroyedByCreativePlayer = true;
+		ItemStack itemstack = super.getItem(worldIn, pos, state);
+		TileEntityCarving carving = (TileEntityCarving) worldIn
+				.getTileEntity(pos);
+		NBTTagCompound compound = carving.saveToNbt(new NBTTagCompound());
+		if (!compound.hasNoTags()) {
+			itemstack.setTagInfo("BlockEntityTag", compound);
 		}
+		return itemstack;
 	}
-	
+
 	@Override
-	public void breakBlock(World world, BlockPos pos, IBlockState state) {
+	public void onBlockHarvested(World world, BlockPos pos, IBlockState state,
+			EntityPlayer player) {
 		TileEntity tileentity = world.getTileEntity(pos);
-		if (tileentity instanceof TileEntityCarving) {
-			TileEntityCarving carving = (TileEntityCarving) tileentity;
-			NBTTagCompound itemtags = new NBTTagCompound();
-			itemtags.setTag("BlockEntityTag", carving.saveToNbt(new NBTTagCompound()));
-			ItemStack itemstack = new ItemStack(Item.getItemFromBlock(this));
-			itemstack.setTagCompound(itemtags);
-			if (!carving.destroyedByCreativePlayer) {
-				spawnAsEntity(world, pos, itemstack);
+		if (tileentity instanceof TileEntityCarving && player.capabilities.isCreativeMode) {
+			((TileEntityCarving) tileentity).destroyedByCreativePlayer = true;
+		}
+        this.dropBlockAsItem(world, pos, state, 0);
+		super.onBlockHarvested(world, pos, state, player);
+	}
+
+	@Override
+	public void dropBlockAsItemWithChance(World world, BlockPos pos,
+			IBlockState state, float chance, int fortune) {
+		if (!world.isRemote && !world.restoringBlockSnapshots) {
+			TileEntity tileentity = world.getTileEntity(pos);
+			if (tileentity instanceof TileEntityCarving) {
+				TileEntityCarving carving = (TileEntityCarving) tileentity;
+				NBTTagCompound itemtags = new NBTTagCompound();
+				itemtags.setTag("BlockEntityTag",
+						carving.saveToNbt(new NBTTagCompound()));
+				ItemStack itemstack = new ItemStack(Item.getItemFromBlock(this));
+				itemstack.setTagCompound(itemtags);
+				if (!carving.destroyedByCreativePlayer) {
+					spawnAsEntity(world, pos, itemstack);
+				}
 			}
 		}
-		super.breakBlock(world, pos, state);
 	}
-	
+
 	@Override
-	public void dropBlockAsItemWithChance(World worldIn, BlockPos pos, IBlockState state, float chance, int fortune) {}
-	
+	public TileEntity createNewTileEntity(World worldIn, int meta) {
+		return new TileEntityCarving();
+	}
+
 }
