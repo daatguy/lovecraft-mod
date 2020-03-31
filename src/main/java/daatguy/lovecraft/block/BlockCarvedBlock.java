@@ -1,13 +1,10 @@
 package daatguy.lovecraft.block;
 
-import javax.annotation.Nullable;
-
 import daatguy.lovecraft.book.DeskHandler;
 import daatguy.lovecraft.client.sound.SoundEventHandler;
 import daatguy.lovecraft.core.LovecraftMain;
 import daatguy.lovecraft.item.SubItemsHandler;
 import daatguy.lovecraft.tileentity.TileEntityCarving;
-import net.minecraft.block.Block;
 import net.minecraft.block.BlockDirectional;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.IProperty;
@@ -17,12 +14,10 @@ import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.tileentity.TileEntityShulkerBox;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.Mirror;
@@ -33,7 +28,6 @@ import net.minecraft.util.text.TextComponentString;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
-import net.minecraft.block.SoundType;
 import net.minecraft.client.resources.I18n;
 
 public class BlockCarvedBlock extends BlockSimple {
@@ -164,14 +158,13 @@ public class BlockCarvedBlock extends BlockSimple {
 			EnumFacing side, float hitX, float hitY, float hitZ) {
 		if (side != world.getBlockState(pos).getValue(FACING))
 			return false;
-		if (world.isRemote) {
-			return true;
-		}
 		ItemStack heldItem = player.getHeldItem(hand);
 		TileEntityCarving tile = (TileEntityCarving) world.getTileEntity(pos);
 		if (tile.language == SubItemsHandler.COMMON) {
-			showCarving(player, tile.carving);
-			return true;
+			if (world.isRemote) {
+				showCarving(player, tile.carving);
+				return true;
+			}
 		}
 		if (tile.carving != "carving.null") {
 			if (heldItem.getItem() == LovecraftMain.itemRubbingKit) {
@@ -193,10 +186,14 @@ public class BlockCarvedBlock extends BlockSimple {
 					&& heldItem.getTagCompound().hasKey("Book")
 					&& tile.language == DeskHandler.getIDFromDict(heldItem
 							.getTagCompound().getString("Book"))) {
-				showCarving(player, tile.carving);
+				if (world.isRemote) {
+					showCarving(player, tile.carving);
+				}
 				return true;
 			} else if (tile.language != SubItemsHandler.COMMON) {
-				showCarvingFail(player, tile.language);
+				if (world.isRemote) {
+					showCarvingFail(player, tile.language);
+				}
 				return true;
 			}
 		}
