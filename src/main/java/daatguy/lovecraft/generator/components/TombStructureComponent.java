@@ -129,6 +129,8 @@ public class TombStructureComponent extends StructureComponent {
 	public boolean addComponentParts(World worldIn, Random randomIn,
 			StructureBoundingBox structBB) {
 		this.offsetToAverageGroundLevel(worldIn, this.boundingBox, -11);
+		IBlockState solidCheck = this.getBlockStateFromPos(worldIn, 2, 0, 4,this.boundingBox);
+		if(!solidCheck.isFullBlock()) return true;
 		IBlockState blockStonebrick = Blocks.STONEBRICK.getDefaultState();
 		IBlockState blockPillar = Blocks.COBBLESTONE_WALL.getDefaultState();
 		if (this.boundingBox.minY < 10)
