@@ -12,6 +12,7 @@ public class BlockSimple extends Block {
 		
 	}
 	
+	
 	public BlockSimple(Material material, SoundType soundType) {
 		
 		super(material);
