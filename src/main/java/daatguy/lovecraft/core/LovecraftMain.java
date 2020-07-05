@@ -8,11 +8,11 @@ import net.minecraft.item.Item;
 import net.minecraft.potion.Potion;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.DimensionType;
-import net.minecraft.world.gen.structure.ComponentScatteredFeaturePieces;
 import net.minecraft.world.gen.structure.MapGenStructureIO;
 import net.minecraft.world.storage.loot.LootTableList;
 import net.minecraft.world.storage.loot.functions.LootFunctionManager;
 import net.minecraftforge.common.DimensionManager;
+import net.minecraftforge.fml.client.registry.RenderingRegistry;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.Mod.Instance;
@@ -43,6 +43,7 @@ import daatguy.lovecraft.book.spell.SpellHandler;
 import daatguy.lovecraft.container.AlchemyRecipes;
 import daatguy.lovecraft.container.LovecraftTab;
 import daatguy.lovecraft.entity.EntitySpell;
+import daatguy.lovecraft.entity.eldritch.EntityUrhag;
 import daatguy.lovecraft.event.ProfessionHandler;
 import daatguy.lovecraft.generator.DecorationGenerator;
 //import daatguy.lovecraft.generator.LengGenerator;
@@ -432,7 +433,8 @@ public class LovecraftMain {
 		GameRegistry.registerTileEntity(TileEntityCarving.class, "lovecraft:carvedBlock");
 		
 		//Register entities
-		EntityRegistry.registerModEntity(new ResourceLocation("lovecraft:spell"), EntitySpell.class, "lovecraftSpell", 0, "lovecraft", 0, 1, false);
+		EntityRegistry.registerModEntity(new ResourceLocation("lovecraft:spell"), EntitySpell.class, "lovecraftSpell", 0, instance, 0, 1, false);
+		EntityRegistry.registerModEntity(new ResourceLocation("lovecraft:urhag"), EntityUrhag.class, "urhag", 1, instance, EntityUrhag.sightRange, 1, true, 14926261, 11380670);
 		
 		//Proxy Pre-Init
 		proxy.preInit(event);

@@ -1,14 +1,16 @@
 package daatguy.lovecraft.core;
 
-import daatguy.lovecraft.client.gui.GuiHandler;
-import daatguy.lovecraft.entity.EntitySpell;
-import daatguy.lovecraft.entity.RenderFactorySpell;
 import net.minecraftforge.fml.client.registry.RenderingRegistry;
 import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
+import daatguy.lovecraft.client.gui.GuiHandler;
+import daatguy.lovecraft.entity.EntitySpell;
+import daatguy.lovecraft.entity.RenderFactorySpell;
+import daatguy.lovecraft.entity.eldritch.EntityUrhag;
+import daatguy.lovecraft.entity.eldritch.RenderFactoryUrhag;
 
 public class ClientProxy extends CommonProxy {
 
@@ -17,6 +19,7 @@ public class ClientProxy extends CommonProxy {
     public void preInit(FMLPreInitializationEvent event) {
         super.preInit(event);
         RenderingRegistry.registerEntityRenderingHandler(EntitySpell.class, new RenderFactorySpell());
+        RenderingRegistry.registerEntityRenderingHandler(EntityUrhag.class, new RenderFactoryUrhag());
         NetworkRegistry.INSTANCE.registerGuiHandler(LovecraftMain.instance, new GuiHandler());
     }
 

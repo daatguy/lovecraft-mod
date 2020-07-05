@@ -10,6 +10,8 @@ effect.awake3=Partial Lucidity
 effect.awake4=Lloig nafl'fhtagn
 effect.drugged=Drugged
 
+entity.urhag.name=Urhag
+
 ambient.obelisk_hum=Obelisks hum
 spell_cap=Wails heard from the altar
 ambient.drugged=You hear every sound at once
@@ -30,7 +32,7 @@ item.beaker.suspension_tooltip_a=A Solution of:
 item.beaker.suspension_tooltip_b=*p%% *i
 item.coin.name=Drachma
 item.weird_dust.name=Sepulchral Dust
-item.weird_dust.description=Coarse. The grains are all the same size and pyramidal.
+item.weird_dust.description=Coarse. The grains are all the same size and oddly triangular.
 item.weird_shards.name=Sepulchral Shards
 item.weird_shards.description=It smells of metal and mold. Cold to the touch.
 item.dried_flower.name=Dried Flower
@@ -88,10 +90,10 @@ carving.untranslated=The carving is in *C. Perhaps a *C dictionary?
 carving.null=Nothing of note is carved on the panel.
 carving.leng=Leng
 carving.tomb0=Cursed be those who disturb the rest of those inside.
-carving.tomb1=As for all men who shall enter this my tomb: there will be judgment.
+carving.tomb1=As for all men who shall enter this resting place: there will be judgment.
 carving.tomb2=Those who reap the treasures of the dead shall go mad.
 carving.tomb3=Disturb this burial and a plague shall strike your body.
-carving.tomb4=Inshallah, men who enter this tomb shall have six weeks to live.
+carving.tomb4=Men who enter this tomb shall not see two more years of life.
 
 tooltip.altar_cast=Incant Verse
 tooltip.empty_obelisks.missing=No obelisks required.
