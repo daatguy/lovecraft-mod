@@ -3,9 +3,12 @@ package daatguy.lovecraft.entity.eldritch;
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelBox;
 import net.minecraft.client.model.ModelRenderer;
+import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.entity.Entity;
+import net.minecraft.util.math.MathHelper;
 
 public class ModelUrhag extends ModelBase {
+	
 	private final ModelRenderer bone;
 	private final ModelRenderer bone2;
 	private final ModelRenderer bone3;
@@ -17,6 +20,7 @@ public class ModelUrhag extends ModelBase {
 
 		bone = new ModelRenderer(this);
 		bone.setRotationPoint(0.0F, 24.0F, 0.0F);
+		setRotationAngle(bone, 0.0F, 1.5708F, 0.0F);
 		bone.cubeList.add(new ModelBox(bone, 196, 352, 33.0F, -12.0F, -12.0F, 24, 24, 24, 0.0F, false));
 		bone.cubeList.add(new ModelBox(bone, 272, 0, 0.0F, -40.0F, -40.0F, 48, 80, 80, 0.0F, false));
 		bone.cubeList.add(new ModelBox(bone, 0, 0, -64.0F, -36.0F, -36.0F, 64, 72, 72, 0.0F, false));
@@ -30,24 +34,31 @@ public class ModelUrhag extends ModelBase {
 
 		bone3 = new ModelRenderer(this);
 		bone3.setRotationPoint(0.0F, 24.0F, 0.0F);
-		bone3.cubeList.add(new ModelBox(bone3, 337, 315, -32.0F, 0.0F, -56.0F, 48, 48, 48, 0.0F, false));
+		setRotationAngle(bone3, 0.0F, 1.5708F, 0.0F);
+		bone3.cubeList.add(new ModelBox(bone3, 337, 315, -9.0F, 5.0F, -54.0F, 48, 48, 48, 0.0F, false));
 
 		bone4 = new ModelRenderer(this);
 		bone4.setRotationPoint(0.0F, 24.0F, 0.0F);
-		bone4.cubeList.add(new ModelBox(bone4, 0, 434, -32.0F, -13.0F, 10.0F, 48, 48, 48, 0.0F, false));
+		setRotationAngle(bone4, 0.0F, 1.5708F, 0.0F);
+		bone4.cubeList.add(new ModelBox(bone4, 0, 434, -26.0F, -21.0F, 13.0F, 48, 48, 48, 0.0F, false));
 	}
-
+	/**
+     * Sets the models various rotation angles then renders the model.
+     */
 	@Override
-	public void render(Entity entity, float f, float f1, float f2, float f3, float f4, float f5) {
-		bone.render(f5);
-		bone2.render(f5);
-		bone3.render(f5);
-		bone4.render(f5);
-	}
+    public void render(Entity entityIn, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch, float scale)
+    {
+		bone.render(scale+0.01F * MathHelper.sin(ageInTicks * 0.3F));
+		bone2.render(scale+0.04F * MathHelper.sin(ageInTicks * 0.08F));
+		bone3.render(scale+0.04F * MathHelper.sin(ageInTicks * 0.10F));
+		bone4.render(scale+0.04F * MathHelper.sin(ageInTicks * 0.12F));
+    }
 	
 	public void setRotationAngle(ModelRenderer modelRenderer, float x, float y, float z) {
 		modelRenderer.rotateAngleX = x;
 		modelRenderer.rotateAngleY = y;
 		modelRenderer.rotateAngleZ = z;
-	}
+	} 
+    
+    
 }
