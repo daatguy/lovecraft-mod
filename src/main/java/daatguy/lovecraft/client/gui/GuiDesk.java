@@ -80,7 +80,7 @@ public class GuiDesk extends GuiContainer {
 					if (container.craftMatrix.getStackInSlot(i).isEmpty()) {
 						drawGhostItemTooltip(neededItem, mouseX, mouseY,
 								container.inventorySlots.get(i + 1).xPos,
-								container.inventorySlots.get(i + 1).yPos, neededItem.equals(Items.STRING));
+								container.inventorySlots.get(i + 1).yPos, neededItem.getItem().equals(Items.STRING));
 						break;
 					}
 				}
