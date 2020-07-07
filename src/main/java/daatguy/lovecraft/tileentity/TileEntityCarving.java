@@ -22,6 +22,7 @@ public class TileEntityCarving extends TileEntity {
 	
 	@Override
 	public NBTTagCompound writeToNBT(NBTTagCompound compound) {
+		//System.out.println(carving);
 		super.writeToNBT(compound);
 		this.saveToNbt(compound);
 		return compound;
