@@ -4,7 +4,10 @@ import net.minecraft.block.Block;
 import net.minecraft.block.BlockBush;
 import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.entity.Entity;
 import net.minecraft.item.Item;
+import net.minecraft.item.Item.ToolMaterial;
+import net.minecraft.item.ItemSword;
 import net.minecraft.potion.Potion;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.DimensionType;
@@ -12,6 +15,7 @@ import net.minecraft.world.gen.structure.MapGenStructureIO;
 import net.minecraft.world.storage.loot.LootTableList;
 import net.minecraft.world.storage.loot.functions.LootFunctionManager;
 import net.minecraftforge.common.DimensionManager;
+import net.minecraftforge.common.util.EnumHelper;
 import net.minecraftforge.fml.client.registry.RenderingRegistry;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
@@ -43,6 +47,7 @@ import daatguy.lovecraft.book.spell.SpellHandler;
 import daatguy.lovecraft.container.AlchemyRecipes;
 import daatguy.lovecraft.container.LovecraftTab;
 import daatguy.lovecraft.entity.EntitySpell;
+import daatguy.lovecraft.entity.eldritch.EldritchMobHandler;
 import daatguy.lovecraft.entity.eldritch.EntityUrhag;
 import daatguy.lovecraft.event.ProfessionHandler;
 import daatguy.lovecraft.generator.DecorationGenerator;
@@ -57,6 +62,7 @@ import daatguy.lovecraft.item.ItemBook;
 import daatguy.lovecraft.item.ItemEmptyBeaker;
 import daatguy.lovecraft.item.ItemFossil;
 import daatguy.lovecraft.item.ItemFossilDust;
+import daatguy.lovecraft.item.ItemFossilKnife;
 import daatguy.lovecraft.item.ItemRubbing;
 import daatguy.lovecraft.item.ItemSimple;
 import daatguy.lovecraft.item.ItemSimpleBlock;
@@ -92,6 +98,8 @@ public class LovecraftMain {
 	
 	public static AlchemyRecipes alchemyRecipes = new AlchemyRecipes(); 
 	
+	public static EldritchMobHandler eldritchMobHandler = new EldritchMobHandler();
+	
 	//public static LengGenerator lengGenerator = new LengGenerator();
 	
 	//For use for the potionDrugged
@@ -103,6 +111,9 @@ public class LovecraftMain {
 	public static Potion potionDread;
 	public static Potion potionAwake;
 	public static Potion potionDrugged;
+	
+	//Tool Material Declarations
+	public static ToolMaterial fossilMaterial;
 	
 	//Item declarations
 	public static Item itemRubbingKit;
@@ -121,6 +132,7 @@ public class LovecraftMain {
 	public static Item itemFossil;
 	public static Item itemDriedFlower;
 	public static Item itemRubbing;
+	public static Item itemFossilKnife;
 
 	//More 'item' declarations, ItemBlocks
 	public static Item itemBlockUnderstructure;
@@ -177,11 +189,19 @@ public class LovecraftMain {
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event) {
 		
+		//Init tool materials
+		fossilMaterial = EnumHelper.addToolMaterial("lovecraft_fossil", 0, 73, 0, 0, 0);
+		
 		//Initialize items, set properties
 		itemFossilDust = new ItemFossilDust();
 		itemFossilDust.setUnlocalizedName("fossil_dust");
 		itemFossilDust.setRegistryName("fossil_dust");
 		itemFossilDust.setCreativeTab(lovecraftTab);
+		
+		itemFossilKnife = new ItemFossilKnife(fossilMaterial);
+		itemFossilKnife.setUnlocalizedName("fossil_knife");
+		itemFossilKnife.setRegistryName("fossil_knife");
+		itemFossilKnife.setCreativeTab(lovecraftTab);
 
 		itemRubbingKit = new ItemSimple();
 		itemRubbingKit.setUnlocalizedName("rubbing_kit");
@@ -433,8 +453,10 @@ public class LovecraftMain {
 		GameRegistry.registerTileEntity(TileEntityCarving.class, "lovecraft:carvedBlock");
 		
 		//Register entities
+		LovecraftMain.eldritchMobHandler.init();
 		EntityRegistry.registerModEntity(new ResourceLocation("lovecraft:spell"), EntitySpell.class, "lovecraftSpell", 0, instance, 0, 1, false);
 		EntityRegistry.registerModEntity(new ResourceLocation("lovecraft:urhag"), EntityUrhag.class, "urhag", 1, instance, EntityUrhag.sightRange, 1, true, 14926261, 11380670);
+		LovecraftMain.eldritchMobHandler.AFFECTED_ENTITIES.add(EntityUrhag.class);
 		
 		//Proxy Pre-Init
 		proxy.preInit(event);

@@ -2,18 +2,20 @@ package daatguy.lovecraft.entity.eldritch;
 
 import java.util.Random;
 
+import daatguy.lovecraft.client.sound.SoundEventHandler;
+import daatguy.lovecraft.core.LovecraftMain;
+import net.minecraft.block.Block;
 import net.minecraft.entity.EntityFlying;
-import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.EntityAIBase;
-import net.minecraft.entity.ai.EntityAIFindEntityNearestPlayer;
 import net.minecraft.entity.ai.EntityMoveHelper;
 import net.minecraft.entity.monster.IMob;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundEvent;
 import net.minecraft.util.math.AxisAlignedBB;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.EnumDifficulty;
 import net.minecraft.world.World;
@@ -24,7 +26,8 @@ public class EntityUrhag extends EntityFlying implements IMob{
 	
 	public EntityUrhag(World worldIn) {
 		super(worldIn);
-		this.setSize(8f, 8f);
+		this.setSize(3.2f, 2.2f);
+		this.isImmuneToFire = true;
         this.experienceValue = 5;
         this.moveHelper = new EntityUrhag.GhastMoveHelper(this);
 		//this.tasks.addTask(2, new EntityAIAttackMelee(this, 0.6d, false)));
@@ -32,6 +35,14 @@ public class EntityUrhag extends EntityFlying implements IMob{
 		this.tasks.addTask(5, new EntityUrhag.AIRandomFly(this));
         //this.targetTasks.addTask(1, new EntityAIFindEntityNearestPlayer(this));
 	}
+	
+	/**
+     * Returns the volume for the sounds this mob makes.
+     */
+    protected float getSoundVolume()
+    {
+        return 3.0F;
+    }
 
 	@Override
 	protected void applyEntityAttributes() {
@@ -52,31 +63,39 @@ public class EntityUrhag extends EntityFlying implements IMob{
     }
 	
 	@Override
+	public boolean canBeHitWithPotion() {
+		return false;
+	}
+	
+	@Override
+	public boolean isEntityInvulnerable(DamageSource source) {
+		//Can't die unless killed by player or void
+		return !(source.damageType=="player" || source.damageType=="outOfWorld");
+	}
+	
+	@Override
 	public boolean canBeCollidedWith() {
 		return true;
 	}
 	
 	public float getEyeHeight()
     {
-        return 2.6F;
+        return 0.0F;
     }
 	
 	@Override
 	protected SoundEvent getHurtSound(DamageSource damageSourceIn) {
-		// TODO Auto-generated method stub
-		return super.getHurtSound(damageSourceIn);
+		return SoundEventHandler.URHAG_HURT;
 	}
 	
 	@Override
 	protected SoundEvent getDeathSound() {
-		// TODO Auto-generated method stub
-		return super.getDeathSound();
+		return SoundEventHandler.URHAG_DEATH;
 	}
 	
 	@Override
 	protected SoundEvent getAmbientSound() {
-		// TODO Auto-generated method stub
-		return super.getAmbientSound();
+		return SoundEventHandler.URHAG_IDLE;
 	}
 	
 	@Override
@@ -170,6 +189,8 @@ public class EntityUrhag extends EntityFlying implements IMob{
             return false;
         }
 
+        
+        
         /**
          * Execute a one shot task or start executing a continuous task
          */

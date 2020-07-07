@@ -32,6 +32,39 @@
         "lovecraft:block/mortar_3"
      ]
   },
+  "entity.eldritch_dodge": {
+    "category": "neutral",
+    "subtitle": "entity.eldritch_dodge",
+    "sounds": [ 
+        "lovecraft:entity/eldritch_dodge_1",
+        "lovecraft:entity/eldritch_dodge_2",
+        "lovecraft:entity/eldritch_dodge_3",
+        "lovecraft:entity/eldritch_dodge_4"
+     ]
+  },
+  "entity.urhag.idle": {
+    "category": "hostile",
+    "subtitle": "entity.urhag.idle",
+    "sounds": [ 
+        "lovecraft:entity/urhag/idle_1",
+        "lovecraft:entity/urhag/idle_2",
+        "lovecraft:entity/urhag/idle_3"
+     ]
+  },
+  "entity.urhag.hurt": {
+    "category": "hostile",
+    "subtitle": "entity.urhag.hurt",
+    "sounds": [ 
+        "lovecraft:entity/urhag/hurt_1",
+        "lovecraft:entity/urhag/hurt_2",
+        "lovecraft:entity/urhag/hurt_3"
+     ]
+  },
+  "entity.urhag.death": {
+    "category": "hostile",
+    "subtitle": "entity.urhag.death",
+    "sounds": [ "lovecraft:entity/urhag/death" ]
+  },
   "ambient.drugged": {
     "category": "ambient",
     "subtitle": "ambient.drugged",

@@ -12,7 +12,7 @@ public class RenderUrhag extends RenderLiving<EntityUrhag>{
 	public static final ResourceLocation texture = new ResourceLocation("lovecraft:textures/entity/urhag.png");
 	
 	public RenderUrhag(RenderManager rendermanagerIn) {
-		super(rendermanagerIn, new ModelUrhag(), 4f);
+		super(rendermanagerIn, new ModelUrhag(), 1.5f);
 	}
 
 	@Override
@@ -25,6 +25,6 @@ public class RenderUrhag extends RenderLiving<EntityUrhag>{
      */
     protected void preRenderCallback(EntityUrhag entitylivingbaseIn, float partialTickTime)
     {
-        GlStateManager.scale(0.8F, 0.8F, 0.8F);
+        GlStateManager.scale(0.4F, 0.4F, 0.4F);
     }
 }

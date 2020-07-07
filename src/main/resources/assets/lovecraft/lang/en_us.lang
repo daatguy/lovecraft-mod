@@ -10,14 +10,18 @@ effect.awake3=Partial Lucidity
 effect.awake4=Lloig nafl'fhtagn
 effect.drugged=Drugged
 
-entity.urhag.name=Urhag
-
+entity.urhag.hurt=Urhag struck
+entity.urhag.idle=Urhag makes a ghastly noise
+entity.urhag.death=Urhag wails a dealthy cry
+entity.eldritch_dodge=The weird flesh does not receive wounds
 ambient.obelisk_hum=Obelisks hum
 spell_cap=Wails heard from the altar
 ambient.drugged=You hear every sound at once
 block.mortar=Mortar grinding
 block.rubbing=Rubbing
 block.sepulchral_break=Screams
+
+entity.urhag.name=Urhag
 
 entity.Villager.opium_career=Opium Peddler
 
@@ -46,6 +50,8 @@ item.magnifying_glass.name=Magnifying Glass
 item.magnifying_glass.description=There are details in this world much finer than what the unaided human eye can make out.
 item.rubbing.name=Rubbing
 item.rubbing.description=I can translate the carved inscription from the comfort of a writing desk... once the logic for this item is implemented, of course
+item.fossil_knife.name=Prehistoric Skiver
+item.fossil_knife.description=A crude construct, but the best I can do for now. With any luck, this should be able to wound unearthly things. 
 
 tile.understructure.name=Nnn'drnog
 tile.mortar.name=Mortar and Pestle
@@ -95,6 +101,7 @@ carving.tomb2=Those who reap the treasures of the dead shall go mad.
 carving.tomb3=Disturb this burial and a plague shall strike your body.
 carving.tomb4=Men who enter this tomb shall not see two more years of life.
 
+tooltip.eldritch_weapon=This implement can damage things from other worlds.
 tooltip.altar_cast=Incant Verse
 tooltip.empty_obelisks.missing=No obelisks required.
 tooltip.empty_obelisks.found=No obelisks required.

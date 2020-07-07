@@ -25,6 +25,18 @@ public class SoundEventHandler {
 	
 	@ObjectHolder("block.mortar")
 	public static final SoundEvent MORTAR = createSoundEvent("block.mortar");
+
+	@ObjectHolder("entity.eldritch_dodge")
+	public static final SoundEvent ELDRITCH_DODGE = createSoundEvent("entity.eldritch_dodge");
+	
+	@ObjectHolder("entity.urhag.idle")
+	public static final SoundEvent URHAG_IDLE = createSoundEvent("entity.urhag.idle");
+
+	@ObjectHolder("entity.urhag.hurt")
+	public static final SoundEvent URHAG_HURT = createSoundEvent("entity.urhag.hurt");
+
+	@ObjectHolder("entity.urhag.death")
+	public static final SoundEvent URHAG_DEATH = createSoundEvent("entity.urhag.death");
 	
 	@ObjectHolder("spell_cap")
 	public static final SoundEvent SPELL_CAP = createSoundEvent("spell_cap");
@@ -43,6 +55,10 @@ public class SoundEventHandler {
 					DRUGGED,
 					RUBBING,
 					MORTAR,
+					ELDRITCH_DODGE,
+					URHAG_IDLE,
+					URHAG_HURT,
+					URHAG_DEATH,
 					SEPULCHRAL_BREAK,
 					SPELL_CAP
 			);

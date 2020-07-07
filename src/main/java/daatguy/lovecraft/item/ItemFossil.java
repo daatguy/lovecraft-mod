@@ -1,30 +1,22 @@
 package daatguy.lovecraft.item;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
-
-import javax.swing.Icon;
 
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
-import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.NonNullList;
-import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import daatguy.lovecraft.book.spell.SpellHandler;
 import daatguy.lovecraft.core.LovecraftMain;
+import daatguy.lovecraft.item.interfaces.ItemDescription;
 
-public class ItemFossil extends ItemSimple {
-
-	private static int loreLineThreshhold = 25;
+public class ItemFossil extends ItemSimple implements ItemDescription {
 
 	public ItemFossil() {
 		this.setHasSubtypes(true);
@@ -76,21 +68,7 @@ public class ItemFossil extends ItemSimple {
 	@Override
 	public void addInformation(ItemStack stack, World worldIn,
 			List<String> tooltip, ITooltipFlag flagIn) {
-		//super.addInformation(stack, worldIn, tooltip, flagIn);
-		String rawLore[] = I18n.format(
-				"fossil." + stack.getTagCompound().getString("Fossil")
-						+ ".description").split("\\s+");
-		String curLine = "";
-		for (String word : rawLore) {
-			curLine = curLine + word + " ";
-			if (curLine.length() > loreLineThreshhold) {
-				tooltip.add(curLine.trim());
-				curLine = "";
-			}
-		}
-		if (curLine != "") {
-			tooltip.add(curLine.trim());
-		}
+		addDescriptionTooltip(stack, worldIn, tooltip, flagIn);
 	}
 
 	@Override
