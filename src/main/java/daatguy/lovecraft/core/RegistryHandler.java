@@ -35,6 +35,7 @@ public class RegistryHandler {
 		event.getRegistry().register(LovecraftMain.itemMummyDust);
 		event.getRegistry().register(LovecraftMain.itemFleshDust);
 		event.getRegistry().register(LovecraftMain.itemMummyChunk);
+		event.getRegistry().register(LovecraftMain.itemFleshChunk);
 		event.getRegistry().register(LovecraftMain.itemMagnifyingGlass);
 		event.getRegistry().register(LovecraftMain.itemTome);
 		event.getRegistry().register(LovecraftMain.itemBook);
@@ -141,6 +142,10 @@ public class RegistryHandler {
 		ModelLoader.setCustomModelResourceLocation(
 				LovecraftMain.itemMummyChunk, 0, new ModelResourceLocation(
 						LovecraftMain.itemMummyChunk.getRegistryName(),
+						"inventory"));
+		ModelLoader.setCustomModelResourceLocation(
+				LovecraftMain.itemFleshChunk, 0, new ModelResourceLocation(
+						LovecraftMain.itemFleshChunk.getRegistryName(),
 						"inventory"));
 		ModelLoader.setCustomModelResourceLocation(
 				LovecraftMain.itemMagnifyingGlass, 0, new ModelResourceLocation(

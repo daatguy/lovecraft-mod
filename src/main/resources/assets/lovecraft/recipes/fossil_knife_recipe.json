@@ -1,0 +1,21 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "F ",
+        " S"
+    ],
+    "key": {
+        "S": {
+            "item": "minecraft:stick",
+            "data": 0
+        },
+        "F": {
+            "item": "lovecraft:fossil",
+            "data": 1
+        }
+    },
+    "result": {
+        "item": "lovecraft:fossil_knife",
+        "count": 1
+    }
+}

@@ -2,15 +2,15 @@ package daatguy.lovecraft.entity.eldritch;
 
 import java.util.Random;
 
-import daatguy.lovecraft.client.sound.SoundEventHandler;
-import daatguy.lovecraft.core.LovecraftMain;
-import net.minecraft.block.Block;
-import net.minecraft.entity.EntityFlying;
+import net.minecraft.block.state.IBlockState;
+import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.MoverType;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.EntityAIBase;
 import net.minecraft.entity.ai.EntityMoveHelper;
 import net.minecraft.entity.monster.IMob;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundEvent;
@@ -19,15 +19,16 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.EnumDifficulty;
 import net.minecraft.world.World;
+import daatguy.lovecraft.client.sound.SoundEventHandler;
 
-public class EntityUrhag extends EntityFlying implements IMob{
+public class EntityUrhag extends EntityEldritch implements IMob{
 
 	public static final int sightRange = 256;
 	
 	public EntityUrhag(World worldIn) {
 		super(worldIn);
 		this.setSize(3.2f, 2.2f);
-		this.isImmuneToFire = true;
+		this.setAIMoveSpeed(0.01f);
         this.experienceValue = 5;
         this.moveHelper = new EntityUrhag.GhastMoveHelper(this);
 		//this.tasks.addTask(2, new EntityAIAttackMelee(this, 0.6d, false)));
@@ -36,6 +37,79 @@ public class EntityUrhag extends EntityFlying implements IMob{
         //this.targetTasks.addTask(1, new EntityAIFindEntityNearestPlayer(this));
 	}
 	
+	public void fall(float distance, float damageMultiplier) {}
+
+    protected void updateFallState(double y, boolean onGroundIn, IBlockState state, BlockPos pos) {}
+
+    public void travel(float strafe, float vertical, float forward)
+    {
+        if (this.isInWater())
+        {
+            this.moveRelative(strafe, vertical, forward, 0.02F);
+            this.move(MoverType.SELF, this.motionX, this.motionY, this.motionZ);
+            this.motionX *= 0.800000011920929D;
+            this.motionY *= 0.800000011920929D;
+            this.motionZ *= 0.800000011920929D;
+        }
+        else if (this.isInLava())
+        {
+            this.moveRelative(strafe, vertical, forward, 0.02F);
+            this.move(MoverType.SELF, this.motionX, this.motionY, this.motionZ);
+            this.motionX *= 0.5D;
+            this.motionY *= 0.5D;
+            this.motionZ *= 0.5D;
+        }
+        else
+        {
+            float f = 0.91F;
+
+            if (this.onGround)
+            {
+                BlockPos underPos = new BlockPos(MathHelper.floor(this.posX), MathHelper.floor(this.getEntityBoundingBox().minY) - 1, MathHelper.floor(this.posZ));
+                IBlockState underState = this.world.getBlockState(underPos);
+                f = underState.getBlock().getSlipperiness(underState, this.world, underPos, this) * 0.91F;
+            }
+
+            float f1 = 0.16277136F / (f * f * f);
+            this.moveRelative(strafe, vertical, forward, this.onGround ? 0.1F * f1 : 0.02F);
+            f = 0.91F;
+
+            if (this.onGround)
+            {
+                BlockPos underPos = new BlockPos(MathHelper.floor(this.posX), MathHelper.floor(this.getEntityBoundingBox().minY) - 1, MathHelper.floor(this.posZ));
+                IBlockState underState = this.world.getBlockState(underPos);
+                f = underState.getBlock().getSlipperiness(underState, this.world, underPos, this) * 0.91F;
+            }
+
+            this.move(MoverType.SELF, this.motionX, this.motionY, this.motionZ);
+            this.motionX *= (double)f;
+            this.motionY *= (double)f;
+            this.motionZ *= (double)f;
+        }
+
+        this.prevLimbSwingAmount = this.limbSwingAmount;
+        double d1 = this.posX - this.prevPosX;
+        double d0 = this.posZ - this.prevPosZ;
+        float f2 = MathHelper.sqrt(d1 * d1 + d0 * d0) * 4.0F;
+
+        if (f2 > 1.0F)
+        {
+            f2 = 1.0F;
+        }
+
+        this.limbSwingAmount += (f2 - this.limbSwingAmount) * 0.4F;
+        this.limbSwing += this.limbSwingAmount;
+    }
+
+    /**
+     * Returns true if this entity should move as if it were on a ladder (either because it's actually on a ladder, or
+     * for AI reasons)
+     */
+    public boolean isOnLadder()
+    {
+        return false;
+    }
+
 	/**
      * Returns the volume for the sounds this mob makes.
      */
@@ -52,35 +126,9 @@ public class EntityUrhag extends EntityFlying implements IMob{
 		this.getEntityAttribute(SharedMonsterAttributes.FOLLOW_RANGE).setBaseValue(sightRange);
 	}
 	
-	public void onUpdate()
-    {
-        super.onUpdate();
-
-        if (!this.world.isRemote && this.world.getDifficulty() == EnumDifficulty.PEACEFUL)
-        {
-            this.setDead();
-        }
-    }
-	
-	@Override
-	public boolean canBeHitWithPotion() {
-		return false;
-	}
-	
-	@Override
-	public boolean isEntityInvulnerable(DamageSource source) {
-		//Can't die unless killed by player or void
-		return !(source.damageType=="player" || source.damageType=="outOfWorld");
-	}
-	
-	@Override
-	public boolean canBeCollidedWith() {
-		return true;
-	}
-	
 	public float getEyeHeight()
     {
-        return 0.0F;
+        return 1.2F;
     }
 	
 	@Override
@@ -101,7 +149,7 @@ public class EntityUrhag extends EntityFlying implements IMob{
 	@Override
 	protected ResourceLocation getLootTable() {
 		// TODO Auto-generated method stub
-		return super.getLootTable();
+		return new ResourceLocation("lovecraft","entity/urhag");
 	}
 	
 	static class AILookAround extends EntityAIBase
@@ -198,7 +246,7 @@ public class EntityUrhag extends EntityFlying implements IMob{
         {
             Random random = this.parentEntity.getRNG();
             double d0 = this.parentEntity.posX + (double)((random.nextFloat() * 2.0F - 1.0F) * 16.0F);
-            double d1 = this.parentEntity.posY + (double)((random.nextFloat() * 2.0F - 1.0F) * 16.0F);
+            double d1 = this.parentEntity.posY + (double)((random.nextFloat() * 2.0F - 1.3F) * 16.0F);
             double d2 = this.parentEntity.posZ + (double)((random.nextFloat() * 2.0F - 1.0F) * 16.0F);
             //The 1.0D on the end doesn't control speed interesting
             this.parentEntity.getMoveHelper().setMoveTo(d0, d1, d2, 1.0D);
@@ -227,7 +275,7 @@ public class EntityUrhag extends EntityFlying implements IMob{
 
                 if (this.courseChangeCooldown-- <= 0)
                 {
-                    this.courseChangeCooldown += this.parentEntity.getRNG().nextInt(5) + 2;
+                    this.courseChangeCooldown += this.parentEntity.getRNG().nextInt(15) + 4;
                     d3 = (double)MathHelper.sqrt(d3);
 
                     if (this.isNotColliding(this.posX, this.posY, this.posZ, d3))

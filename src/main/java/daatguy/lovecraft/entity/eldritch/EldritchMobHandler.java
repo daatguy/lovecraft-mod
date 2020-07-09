@@ -1,17 +1,14 @@
 package daatguy.lovecraft.entity.eldritch;
 
 import java.util.ArrayList;
-import java.util.List;
 
-import daatguy.lovecraft.client.sound.SoundEventHandler;
-import daatguy.lovecraft.core.LovecraftMain;
-import net.minecraft.entity.Entity;
 import net.minecraft.item.Item;
 import net.minecraft.util.SoundCategory;
-import net.minecraftforge.event.entity.PlaySoundAtEntityEvent;
 import net.minecraftforge.event.entity.player.AttackEntityEvent;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import daatguy.lovecraft.client.sound.SoundEventHandler;
+import daatguy.lovecraft.core.LovecraftMain;
 
 @EventBusSubscriber
 public class EldritchMobHandler {
@@ -45,13 +42,14 @@ public class EldritchMobHandler {
 				break;
 			}
 		}
-		if(!ivalid) {
-			doEldritchDodgeEffect(event.getTarget());
+		if(!ivalid && event.getTarget() instanceof EntityEldritch) {
+			doEldritchDodgeEffect((EntityEldritch)event.getTarget());
 			event.setCanceled(true);
 		}
 	}
 	
-	public static void doEldritchDodgeEffect(Entity entity) {
+	public static void doEldritchDodgeEffect(EntityEldritch entity) {
+		entity.opacity = 0.35f;
 		entity.world.playSound(entity.posX+0.5f, entity.posY+0.25f, entity.posZ+0.5f, SoundEventHandler.ELDRITCH_DODGE, SoundCategory.HOSTILE, 0.7f, 1.0f, false);
 	}
 	

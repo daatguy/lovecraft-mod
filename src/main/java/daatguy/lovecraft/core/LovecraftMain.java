@@ -4,10 +4,9 @@ import net.minecraft.block.Block;
 import net.minecraft.block.BlockBush;
 import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.entity.Entity;
+import net.minecraft.item.EnumRarity;
 import net.minecraft.item.Item;
 import net.minecraft.item.Item.ToolMaterial;
-import net.minecraft.item.ItemSword;
 import net.minecraft.potion.Potion;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.DimensionType;
@@ -16,7 +15,6 @@ import net.minecraft.world.storage.loot.LootTableList;
 import net.minecraft.world.storage.loot.functions.LootFunctionManager;
 import net.minecraftforge.common.DimensionManager;
 import net.minecraftforge.common.util.EnumHelper;
-import net.minecraftforge.fml.client.registry.RenderingRegistry;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.Mod.Instance;
@@ -126,6 +124,7 @@ public class LovecraftMain {
 	public static Item itemMummyDust;
 	public static Item itemFleshDust;
 	public static Item itemMummyChunk;
+	public static Item itemFleshChunk;
 	public static Item itemMagnifyingGlass;
 	public static Item itemTome;
 	public static Item itemBook;
@@ -190,7 +189,7 @@ public class LovecraftMain {
 	public void preInit(FMLPreInitializationEvent event) {
 		
 		//Init tool materials
-		fossilMaterial = EnumHelper.addToolMaterial("lovecraft_fossil", 0, 73, 0, 0, 0);
+		fossilMaterial = EnumHelper.addToolMaterial("lovecraft_fossil", 0, 23, 0, 0, 0);
 		
 		//Initialize items, set properties
 		itemFossilDust = new ItemFossilDust();
@@ -223,12 +222,12 @@ public class LovecraftMain {
 		itemCoin.setRegistryName("coin");
 		itemCoin.setCreativeTab(lovecraftTab);
 		
-		itemWeirdShards = new ItemSimple();
+		itemWeirdShards = new ItemSimple(EnumRarity.UNCOMMON);
 		itemWeirdShards.setUnlocalizedName("weird_shards");
 		itemWeirdShards.setRegistryName("weird_shards");
 		itemWeirdShards.setCreativeTab(lovecraftTab);
 		
-		itemWeirdDust = new ItemSimple();
+		itemWeirdDust = new ItemSimple(EnumRarity.UNCOMMON);
 		itemWeirdDust.setUnlocalizedName("weird_dust");
 		itemWeirdDust.setRegistryName("weird_dust");
 		itemWeirdDust.setCreativeTab(lovecraftTab);
@@ -238,7 +237,7 @@ public class LovecraftMain {
 		itemMummyDust.setRegistryName("mummy_dust");
 		itemMummyDust.setCreativeTab(lovecraftTab);
 		
-		itemFleshDust = new ItemSimple();
+		itemFleshDust = new ItemSimple(EnumRarity.UNCOMMON);
 		itemFleshDust.setUnlocalizedName("flesh_dust");
 		itemFleshDust.setRegistryName("flesh_dust");
 		itemFleshDust.setCreativeTab(lovecraftTab);
@@ -247,6 +246,11 @@ public class LovecraftMain {
 		itemMummyChunk.setUnlocalizedName("mummy_chunk");
 		itemMummyChunk.setRegistryName("mummy_chunk");
 		itemMummyChunk.setCreativeTab(lovecraftTab);
+		
+		itemFleshChunk = new ItemSimple(EnumRarity.UNCOMMON);
+		itemFleshChunk.setUnlocalizedName("flesh_chunk");
+		itemFleshChunk.setRegistryName("flesh_chunk");
+		itemFleshChunk.setCreativeTab(lovecraftTab);
 		
 		itemMagnifyingGlass = new ItemSimple();
 		itemMagnifyingGlass.setUnlocalizedName("magnifying_glass");
@@ -495,6 +499,7 @@ public class LovecraftMain {
 		
 		//Add loot tables
 		LootTableList.register(new ResourceLocation("lovecraft","chests/tomb"));
+		LootTableList.register(new ResourceLocation("lovecraft","entity/urhag"));
 		
 		
 		//Proxy Post-Init
