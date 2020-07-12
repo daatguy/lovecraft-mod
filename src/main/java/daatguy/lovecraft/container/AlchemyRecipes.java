@@ -60,6 +60,9 @@ public class AlchemyRecipes {
 		MORTAR_RECIPES.add(new Recipe(LovecraftMain.itemWeirdShards, new ItemStack(LovecraftMain.itemWeirdDust, 2)));
 		MORTAR_RECIPES.add(new Recipe(LovecraftMain.itemFossil, new ItemStack(LovecraftMain.itemFossilDust, 2)));
 		MORTAR_RECIPES.add(new Recipe(LovecraftMain.itemMummyChunk, new ItemStack(LovecraftMain.itemMummyDust, 2)));
+		//MORTAR_RECIPES.add(new Recipe(LovecraftMain.itemFleshChunk, new ItemStack(LovecraftMain.itemFleshDust, 2)));
+		MORTAR_RECIPES.add(new Recipe(LovecraftMain.itemSpoiledFleshChunk, new ItemStack(LovecraftMain.itemSpoiledFleshDust, 2)));
+		MORTAR_RECIPES.add(new Recipe(LovecraftMain.itemPreservedFleshChunk, new ItemStack(LovecraftMain.itemPreservedFleshDust, 2)));
 		
 		SOLUTION_ITEMS.add(LovecraftMain.itemWeirdDust);
 		SOLUTION_ITEMS.add(LovecraftMain.itemFossilDust);

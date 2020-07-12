@@ -168,8 +168,7 @@ public class BlockCarvedBlock extends BlockSimple implements ITileEntityProvider
 				showCarving(player, tile.carving);
 			}
 			return true;
-		}
-		if (tile.carving != "carving.null") {
+		} else if (tile.carving != "carving.null") {
 			if (heldItem.getItem() == LovecraftMain.itemRubbingKit) {
 				heldItem.shrink(1);
 				world.playSound(pos.getX() + 0.5f, pos.getY() + 0.5f,

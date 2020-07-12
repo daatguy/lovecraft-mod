@@ -7,6 +7,7 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.Item;
 import net.minecraft.item.Item.ToolMaterial;
+import net.minecraft.item.ItemStack;
 import net.minecraft.potion.Potion;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.DimensionType;
@@ -57,6 +58,7 @@ import daatguy.lovecraft.generator.village.VillageCreationHandler;
 import daatguy.lovecraft.generator.village.VillageOpiumDen;
 import daatguy.lovecraft.item.ItemBeaker;
 import daatguy.lovecraft.item.ItemBook;
+import daatguy.lovecraft.item.ItemDecay;
 import daatguy.lovecraft.item.ItemEmptyBeaker;
 import daatguy.lovecraft.item.ItemFossil;
 import daatguy.lovecraft.item.ItemFossilDust;
@@ -125,6 +127,10 @@ public class LovecraftMain {
 	public static Item itemFleshDust;
 	public static Item itemMummyChunk;
 	public static Item itemFleshChunk;
+	public static Item itemSpoiledFleshDust;
+	public static Item itemSpoiledFleshChunk;
+	public static Item itemPreservedFleshDust;
+	public static Item itemPreservedFleshChunk;
 	public static Item itemMagnifyingGlass;
 	public static Item itemTome;
 	public static Item itemBook;
@@ -237,20 +243,40 @@ public class LovecraftMain {
 		itemMummyDust.setRegistryName("mummy_dust");
 		itemMummyDust.setCreativeTab(lovecraftTab);
 		
-		itemFleshDust = new ItemSimple(EnumRarity.UNCOMMON);
-		itemFleshDust.setUnlocalizedName("flesh_dust");
-		itemFleshDust.setRegistryName("flesh_dust");
-		itemFleshDust.setCreativeTab(lovecraftTab);
-		
 		itemMummyChunk = new ItemSimple();
 		itemMummyChunk.setUnlocalizedName("mummy_chunk");
 		itemMummyChunk.setRegistryName("mummy_chunk");
 		itemMummyChunk.setCreativeTab(lovecraftTab);
-		
-		itemFleshChunk = new ItemSimple(EnumRarity.UNCOMMON);
+
+		itemSpoiledFleshChunk = new ItemSimple(EnumRarity.UNCOMMON);
+		itemSpoiledFleshChunk.setUnlocalizedName("spoiled_flesh_chunk");
+		itemSpoiledFleshChunk.setRegistryName("spoiled_flesh_chunk");
+		itemSpoiledFleshChunk.setCreativeTab(lovecraftTab);
+
+		itemFleshChunk = new ItemDecay(EnumRarity.UNCOMMON, 1800, new ItemStack(itemSpoiledFleshChunk));
 		itemFleshChunk.setUnlocalizedName("flesh_chunk");
 		itemFleshChunk.setRegistryName("flesh_chunk");
 		itemFleshChunk.setCreativeTab(lovecraftTab);
+
+		itemSpoiledFleshDust = new ItemSimple(EnumRarity.UNCOMMON);
+		itemSpoiledFleshDust.setUnlocalizedName("spoiled_flesh_dust");
+		itemSpoiledFleshDust.setRegistryName("spoiled_flesh_dust");
+		itemSpoiledFleshDust.setCreativeTab(lovecraftTab);
+		
+		itemFleshDust = new ItemDecay(EnumRarity.UNCOMMON, 1800, new ItemStack(itemSpoiledFleshDust));
+		itemFleshDust.setUnlocalizedName("flesh_dust");
+		itemFleshDust.setRegistryName("flesh_dust");
+		itemFleshDust.setCreativeTab(lovecraftTab);
+
+		itemPreservedFleshChunk = new ItemSimple(EnumRarity.UNCOMMON);
+		itemPreservedFleshChunk.setUnlocalizedName("preserved_flesh_chunk");
+		itemPreservedFleshChunk.setRegistryName("preserved_flesh_chunk");
+		itemPreservedFleshChunk.setCreativeTab(lovecraftTab);
+
+		itemPreservedFleshDust = new ItemSimple(EnumRarity.UNCOMMON);
+		itemPreservedFleshDust.setUnlocalizedName("preserved_flesh_dust");
+		itemPreservedFleshDust.setRegistryName("preserved_flesh_dust");
+		itemPreservedFleshDust.setCreativeTab(lovecraftTab);
 		
 		itemMagnifyingGlass = new ItemSimple();
 		itemMagnifyingGlass.setUnlocalizedName("magnifying_glass");

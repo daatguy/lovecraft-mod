@@ -36,6 +36,10 @@ public class RegistryHandler {
 		event.getRegistry().register(LovecraftMain.itemFleshDust);
 		event.getRegistry().register(LovecraftMain.itemMummyChunk);
 		event.getRegistry().register(LovecraftMain.itemFleshChunk);
+		event.getRegistry().register(LovecraftMain.itemSpoiledFleshChunk);
+		event.getRegistry().register(LovecraftMain.itemSpoiledFleshDust);
+		event.getRegistry().register(LovecraftMain.itemPreservedFleshChunk);
+		event.getRegistry().register(LovecraftMain.itemPreservedFleshDust);
 		event.getRegistry().register(LovecraftMain.itemMagnifyingGlass);
 		event.getRegistry().register(LovecraftMain.itemTome);
 		event.getRegistry().register(LovecraftMain.itemBook);
@@ -146,6 +150,22 @@ public class RegistryHandler {
 		ModelLoader.setCustomModelResourceLocation(
 				LovecraftMain.itemFleshChunk, 0, new ModelResourceLocation(
 						LovecraftMain.itemFleshChunk.getRegistryName(),
+						"inventory"));
+		ModelLoader.setCustomModelResourceLocation(
+				LovecraftMain.itemSpoiledFleshChunk, 0, new ModelResourceLocation(
+						LovecraftMain.itemSpoiledFleshChunk.getRegistryName(),
+						"inventory"));
+		ModelLoader.setCustomModelResourceLocation(
+				LovecraftMain.itemSpoiledFleshDust, 0, new ModelResourceLocation(
+						LovecraftMain.itemSpoiledFleshDust.getRegistryName(),
+						"inventory"));
+		ModelLoader.setCustomModelResourceLocation(
+				LovecraftMain.itemPreservedFleshChunk, 0, new ModelResourceLocation(
+						LovecraftMain.itemPreservedFleshChunk.getRegistryName(),
+						"inventory"));
+		ModelLoader.setCustomModelResourceLocation(
+				LovecraftMain.itemPreservedFleshDust, 0, new ModelResourceLocation(
+						LovecraftMain.itemPreservedFleshDust.getRegistryName(),
 						"inventory"));
 		ModelLoader.setCustomModelResourceLocation(
 				LovecraftMain.itemMagnifyingGlass, 0, new ModelResourceLocation(
