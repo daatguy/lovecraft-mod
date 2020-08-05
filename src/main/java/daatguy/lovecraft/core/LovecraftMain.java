@@ -488,7 +488,7 @@ public class LovecraftMain {
 		
 		//Register entities
 		LovecraftMain.eldritchMobHandler.init();
-		EntityRegistry.registerModEntity(new ResourceLocation("lovecraft:spell"), EntitySpell.class, "lovecraftSpell", 1, instance, 0, 1, false);
+		EntityRegistry.registerModEntity(new ResourceLocation("lovecraft:spell"), EntitySpell.class, "lovecraftSpell", 0, instance, 0, 1, false);
 		EntityRegistry.registerModEntity(new ResourceLocation("lovecraft:urhag"), EntityUrhag.class, "urhag", 1, instance, EntityUrhag.sightRange, 1, true, 14926261, 11380670);
 		EntityRegistry.registerModEntity(new ResourceLocation("lovecraft:leyline"), EntityLeyline.class, "leyline", 2, instance, 0, 1, false);
 		LovecraftMain.eldritchMobHandler.AFFECTED_ENTITIES.add(EntityUrhag.class);
