@@ -45,6 +45,7 @@ import daatguy.lovecraft.book.DeskHandler;
 import daatguy.lovecraft.book.spell.SpellHandler;
 import daatguy.lovecraft.container.AlchemyRecipes;
 import daatguy.lovecraft.container.LovecraftTab;
+import daatguy.lovecraft.entity.EntityLeyline;
 import daatguy.lovecraft.entity.EntitySpell;
 import daatguy.lovecraft.entity.eldritch.EldritchMobHandler;
 import daatguy.lovecraft.entity.eldritch.EntityUrhag;
@@ -74,6 +75,7 @@ import daatguy.lovecraft.tileentity.TileEntityCarving;
 import daatguy.lovecraft.tileentity.TileEntityChargedObelisk;
 import daatguy.lovecraft.tileentity.TileEntityHookah;
 import daatguy.lovecraft.world.WorldProviderRoom;
+import daatguy.lovecraft.world.leyline.LeylineHandler;
 import daatguy.lovecraft.world.potion.PotionDrugged;
 import daatguy.lovecraft.world.potion.PotionStatus;
 import daatguy.lovecraft.world.storage.loot.functions.SetLovecraftBook;
@@ -99,6 +101,8 @@ public class LovecraftMain {
 	public static AlchemyRecipes alchemyRecipes = new AlchemyRecipes(); 
 	
 	public static EldritchMobHandler eldritchMobHandler = new EldritchMobHandler();
+	
+	public static LeylineHandler leylineHandler = new LeylineHandler();
 	
 	//public static LengGenerator lengGenerator = new LengGenerator();
 	
@@ -484,8 +488,9 @@ public class LovecraftMain {
 		
 		//Register entities
 		LovecraftMain.eldritchMobHandler.init();
-		EntityRegistry.registerModEntity(new ResourceLocation("lovecraft:spell"), EntitySpell.class, "lovecraftSpell", 0, instance, 0, 1, false);
+		EntityRegistry.registerModEntity(new ResourceLocation("lovecraft:spell"), EntitySpell.class, "lovecraftSpell", 1, instance, 0, 1, false);
 		EntityRegistry.registerModEntity(new ResourceLocation("lovecraft:urhag"), EntityUrhag.class, "urhag", 1, instance, EntityUrhag.sightRange, 1, true, 14926261, 11380670);
+		EntityRegistry.registerModEntity(new ResourceLocation("lovecraft:leyline"), EntityLeyline.class, "leyline", 2, instance, 0, 1, false);
 		LovecraftMain.eldritchMobHandler.AFFECTED_ENTITIES.add(EntityUrhag.class);
 		
 		//Proxy Pre-Init
