@@ -178,6 +178,31 @@ public class ItemDecay extends ItemSimple {
 
 	@Override
 	public boolean onEntityItemUpdate(EntityItem entityItem) {
+		boolean updated = false;
+		ItemStack stack = entityItem.getItem();
+		World worldIn = entityItem.world;
+		if (!stack.hasTagCompound()) {
+			stack.setTagCompound(new NBTTagCompound());
+			updated = true;
+		}
+		if (!stack.getTagCompound().hasKey("LastUpdate", 4)) {
+			stack.getTagCompound()
+					.setLong("LastUpdate", worldIn.getWorldTime());
+			updated = true;
+		}
+		if (!stack.getTagCompound().hasKey("DecayTicks", 3)) {
+			stack.getTagCompound().setInteger("DecayTicks", 1);
+			updated = true;
+		}
+		if (updated)
+			return false;
+		NBTTagCompound nbt = stack.getTagCompound();
+		nbt.setInteger("DecayTicks", nbt.getInteger("DecayTicks")
+				+ (int) (worldIn.getWorldTime() - nbt.getLong("LastUpdate")));
+		nbt.setLong("LastUpdate", worldIn.getWorldTime());
+		if (nbt.getInteger("DecayTicks") > this.maxTicks) {
+			entityItem.setItem(this.decaysInto.copy());
+		}
 		return super.onEntityItemUpdate(entityItem);
 	}
 }
