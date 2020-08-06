@@ -1,17 +1,18 @@
 package daatguy.lovecraft.item;
 
-import com.google.common.collect.ImmutableMap;
+import java.util.List;
 
+import net.minecraft.client.resources.I18n;
+import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.math.MathHelper;
+import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
-import net.minecraftforge.common.animation.ITimeValue;
 
 public class ItemDecay extends ItemSimple {
 
@@ -127,7 +128,8 @@ public class ItemDecay extends ItemSimple {
 		if (!super.shouldCauseReequipAnimation(oldStack, newStack, slotChanged)) {
 			return false;
 		} else {
-			//Messy as hell, this just returns false if both stacks have the decay item NBT structure
+			// Messy as hell, this just returns false if both stacks have the
+			// decay item NBT structure
 			return !(oldStack.hasTagCompound()
 					&& oldStack.getTagCompound().hasKey("DecayTicks", 3) && oldStack
 					.getTagCompound().hasKey("LastUpdate", 4))
@@ -204,5 +206,25 @@ public class ItemDecay extends ItemSimple {
 			entityItem.setItem(this.decaysInto.copy());
 		}
 		return super.onEntityItemUpdate(entityItem);
+	}
+
+	@Override
+	public void addInformation(ItemStack stack, World worldIn,
+			List<String> tooltip, ITooltipFlag flagIn) {
+		super.addInformation(stack, worldIn, tooltip, flagIn);
+		if (stack.hasTagCompound() && stack.getTagCompound().hasKey("DecayTicks", 3)) {
+			int seconds = (this.maxTicks - stack.getTagCompound()
+					.getInteger("DecayTicks")) / 20;
+			tooltip.add("");
+			if(seconds==1) {
+				tooltip.add(TextFormatting.BLUE + I18n.format("tooltip.item_decay_single").replace(
+						"*S",
+						String.valueOf(seconds)));
+			} else {
+				tooltip.add(TextFormatting.BLUE + I18n.format("tooltip.item_decay").replace(
+					"*S",
+					String.valueOf(seconds)));
+			}
+		}
 	}
 }
