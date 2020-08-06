@@ -142,6 +142,7 @@ public class LovecraftMain {
 	public static Item itemDriedFlower;
 	public static Item itemRubbing;
 	public static Item itemFossilKnife;
+	public static Item itemTokenBat;
 
 	//More 'item' declarations, ItemBlocks
 	public static Item itemBlockUnderstructure;
@@ -307,6 +308,11 @@ public class LovecraftMain {
 		itemDriedFlower.setUnlocalizedName("dried_flower");
 		itemDriedFlower.setRegistryName("dried_flower");
 		itemDriedFlower.setCreativeTab(lovecraftTab);
+		
+		itemTokenBat = new ItemDecay(EnumRarity.COMMON, 1200, ItemStack.EMPTY);
+		itemTokenBat.setUnlocalizedName("token_bat");
+		itemTokenBat.setRegistryName("token_bat");
+		itemTokenBat.setCreativeTab(lovecraftTab);
 		
 		blockFlowerDrug = new BlockFlowerDrug(Material.PLANTS);
 		blockFlowerDrug.setHardness(0.0f);

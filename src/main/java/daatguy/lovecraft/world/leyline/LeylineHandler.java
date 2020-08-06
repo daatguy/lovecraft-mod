@@ -59,7 +59,7 @@ public class LeylineHandler {
 		//0.018 is (approx) the value that the sigmoid curve is at 0
 		//Big dick sigmoid f curve math
 		totalFog = 1.036f/(1.0f+(float)Math.exp(4-8*totalFog))-0.018f;
-	    GlStateManager.setFogEnd(event.getFarPlaneDistance()*(1f-totalFog));
+	    GlStateManager.setFogEnd(event.getFarPlaneDistance()/0.8f*(1f-totalFog));
 	}
 
 	@SubscribeEvent(priority = EventPriority.LOWEST) 

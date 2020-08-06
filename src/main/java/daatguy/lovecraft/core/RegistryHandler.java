@@ -47,6 +47,7 @@ public class RegistryHandler {
 		event.getRegistry().register(LovecraftMain.itemFossilKnife);
 		event.getRegistry().register(LovecraftMain.itemDriedFlower);
 		event.getRegistry().register(LovecraftMain.itemRubbing);
+		event.getRegistry().register(LovecraftMain.itemTokenBat);
 
 		event.getRegistry().register(LovecraftMain.itemBlockUnderstructure);
 		event.getRegistry().register(LovecraftMain.itemBlockFlowerDrug);
@@ -174,7 +175,14 @@ public class RegistryHandler {
 		ModelLoader.setCustomModelResourceLocation(
 				LovecraftMain.itemRubbing, 0, new ModelResourceLocation(
 						LovecraftMain.itemRubbing.getRegistryName(),
-						"inventory")); //might want to do some subitemhandler stuff in future?
+						"inventory"));
+		ModelLoader.setCustomModelResourceLocation(
+				LovecraftMain.itemTokenBat, 0, new ModelResourceLocation(
+						LovecraftMain.itemTokenBat.getRegistryName(),
+						"inventory"));
+		
+		
+		//might want to do some subitemhandler stuff in future?
 		((ItemTome)LovecraftMain.itemTome).initModel();
 		((ItemBook)LovecraftMain.itemBook).initModel();
 		((ItemFossil)LovecraftMain.itemFossil).initModel();
