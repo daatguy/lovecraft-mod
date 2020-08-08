@@ -95,9 +95,16 @@ public class BlockWeirdedBrick extends Block {
 
 	public static void fearWalk(World worldIn, BlockPos pos, Entity entityIn) {
 		if (!worldIn.isRemote && entityIn instanceof EntityPlayer) {
-			if (worldIn.rand.nextFloat() > 0.999) {
-				((EntityPlayer) entityIn).addPotionEffect(new PotionEffect(
-						LovecraftMain.potionDread, 20*60*5, 0, false, false));
+			float chance = 0.001f;
+			for(ItemStack itemstack :((EntityPlayer)entityIn).inventory.mainInventory) {
+				if(itemstack.getItem()==LovecraftMain.itemTokenDread) {
+					chance /= 2.0f;
+				}
+			}
+			if (worldIn.rand.nextFloat() > 1.0f-chance) {
+				//((EntityPlayer) entityIn).addPotionEffect(new PotionEffect(
+				//		LovecraftMain.potionDread, 20*60*5, 0, false, false));
+				((EntityPlayer)entityIn).addItemStackToInventory(new ItemStack(LovecraftMain.itemTokenDread));
 				((EntityPlayer) entityIn).sendMessage(new TextComponentString(TextFormatting.BLUE + I18n.format("potion.dread.message"+String.valueOf(worldIn.rand.nextInt(4)))));
 			}
 		}

@@ -99,11 +99,11 @@ public class PotionEventHandler {
 	public static void PotionExpiryEvent(PotionEvent.PotionExpiryEvent event) {
 		if (event.getPotionEffect().getPotion() == LovecraftMain.potionDrugged
 				&& event.getEntity() instanceof EntityPlayerMP) {
-			((EntityPlayer) event.getEntity())
-					.addPotionEffect(new PotionEffect(
-							LovecraftMain.potionAwake, 20 * 60 * 8, event
-									.getPotionEffect().getAmplifier(), false,
-							false));
+			//((EntityPlayer) event.getEntity())
+			//		.addPotionEffect(new PotionEffect(
+			//				LovecraftMain.potionAwake, 20 * 60 * 8, event
+			//						.getPotionEffect().getAmplifier(), false,
+			//				false));
 			LovecraftMain.packetHandler.INSTANCE.sendTo(
 					(IMessage) new PotionDruggedMessage(false),
 					(EntityPlayerMP) event.getEntity());

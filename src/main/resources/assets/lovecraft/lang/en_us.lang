@@ -65,7 +65,12 @@ item.fossil_knife.name=Prehistoric Skiver
 item.fossil_knife.description=A crude construct, but the best I can do for now. With any luck, this should be able to wound unearthly things. 
 item.token_bat.name=Death Which Flies
 item.token_bat.description=The swipe of a knife - the flutter of wings - I can feel the air rushing against my face as I strike the killing blow.
-
+item.token_dread.name=A Primal Dread
+item.token_dread.description=For no reason in particular, I feel the need to get away from here.
+item.token_awake.name=A Vague Lucidity
+item.token_awake.description=I see things clearer. My sight is sharper, my ears perk up at the smallest of sounds. I can almost see through it all.
+item.token_brave.name=Foolhardiness
+item.token_brave.description=Perhaps I shouldn't have lingered...
 
 tile.understructure.name=Nnn'drnog
 tile.mortar.name=Mortar and Pestle
@@ -116,8 +121,12 @@ carving.tomb3=Disturb this burial and a plague shall strike your body.
 carving.tomb4=Men who enter this tomb shall not see two more years of life.
 
 tooltip.eldritch_weapon=This implement can damage things from other worlds.
-tooltip.item_decay=This item will decay in *S seconds.
-tooltip.item_decay_single=This item will decay in *S second.
+tooltip.item_decay=This item will decay in *S *U.
+tooltip.memory_decay=This memory will fade in *S *U.
+tooltip.seconds=seconds
+tooltip.second=second
+tooltip.minutes=minutes
+tooltip.minute=minute
 tooltip.altar_cast=Incant Verse
 tooltip.empty_obelisks.missing=No obelisks required.
 tooltip.empty_obelisks.found=No obelisks required.

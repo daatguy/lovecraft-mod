@@ -52,7 +52,7 @@ public class SpellDrug extends Spell {
 				1.0F, 0.2F, false);
 		for(EntityPlayer player : world.playerEntities) {
 			if(player.getDistance(pos.getX(), pos.getY(), pos.getZ())<10f) {
-				player.addPotionEffect(new PotionEffect(LovecraftMain.potionDread, 6000, 1, false, false));
+				//player.addPotionEffect(new PotionEffect(LovecraftMain.potionDread, 6000, 1, false, false));
 				player.addPotionEffect(new PotionEffect(Potion.getPotionById(15), 1));
 			}
 		}

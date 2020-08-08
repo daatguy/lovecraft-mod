@@ -18,8 +18,8 @@ public class RegistryHandler {
 	
 	@SubscribeEvent
     public static void onPotionRegister(RegistryEvent.Register<Potion> event) {
-		event.getRegistry().register(LovecraftMain.potionDread);
-		event.getRegistry().register(LovecraftMain.potionAwake);
+		//event.getRegistry().register(LovecraftMain.potionDread);
+		//event.getRegistry().register(LovecraftMain.potionAwake);
 		event.getRegistry().register(LovecraftMain.potionDrugged);
 	}
 	
@@ -48,6 +48,9 @@ public class RegistryHandler {
 		event.getRegistry().register(LovecraftMain.itemDriedFlower);
 		event.getRegistry().register(LovecraftMain.itemRubbing);
 		event.getRegistry().register(LovecraftMain.itemTokenBat);
+		event.getRegistry().register(LovecraftMain.itemTokenDread);
+		event.getRegistry().register(LovecraftMain.itemTokenAwake);
+		event.getRegistry().register(LovecraftMain.itemTokenBrave);
 
 		event.getRegistry().register(LovecraftMain.itemBlockUnderstructure);
 		event.getRegistry().register(LovecraftMain.itemBlockFlowerDrug);
@@ -179,6 +182,18 @@ public class RegistryHandler {
 		ModelLoader.setCustomModelResourceLocation(
 				LovecraftMain.itemTokenBat, 0, new ModelResourceLocation(
 						LovecraftMain.itemTokenBat.getRegistryName(),
+						"inventory"));
+		ModelLoader.setCustomModelResourceLocation(
+				LovecraftMain.itemTokenDread, 0, new ModelResourceLocation(
+						LovecraftMain.itemTokenDread.getRegistryName(),
+						"inventory"));
+		ModelLoader.setCustomModelResourceLocation(
+				LovecraftMain.itemTokenAwake, 0, new ModelResourceLocation(
+						LovecraftMain.itemTokenAwake.getRegistryName(),
+						"inventory"));
+		ModelLoader.setCustomModelResourceLocation(
+				LovecraftMain.itemTokenBrave, 0, new ModelResourceLocation(
+						LovecraftMain.itemTokenBrave.getRegistryName(),
 						"inventory"));
 		
 		

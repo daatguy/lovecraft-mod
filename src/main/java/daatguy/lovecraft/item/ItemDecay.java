@@ -18,18 +18,21 @@ public class ItemDecay extends ItemSimple {
 
 	public int maxTicks;
 	public ItemStack decaysInto;
+	public boolean isMemory;
 
-	public ItemDecay(EnumRarity rarity, int maxTicks) {
+	public ItemDecay(EnumRarity rarity, int maxTicks, boolean isMemory) {
 		super(rarity);
 		this.setMaxStackSize(1);
 		this.maxTicks = maxTicks;
+		this.isMemory = isMemory;
 		this.decaysInto = ItemStack.EMPTY;
 	}
 
-	public ItemDecay(EnumRarity rarity, int maxTicks, ItemStack decaysInto) {
+	public ItemDecay(EnumRarity rarity, int maxTicks, boolean isMemory, ItemStack decaysInto) {
 		super(rarity);
 		this.setMaxStackSize(1);
 		this.maxTicks = maxTicks;
+		this.isMemory = isMemory;
 		this.decaysInto = decaysInto;
 	}
 
@@ -40,7 +43,14 @@ public class ItemDecay extends ItemSimple {
 			return true;
 		return super.showDurabilityBar(stack);
 	}
-
+	
+	public ItemStack getDecaysInto(ItemStack stack, World worldIn, Entity entityIn, int itemSlot, boolean isSelected) {
+		return this.decaysInto;
+	}
+	public ItemStack getDecaysInto(EntityItem entityItem) {
+		return this.decaysInto;
+	}
+	
 	@Override
 	public void onUpdate(ItemStack stack, World worldIn, Entity entityIn,
 			int itemSlot, boolean isSelected) {
@@ -67,7 +77,7 @@ public class ItemDecay extends ItemSimple {
 		nbt.setLong("LastUpdate", worldIn.getWorldTime());
 		if (nbt.getInteger("DecayTicks") > this.maxTicks
 				&& entityIn instanceof EntityPlayer) {
-			ItemStack newStack = this.decaysInto.copy();
+			ItemStack newStack = this.getDecaysInto(stack, worldIn, entityIn, itemSlot, updated).copy();
 			int count = newStack.getCount() * stack.getCount();
 			if (count < newStack.getMaxStackSize()) {
 				newStack.setCount(count);
@@ -151,9 +161,15 @@ public class ItemDecay extends ItemSimple {
 	}
 
 	public int getRGBDurabilityForDisplay(ItemStack stack) {
-		return MathHelper.hsvToRGB(0.5f,
-				(float) Math.pow(this.getDurabilityForDisplay(stack), 0.5d),
-				1.0f - 0.5f * (float) this.getDurabilityForDisplay(stack));
+		if(this.isMemory) {
+			return MathHelper.hsvToRGB(0.1f,
+					(float) Math.pow(this.getDurabilityForDisplay(stack), 0.5d),
+					1.0f - 0.5f * (float) this.getDurabilityForDisplay(stack));
+		} else {
+			return MathHelper.hsvToRGB(0.45f,
+					(float) Math.pow(this.getDurabilityForDisplay(stack), 0.5d),
+					1.0f - 0.5f * (float) this.getDurabilityForDisplay(stack));
+		}
 	}
 
 	@Override
@@ -203,7 +219,7 @@ public class ItemDecay extends ItemSimple {
 				+ (int) (worldIn.getWorldTime() - nbt.getLong("LastUpdate")));
 		nbt.setLong("LastUpdate", worldIn.getWorldTime());
 		if (nbt.getInteger("DecayTicks") > this.maxTicks) {
-			entityItem.setItem(this.decaysInto.copy());
+			entityItem.setItem(this.getDecaysInto(entityItem).copy());
 		}
 		return super.onEntityItemUpdate(entityItem);
 	}
@@ -214,17 +230,32 @@ public class ItemDecay extends ItemSimple {
 		super.addInformation(stack, worldIn, tooltip, flagIn);
 		if (stack.hasTagCompound() && stack.getTagCompound().hasKey("DecayTicks", 3)) {
 			int seconds = (this.maxTicks - stack.getTagCompound()
-					.getInteger("DecayTicks")) / 20;
+					.getInteger("DecayTicks")) / 20 + 1;
 			tooltip.add("");
-			if(seconds==1) {
-				tooltip.add(TextFormatting.BLUE + I18n.format("tooltip.item_decay_single").replace(
-						"*S",
-						String.valueOf(seconds)));
-			} else {
-				tooltip.add(TextFormatting.BLUE + I18n.format("tooltip.item_decay").replace(
-					"*S",
-					String.valueOf(seconds)));
+			String s = "";
+			int unit = seconds;
+			if(unit>60) {
+				unit = unit/60;
 			}
+			if(this.isMemory) {
+				s = I18n.format("tooltip.memory_decay").replace("*S",String.valueOf(unit));
+			} else {
+				s = I18n.format("tooltip.item_decay").replace("*S",String.valueOf(unit));
+			}
+			if(seconds>60) {
+				if(unit==1) {
+					s = s.replace("*U",String.valueOf(I18n.format("tooltip.minute")));
+				} else {
+					s = s.replace("*U",String.valueOf(I18n.format("tooltip.minutes")));
+				}
+			} else {
+				if(unit==1) {
+					s = s.replace("*U",String.valueOf(I18n.format("tooltip.second")));
+				} else {
+					s = s.replace("*U",String.valueOf(I18n.format("tooltip.seconds")));
+				}
+			}
+			tooltip.add(TextFormatting.BLUE + s);
 		}
 	}
 }

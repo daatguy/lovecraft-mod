@@ -67,6 +67,7 @@ import daatguy.lovecraft.item.ItemFossilKnife;
 import daatguy.lovecraft.item.ItemRubbing;
 import daatguy.lovecraft.item.ItemSimple;
 import daatguy.lovecraft.item.ItemSimpleBlock;
+import daatguy.lovecraft.item.ItemTokenDread;
 import daatguy.lovecraft.item.ItemTome;
 import daatguy.lovecraft.item.SubItemsHandler;
 import daatguy.lovecraft.networking.PacketHandler;
@@ -112,8 +113,8 @@ public class LovecraftMain {
 	public int motionBlurShader = 0;
 	
 	//Potion Refs
-	public static Potion potionDread;
-	public static Potion potionAwake;
+	//public static Potion potionDread;
+	//public static Potion potionAwake;
 	public static Potion potionDrugged;
 	
 	//Tool Material Declarations
@@ -143,6 +144,9 @@ public class LovecraftMain {
 	public static Item itemRubbing;
 	public static Item itemFossilKnife;
 	public static Item itemTokenBat;
+	public static Item itemTokenDread;
+	public static Item itemTokenAwake;
+	public static Item itemTokenBrave;
 
 	//More 'item' declarations, ItemBlocks
 	public static Item itemBlockUnderstructure;
@@ -258,7 +262,7 @@ public class LovecraftMain {
 		itemSpoiledFleshChunk.setRegistryName("spoiled_flesh_chunk");
 		itemSpoiledFleshChunk.setCreativeTab(lovecraftTab);
 
-		itemFleshChunk = new ItemDecay(EnumRarity.UNCOMMON, 1800, new ItemStack(itemSpoiledFleshChunk));
+		itemFleshChunk = new ItemDecay(EnumRarity.UNCOMMON, 1800, false, new ItemStack(itemSpoiledFleshChunk));
 		itemFleshChunk.setUnlocalizedName("flesh_chunk");
 		itemFleshChunk.setRegistryName("flesh_chunk");
 		itemFleshChunk.setCreativeTab(lovecraftTab);
@@ -268,7 +272,7 @@ public class LovecraftMain {
 		itemSpoiledFleshDust.setRegistryName("spoiled_flesh_dust");
 		itemSpoiledFleshDust.setCreativeTab(lovecraftTab);
 		
-		itemFleshDust = new ItemDecay(EnumRarity.UNCOMMON, 1800, new ItemStack(itemSpoiledFleshDust));
+		itemFleshDust = new ItemDecay(EnumRarity.UNCOMMON, 1800, false, new ItemStack(itemSpoiledFleshDust));
 		itemFleshDust.setUnlocalizedName("flesh_dust");
 		itemFleshDust.setRegistryName("flesh_dust");
 		itemFleshDust.setCreativeTab(lovecraftTab);
@@ -309,10 +313,25 @@ public class LovecraftMain {
 		itemDriedFlower.setRegistryName("dried_flower");
 		itemDriedFlower.setCreativeTab(lovecraftTab);
 		
-		itemTokenBat = new ItemDecay(EnumRarity.COMMON, 1200, ItemStack.EMPTY);
+		itemTokenBat = new ItemDecay(EnumRarity.COMMON, 12000, true);
 		itemTokenBat.setUnlocalizedName("token_bat");
 		itemTokenBat.setRegistryName("token_bat");
 		itemTokenBat.setCreativeTab(lovecraftTab);
+		
+		itemTokenDread = new ItemTokenDread(EnumRarity.COMMON, 12000, true);
+		itemTokenDread.setUnlocalizedName("token_dread");
+		itemTokenDread.setRegistryName("token_dread");
+		itemTokenDread.setCreativeTab(lovecraftTab);
+		
+		itemTokenAwake = new ItemDecay(EnumRarity.COMMON, 12000, true);
+		itemTokenAwake.setUnlocalizedName("token_awake");
+		itemTokenAwake.setRegistryName("token_awake");
+		itemTokenAwake.setCreativeTab(lovecraftTab);
+		
+		itemTokenBrave = new ItemDecay(EnumRarity.COMMON, 12000, true);
+		itemTokenBrave.setUnlocalizedName("token_brave");
+		itemTokenBrave.setRegistryName("token_brave");
+		itemTokenBrave.setCreativeTab(lovecraftTab);
 		
 		blockFlowerDrug = new BlockFlowerDrug(Material.PLANTS);
 		blockFlowerDrug.setHardness(0.0f);
@@ -463,8 +482,8 @@ public class LovecraftMain {
 		itemBlockCarvedWeirdedBrick = new ItemSimpleBlock(blockCarvedWeirdedBrick).setRegistryName(blockCarvedWeirdedBrick.getRegistryName());
 		
 		//Initialize potions
-		potionDread = new PotionStatus(true, 14611199, 0, 0).setPotionName("effect.dread").setRegistryName("lovecraft:dread");
-		potionAwake = new PotionStatus(true, 16777113, 1, 0).setPotionName("effect.awake").setRegistryName("lovecraft:awake");
+		//potionDread = new PotionStatus(true, 14611199, 0, 0).setPotionName("effect.dread").setRegistryName("lovecraft:dread");
+		//potionAwake = new PotionStatus(true, 16777113, 1, 0).setPotionName("effect.awake").setRegistryName("lovecraft:awake");
 		potionDrugged = new PotionDrugged(true, 13369497, 2, 0).setPotionName("effect.drugged").setRegistryName("lovecraft:drugged");
 		
 		//Add world generators
