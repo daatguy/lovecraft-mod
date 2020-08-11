@@ -54,13 +54,17 @@ public class SubItemsHandler {
 		registerBook(new Book("latin_history", 3, 3, LATIN));
 		registerBook(new Book("fossil_notes_plates", 8));
 		registerBook(new Book("fossil_notes_spines", 9));
-		registerBook(new Book("fossil_notes_tendril", 8));
+		registerBook(new Book("fossil_notes_tendril", 16));
 		registerBook(new Book("fossil_notes_cavity", 10));
 		registerBook(new Book("fossil_notes_body", 7));
-		registerBook(new Book("fossil_notes_limb", 7));
+		registerBook(new Book("fossil_notes_limb", 19));
 		registerBook(new Book("anthology_fossil", 12));
 		registerBook(new Book("obelisk_carving", 9));
 		registerBook(new Book("bas_relief", 10));
+		registerBook(new Book("token_notes_bat", 8));
+		registerBook(new Book("token_notes_dread", 17));
+		registerBook(new Book("token_notes_awake", 19));
+		registerBook(new Book("token_notes_brave", 9));
 	}
 
 	public void registerBook(Book book) {

@@ -64,7 +64,7 @@ public class ItemBook extends ItemSimple {
 
 	@SideOnly(Side.CLIENT)
 	public void initModel() {
-		for (int i = 0; i < 16; i++) {
+		for (int i = 0; i < 20; i++) {
 			ModelResourceLocation mrl = new ModelResourceLocation(
 					LovecraftMain.itemTome.getRegistryName() + "_"
 							+ String.valueOf(i), "inventory");

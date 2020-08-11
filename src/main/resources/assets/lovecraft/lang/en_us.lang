@@ -238,7 +238,14 @@ book.fossil_notes_limb.name=A Primeval Limb
 book.fossil_notes_limb.description=This creature must have had several of these grotesque protrusions. As I study this fractal being, whose limbs embody a twisted symmetry, an uncanny feeling creeps into the back of my head.
 book.anthology_fossil.name=Anthology: A 6th Kingdom
 book.anthology_fossil.description=My work has borne fruits! A new taxonomy, ancient and strange.
-
+book.token_notes_bat.name=On Fouling the Airs
+book.token_notes_bat.description=I sense there is much more to my dark little hunt than meets the eye.
+book.token_notes_dread.name=A Vile End
+book.token_notes_dread.description=Years ago, I used to lie awake thinking of death. These past few nights, I cannot sleep. I think of things much worse than it.
+book.token_notes_awake.name=A Real Idea
+book.token_notes_awake.description=I see things anew, a peak behind the curtain. There is more to learn.
+book.token_notes_brave.name=Laughing at Death
+book.token_notes_brave.description=Sometimes, things are so bleak, you can only laugh. It is certainly better than crying.
 
 spell.altar_ready=This rite is capable of being reenacted.
 spell.empty.name=Empty Tome

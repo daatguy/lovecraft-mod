@@ -172,5 +172,17 @@ public class DeskHandler {
 				ItemBook.getItemStack("cultist_journal"),
 				ItemBook.getItemStack("other_side"), new ItemStack(Items.STRING) },
 				ItemBook.getItemStack("visions"), new boolean[]{false, false, false}));
+		deskRecipes.add(new DeskRecipe(new ItemStack[] {
+				new ItemStack(LovecraftMain.itemTokenBat), new ItemStack(Items.PAPER), ItemStack.EMPTY},
+				ItemBook.getItemStack("token_notes_bat"), new boolean[]{false, false, false}));
+		deskRecipes.add(new DeskRecipe(new ItemStack[] {
+				new ItemStack(LovecraftMain.itemTokenDread), new ItemStack(Items.PAPER), ItemStack.EMPTY},
+				ItemBook.getItemStack("token_notes_dread"), new boolean[]{false, false, false}));
+		deskRecipes.add(new DeskRecipe(new ItemStack[] {
+				new ItemStack(LovecraftMain.itemTokenAwake), new ItemStack(Items.PAPER), ItemStack.EMPTY},
+				ItemBook.getItemStack("token_notes_awake"), new boolean[]{false, false, false}));
+		deskRecipes.add(new DeskRecipe(new ItemStack[] {
+				new ItemStack(LovecraftMain.itemTokenBrave), new ItemStack(Items.PAPER), ItemStack.EMPTY},
+				ItemBook.getItemStack("token_notes_brave"), new boolean[]{false, false, false}));
 	}
 }

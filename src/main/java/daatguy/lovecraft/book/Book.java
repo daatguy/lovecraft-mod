@@ -31,7 +31,7 @@ public class Book implements CanGetStack {
 
 	/**
 	 * Name: a string
-	 * Color: 0-15, corresponds to tome sprites
+	 * Color: 0-19, corresponds to tome sprites
 	 */
 	public Book(String name, int color) {
 		this.name = name;
@@ -42,7 +42,7 @@ public class Book implements CanGetStack {
 	
 	/**
 	 * Name: a string
-	 * Color: 0-15, corresponds to tome sprites
+	 * Color: 0-19, corresponds to tome sprites
 	 * GenWeight: weight for generation (might be depreciated)
 	 */
 	public Book(String name, int color, int genWeight) {
@@ -54,7 +54,7 @@ public class Book implements CanGetStack {
 	
 	/**
 	 * Name: a string
-	 * Color: 0-15, corresponds to tome sprites
+	 * Color: 0-19, corresponds to tome sprites
 	 * GenWeight: weight for generation (might be depreciated)
 	 * Language: int id for language (see {@link SubItemsHandler#getLanguageFromID(int)}, etc.)
 	 */
