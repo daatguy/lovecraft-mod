@@ -174,6 +174,19 @@ public class ItemDecay extends ItemSimple {
 
 	@Override
 	public Entity createEntity(World world, Entity location, ItemStack itemstack) {
+		return createItemEntity(world, location, itemstack);
+	};
+	
+	/***
+	 * 
+	 * Reimplementation of #createEntity but static to allow for references in other classes
+	 * 
+	 * @param world - the world to summon in
+	 * @param location - the entity to summon at
+	 * @param itemstack - the itemstack to summon as an item entity
+	 * @return
+	 */
+	public static EntityItem createItemEntity(World world, Entity location, ItemStack itemstack) {
 		itemstack = itemstack.copy();
 		if (!itemstack.hasTagCompound()) {
 			itemstack.setTagCompound(new NBTTagCompound());
@@ -192,7 +205,7 @@ public class ItemDecay extends ItemSimple {
 				location.posY + d1, location.posZ + d2, itemstack);
 		entityitem.setDefaultPickupDelay();
 		return entityitem;
-	};
+	}
 
 	@Override
 	public boolean onEntityItemUpdate(EntityItem entityItem) {
