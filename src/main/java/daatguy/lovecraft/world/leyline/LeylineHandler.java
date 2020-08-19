@@ -49,7 +49,6 @@ public class LeylineHandler {
 	@SubscribeEvent(priority = EventPriority.HIGH)
 	public static void onFogEvent(EntityViewRenderEvent.RenderFogEvent event) {
 		GlStateManager.setFog(GlStateManager.FogMode.LINEAR);
-		GlStateManager.setFogStart(0f);
 		float totalFog = 0.0f;
 		for(FogAffecter fa : fogAffectors) {
 			totalFog += fa.weight;
@@ -59,7 +58,8 @@ public class LeylineHandler {
 		//0.018 is (approx) the value that the sigmoid curve is at 0
 		//Big dick sigmoid f curve math
 		totalFog = 1.036f/(1.0f+(float)Math.exp(4-8*totalFog))-0.018f;
-	    GlStateManager.setFogEnd(event.getFarPlaneDistance()/0.8f*(1f-totalFog));
+		GlStateManager.setFogStart(event.getFarPlaneDistance()*MathHelper.clamp(0.75f-totalFog,0f,1f));
+	    GlStateManager.setFogEnd(event.getFarPlaneDistance()*(1f-totalFog));
 	}
 
 	@SubscribeEvent(priority = EventPriority.LOWEST) 
