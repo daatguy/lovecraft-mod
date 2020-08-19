@@ -128,7 +128,7 @@ public class DeskHandler {
 				ItemBook.getItemStack("fossil_notes_limb"),
 				ItemBook.getItemStack("fossil_notes_body"), new ItemStack(Items.STRING) },
 				ItemBook.getItemStack("anthology_fossil"), new boolean[]{false, false, false}));
-		deskRecipes.add(new DeskRecipe(new ItemStack[] {
+		/*deskRecipes.add(new DeskRecipe(new ItemStack[] {
 				ItemBook.getItemStack("bas_relief"),
 				ItemBook.getItemStack("account_indus", true), ItemStack.EMPTY },
 				ItemBook.getItemStack("vague_mythos"), new boolean[]{false, false, false}));
@@ -171,7 +171,7 @@ public class DeskHandler {
 		deskRecipes.add(new DeskRecipe(new ItemStack[] {
 				ItemBook.getItemStack("cultist_journal"),
 				ItemBook.getItemStack("other_side"), new ItemStack(Items.STRING) },
-				ItemBook.getItemStack("visions"), new boolean[]{false, false, false}));
+				ItemBook.getItemStack("visions"), new boolean[]{false, false, false}));*/
 		deskRecipes.add(new DeskRecipe(new ItemStack[] {
 				new ItemStack(LovecraftMain.itemTokenBat), new ItemStack(Items.PAPER), ItemStack.EMPTY},
 				ItemBook.getItemStack("token_notes_bat"), new boolean[]{false, false, false}));

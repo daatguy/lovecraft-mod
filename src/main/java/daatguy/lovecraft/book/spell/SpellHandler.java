@@ -21,7 +21,7 @@ public class SpellHandler {
 		registerSpell(new SpellCap());
 		registerSpell(new SpellDisassemble());
 		registerSpell(new SpellEnterRoom());
-		registerSpell(new SpellDrug());
+		//registerSpell(new SpellDrug());
 	}
 
 	public void registerSpell(Spell spell) {
@@ -44,7 +44,6 @@ public class SpellHandler {
 				wSpells.add(s);
 			}
 		}
-		System.out.println(wSpells);
 		return ((CanGetStack)wSpells.get(random.nextInt(wSpells.size()))).getItemStack();
 	}
 }

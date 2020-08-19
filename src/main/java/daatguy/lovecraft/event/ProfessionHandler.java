@@ -5,6 +5,7 @@ import java.util.Random;
 import daatguy.lovecraft.book.spell.SpellHandler;
 import daatguy.lovecraft.core.LovecraftMain;
 import daatguy.lovecraft.item.ItemBook;
+import daatguy.lovecraft.item.SubItemsHandler;
 import net.minecraft.entity.IMerchant;
 import net.minecraft.entity.passive.EntityVillager;
 import net.minecraft.entity.passive.EntityVillager.ITradeList;
@@ -16,8 +17,10 @@ import net.minecraft.village.MerchantRecipeList;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.event.entity.EntityJoinWorldEvent;
 import net.minecraftforge.event.entity.living.BabyEntitySpawnEvent;
+import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.fml.common.registry.ForgeRegistries;
 import net.minecraftforge.fml.common.registry.GameRegistry.ObjectHolder;
 import net.minecraftforge.fml.common.registry.VillagerRegistry;
 import net.minecraftforge.fml.common.registry.VillagerRegistry.VillagerCareer;
@@ -28,7 +31,23 @@ import net.minecraftforge.registries.IForgeRegistry;
 public class ProfessionHandler {
 
 	public static VillagerProfession professionOpiumPeddler;
+	public static VillagerProfession professionMailman;
 	public static VillagerCareer careerOpiumPeddler;
+	public static VillagerCareer careerMailman;
+
+	@EventBusSubscriber(modid = "lovecraft")
+	public static class MailmanHandler {
+
+		@SubscribeEvent
+		public static void onVillagerInteract(
+				PlayerInteractEvent.EntityInteractSpecific event) {
+			if (event.getTarget() instanceof EntityVillager
+					&& ((EntityVillager) event.getTarget())
+							.getProfessionForge() == professionMailman) {
+				event.getTarget().setFire(1);
+			}
+		}
+	}
 
 	@EventBusSubscriber(modid = "lovecraft")
 	public static class RegistrationHandler {
@@ -45,7 +64,12 @@ public class ProfessionHandler {
 					"lovecraft:opium_profession",
 					"lovecraft:textures/entity/villager/opium_peddler.png",
 					"lovecraft:textures/entity/villager/zombie_opium_peddler.png");
+			professionMailman = new VillagerProfession(
+					"lovecraft:mailman_profession",
+					"lovecraft:textures/entity/villager/mailman.png",
+					"lovecraft:textures/entity/villager/zombie_mailman.png");
 			event.getRegistry().register(professionOpiumPeddler);
+			event.getRegistry().register(professionMailman);
 		}
 	}
 
@@ -59,14 +83,50 @@ public class ProfessionHandler {
 				LovecraftMain.itemEmptyBeaker), new PriceInfo(16, 32)));
 		careerOpiumPeddler.addTrade(1, new TradeBuy(new ItemStack(
 				LovecraftMain.itemDriedFlower), new PriceInfo(4, 7)));
-		careerOpiumPeddler.addTrade(2,
-				new Trade(new ItemStack(LovecraftMain.itemCoin), new PriceInfo(
-						1, 3), ItemBook.getItemStack("alchemy_dict"),
-						new PriceInfo(1, 1)));
-		careerOpiumPeddler.addTrade(3,
-				new Trade(new ItemStack(LovecraftMain.itemCoin), new PriceInfo(
-						4, 8), SpellHandler.spells.get("drug").getItemStack(),
-						new PriceInfo(1, 1)));
+		careerMailman = new VillagerCareer(professionMailman, "mailman_career");
+		// careerOpiumPeddler.addTrade(2,
+		// new Trade(new ItemStack(LovecraftMain.itemCoin), new PriceInfo(
+		// 1, 3), ItemBook.getItemStack("alchemy_dict"),
+		// new PriceInfo(1, 1)));
+		// careerOpiumPeddler.addTrade(3,
+		// new Trade(new ItemStack(LovecraftMain.itemCoin), new PriceInfo(
+		// 4, 8), SpellHandler.spells.get("drug").getItemStack(),
+		// new PriceInfo(1, 1)));
+		// Add librarian trades
+
+		VillagerRegistry
+				.getById(1)
+				.getCareer(0)
+				.addTrade(
+						1,
+						new Trade(new ItemStack(Items.EMERALD), new PriceInfo(
+								4, 8), SubItemsHandler.books.get("latin_dict")
+								.getItemStack(), new PriceInfo(1, 1)));
+		VillagerRegistry
+				.getById(1)
+				.getCareer(0)
+				.addTrade(
+						2,
+						new Trade(new ItemStack(Items.EMERALD), new PriceInfo(
+								4, 8), SubItemsHandler.books.get("greek_dict")
+								.getItemStack(), new PriceInfo(1, 1)));
+		VillagerRegistry
+				.getById(1)
+				.getCareer(0)
+				.addTrade(
+						5,
+						new Trade(new ItemStack(Items.EMERALD), new PriceInfo(
+								4, 8), SubItemsHandler.books.get(
+								"sanskrit_dict").getItemStack(), new PriceInfo(
+								1, 1)));
+		VillagerRegistry
+				.getById(1)
+				.getCareer(0)
+				.addTrade(
+						6,
+						new Trade(new ItemStack(Items.EMERALD), new PriceInfo(
+								4, 8), SubItemsHandler.books.get("runic_dict")
+								.getItemStack(), new PriceInfo(1, 1)));
 	}
 
 	public static class Trade implements ITradeList {
